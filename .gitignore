@@ -6,5 +6,5 @@
 
 # Ignore .env files
 .env
-testdata
+/testdata
 
