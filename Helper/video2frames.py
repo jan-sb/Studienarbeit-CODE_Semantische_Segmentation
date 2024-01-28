@@ -1,4 +1,4 @@
-import cv2
+import cv2 as cv
 import os
 
 def convert_video_to_frames(video_path, output_folder):
