@@ -7,6 +7,7 @@ WORKDIR /local
 
 RUN apt-get update && apt-get install -y git
 RUN git clone https://github.com/jan-sb/Studienarbeit-CODE_Semantische_Segmentation.git 
+RUN git clone https://github.com/isaaccorley/torchseg.git
 
 COPY /testdata /testdata
 
@@ -15,8 +16,7 @@ COPY /testdata /testdata
 
 
 
-RUN pip install segmentation-models-pytorch &&\
-    pip install opencv-python &&\
+RUN pip install opencv-python &&\
     pip install opencv-contrib-python
 
 
