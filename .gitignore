@@ -1,0 +1,10 @@
+# Ignore node_modules directory
+
+
+# Ignore files with .log extension
+*.log
+
+# Ignore .env files
+.env
+testdata
+
