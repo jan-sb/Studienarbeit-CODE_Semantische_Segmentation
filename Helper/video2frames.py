@@ -35,10 +35,10 @@ def convert_video_to_frames(video_path, output_folder):
     print(f"Frames saved in {output_folder}")
 
 # Specify the path to your .avi video file
-video_path = 'path/to/your/video.avi'
+video_path = '/home/jan/studienarbeit/instvid.avi'
 
 # Specify the folder where you want to save the frames
-output_folder = 'path/to/output/folder'
+output_folder = '/home/jan/studienarbeit/testdata/inst_picset'
 
 # Call the function to convert the .avi video to frames
 convert_video_to_frames(video_path, output_folder)
