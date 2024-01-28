@@ -13,4 +13,4 @@ RUN pip install segmentation-models-pytorch
 
 
 # Führe den Befehl beim Start des Containers aus
-CMD ["--gpus", "all", "-it", "--name", "SegModels"]
+CMD ["--gpus", "all", "-it", "--name", "eigseg1"]
