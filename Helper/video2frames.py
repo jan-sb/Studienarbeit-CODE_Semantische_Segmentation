@@ -1,4 +1,4 @@
-import cv2 as cv
+import cv2
 import os
 
 def convert_video_to_frames(video_path, output_folder):
@@ -35,10 +35,10 @@ def convert_video_to_frames(video_path, output_folder):
     print(f"Frames saved in {output_folder}")
 
 # Specify the path to your .avi video file
-video_path = '/home/jan/studienarbeit/instvid.avi'
+video_path = 'testdata/instvid.avi'
 
 # Specify the folder where you want to save the frames
-output_folder = '/home/jan/studienarbeit/testdata/inst_picset'
+output_folder = 'testdata/inst_picset'
 
 # Call the function to convert the .avi video to frames
 convert_video_to_frames(video_path, output_folder)
