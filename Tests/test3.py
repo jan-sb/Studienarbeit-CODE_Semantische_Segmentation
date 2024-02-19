@@ -95,7 +95,10 @@ class model_test:
         cap = cv.VideoCapture(self.path)
         # if images come from opencv, they need to be transformed to tensors, np.ndarrays are not an accepted input of the preprocess call
         preprocess = transforms.Compose([transforms.ToTensor(),self.preprocess])
-
+        model = self.model
+        
+        if torch.cuda.is_available():
+            model = model.to('cuda')
 
         if self.output_path:
             print(f'Output in {self.output_path}/output.mp4')
@@ -106,7 +109,7 @@ class model_test:
         length = int(cap.get(cv.CAP_PROP_FRAME_COUNT))
         while True:
             ret, frame = cap.read()
-            print('Original Frame Shape ', frame.shape)
+            #print('Original Frame Shape ', frame.shape)
             if not ret:
                 print('Video file empty or process finished')
                 break
@@ -116,7 +119,7 @@ class model_test:
 
             with torch.no_grad():
                 # Keys for model are 'aux' and 'out'
-                output = self.model(im0)['out']
+                output = model(im0)['out']
 
             num_classes = output.shape[1]
             masks = output
