@@ -8,5 +8,5 @@
 .env
 *.avi
 testdata/*
-
+Daten/*
 
