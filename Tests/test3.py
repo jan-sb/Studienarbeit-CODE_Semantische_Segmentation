@@ -1,6 +1,6 @@
 import torch
 from torchvision.io.image import read_image
-from torchvision.models.segmentation import fcn_resnet50, FCN_ResNet50_Weights
+from torchvision.models.segmentation import *
 from torchvision.transforms.functional import to_pil_image
 from torchvision import transforms
 from torchvision.utils import draw_segmentation_masks
@@ -18,8 +18,11 @@ class model_test:
         #self.weights = FCN_ResNet50_Weights.DEFAULT
 
 
-        self.model = fcn_resnet50
-        self.weights = FCN_ResNet50_Weights.DEFAULT
+        #self.model = fcn_resnet50
+        #self.weights = FCN_ResNet50_Weights.DEFAULT
+
+        self.model = deeplabv3_resnet50
+        self.weights = DeepLabV3_ResNet50_Weights.DEFAULT
 
         if self.model and callable(self.model):
             s_model = 'model loaded'
@@ -98,24 +101,32 @@ class model_test:
         model = self.model
         
         if torch.cuda.is_available():
-            model = model.to('cuda')
+            device = torch.device('cuda')
+            model = model.to(device)
+            print('Running on CUDA')
+        if torch.backends.mps.is_available():
+            print('Running on MPS')
+            device = torch.device("mps")
+            model = model.to(device)
 
         if self.output_path:
             print(f'Output in {self.output_path}/output.mp4')
             w, h, fps = (int(cap.get(x)) for x in (cv.CAP_PROP_FRAME_WIDTH, cv.CAP_PROP_FRAME_HEIGHT, cv.CAP_PROP_FPS))
-            out = cv.VideoWriter(self.output_path+'/output.mp4', cv.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
+            out = cv.VideoWriter(self.output_path+'/output1.mp4', cv.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
 
         k = 0
         length = int(cap.get(cv.CAP_PROP_FRAME_COUNT))
         while True:
             ret, frame = cap.read()
-            #print('Original Frame Shape ', frame.shape)
             if not ret:
                 print('Video file empty or process finished')
                 break
 
-            im0 = self.image_to_prepro_tensor(frame)
+            im0 = self.image_to_prepro_tensor(frame)#
+            im0 = im0.to(device)
             im1 = torch.zeros(torch.squeeze(im0).size(), dtype=torch.uint8)
+
+
 
             with torch.no_grad():
                 # Keys for model are 'aux' and 'out'
@@ -123,7 +134,7 @@ class model_test:
 
             num_classes = output.shape[1]
             masks = output
-            all_masks = masks.argmax(1) == torch.arange(num_classes)[:, None, None]
+            all_masks = masks.argmax(1) == torch.arange(num_classes, device= device)[:, None, None]
 
 
             if self.live=='True':
