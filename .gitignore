@@ -6,7 +6,7 @@
 
 # Ignore .env files
 .env
-*.avi
+
 testdata/*
-Daten/*
+
 
