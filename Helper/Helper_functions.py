@@ -55,6 +55,7 @@ def cap_def(path):
 
 
 
+
 def update_console(message):
     sys.stdout.write(f"\r{message}")
     sys.stdout.flush()
