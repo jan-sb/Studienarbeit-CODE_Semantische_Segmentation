@@ -1,8 +1,8 @@
 import cv2 as cv
 import numpy as np
 import sys
-
-
+import datetime
+import os
 
 
 
@@ -57,5 +57,21 @@ def cap_def(path):
 
 
 def update_console(message):
+    os.system('cls' if os.name == 'nt' else 'clear')
     sys.stdout.write(f"\r{message}")
     sys.stdout.flush()
+
+
+
+def video_writer(output_path, fps, resolution_tuple):
+    video_title = f'video_{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}'
+    fourcc = cv.VideoWriter_fourcc(*'mp4v')
+    out = cv.VideoWriter(f'{output_path}/{video_title}', fourcc, fps, resolution_tuple)
+    return out
+
+def update_progress_bar(current_frame, max_frames, bar_length=20):
+    ratio = current_frame / max_frames
+    progress = int(bar_length * ratio)
+    bar = "[" + "=" * progress + " " * (bar_length - progress) + "]"
+    percentage = int(ratio * 100)
+    return f"{bar} {percentage}%"
