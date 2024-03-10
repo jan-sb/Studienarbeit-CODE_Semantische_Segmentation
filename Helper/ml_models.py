@@ -11,7 +11,7 @@ class Model:
         self.model_name = model_name
         self.weights = weights
         self.pretrained = pretrained
-        self.orig_dim = (width, height)
+        self.orig_dim = (height, width)
         self.postprocess = transforms.Compose([transforms.Resize(self.orig_dim)])
 
         if torch.cuda.is_available():

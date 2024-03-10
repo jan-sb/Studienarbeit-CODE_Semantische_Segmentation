@@ -37,6 +37,7 @@ def main():
 
         image_result = deeplv3.model_inference_live_no_grad(frame)
         print(f'IMAGE RESULT: {image_result.shape}')
+        image_result = cv.addWeighted(frame, 0.9, image_result, 0.9, gamma=0)
         output.write(image_result)
         output2.write(image_result)
 
