@@ -64,9 +64,11 @@ def update_console(message):
 
 
 def video_writer(output_path, fps, resolution_tuple):
-    video_title = f'video_{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}'
+    video_title = f'video_{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}.mp4'
     fourcc = cv.VideoWriter_fourcc(*'mp4v')
-    out = cv.VideoWriter(f'{output_path}/{video_title}', fourcc, fps, resolution_tuple)
+    output_path_final = os.path.join(output_path, video_title)
+    out = cv.VideoWriter(output_path_final, fourcc, fps, resolution_tuple)
+    print(f'Video writer initialized: {output_path}/{video_title}, with {fps} fps and resolution {resolution_tuple}, fourcc: {fourcc}')
     return out
 
 def update_progress_bar(current_frame, max_frames, bar_length=20):

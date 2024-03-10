@@ -74,7 +74,7 @@ class Model:
                 tensor,
                 all_masks,
                 colors=self.label_color_map,
-                alpha=0.5
+                alpha=0.9
             )
             res_image = self.tensor_to_image(res_image)
             return res_image
@@ -94,7 +94,8 @@ class TorchModel(Model):
             model_funktion = globals()[model_name]
             if weights in globals():
                 specific_weight = 'DEFAULT'
-                weights_function = getattr(FCN_ResNet50_Weights, specific_weight)
+                weights_call = globals()[weights]
+                weights_function = getattr(weights_call, specific_weight)
                 try:
                     weights = weights_function
                 except AttributeError:
