@@ -1,4 +1,5 @@
 import sys
+import os
 import numpy as np
 import torch
 from torchvision import transforms
@@ -106,6 +107,9 @@ class TorchModel(Model):
                 except AttributeError:
                     print(f'Error preparing preprocess for images in class torch_model')
                 print(f'Weights loaded: {weights}')
+            elif os.path.exists(weights) and os.access(weights, os.R_OK):
+                
+
             else:
                 print(f'Error loading weights in class torch_model with {weights}')
                 sys.exit()

@@ -1,6 +1,6 @@
 from Helper.ml_models import *
 from Helper.Helper_functions import *
-
+from cityscapesscripts.helpers.labels import labels
 
 path = 'Daten/vid.avi'
 def main():
