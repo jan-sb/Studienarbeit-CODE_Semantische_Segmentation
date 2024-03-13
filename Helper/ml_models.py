@@ -7,16 +7,14 @@ import torch.optim as optim
 from torchvision import transforms
 from torchvision.models.segmentation import *
 from torchvision.utils import draw_segmentation_masks
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, Dataset
 from torchvision.transforms._presets import SemanticSegmentation
 from functools import partial
 from PIL import Image
 
 
-
-
 class Model:
-    def __init__(self, model_name, weights, width, height, pretrained=True):
+    def __init__(self, model_name, weights, width, height, pretrained=True, num_classes = 21):
         self.model_name = model_name
         self.weights = weights
         self.pretrained = pretrained
@@ -24,6 +22,7 @@ class Model:
         self.postprocess = transforms.Compose([transforms.Resize(self.orig_dim)])
         self.start_epoch = 0
         self.epoch = 0
+        self.num_classes = num_classes
 
         if torch.cuda.is_available():
             self.device = torch.device('cuda')
@@ -37,7 +36,7 @@ class Model:
 
         if model_name in globals():  # Check if model is callable
             model_funktion = globals()[model_name]
-            self.model = model_funktion(weights=self.weights).to(self.device)
+            self.model = model_funktion(weights=self.weights, num_classes=self.num_classes).to(self.device)
             self.model.eval()
             print(f'Model loaded: {self.model_name} | Device: {self.device} ')
 
@@ -69,7 +68,7 @@ class Model:
             (0, 64, 128)  # tv/monitor
         ]
 
-        self.city_label_color_map= [
+        self.city_label_color_map = [
             (128, 64, 128),  # road,
             (244, 35, 232),  # sidewalk,
             (70, 70, 70),  # building,
@@ -155,26 +154,43 @@ class TorchModel(Model):
         super().__init__(model_name, self.weights, width, height, pretrained)
 
 
-
-
 class TrainedModel(Model):
 
     def __init__(self, model_name, width, height, weights_name, start_epoch='latest', pretrained=True):
-        super().__init__(model_name, weights=None, width=width, height=height, pretrained=True)
-        self.num_classes = len(self.old_label_color_map)
+        self.city_label_color_map = [
+            (128, 64, 128),  # road,
+            (244, 35, 232),  # sidewalk,
+            (70, 70, 70),  # building,
+            (102, 102, 156),  # wall,
+            (190, 153, 153),  # fence,
+            (153, 153, 153),  # pole,
+            (250, 170, 30),  # traffic light,
+            (220, 220, 0),  # traffic sign,
+            (107, 142, 35),  # vegetation,
+            (152, 251, 152),  # terrain,
+            (70, 130, 180),  # sky,
+            (220, 20, 60),  # person,
+            (255, 0, 0),  # rider,
+            (0, 0, 142),  # car,
+            (0, 0, 70),  # truck,
+            (0, 60, 100),  # bus,
+            (0, 80, 100),  # train,
+            (0, 0, 230),  # motorcycle,
+            (119, 11, 32),  # bicycle,
+        ]
+        self.num_classes = len(self.city_label_color_map)
+        super().__init__(model_name, weights=None, width=width, height=height, pretrained=True, num_classes = self.num_classes)
         self.transforms = transforms.Compose([
             transforms.ToTensor(),
             partial(SemanticSegmentation, resize_size=520),
         ])
-
 
         # Make Folder for the Trained Weights
         self.folder_path = 'Own_Models'
         self.weights_name = weights_name
         self.model_folder_path = os.path.join(self.folder_path, self.weights_name)
 
-        self.model[4] = nn.Conv2d(256, self.num_classes, kernel_size=(1, 1), stride=(1, 1))
-
+        #self.model[4] = nn.Conv2d(256, self.num_classes, kernel_size=(1, 1), stride=(1, 1))
 
         # Loading the Model
         search_file_path = os.path.join(self.folder_path, f'{self.weights_name}')
@@ -201,8 +217,8 @@ class TrainedModel(Model):
                 print(f'Error loading Model with Epoch {start_epoch} in Class TrainedModel')
                 sys.exit()
         elif os.path.exists(search_file_path) != True:
-                print(f'Model file \'Own_Weights\' doesnt exist')
-                sys.exit()
+            print(f'Model file \'Own_Weights\' doesnt exist')
+            sys.exit()
         else:
             print(f'Latest Epoch Save doesnt exist or Epoch Number Save doesnt exist, initialising new Save')
             try:
@@ -221,14 +237,13 @@ class TrainedModel(Model):
         self.model.eval()
 
 
-    def pepare_model_training(self, dataset, batch_size=10, shuffle=True, learning_rate = 1*10**(-5)):
+
+    def pepare_model_training(self, dataset, batch_size=10, shuffle=True, learning_rate=1 * 10 ** (-5)):
         self.training_loader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
         self.criterion = nn.CrossEntropyLoss()
         self.optimizer = optim.Adam(self.model.parameters(), lr=learning_rate)
 
-
-
-    def save_model(self, file_management = False):
+    def save_model(self, file_management=False):
         if not os.path.exists(self.model_folder_path):
             os.makedirs(self.model_folder_path)
 
@@ -236,16 +251,16 @@ class TrainedModel(Model):
         weights_name_latest = f'{self.model_folder_path}_latest_{self.model_name}'
 
         torch.save({
-            'epoch':self.epoch,
-            'model_state_dict':self.model.state_dict(),
-            'optimizer_state_dict':self.optimizer.state_dict(),
-            'loss':self.loss,
+            'epoch': self.epoch,
+            'model_state_dict': self.model.state_dict(),
+            'optimizer_state_dict': self.optimizer.state_dict(),
+            'loss': self.loss,
         }, weights_name_current)
         torch.save({
-            'epoch':self.epoch,
-            'model_state_dict':self.model.state_dict(),
-            'optimizer_state_dict':self.optimizer.state_dict(),
-            'loss':self.loss,
+            'epoch': self.epoch,
+            'model_state_dict': self.model.state_dict(),
+            'optimizer_state_dict': self.optimizer.state_dict(),
+            'loss': self.loss,
         }, weights_name_latest)
 
         # Delete saved models from last five epochs, except milestone epochs
@@ -254,8 +269,6 @@ class TrainedModel(Model):
                 old_filepath = os.path.join(self.folder_path, f'{self.weights_name}_epoch-{i}_{self.model_name}.pth')
                 if os.path.exists(old_filepath):
                     os.remove(old_filepath)
-
-
 
     def train(self, epochs):
         self.model.train()
@@ -270,13 +283,59 @@ class TrainedModel(Model):
                 self.optimizer.step()
                 run_loss += loss.item()
             epoch_loss = run_loss / len(self.training_loader)
-            print(f'Epoch {epoch+1} von {epochs}    |   Loss: {epoch_loss}')
+            print(f'Epoch {epoch + 1} von {epochs}    |   Loss: {epoch_loss}')
 
         self.save_model()
 
-    def prepare_dataset(self, path_images, path_labeled):
+
+## Kann wahrscheinlich weg
+'''    def prepare_dataset(self, path_images, path_labeled):
         if not (os.path.exists(path_images) and os.path.exists(path_labeled)):
             raise FileNotFoundError("One or both of the specified paths do not exist.")
 
         image_files = os.listdir(path_images)
-        
+        for img_file in image_files:
+            img_path = os.path.join(path_images, img_file)
+            label_file = img_file.replace('.png','_label.png')
+            label_path = os.path.join(path_labeled, label_file)
+
+            if not os.path.exists(label_path):
+                print(f"For label file {label_file} exists no {img_file}. Skipping...")
+                continue
+
+            image = Image.open(img_path).convert('RGB')
+            label = Image.open(label_path).convert('L')
+
+            image = self.transforms(image)
+            label = self.transforms(label)
+
+            self.dataset.append'''
+
+
+class CustomDataSet(Dataset):
+    def __init__(self, image_dir, annotation_dir):
+        self.image_dir = image_dir
+        self.annotation_dir = annotation_dir
+        self.transforms = transforms.Compose([
+            transforms.ToTensor(),
+            partial(SemanticSegmentation, resize_size=520),
+        ])
+
+        self.image_files = os.listdir(image_dir)
+        self.annotation_files = os.listdir(annotation_dir)
+
+    def __len__(self):
+        return len(self.image_files)
+
+    def __getitem__(self, idx):
+        img_name = os.path.join(self.image_dir, self.image_files[idx])
+        annotation_name = os.path.join(self.annotation_dir, self.annotation_files[idx])
+
+        image = Image.open(img_name).convert("RGB")
+        annotation = Image.open(annotation_name).convert("L")  # Convert to grayscale
+
+        if self.transforms:
+            image = self.transforms(image)
+            annotation = self.transforms(annotation)
+
+        return image, annotation

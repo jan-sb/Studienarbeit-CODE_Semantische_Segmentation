@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b6cf50-ad24-41be-8b96-b8f94a896f3b" name="Changes" comment="Committ Mittowch 15:36">
-      <change afterPath="$PROJECT_DIR$/Daten/video_20240313_162504.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Daten/video_20240313_162515.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Daten/video_20240313_162633.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Daten2/video_20240313_162504.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Daten2/video_20240313_162515.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Daten2/video_20240313_162633.mp4" afterDir="false" />
+    <list default="true" id="60b6cf50-ad24-41be-8b96-b8f94a896f3b" name="Changes" comment="Committ Mittowch 17:32">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helper/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/evaluation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Helper/ml_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/ml_models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
@@ -71,10 +64,11 @@
     "Python.evaluation.executor": "Run",
     "Python.main.executor": "Debug",
     "Python.main_old.executor": "Run",
-    "Python.ml_models.executor": "Run",
+    "Python.ml_models.executor": "Debug",
     "Python.test2.executor": "Run",
     "Python.test3.executor": "Run",
     "Python.test4.executor": "Run",
+    "Python.train.executor": "Run",
     "Python.video_test.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -99,7 +93,7 @@
       <window_info id="Settings Sync History" show_stripe_button="false" />
       <window_info id="Learn" show_stripe_button="false" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14473684" />
-      <window_info id="Commit" order="1" weight="0.21913746" />
+      <window_info id="Commit" order="1" weight="0.14473684" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" show_stripe_button="false" />
@@ -111,9 +105,9 @@
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.33674914" />
       <window_info anchor="bottom" id="Services" order="4" />
       <window_info anchor="bottom" id="Python Packages" order="5" weight="0.1" />
-      <window_info anchor="bottom" id="Debug" order="6" weight="0.33674914" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.33957598" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.1" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.33674914" />
+      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.33957598" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.329682" />
       <window_info anchor="right" id="Endpoints" show_stripe_button="false" />
       <window_info anchor="right" id="SciView" show_stripe_button="false" />
@@ -239,7 +233,7 @@
       <workItem from="1710246973539" duration="7306000" />
       <workItem from="1710267734527" duration="621000" />
       <workItem from="1710317779293" duration="17000" />
-      <workItem from="1710317811917" duration="24952000" />
+      <workItem from="1710317811917" duration="27522000" />
     </task>
     <task id="LOCAL-00001" summary="Neue requirements.txt">
       <option name="closed" value="true" />
@@ -313,7 +307,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710340619080</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Committ Mittowch 17:32">
+      <option name="closed" value="true" />
+      <created>1710347548401</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1710347548401</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,7 +328,19 @@
     <MESSAGE value="zwischenspeicher Dienstag" />
     <MESSAGE value="Comitt Mittowch 15:36" />
     <MESSAGE value="Committ Mittowch 15:36" />
-    <option name="LAST_COMMIT_MESSAGE" value="Committ Mittowch 15:36" />
+    <MESSAGE value="Committ Mittowch 17:32" />
+    <option name="LAST_COMMIT_MESSAGE" value="Committ Mittowch 17:32" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/train.py</url>
+          <line>3</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$video_test.coverage" NAME="video_test Coverage Results" MODIFIED="1708014421937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -334,8 +348,9 @@
     <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$test4.coverage" NAME="test4 Coverage Results" MODIFIED="1709800296747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1710344773342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Helper" />
     <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$test3.coverage" NAME="test3 Coverage Results" MODIFIED="1709545273062" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
-    <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$ml_models.coverage" NAME="ml_models Coverage Results" MODIFIED="1710322642291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Helper" />
+    <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$ml_models.coverage" NAME="ml_models Coverage Results" MODIFIED="1710349440575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Helper" />
     <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$main_old.coverage" NAME="main_old Coverage Results" MODIFIED="1709800187467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$train.coverage" NAME="train Coverage Results" MODIFIED="1710349465480" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$main.coverage" NAME="main Coverage Results" MODIFIED="1710343590226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
