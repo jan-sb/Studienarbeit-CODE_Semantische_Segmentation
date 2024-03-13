@@ -179,25 +179,30 @@ class TrainedModel(Model):
             (119, 11, 32),  # bicycle,
         ]
         self.num_classes = len(self.city_label_color_map)
+        self.learning_rate = 1*10**(-5)
+
         super().__init__(model_name, weights=None, width=width, height=height, pretrained=True, num_classes = self.num_classes)
-        self.transforms = transforms.Compose([
+        self.preprocess = transforms.Compose([
             transforms.ToTensor(),
-            partial(SemanticSegmentation, resize_size=520),
+            SemanticSegmentation,
+            transforms.Resize(520),
         ])
 
+        self.pepare_model_training()
+
         # Make Folder for the Trained Weights
-        self.folder_path = 'Own_Models'
+        self.folder_path = 'Own_Weights'
         self.weights_name = weights_name
         self.model_folder_path = os.path.join(self.folder_path, self.weights_name)
 
         #self.model[4] = nn.Conv2d(256, self.num_classes, kernel_size=(1, 1), stride=(1, 1))
 
         # Loading the Model
-        search_file_path = os.path.join(self.folder_path, f'{self.weights_name}')
-        if os.path.exists(search_file_path) and start_epoch == 'latest':
+        path_to_latest = self.model_folder_path+ f'/{self.weights_name}_latest_{self.model_name}.pth'
+        path_to_epoch = self.model_folder_path+ f'/{self.weights_name}_epoch-{self.epoch}_{self.model_name}.pth'
+        if os.path.exists(path_to_latest) and start_epoch == 'latest':
             try:
-                latest_file_path = search_file_path + '_latest_{self.model_name}.pth'
-                checkpoint = torch.load(latest_file_path)
+                checkpoint = torch.load(path_to_latest)
                 self.model.load_state_dict(checkpoint['model_state_dict'])
                 self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
                 self.epoch = checkpoint['epoch']
@@ -205,10 +210,9 @@ class TrainedModel(Model):
             except:
                 print(f'Error loading Model with Epoch latest in Class TrainedModel')
                 sys.exit()
-        elif os.path.exists(search_file_path) and start_epoch != 'latest':
+        elif os.path.exists(path_to_epoch) and start_epoch != 'latest':
             try:
-                epoch_file_path = search_file_path + f'_epoch-{self.epoch}_{self.model_name}'
-                checkpoint = torch.load(epoch_file_path)
+                checkpoint = torch.load(path_to_epoch)
                 self.model.load_state_dict(checkpoint['model_state_dict'])
                 self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
                 self.epoch = checkpoint['epoch']
@@ -216,14 +220,16 @@ class TrainedModel(Model):
             except:
                 print(f'Error loading Model with Epoch {start_epoch} in Class TrainedModel')
                 sys.exit()
-        elif os.path.exists(search_file_path) != True:
-            print(f'Model file \'Own_Weights\' doesnt exist')
+        elif os.path.exists(self.model_folder_path) != True:
+            print(f'Model directory {self.model_folder_path} doesnt exist')
             sys.exit()
         else:
             print(f'Latest Epoch Save doesnt exist or Epoch Number Save doesnt exist, initialising new Save')
             try:
+                self.pepare_model_training()
+                self.loss = 0
                 self.save_model()
-                latest_file_path = search_file_path + '_latest_{self.model_name}.pth'
+                latest_file_path = self.model_folder_path + '_latest_{self.model_name}.pth'
                 checkpoint = torch.load(latest_file_path)
                 self.model.load_state_dict(checkpoint['model_state_dict'])
                 self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
@@ -238,8 +244,11 @@ class TrainedModel(Model):
 
 
 
-    def pepare_model_training(self, dataset, batch_size=10, shuffle=True, learning_rate=1 * 10 ** (-5)):
-        self.training_loader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
+    def pepare_model_training(self, dataset=None, batch_size=5, shuffle=True, learning_rate= 1*10**(-5)):
+        if dataset is not None:
+            self.training_loader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
+            print(f'Training Loader prepared')
+
         self.criterion = nn.CrossEntropyLoss()
         self.optimizer = optim.Adam(self.model.parameters(), lr=learning_rate)
 
@@ -247,8 +256,8 @@ class TrainedModel(Model):
         if not os.path.exists(self.model_folder_path):
             os.makedirs(self.model_folder_path)
 
-        weights_name_current = f'{self.model_folder_path}_epoch-{self.epoch}_{self.model_name}'
-        weights_name_latest = f'{self.model_folder_path}_latest_{self.model_name}'
+        weights_name_current = f'{self.model_folder_path}/{self.weights_name}_epoch-{self.epoch}_{self.model_name}.pth'
+        weights_name_latest = f'{self.model_folder_path}/{self.weights_name}_latest_{self.model_name}.pth'
 
         torch.save({
             'epoch': self.epoch,
@@ -270,13 +279,19 @@ class TrainedModel(Model):
                 if os.path.exists(old_filepath):
                     os.remove(old_filepath)
 
+        print(f'Saved Model')
+
     def train(self, epochs):
         self.model.train()
+        torch.cuda.empty_cache()
         for epoch in range(epochs):
             run_loss = 0.0
             self.epoch += 1
             for images, labels in self.training_loader:
                 self.optimizer.zero_grad()
+                images = images.to(self.device)
+                labels = labels.to(self.device)
+
                 outputs = self.model(images)['out']
                 loss = self.criterion(outputs, labels)
                 loss.backward()
@@ -316,10 +331,12 @@ class CustomDataSet(Dataset):
     def __init__(self, image_dir, annotation_dir):
         self.image_dir = image_dir
         self.annotation_dir = annotation_dir
-        self.transforms = transforms.Compose([
-            transforms.ToTensor(),
-            partial(SemanticSegmentation, resize_size=520),
+        self.preprocess = transforms.Compose([
+            transforms.Resize((520,520)),
+            transforms.PILToTensor(),
+            SemanticSegmentation(resize_size=520),
         ])
+        self.counter = 0
 
         self.image_files = os.listdir(image_dir)
         self.annotation_files = os.listdir(annotation_dir)
@@ -330,12 +347,14 @@ class CustomDataSet(Dataset):
     def __getitem__(self, idx):
         img_name = os.path.join(self.image_dir, self.image_files[idx])
         annotation_name = os.path.join(self.annotation_dir, self.annotation_files[idx])
+        self.counter +=1
+        print(self.counter)
 
         image = Image.open(img_name).convert("RGB")
-        annotation = Image.open(annotation_name).convert("L")  # Convert to grayscale
+        annotation = Image.open(annotation_name).convert("RGB")  # Convert to grayscale
 
-        if self.transforms:
-            image = self.transforms(image)
-            annotation = self.transforms(annotation)
+        if self.preprocess:
+            image = self.preprocess(image)
+            annotation = self.preprocess(annotation)
 
         return image, annotation
