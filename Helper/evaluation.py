@@ -20,6 +20,13 @@ for label in labels:
                                                                                   label.color))
 print(" ", '\n', counter)
 
+for label in labels:
+    if label.ignoreInEval ==0:
+        print(f'{label.color}, #{label.name},')
+
+
+
+
 print("Example usages:")
 
 # Map from name to label

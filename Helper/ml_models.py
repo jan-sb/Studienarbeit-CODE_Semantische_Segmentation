@@ -8,7 +8,11 @@ from torchvision import transforms
 from torchvision.models.segmentation import *
 from torchvision.utils import draw_segmentation_masks
 from torch.utils.data import DataLoader
-import datetime
+from torchvision.transforms._presets import SemanticSegmentation
+from functools import partial
+from PIL import Image
+
+
 
 
 class Model:
@@ -41,7 +45,7 @@ class Model:
             print(f'Error loading model in class Model with {model_name}')
             sys.exit()
 
-        self.label_color_map = [
+        self.old_label_color_map = [
             (0, 0, 0),  # background
             (128, 0, 0),  # aeroplane
             (0, 128, 0),  # bicycle
@@ -65,6 +69,28 @@ class Model:
             (0, 64, 128)  # tv/monitor
         ]
 
+        self.city_label_color_map= [
+            (128, 64, 128),  # road,
+            (244, 35, 232),  # sidewalk,
+            (70, 70, 70),  # building,
+            (102, 102, 156),  # wall,
+            (190, 153, 153),  # fence,
+            (153, 153, 153),  # pole,
+            (250, 170, 30),  # traffic light,
+            (220, 220, 0),  # traffic sign,
+            (107, 142, 35),  # vegetation,
+            (152, 251, 152),  # terrain,
+            (70, 130, 180),  # sky,
+            (220, 20, 60),  # person,
+            (255, 0, 0),  # rider,
+            (0, 0, 142),  # car,
+            (0, 0, 70),  # truck,
+            (0, 60, 100),  # bus,
+            (0, 80, 100),  # train,
+            (0, 0, 230),  # motorcycle,
+            (119, 11, 32),  # bicycle,
+        ]
+
     def image_preprocess(self, image):
         return self.preprocess(image).unsqueeze(0).to(self.device)
 
@@ -85,12 +111,13 @@ class Model:
             tensor = self.image_preprocess(image)
             output = self.model(tensor)['out'].to(self.device)
             num_classes = output.shape[1]
+            print(output.shape)
             all_masks = output.argmax(1) == torch.arange(num_classes, device=self.device)[:, None, None]
             tensor = tensor.to(torch.uint8).squeeze(0)
             res_image = draw_segmentation_masks(
                 tensor,
                 all_masks,
-                colors=self.label_color_map,
+                colors=self.old_label_color_map,
                 alpha=0.9
             )
             res_image = self.tensor_to_image(res_image)
@@ -134,7 +161,12 @@ class TrainedModel(Model):
 
     def __init__(self, model_name, width, height, weights_name, start_epoch='latest', pretrained=True):
         super().__init__(model_name, weights=None, width=width, height=height, pretrained=True)
-        self.num_classes = len(self.label_color_map)
+        self.num_classes = len(self.old_label_color_map)
+        self.transforms = transforms.Compose([
+            transforms.ToTensor(),
+            partial(SemanticSegmentation, resize_size=520),
+        ])
+
 
         # Make Folder for the Trained Weights
         self.folder_path = 'Own_Models'
@@ -196,7 +228,7 @@ class TrainedModel(Model):
 
 
 
-    def save_model(self):
+    def save_model(self, file_management = False):
         if not os.path.exists(self.model_folder_path):
             os.makedirs(self.model_folder_path)
 
@@ -217,19 +249,22 @@ class TrainedModel(Model):
         }, weights_name_latest)
 
         # Delete saved models from last five epochs, except milestone epochs
-        for i in range(self.epoch - 5, 0) and self.epoch >= 10:
+        for i in range(self.epoch - 5, 0) and self.epoch >= 10 and file_management == True:
             if i % 5 != 0:  # Check if the epoch is not a milestone epoch
                 old_filepath = os.path.join(self.folder_path, f'{self.weights_name}_epoch-{i}_{self.model_name}.pth')
                 if os.path.exists(old_filepath):
                     os.remove(old_filepath)
 
+
+
     def train(self, epochs):
         self.model.train()
         for epoch in range(epochs):
             run_loss = 0.0
+            self.epoch += 1
             for images, labels in self.training_loader:
                 self.optimizer.zero_grad()
-                outputs = self.model(images)
+                outputs = self.model(images)['out']
                 loss = self.criterion(outputs, labels)
                 loss.backward()
                 self.optimizer.step()
@@ -237,3 +272,11 @@ class TrainedModel(Model):
             epoch_loss = run_loss / len(self.training_loader)
             print(f'Epoch {epoch+1} von {epochs}    |   Loss: {epoch_loss}')
 
+        self.save_model()
+
+    def prepare_dataset(self, path_images, path_labeled):
+        if not (os.path.exists(path_images) and os.path.exists(path_labeled)):
+            raise FileNotFoundError("One or both of the specified paths do not exist.")
+
+        image_files = os.listdir(path_images)
+        
