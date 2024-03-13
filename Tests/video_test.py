@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 # Creating a VideoCapture object to read the video
-cap = cv2.VideoCapture('../Daten/vid.avi')
+cap = cv2.VideoCapture('../Input_Daten/vid.avi')
 
 # Loop until the end of the video
 while cap.isOpened():

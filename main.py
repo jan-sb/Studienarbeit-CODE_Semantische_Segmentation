@@ -2,7 +2,7 @@ from Helper.ml_models import *
 from Helper.Helper_functions import *
 from cityscapesscripts.helpers.labels import labels
 
-path = 'Daten/vid.avi'
+path = 'Input_Daten/vid.avi'
 def main():
     cap, width, height, length, vid_fps = cap_def(path)
     output = video_writer('Daten',
@@ -36,7 +36,7 @@ def main():
             break
 
         image_result = deeplv3.model_inference_live_no_grad(frame)
-        print(f'IMAGE RESULT: {image_result.shape}')
+        #print(f'IMAGE RESULT: {image_result.shape}')
         image_result = cv.addWeighted(frame, 0.9, image_result, 0.9, gamma=0)
         output.write(image_result)
         output2.write(image_result)

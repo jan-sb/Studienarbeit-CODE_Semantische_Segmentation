@@ -4,13 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="60b6cf50-ad24-41be-8b96-b8f94a896f3b" name="Changes" comment="Update vor Regeltreffen">
-      <change afterPath="$PROJECT_DIR$/Helper/evaluation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="60b6cf50-ad24-41be-8b96-b8f94a896f3b" name="Changes" comment="zwischenspeicher Dienstag">
+      <change afterPath="$PROJECT_DIR$/Daten/video_20240313_125941.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Daten/video_20240313_130113.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Daten/video_20240313_135109.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Daten2/video_20240313_125941.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Daten2/video_20240313_130113.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Daten2/video_20240313_135109.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Daten/output.avi" beforeDir="false" afterPath="$PROJECT_DIR$/Input_Daten/output.avi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Daten/vid.avi" beforeDir="false" afterPath="$PROJECT_DIR$/Input_Daten/vid.avi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Helper/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/evaluation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Helper/ml_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/ml_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/video_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/video_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_old.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_old.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +41,16 @@
     &quot;assignee&quot;: &quot;jan-sb&quot;
   }
 }</component>
+  <component name="GitHubPullRequestState">{
+  &quot;prStates&quot;: []
+}</component>
   <component name="GitLabMergeRequestsSettings">{}</component>
-  <component name="GithubPullRequestsUISettings">{}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/jan-sb/Studienarbeit-CODE_Semantische_Segmentation.git&quot;,
+    &quot;accountId&quot;: &quot;7a8e8f85-985e-4f45-987c-07ead65cfced&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -57,8 +73,9 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Python.evaluation.executor": "Run",
-    "Python.main.executor": "Debug",
+    "Python.main.executor": "Run",
     "Python.main_old.executor": "Run",
+    "Python.ml_models.executor": "Run",
     "Python.test2.executor": "Run",
     "Python.test3.executor": "Run",
     "Python.test4.executor": "Run",
@@ -85,8 +102,8 @@
       <window_info id="Pull Requests" show_stripe_button="false" />
       <window_info id="Settings Sync History" show_stripe_button="false" />
       <window_info id="Learn" show_stripe_button="false" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24081753" />
-      <window_info id="Commit" order="1" weight="0.32977495" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21913746" />
+      <window_info id="Commit" order="1" weight="0.24081753" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" show_stripe_button="false" />
@@ -98,9 +115,10 @@
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.58056533" />
       <window_info anchor="bottom" id="Services" order="4" />
       <window_info anchor="bottom" id="Python Packages" order="5" weight="0.1" />
-      <window_info active="true" anchor="bottom" id="Debug" order="6" visible="true" weight="0.329682" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.329682" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.1" />
-      <window_info active="true" anchor="bottom" id="Run" order="8" visible="true" weight="0.58056533" />
+      <window_info anchor="bottom" id="Run" order="8" weight="0.42084807" />
+      <window_info anchor="bottom" id="Find" order="8" weight="0.329682" />
       <window_info anchor="right" id="Endpoints" show_stripe_button="false" />
       <window_info anchor="right" id="SciView" show_stripe_button="false" />
       <window_info anchor="right" content_ui="combo" id="Notifications" order="0" weight="0.25" />
@@ -113,6 +131,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Input_Daten" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/Tests" />
       <recent name="$PROJECT_DIR$/Daten" />
@@ -221,7 +240,10 @@
       <workItem from="1709887760906" duration="24000" />
       <workItem from="1710083743914" duration="25000" />
       <workItem from="1710085338982" duration="350000" />
-      <workItem from="1710246973539" duration="6685000" />
+      <workItem from="1710246973539" duration="7306000" />
+      <workItem from="1710267734527" duration="621000" />
+      <workItem from="1710317779293" duration="17000" />
+      <workItem from="1710317811917" duration="19859000" />
     </task>
     <task id="LOCAL-00001" summary="Neue requirements.txt">
       <option name="closed" value="true" />
@@ -279,7 +301,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709822963043</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="zwischenspeicher Dienstag">
+      <option name="closed" value="true" />
+      <created>1710259595118</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1710259595118</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,26 +319,17 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Neue requirements.txt" />
     <MESSAGE value="Update vor Regeltreffen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update vor Regeltreffen" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>26</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="zwischenspeicher Dienstag" />
+    <option name="LAST_COMMIT_MESSAGE" value="zwischenspeicher Dienstag" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$video_test.coverage" NAME="video_test Coverage Results" MODIFIED="1708014421937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1709545230663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
     <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$test4.coverage" NAME="test4 Coverage Results" MODIFIED="1709800296747" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1710258957268" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Helper" />
+    <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$evaluation.coverage" NAME="evaluation Coverage Results" MODIFIED="1710337497929" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Helper" />
     <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$test3.coverage" NAME="test3 Coverage Results" MODIFIED="1709545273062" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
+    <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$ml_models.coverage" NAME="ml_models Coverage Results" MODIFIED="1710322642291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Helper" />
     <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$main_old.coverage" NAME="main_old Coverage Results" MODIFIED="1709800187467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$main.coverage" NAME="main Coverage Results" MODIFIED="1710085535668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Studienarbeit_CODE_Semantische_Segmentation$main.coverage" NAME="main Coverage Results" MODIFIED="1710334267680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

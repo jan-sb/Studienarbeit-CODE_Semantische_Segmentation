@@ -9,7 +9,7 @@ from Tests.test3 import *
 
 def main():
 
-    path = "Daten/vid.avi"
+    path = "Input_Daten/vid.avi"
 
     #test_instance = model_test(model_s='deeplabv3_resnet50', weights='DeepLabV3_ResNet50_Weights.DEFAULT', path='Daten/vid.avi', live='write', output_path='Ergebnisse')
     #test_instance = model_test(model_s='deeplabv3_resnet50', weights='DeepLabV3_ResNet50_Weights.DEFAULT',path='Daten/vid.avi', live='True')
