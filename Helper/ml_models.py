@@ -292,8 +292,9 @@ class TrainedModel(Model):
                 images = images.to(self.device)
                 labels = labels.to(self.device)
 
-                outputs = self.model(images)['out']
-                loss = self.criterion(outputs, labels)
+                outputs = self.model(images)['out']                
+                print(outputs.shape)
+                loss = self.criterion(outputs, labels) # Labels muss von 3 RGB Channels auf 19 Class Channels erweitert werden
                 loss.backward()
                 self.optimizer.step()
                 run_loss += loss.item()

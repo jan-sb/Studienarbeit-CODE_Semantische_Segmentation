@@ -9,7 +9,8 @@
 
 testdata/*
 
-
+*.pth
 .zip
 Cityscapes/*
 KittiDaten/*
+
