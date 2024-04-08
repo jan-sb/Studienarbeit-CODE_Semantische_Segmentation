@@ -12,6 +12,7 @@ from torchvision.transforms._presets import SemanticSegmentation
 from functools import partial
 from PIL import Image
 import torch.nn.functional as F
+from torch.utils.tensorboard import SummaryWriter
 
 
 class Model:
@@ -240,6 +241,8 @@ class TrainedModel(Model):
             except:
                 print(f'Failed to initialise new model')
                 sys.exit()
+                
+        self.writer = SummaryWriter(log_dir='Own_Weights/Logs')
 
         self.model.eval()
 
@@ -308,9 +311,16 @@ class TrainedModel(Model):
                 loss.backward()
                 self.optimizer.step()
                 run_loss += loss.item()
+                
+                # For Tensorboard
+                
+                step = epoch * len(self.training_loader) + 1
+                self.writer.add_scalar('Training Loss', loss.item(), step)
+                
             epoch_loss = run_loss / len(self.training_loader)
             print(f'Epoch {epoch + 1} von {epochs}    |   Loss: {epoch_loss}')
-
+            self.writer.add_scalar('Epoch Loss', epoch_loss, epoch)
+        self.writer.close()
         self.save_model()
 
 
