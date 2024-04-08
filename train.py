@@ -1,7 +1,7 @@
 from Helper.ml_models import *
 
 
-test1 = TrainedModel('deeplabv3_resnet101', 1242, 375, 'test1', start_epoch='latest')
+test1 = TrainedModel('deeplabv3_resnet101', 1242, 375, 'test1', start_epoch='0')
 
 image_dir = 'KittiDaten/training/image_2'
 annotation_dir = 'KittiDaten/training/semantic'

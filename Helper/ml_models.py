@@ -244,7 +244,7 @@ class TrainedModel(Model):
 
 
 
-    def pepare_model_training(self, dataset=None, batch_size=5, shuffle=True, learning_rate= 1*10**(-5)):
+    def pepare_model_training(self, dataset=None, batch_size=3, shuffle=True, learning_rate= 1*10**(-5)):
         if dataset is not None:
             self.training_loader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
             print(f'Training Loader prepared')
@@ -291,10 +291,15 @@ class TrainedModel(Model):
                 self.optimizer.zero_grad()
                 images = images.to(self.device)
                 labels = labels.to(self.device)
+                
 
+                
                 outputs = self.model(images)['out']                
-                print(outputs.shape)
-                loss = self.criterion(outputs, labels) # Labels muss von 3 RGB Channels auf 19 Class Channels erweitert werden
+                #labels = labels[:, 0, :, :].long()
+                print(labels.shape)
+                labels = torch.squeeze(labels, 1)
+                print(labels.shape)
+                loss = self.criterion(outputs, labels)
                 loss.backward()
                 self.optimizer.step()
                 run_loss += loss.item()
@@ -344,18 +349,18 @@ class CustomDataSet(Dataset):
 
     def __len__(self):
         return len(self.image_files)
-
+    
     def __getitem__(self, idx):
-        img_name = os.path.join(self.image_dir, self.image_files[idx])
-        annotation_name = os.path.join(self.annotation_dir, self.annotation_files[idx])
-        self.counter +=1
-        print(self.counter)
+            img_name = os.path.join(self.image_dir, self.image_files[idx])
+            annotation_name = os.path.join(self.annotation_dir, self.annotation_files[idx])
+            self.counter +=1
+            print(self.counter)
 
-        image = Image.open(img_name).convert("RGB")
-        annotation = Image.open(annotation_name).convert("RGB")  # Convert to grayscale
+            image = Image.open(img_name).convert("RGB")
+            annotation = Image.open(annotation_name).convert("RGB")  # Convert to grayscale
 
-        if self.preprocess:
-            image = self.preprocess(image)
-            annotation = self.preprocess(annotation)
+            if self.preprocess:
+                image = self.preprocess(image)
+                annotation = self.preprocess(annotation)
 
-        return image, annotation
+            return image, annotation
