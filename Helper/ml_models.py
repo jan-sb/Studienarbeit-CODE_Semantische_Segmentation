@@ -11,6 +11,7 @@ from torch.utils.data import DataLoader, Dataset
 from torchvision.transforms._presets import SemanticSegmentation
 from functools import partial
 from PIL import Image
+import torch.nn.functional as F
 
 
 class Model:
@@ -281,7 +282,7 @@ class TrainedModel(Model):
 
         print(f'Saved Model')
 
-    def train(self, epochs):
+    def train(self, epochs, l2_lambda=0.01):
         self.model.train()
         torch.cuda.empty_cache()
         for epoch in range(epochs):
@@ -292,14 +293,18 @@ class TrainedModel(Model):
                 images = images.to(self.device)
                 labels = labels.to(self.device)
                 
-
+                outputs = self.model(images)['out']                    
+                _, labels = labels.max(dim=1)
                 
-                outputs = self.model(images)['out']                
-                #labels = labels[:, 0, :, :].long()
-                print(labels.shape)
-                labels = torch.squeeze(labels, 1)
-                print(labels.shape)
-                loss = self.criterion(outputs, labels)
+                ce_loss = F.cross_entropy(outputs, labels)                
+                # Calculate L2 regularization loss
+                l2_reg = 0
+                for param in self.model.parameters():
+                    l2_reg += torch.norm(param, p=2)                
+                # Total loss is the sum of cross-entropy loss and L2 regularization loss
+                loss = ce_loss + l2_lambda * l2_reg
+                
+                
                 loss.backward()
                 self.optimizer.step()
                 run_loss += loss.item()
