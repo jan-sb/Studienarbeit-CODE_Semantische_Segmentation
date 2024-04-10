@@ -13,6 +13,7 @@ from functools import partial
 from PIL import Image
 import torch.nn.functional as F
 from torch.utils.tensorboard import SummaryWriter
+import datetime 
 
 
 class Model:
@@ -242,7 +243,9 @@ class TrainedModel(Model):
                 print(f'Failed to initialise new model')
                 sys.exit()
                 
-        self.writer = SummaryWriter(log_dir='Own_Weights/Logs')
+        current_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+        log_dir = f'Own_Weights/{weights_name}/runs/{current_time}'
+        self.writer = SummaryWriter(log_dir=log_dir)
 
         self.model.eval()
 
@@ -320,6 +323,7 @@ class TrainedModel(Model):
             epoch_loss = run_loss / len(self.training_loader)
             print(f'Epoch {epoch + 1} von {epochs}    |   Loss: {epoch_loss}')
             self.writer.add_scalar('Epoch Loss', epoch_loss, epoch)
+        self.writer.flush()
         self.writer.close()
         self.save_model()
 
