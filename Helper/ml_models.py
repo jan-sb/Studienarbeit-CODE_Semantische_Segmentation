@@ -372,8 +372,6 @@ class CustomDataSet(Dataset):
     def __getitem__(self, idx):
             img_name = os.path.join(self.image_dir, self.image_files[idx])
             annotation_name = os.path.join(self.annotation_dir, self.annotation_files[idx])
-            self.counter +=1
-            print(self.counter)
 
             image = Image.open(img_name).convert("RGB")
             annotation = Image.open(annotation_name).convert("RGB")  # Convert to grayscale
