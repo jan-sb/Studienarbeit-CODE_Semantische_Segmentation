@@ -1,14 +1,12 @@
+from Helper.Helper_functions import *
 from Helper.ml_models import *
-
-
-test1 = TrainedModel('deeplabv3_resnet101', 1242, 375, 'test2', start_epoch='latest')
 
 image_dir = 'KittiDaten/training/image_2'
 annotation_dir = 'KittiDaten/training/semantic_rgb'
 
 dataset = CustomDataSet(image_dir=image_dir, annotation_dir=annotation_dir)
 
-test1.pepare_model_training(dataset=dataset, batch_size=4)
+_, annotation = dataset.__getitem__(0)
 
-test1.train(2)
+print(annotation.shape)
 

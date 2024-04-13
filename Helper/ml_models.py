@@ -101,7 +101,7 @@ class Model:
         image = np.transpose(tensor.cpu().numpy(), (1, 2, 0))
         image = np.array(image, dtype='uint8')
         return image
-
+    
     def model_inference_no_grad(self, image):
         with torch.no_grad():
             tensor = self.image_preprocess(image)
@@ -124,13 +124,6 @@ class Model:
             )
             res_image = self.tensor_to_image(res_image)
             return res_image
-
-
-class HubModel(Model):  # Doesn't work because calls and returns for different Hub models differ to much
-    def __init__(self, repo_dir, model_name, width, height, weights, pretrained=True):
-        super().__init__(model_name, weights, width, height, pretrained)
-
-        self.model = torch.hub.load(f'{repo_dir}', model_name, pretrained=self.pretrained)
 
 
 class TorchModel(Model):
@@ -185,10 +178,16 @@ class TrainedModel(Model):
         self.learning_rate = 1*10**(-5)
 
         super().__init__(model_name, weights=None, width=width, height=height, pretrained=True, num_classes = self.num_classes)
+        # self.preprocess = transforms.Compose([
+        #     transforms.ToTensor(),
+        #     SemanticSegmentation,
+        #     transforms.Resize(520),
+        # ])
+        
         self.preprocess = transforms.Compose([
-            transforms.ToTensor(),
-            SemanticSegmentation,
-            transforms.Resize(520),
+            transforms.Resize((520,520)),
+            transforms.PILToTensor(),
+            SemanticSegmentation(resize_size=520),
         ])
 
         self.pepare_model_training()
@@ -327,31 +326,6 @@ class TrainedModel(Model):
         self.writer.close()
         self.save_model()
 
-
-## Kann wahrscheinlich weg
-'''    def prepare_dataset(self, path_images, path_labeled):
-        if not (os.path.exists(path_images) and os.path.exists(path_labeled)):
-            raise FileNotFoundError("One or both of the specified paths do not exist.")
-
-        image_files = os.listdir(path_images)
-        for img_file in image_files:
-            img_path = os.path.join(path_images, img_file)
-            label_file = img_file.replace('.png','_label.png')
-            label_path = os.path.join(path_labeled, label_file)
-
-            if not os.path.exists(label_path):
-                print(f"For label file {label_file} exists no {img_file}. Skipping...")
-                continue
-
-            image = Image.open(img_path).convert('RGB')
-            label = Image.open(label_path).convert('L')
-
-            image = self.transforms(image)
-            label = self.transforms(label)
-
-            self.dataset.append'''
-
-
 class CustomDataSet(Dataset):
     def __init__(self, image_dir, annotation_dir):
         self.image_dir = image_dir
@@ -374,8 +348,8 @@ class CustomDataSet(Dataset):
             annotation_name = os.path.join(self.annotation_dir, self.annotation_files[idx])
 
             image = Image.open(img_name).convert("RGB")
-            annotation = Image.open(annotation_name).convert("RGB")  # Convert to grayscale
-
+            annotation = Image.open(annotation_name).convert("RGB") 
+            
             if self.preprocess:
                 image = self.preprocess(image)
                 annotation = self.preprocess(annotation)

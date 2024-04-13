@@ -78,3 +78,9 @@ def update_progress_bar(current_frame, max_frames, bar_length=20):
     bar = "[" + "=" * progress + " " * (bar_length - progress) + "]"
     percentage = int(ratio * 100)
     return f"{bar} {percentage}%"
+
+
+
+
+def analyse_dataset(dataset): 
+    
