@@ -336,6 +336,11 @@ class CustomDataSet(Dataset):
             transforms.PILToTensor(),
             SemanticSegmentation(resize_size=520),
         ])
+        self.preprocess_annotation = transforms.Compose([
+            transforms.Resize((520,520)),
+            transforms.Grayscale(),
+            transforms.ToTensor(),
+        ])
         self.counter = 0
 
         self.image_files = os.listdir(image_dir)
