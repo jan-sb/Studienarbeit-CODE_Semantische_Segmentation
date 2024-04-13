@@ -9,7 +9,7 @@ import torch
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
-
+from sklearn.model_selection import StratifiedKFold
 
 
 
@@ -155,8 +155,18 @@ def analyse_dataset_RGB(path):
             data.append({"Class": class_name, "Pixel Count": value})
 
     df = pd.DataFrame(data)
+    
+    data = []
+    for i, image_name in enumerate(image_names):
+        for class_name in classes.values():
+            data.append({"Image": image_name, "Class": class_name, "Pixel Count": counts[class_name][i]})
+    df2 = pd.DataFrame(data)
 
-    # Min-Max normalize the "Pixel Count" values for each class
+    return df, df2
+    
+
+def class_distribution_violin_plot(df):
+     # Min-Max normalize the "Pixel Count" values for each class
     df['Pixel Count'] = df.groupby('Class')['Pixel Count'].transform(lambda x: (x - x.min()) / (x.max() - x.min()))
 
     # Create a horizontal violin plot
@@ -180,3 +190,33 @@ def analyse_dataset_RGB(path):
     plt.title('Distribution of min-max normalized pixel counts per image for selected classes')
     plt.tight_layout()
     plt.savefig('Daten/selected_classes_min_max_normalized_pixel_count_distribution.png')
+    
+def stratified_kfold_and_violin_plot(df, k=5):
+    # Get the class for each image
+    image_classes = df.groupby('Class')['Pixel'].first().values
+
+    # Initialize the StratifiedKFold object
+    skf = StratifiedKFold(n_splits=k)
+
+    # Split the images into k groups
+    for i, (train_index, test_index) in enumerate(skf.split(df['image_id'].unique(), image_classes)):
+        # Get the images for this group
+        group_images = df['image_id'].unique()[test_index]
+        # Get the rows for this group
+        group_rows = df[df['image_id'].isin(group_images)]
+        # Save the group to a file
+        group_rows.to_csv(f'Daten/group_{i}.csv', index=False)
+
+        # Create a violin plot for the original data
+        plt.figure(figsize=(10, 5))
+        sns.violinplot(x="Pixel Count", y="Class", data=df, orient='h', cut=0, inner='quart', density_norm='count')
+        plt.title('Original distribution')
+        plt.tight_layout()
+        plt.savefig(f'Daten/original_distribution.png')
+
+        # Create a violin plot for the k-fold data
+        plt.figure(figsize=(10, 5))
+        sns.violinplot(x="Pixel Count", y="Class", data=group_rows, orient='h', cut=0, inner='quart', density_norm='count')
+        plt.title(f'Distribution for fold {i}')
+        plt.tight_layout()
+        plt.savefig(f'Daten/distribution_fold_{i}.png')
