@@ -10,6 +10,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 from sklearn.model_selection import StratifiedKFold
+from torchvision.transforms import ToPILImage, ToTensor
+from tqdm import tqdm
+from joblib import Parallel, delayed
+from torch.utils.data import DataLoader
+import json
 
 
 
@@ -282,3 +287,123 @@ def compare_distributions(df1, df2, output):
     plt.title('Comparison of distributions')
     plt.tight_layout()
     plt.savefig(f'Daten/{output}/distribution_comparison.png')
+    
+    
+def save_tensor_as_png(tensor, filename):
+    # Convert the tensor to a PIL Image
+    image = ToPILImage()(tensor)
+
+    # Save the PIL Image as a PNG
+    image.save(filename)
+    
+def calculate_normalization_values(path):
+    # Initialize lists to store all pixel values for each color channel
+    r_values = []
+    g_values = []
+    b_values = []
+
+    # Get a list of all files in the directory
+    filenames = os.listdir(path)
+
+    # Iterate over all files in the directory
+    for filename in tqdm(filenames, desc="Processing images"):
+        # Open the image file
+        with Image.open(os.path.join(path, filename)) as img:
+            # Convert the image to a tensor
+            tensor = ToTensor()(img)
+            # Split the tensor into color channels
+            r, g, b = tensor
+            # Add the pixel values to the lists
+            r_values.append(r.flatten())
+            g_values.append(g.flatten())
+            b_values.append(b.flatten())
+
+    # Concatenate all pixel values for each color channel
+    r_values = torch.cat(r_values)
+    g_values = torch.cat(g_values)
+    b_values = torch.cat(b_values)
+
+    # Calculate the mean and standard deviation for each color channel
+    r_mean, r_std = round(r_values.mean().item(), 4), round(r_values.std().item(), 4)
+    g_mean, g_std = round(g_values.mean().item(), 4), round(g_values.std().item(), 4)
+    b_mean, b_std = round(b_values.mean().item(), 4), round(b_values.std().item(), 4)
+
+    return (r_mean, g_mean, b_mean), (r_std, g_std, b_std)
+
+def calculate_multi_normalization_values(paths, batch_size=50):
+    # Initialize running totals and counts for each color channel
+    r_total = g_total = b_total = 0
+    count = 0
+
+    # Iterate over all paths
+    for path in paths:
+        # Get a list of all files in the directory
+        filenames = os.listdir(path)
+
+        # Create a DataLoader to handle batching
+        data_loader = DataLoader(filenames, batch_size=batch_size)
+
+        # Iterate over all batches of files in the directory
+        for batch in tqdm(data_loader, desc="Processing images"):
+            # Iterate over all files in the batch
+            for filename in batch:
+                # Open the image file
+                with Image.open(os.path.join(path, filename)) as img:
+                    # Convert the image to a tensor
+                    tensor = ToTensor()(img)
+                    # Split the tensor into color channels
+                    r, g, b = tensor
+                    # Update running totals and count
+                    r_total += r.sum().item()
+                    g_total += g.sum().item()
+                    b_total += b.sum().item()
+                    count += tensor.numel() / 3  # Divide by 3 because there are 3 color channels
+
+    # Calculate the mean for each color channel
+    r_mean = round(r_total / count, 4)
+    g_mean = round(g_total / count, 4)
+    b_mean = round(b_total / count, 4)
+
+    # Initialize running totals for the standard deviations for each color channel
+    r_total = g_total = b_total = 0
+
+    # Iterate over all paths again to calculate the standard deviations
+    for path in paths:
+        # Get a list of all files in the directory
+        filenames = os.listdir(path)
+
+        # Create a DataLoader to handle batching
+        data_loader = DataLoader(filenames, batch_size=batch_size)
+
+        # Iterate over all batches of files in the directory
+        for batch in tqdm(data_loader, desc="Processing images"):
+            # Iterate over all files in the batch
+            for filename in batch:
+                # Open the image file
+                with Image.open(os.path.join(path, filename)) as img:
+                    # Convert the image to a tensor
+                    tensor = ToTensor()(img)
+                    # Split the tensor into color channels
+                    r, g, b = tensor
+                    # Update running totals for the standard deviations
+                    r_total += ((r - r_mean) ** 2).sum().item()
+                    g_total += ((g - g_mean) ** 2).sum().item()
+                    b_total += ((b - b_mean) ** 2).sum().item()
+
+    # Calculate the standard deviation for each color channel
+    r_std = round((r_total / count) ** 0.5, 4)
+    g_std = round((g_total / count) ** 0.5, 4)
+    b_std = round((b_total / count) ** 0.5, 4)
+    
+    data = {
+        "mean": (r_mean, g_mean, b_mean),
+        "std": (r_std, g_std, b_std)
+    }
+
+    # Save the data to a JSON file
+    with open('Daten/mean_std.json', 'w') as f:
+        json.dump(data, f)
+
+    return (r_mean, g_mean, b_mean), (r_std, g_std, b_std)
+
+

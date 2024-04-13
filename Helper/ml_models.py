@@ -177,7 +177,10 @@ class TrainedModel(Model):
         ]
         self.num_classes = len(self.city_label_color_map)
         self.learning_rate = 1*10**(-5)
-
+        
+        
+        
+        
         super().__init__(model_name, weights=None, width=width, height=height, pretrained=True, num_classes = self.num_classes)
         # self.preprocess = transforms.Compose([
         #     transforms.ToTensor(),
@@ -329,12 +332,14 @@ class TrainedModel(Model):
 
 class CustomDataSet(Dataset):
     def __init__(self, image_dir, annotation_dir):
+        self.mean = (0.2892, 0.3272, 0.2867)
+        self.std = (0.1904, 0.1932, 0.1905)
         self.image_dir = image_dir
         self.annotation_dir = annotation_dir
         self.preprocess = transforms.Compose([
             transforms.Resize((520,520)),
-            transforms.PILToTensor(),
-            SemanticSegmentation(resize_size=520),
+            transforms.ToTensor(),
+            transforms.Normalize(mean=self.mean, std=self.std),
         ])
         self.preprocess_annotation = transforms.Compose([
             transforms.Resize((520,520)),
@@ -353,11 +358,11 @@ class CustomDataSet(Dataset):
             img_name = os.path.join(self.image_dir, self.image_files[idx])
             annotation_name = os.path.join(self.annotation_dir, self.annotation_files[idx])
 
-            image = Image.open(img_name).convert("RGB")
-            annotation = Image.open(annotation_name).convert("RGB") 
-            
+            image = Image.open(img_name).convert("RGB")            
+            annotation = Image.open(annotation_name).convert("L") 
+                    
             if self.preprocess:
                 image = self.preprocess(image)
-                annotation = self.preprocess(annotation)
+                annotation = self.preprocess_annotation(annotation)
 
             return image, annotation
