@@ -3,6 +3,12 @@ import numpy as np
 import sys
 import datetime
 import os
+from cityscapesscripts.helpers.labels import labels
+from PIL import Image
+import torch
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
 
 
 
@@ -82,5 +88,95 @@ def update_progress_bar(current_frame, max_frames, bar_length=20):
 
 
 
-def analyse_dataset(dataset): 
+def analyse_dataset_RGB(path):
+    # Define the classes
+    classes = {
+        (128, 64, 128): 'road',
+        (244, 35, 232): 'sidewalk',
+        (70, 70, 70): 'building',
+        (102, 102, 156): 'wall',
+        (190, 153, 153): 'fence',
+        (153, 153, 153): 'pole',
+        (250, 170, 30): 'traffic light',
+        (220, 220, 0): 'traffic sign',
+        (107, 142, 35): 'vegetation',
+        (152, 251, 152): 'terrain',
+        (70, 130, 180): 'sky',
+        (220, 20, 60): 'person',
+        (255, 0, 0): 'rider',
+        (0, 0, 142): 'car',
+        (0, 0, 70): 'truck',
+        (0, 60, 100): 'bus',
+        (0, 80, 100): 'train',
+        (0, 0, 230): 'motorcycle',
+        (119, 11, 32): 'bicycle',
+        (0, 0, 0): 'unlabeled'
+    }
+
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    # Initialize the counts
+    counts = {class_name: [] for class_name in classes.values()}      
+
+    def count_classes(image_path):
+        # Initialize the counts for this image
+        image_counts = {class_name: 0 for class_name in classes.values()}
+        # Open the image and convert it to RGB
+        image = Image.open(image_path).convert('RGB')
+        # Calculate the total number of pixels for this image
+        total_pixels = np.prod(image.size)
+        # Convert the image to a PyTorch tensor and send it to the device
+        image_tensor = torch.from_numpy(np.array(image)).to(device)
+        # Iterate over each pixel in the image
+        for rgb in classes.keys():
+            # Create a mask for the current class
+            mask = (image_tensor == torch.tensor(rgb, device=device)).all(dim=2)
+            # Count the pixels in the mask and add them to the count for the current class
+            image_counts[classes[rgb]] += mask.sum().item() / total_pixels
+        # Add the counts for this image to the overall counts
+        for class_name in classes.values():
+            counts[class_name].append(image_counts[class_name])
+
+    # Get the total number of images
+    total_images = len(os.listdir(path))
+
+    # Iterate over all the image files in the directory
+    for i, image_file in enumerate(os.listdir(path)):
+        # Print the progress
+        print(f'Analyzing image {i}/{total_images}')
+        # Construct the full path of the image file
+        image_path = os.path.join(path, image_file)
+        # Count the classes in the image
+        count_classes(image_path)
     
+    # Prepare data for seaborn
+    data = []
+    for class_name, values in counts.items():
+        for value in values:
+            data.append({"Class": class_name, "Pixel Count": value})
+
+    df = pd.DataFrame(data)
+
+    # Min-Max normalize the "Pixel Count" values for each class
+    df['Pixel Count'] = df.groupby('Class')['Pixel Count'].transform(lambda x: (x - x.min()) / (x.max() - x.min()))
+
+    # Create a horizontal violin plot
+    plt.figure(figsize=(10, 5))
+    sns.violinplot(x="Pixel Count", y="Class", data=df, orient='h', cut=0, inner='quart', density_norm='count')
+    plt.title('Distribution of min-max normalized pixel counts per image for each class')
+    plt.tight_layout()
+    plt.savefig('Daten/pixel_count_distribution.png')
+    
+     # Specify the classes to include
+    classes_to_include = ['road', 'person', 'rider', 'car', 'motorcycle', 'bike', 'unlabeled']
+
+     # Normalize the "Pixel Count" values for each class
+    df_filtered = df[df['Class'].isin(classes_to_include)]
+        # Min-Max normalize the "Pixel Count" values for each class
+    df_filtered['Pixel Count'] = df_filtered.groupby('Class')['Pixel Count'].transform(lambda x: (x - x.min()) / (x.max() - x.min()))
+
+    # Create a horizontal violin plot for the specified classes with normalized data
+    plt.figure(figsize=(10, 5))
+    sns.violinplot(x="Pixel Count", y="Class", data=df_filtered, orient='h', cut=0, inner='quart', density_norm='width')
+    plt.title('Distribution of min-max normalized pixel counts per image for selected classes')
+    plt.tight_layout()
+    plt.savefig('Daten/selected_classes_min_max_normalized_pixel_count_distribution.png')

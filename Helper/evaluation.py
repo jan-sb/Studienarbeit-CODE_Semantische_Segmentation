@@ -6,18 +6,20 @@ from cityscapesscripts.helpers.labels import *
 
 print("List of cityscapes labels:")
 print("")
-print("    {:>21} | {:>3} | {:>7} | {:>14} | {:>10} | {:>12} | {:>12}".format('name', 'id', 'trainId', 'category',
+print("    {:>21} | {:>3} | {:>7} | {:>14} | {:>10} | {:>12} | {:>12} | {:>14}".format('name', 'id', 'trainId', 'category',
                                                                               'categoryId', 'hasInstances',
-                                                                              'color'))
+                                                                              'color', 'ignoreInEval'))
 print("    " + ('-' * 98))
 counter = 0
 for label in labels:
-    if label.ignoreInEval ==0:
-        counter +=1
-        print("    {:>21} | {:>3} | {:>7} | {:>14} | {:>10} | {:>12} | {}".format(label.name, label.id, label.trainId,
+    #if label.ignoreInEval ==0:
+    counter +=1
+    print("     {:>21} | {:>3} | {:>7} | {:>14} | {:>10} | {:>12} | {:>12} | {}".format(label.name, label.id, label.trainId,
                                                                                   label.category, label.categoryId,
                                                                                   label.hasInstances,
-                                                                                  label.color))
+                                                                                  str(label.color),  # Convert the tuple to a string
+                                                                                  label.ignoreInEval,
+                                                                                  ))
 print(" ", '\n', counter)
 
 for label in labels:
