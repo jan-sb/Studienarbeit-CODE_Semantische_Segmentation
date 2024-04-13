@@ -12,7 +12,7 @@ from torchvision.transforms._presets import SemanticSegmentation
 from functools import partial
 from PIL import Image
 import torch.nn.functional as F
-from torch.utils.tensorboard import SummaryWriter
+from torch.utils.tensorboard.writer import SummaryWriter
 import datetime 
 
 
@@ -251,13 +251,13 @@ class TrainedModel(Model):
 
 
 
-    def pepare_model_training(self, dataset=None, batch_size=3, shuffle=True, learning_rate= 1*10**(-5)):
+    def pepare_model_training(self, dataset=None, batch_size=3, shuffle=True, learning_rate= 1*10**(-5), momentum=0.9, weight_decay=0.0005):
         if dataset is not None:
             self.training_loader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
             print(f'Training Loader prepared')
 
         self.criterion = nn.CrossEntropyLoss()
-        self.optimizer = optim.Adam(self.model.parameters(), lr=learning_rate)
+        self.optimizer = optim.SGD(self.model.parameters(), lr=learning_rate, momentum=momentum, weight_decay=weight_decay)
 
     def save_model(self, file_management=False):
         if not os.path.exists(self.model_folder_path):
@@ -280,8 +280,8 @@ class TrainedModel(Model):
         }, weights_name_latest)
 
         # Delete saved models from last five epochs, except milestone epochs
-        for i in range(self.epoch - 5, 0) and self.epoch >= 10 and file_management == True:
-            if i % 5 != 0:  # Check if the epoch is not a milestone epoch
+        for i in range(self.epoch - 5, 0):
+            if i % 5 != 0 and self.epoch >= 10 and file_management == True:  # Check if the epoch is not a milestone epoch
                 old_filepath = os.path.join(self.folder_path, f'{self.weights_name}_epoch-{i}_{self.model_name}.pth')
                 if os.path.exists(old_filepath):
                     os.remove(old_filepath)
@@ -302,7 +302,7 @@ class TrainedModel(Model):
                 outputs = self.model(images)['out']                    
                 _, labels = labels.max(dim=1)
                 
-                ce_loss = F.cross_entropy(outputs, labels)                
+                ce_loss = self.criterion(outputs, labels)                
                 # Calculate L2 regularization loss
                 l2_reg = 0
                 for param in self.model.parameters():
@@ -322,7 +322,7 @@ class TrainedModel(Model):
                 
             epoch_loss = run_loss / len(self.training_loader)
             print(f'Epoch {epoch + 1} von {epochs}    |   Loss: {epoch_loss}')
-            self.writer.add_scalar('Epoch Loss', epoch_loss, epoch)
+            self.writer.add_scalar('Epoch Train Loss', epoch_loss, epoch)
         self.writer.flush()
         self.writer.close()
         self.save_model()

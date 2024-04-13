@@ -1,3 +1,11 @@
+import numpy as np
+import torch
+import time
+from tqdm import tqdm
+from torch.utils import mIoU, pixel_accuracy, get_lr
+
+
+
 def fit(epochs, model, train_loader, val_loader, criterion, optimizer, scheduler, patch=False):
     torch.cuda.empty_cache()
     train_losses = []

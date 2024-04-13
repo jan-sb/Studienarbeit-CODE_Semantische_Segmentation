@@ -6,6 +6,7 @@ import os
 
 
 
+
 def watershed_segmentation(image):
     assert image is not None, "file could not be read, error in watershed segmentation"
     gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)

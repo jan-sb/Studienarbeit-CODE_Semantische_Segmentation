@@ -19,9 +19,3 @@ def pad_image(image, target_height, target_width):
     padded_image = F.pad(image, (left_pad, right_pad, top_pad, bottom_pad))
 
     return padded_image
-
-
-#image = torch.randn(1, 3, 600, 800)  # Replace this with your actual input image
-
-#target_height, target_width = 608, 800
-#padded_image = pad_image(image, target_height, target_width)
