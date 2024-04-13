@@ -24,7 +24,7 @@ print(" ", '\n', counter)
 
 for label in labels:
     if label.ignoreInEval ==0:
-        print(f'{label.color}, #{label.name},')
+        print(f'{label.id}, #{label.name},')
 
 
 

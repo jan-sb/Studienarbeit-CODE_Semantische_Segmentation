@@ -2,20 +2,18 @@ from Helper.Helper_functions import *
 from Helper.ml_models import *
 from torchvision.utils import save_image
 
-image_dir = 'KittiDaten/training/image_2'
-annotation_dir = 'KittiDaten/training/semantic_rgb'
+kit_image_dir = 'KittiDaten/training/image_2'
+kit_annotation_dir = 'KittiDaten/training/semantic'
 
-dataset = CustomDataSet(image_dir=image_dir, annotation_dir=annotation_dir)
-
-_, annotation = dataset.__getitem__(0)
-
-#save_image(annotation, 'Daten/tensor_test.png')
+cit_image_dir = 'CityscapesDaten/images'
+cit_annotation_dir = 'CityscapesDaten/semantic'
 
 
-
-print(annotation.shape)
-
-df = analyse_dataset_RGB(annotation_dir)
-
+df = analyse_dataset_GRAY(kit_annotation_dir)
 class_distribution_violin_plot(df, output='KittiDaten')
 stratified_kfold_and_violin_plot(df, output='KittiDaten',  k=5)
+
+
+df2 = analyse_dataset_GRAY(cit_annotation_dir)
+class_distribution_violin_plot(df2, output='CityscapesDaten')
+stratified_kfold_and_violin_plot(df2, output='CityscapesDaten',  k=5)

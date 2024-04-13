@@ -155,6 +155,76 @@ def analyse_dataset_RGB(path):
 
     return df
 
+
+def analyse_dataset_GRAY(path):
+    classes = {
+        7: 'road',
+        8: 'sidewalk',
+        11: 'building',
+        12: 'wall',
+        13: 'fence',
+        17: 'pole',
+        19: 'traffic light',
+        20: 'traffic sign',
+        21: 'vegetation',
+        22: 'terrain',
+        23: 'sky',
+        24: 'person',
+        25: 'rider',
+        26: 'car',
+        27: 'truck',
+        28: 'bus',
+        31: 'train',
+        32: 'motorcycle',
+        33: 'bicycle',
+        0: 'unlabeled'
+    }
+
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    # Initialize the counts
+    counts = {class_name: [] for class_name in classes.values()}      
+    image_names = []
+
+    def count_classes(image_path):
+        # Initialize the counts for this image
+        image_counts = {class_name: 0 for class_name in classes.values()}
+        # Open the image and convert it to grayscale
+        image = Image.open(image_path).convert('L')
+        # Calculate the total number of pixels for this image
+        total_pixels = np.prod(image.size)
+    # Convert the image to a PyTorch tensor and send it to the device
+        image_tensor = torch.from_numpy(np.array(image)).to(device)
+        # Iterate over each pixel in the image
+        for rgb in classes.keys():
+            # Create a mask for the current class
+            mask = (image_tensor == torch.tensor(rgb, device=device))
+            # Count the pixels in the mask and add them to the count for the current class
+            image_counts[classes[rgb]] += mask.sum().item() / total_pixels
+        # Add the counts for this image to the overall counts
+        for class_name in classes.values():
+            counts[class_name].append(image_counts[class_name])
+        # Store the image name
+        image_names.append(os.path.basename(image_path))
+
+    # Get the total number of images in the directory
+    total_images = len(os.listdir(path))
+    
+    # Iterate over all the image files in the directory
+    for i, image_file in enumerate(os.listdir(path)):
+        # Print the progress
+        print(f'Analyzing image {i}/{total_images}')
+        # Count the classes in the image
+        count_classes(os.path.join(path, image_file))
+
+    # Create the DataFrame
+    data = []
+    for i, image_name in enumerate(image_names):
+        for class_name in classes.values():
+            data.append({"Image": image_name, "Class": class_name, "Pixel Count": counts[class_name][i]})
+    df = pd.DataFrame(data)
+
+    return df
+
 def class_distribution_violin_plot(df, output):
     # Min-Max normalize the "Pixel Count" values for each class
     df['Pixel Count'] = df.groupby('Class')['Pixel Count'].transform(lambda x: (x - x.min()) / (x.max() - x.min()))
