@@ -15,7 +15,7 @@ _, annotation = dataset.__getitem__(0)
 
 print(annotation.shape)
 
-df, df2 = analyse_dataset_RGB(annotation_dir)
+df = analyse_dataset_RGB(annotation_dir)
 
-class_distribution_violin_plot(df)
-stratified_kfold_and_violin_plot(df2)
+class_distribution_violin_plot(df, output='KittiDaten')
+stratified_kfold_and_violin_plot(df, output='KittiDaten',  k=5)

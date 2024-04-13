@@ -86,10 +86,7 @@ def update_progress_bar(current_frame, max_frames, bar_length=20):
     return f"{bar} {percentage}%"
 
 
-
-
 def analyse_dataset_RGB(path):
-    # Define the classes
     classes = {
         (128, 64, 128): 'road',
         (244, 35, 232): 'sidewalk',
@@ -116,6 +113,7 @@ def analyse_dataset_RGB(path):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     # Initialize the counts
     counts = {class_name: [] for class_name in classes.values()}      
+    image_names = []
 
     def count_classes(image_path):
         # Initialize the counts for this image
@@ -135,38 +133,30 @@ def analyse_dataset_RGB(path):
         # Add the counts for this image to the overall counts
         for class_name in classes.values():
             counts[class_name].append(image_counts[class_name])
+        # Store the image name
+        image_names.append(os.path.basename(image_path))
 
-    # Get the total number of images
+    # Get the total number of images in the directory
     total_images = len(os.listdir(path))
-
+    
     # Iterate over all the image files in the directory
     for i, image_file in enumerate(os.listdir(path)):
         # Print the progress
         print(f'Analyzing image {i}/{total_images}')
-        # Construct the full path of the image file
-        image_path = os.path.join(path, image_file)
         # Count the classes in the image
-        count_classes(image_path)
-    
-    # Prepare data for seaborn
-    data = []
-    for class_name, values in counts.items():
-        for value in values:
-            data.append({"Class": class_name, "Pixel Count": value})
+        count_classes(os.path.join(path, image_file))
 
-    df = pd.DataFrame(data)
-    
+    # Create the DataFrame
     data = []
     for i, image_name in enumerate(image_names):
         for class_name in classes.values():
             data.append({"Image": image_name, "Class": class_name, "Pixel Count": counts[class_name][i]})
-    df2 = pd.DataFrame(data)
+    df = pd.DataFrame(data)
 
-    return df, df2
-    
+    return df
 
-def class_distribution_violin_plot(df):
-     # Min-Max normalize the "Pixel Count" values for each class
+def class_distribution_violin_plot(df, output):
+    # Min-Max normalize the "Pixel Count" values for each class
     df['Pixel Count'] = df.groupby('Class')['Pixel Count'].transform(lambda x: (x - x.min()) / (x.max() - x.min()))
 
     # Create a horizontal violin plot
@@ -174,49 +164,51 @@ def class_distribution_violin_plot(df):
     sns.violinplot(x="Pixel Count", y="Class", data=df, orient='h', cut=0, inner='quart', density_norm='count')
     plt.title('Distribution of min-max normalized pixel counts per image for each class')
     plt.tight_layout()
-    plt.savefig('Daten/pixel_count_distribution.png')
-    
-     # Specify the classes to include
-    classes_to_include = ['road', 'person', 'rider', 'car', 'motorcycle', 'bike', 'unlabeled']
+    plt.savefig(f'Daten/{output}/pixel_count_distribution.png')
 
-     # Normalize the "Pixel Count" values for each class
-    df_filtered = df[df['Class'].isin(classes_to_include)]
-        # Min-Max normalize the "Pixel Count" values for each class
-    df_filtered['Pixel Count'] = df_filtered.groupby('Class')['Pixel Count'].transform(lambda x: (x - x.min()) / (x.max() - x.min()))
-
-    # Create a horizontal violin plot for the specified classes with normalized data
-    plt.figure(figsize=(10, 5))
-    sns.violinplot(x="Pixel Count", y="Class", data=df_filtered, orient='h', cut=0, inner='quart', density_norm='width')
-    plt.title('Distribution of min-max normalized pixel counts per image for selected classes')
-    plt.tight_layout()
-    plt.savefig('Daten/selected_classes_min_max_normalized_pixel_count_distribution.png')
-    
-def stratified_kfold_and_violin_plot(df, k=5):
+def stratified_kfold_and_violin_plot(df, output, k=5):
     # Get the class for each image
-    image_classes = df.groupby('Class')['Pixel'].first().values
+    image_classes = df.groupby('Image')['Class'].first().values
 
     # Initialize the StratifiedKFold object
-    skf = StratifiedKFold(n_splits=k)
+    skf = StratifiedKFold(n_splits=k, shuffle=True, random_state=42)
+
+    # Add a new column to the original DataFrame to indicate the source
+    df['Source'] = 'Original'
 
     # Split the images into k groups
-    for i, (train_index, test_index) in enumerate(skf.split(df['image_id'].unique(), image_classes)):
+    for i, (train_index, test_index) in enumerate(skf.split(df['Image'].unique(), image_classes)):
         # Get the images for this group
-        group_images = df['image_id'].unique()[test_index]
+        group_images = df['Image'].unique()[test_index]
+        # Save the image names for this group to a CSV file
+        pd.DataFrame(group_images, columns=['Image']).to_csv(f'Daten/{output}/group_{i}_images.csv', index=False)
         # Get the rows for this group
-        group_rows = df[df['image_id'].isin(group_images)]
-        # Save the group to a file
-        group_rows.to_csv(f'Daten/group_{i}.csv', index=False)
+        group_rows = df[df['Image'].isin(group_images)].copy()  # Make a copy to avoid a SettingWithCopyWarning
+        # Add a new column to the k-fold DataFrame to indicate the source
+        group_rows['Source'] = f'Fold {i}'
 
-        # Create a violin plot for the original data
-        plt.figure(figsize=(10, 5))
-        sns.violinplot(x="Pixel Count", y="Class", data=df, orient='h', cut=0, inner='quart', density_norm='count')
-        plt.title('Original distribution')
-        plt.tight_layout()
-        plt.savefig(f'Daten/original_distribution.png')
+        # Concatenate the original DataFrame and the k-fold DataFrame
+        combined_df = pd.concat([df, group_rows])
 
-        # Create a violin plot for the k-fold data
+        # Create a violin plot for the combined data
         plt.figure(figsize=(10, 5))
-        sns.violinplot(x="Pixel Count", y="Class", data=group_rows, orient='h', cut=0, inner='quart', density_norm='count')
-        plt.title(f'Distribution for fold {i}')
+        sns.violinplot(x="Pixel Count", y="Class", hue="Source", split=True, data=combined_df, orient='h', cut=0, inner='quart', density_norm='count')
+        plt.title(f'Comparison of original distribution and distribution for fold {i}')
         plt.tight_layout()
-        plt.savefig(f'Daten/distribution_fold_{i}.png')
+        plt.savefig(f'Daten/{output}/distribution_comparison_{i}.png')
+        
+        
+def compare_distributions(df1, df2, output):
+    # Add a new column to the DataFrames to indicate the source
+    df1['Source'] = 'DataFrame 1'
+    df2['Source'] = 'DataFrame 2'
+
+    # Concatenate the DataFrames
+    combined_df = pd.concat([df1, df2])
+
+    # Create a violin plot for the combined data
+    plt.figure(figsize=(10, 5))
+    sns.violinplot(x="Pixel Count", y="Class", hue="Source", split=True, data=combined_df, orient='h', cut=0, inner='quart', density_norm='count')
+    plt.title('Comparison of distributions')
+    plt.tight_layout()
+    plt.savefig(f'Daten/{output}/distribution_comparison.png')
