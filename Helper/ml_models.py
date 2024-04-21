@@ -371,16 +371,17 @@ class TrainedModel(Model):
                 
                 # For Tensorboard
                 
-                #step = epoch * len(self.training_loader) + 1
-                #self.writer.add_scalars('Loss', {'Train': loss.item()}, step)
+                step = epoch * len(self.training_loader) + counter
+                self.writer.add_scalar('Training Loss', loss.item(), step)
                 
             epoch_loss = run_loss / len(self.training_loader)
             print(f'Epoch {epoch + 1} von {epochs}    |   Loss: {epoch_loss}')
-            self.writer.add_scalar('Epoch Train Loss', epoch_loss, self.epoch)
-
             # Validate the model after each epoch
             val_loss = self.validate(self.val_loader)
+            self.writer.add_scalars('Epoch and Validation Loss', {'Epoch Loss': epoch_loss, 'Validation Loss': val_loss}, self.epoch)
+            
             if val_loss > epoch_loss + deviation_threshold:
+                print(f'Validation loss deviated too much from training loss in epoch {self.epoch + 1}')
                 deviations += 1
                 if deviations > max_deviations:
                     print(f'Stopped training due to validation loss deviating too much from training loss in epoch {self.epoch + 1}')
