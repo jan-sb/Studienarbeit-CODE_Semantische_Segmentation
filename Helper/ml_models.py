@@ -1,6 +1,8 @@
 import sys
 import os
 import numpy as np
+from sklearn.model_selection import train_test_split
+import pandas as pd
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -305,30 +307,40 @@ class TrainedModel(Model):
                 outputs = self.model(images)['out']                    
                 _, labels = labels.max(dim=1)
                 
-                ce_loss = self.criterion(outputs, labels)                
-                # Calculate L2 regularization loss
-                l2_reg = 0
-                for param in self.model.parameters():
-                    l2_reg += torch.norm(param, p=2)                
-                # Total loss is the sum of cross-entropy loss and L2 regularization loss
-                loss = ce_loss + l2_lambda * l2_reg
-                
-                
+                loss = self.criterion(outputs, labels)            
                 loss.backward()
+                
                 self.optimizer.step()
                 run_loss += loss.item()
                 
                 # For Tensorboard
                 
                 step = epoch * len(self.training_loader) + 1
-                self.writer.add_scalar('Training Loss', loss.item(), step)
+                self.writer.add_scalars('Loss', {'Train': loss.item()}, step)
                 
             epoch_loss = run_loss / len(self.training_loader)
             print(f'Epoch {epoch + 1} von {epochs}    |   Loss: {epoch_loss}')
-            self.writer.add_scalar('Epoch Train Loss', epoch_loss, epoch)
+            self.writer.add_scalar('Epoch Train Loss', epoch_loss, self.epoch)
         self.writer.flush()
         self.writer.close()
         self.save_model()
+        
+    def validate(self, dataset):
+        self.model.eval()
+        with torch.no_grad():
+            val_loader = DataLoader(dataset, batch_size=1, shuffle=False)
+            total_loss = 0
+            for images, labels in val_loader:
+                images = images.to(self.device)
+                labels = labels.to(self.device)
+                outputs = self.model(images)['out']
+                _, labels = labels.max(dim=1)
+                loss = self.criterion(outputs, labels)
+                total_loss += loss.item()
+            avg_loss = total_loss / len(val_loader)
+            print(f'Validation Loss: {avg_loss}')
+            self.writer.add_scalars('Loss', {'Validation': avg_loss}, self.epoch)
+            return avg_loss
 
 class CustomDataSet(Dataset):
     def __init__(self, image_dir, annotation_dir):
@@ -366,3 +378,42 @@ class CustomDataSet(Dataset):
                 annotation = self.preprocess_annotation(annotation)
 
             return image, annotation
+
+class K_Fold_Dataset:
+    def __init__(self, image_dir, annotation_dir, k_fold_csv_dir, leave_out_fold):
+        self.csv_files = [os.path.join(k_fold_csv_dir, file) for file in os.listdir(k_fold_csv_dir) if file.endswith('.csv')]
+        self.k_folds = len(self.csv_files)
+        
+        if leave_out_fold >= self.k_folds:
+            raise ValueError("leave_out_fold should be less than the number of folds.")
+        
+        # Use all but one fold for training and validation
+        self.train_val_files = [file for i, file in enumerate(self.csv_files) if i != leave_out_fold]
+        self.test_files = [self.csv_files[leave_out_fold]]
+        
+        # Concatenate all train and validation files into one DataFrame
+        train_val_df = pd.concat([pd.read_csv(file) for file in self.train_val_files])
+        
+        # Apply 80/20 train/validation split
+        train_df, val_df = train_test_split(train_val_df, test_size=0.2)
+        
+        # Convert to list for indexing
+        self.train_files = train_df.values.tolist()
+        self.val_files = val_df.values.tolist()
+        self.test_files = pd.read_csv(self.test_files[0]).values.tolist()
+
+        # Initialize TrainDataset and ValDataset
+        self.train_dataset = self.TrainDataset(self.train_files, image_dir, annotation_dir)
+        self.val_dataset = self.ValDataset(self.val_files, image_dir, annotation_dir)
+
+    class TrainDataset(CustomDataSet):
+        def __init__(self, train_files, image_dir, annotation_dir):
+            super().__init__(image_dir, annotation_dir)
+            self.image_files = [file[0] for file in train_files]
+            self.annotation_files = [file[1] for file in train_files]
+
+    class ValDataset(CustomDataSet):
+        def __init__(self, val_files, image_dir, annotation_dir):
+            super().__init__(image_dir, annotation_dir)
+            self.image_files = [file[0] for file in val_files]
+            self.annotation_files = [file[1] for file in val_files]
