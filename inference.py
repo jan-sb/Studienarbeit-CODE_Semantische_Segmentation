@@ -4,13 +4,13 @@ from PIL import Image
 import cv2 as cv
 
 
-model = TrainedModel('deeplabv3_resnet101', 1242, 375, 'test1', start_epoch='latest')
-model2 = TorchModel('deeplabv3_resnet101', 'DeepLabV3_ResNet101_Weights', 1242, 375, pretrained=True)
-path = 'KittiDaten/training/image_2'
-output_path = 'Daten'
+model = TrainedModel('deeplabv3_resnet101', 2048, 1024, 'deeplabv3_resnet50_k_fold_2_0', start_epoch='latest')
+model2 = TorchModel('deeplabv3_resnet101', 'DeepLabV3_ResNet101_Weights', 2048, 1024, pretrained=True)
+path = 'CityscapesDaten/images'
+output_path = 'Daten2'
 
 
-image = Image.open(path + '/000000_10.png')
+image = Image.open(path + '/000000_01.png')
 
 
 inf_result1 = model.model_inference_live_no_grad(image)

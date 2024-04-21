@@ -19,7 +19,7 @@ for model in deeplv3:
         trained_model.prepare_model_training(dataset_train=k_fold_dataset.train_dataset,
                                              dataset_val=k_fold_dataset.val_dataset,
                                              batch_size=2, 
-                                             shuffle=False, 
+                                             shuffle=True, 
                                              learning_rate=1*10**(-5), 
                                              momentum=0.9,
                                              weight_decay=0.0005)
