@@ -19,12 +19,16 @@ dataset = CustomDataSet(image_dir=image_dir, annotation_dir=annotation_dir)
 
 #print(f'Mean: {mean}, Std: {std}')
 
-image, labeled = dataset.__getitem__(1)
+# image, labeled = dataset.__getitem__(1)
 
 
-plt.imshow(image.permute(1, 2, 0))
-plt.savefig('Daten/test_image2.png')
+# plt.imshow(image.permute(1, 2, 0))
+# plt.savefig('Daten/test_image2.png')
 
-save_tensor_as_png(image, 'Daten/test_image.png')
-save_tensor_as_png(labeled, 'Daten/test_labeled.png')
+# save_tensor_as_png(image, 'Daten/test_image.png')
+# save_tensor_as_png(labeled, 'Daten/test_labeled.png')
 
+
+num_output = test1.model.classifier[4].out_channels
+
+print(f'Number of output channels: {num_output}')
