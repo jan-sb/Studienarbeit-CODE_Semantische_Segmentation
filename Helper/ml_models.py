@@ -99,7 +99,7 @@ class Model:
         return self.preprocess(image).unsqueeze(0).to(self.device)
 
     def tensor_to_image(self, tensor):
-        tensor = self.postprocess(tensor)
+        #tensor = self.postprocess(tensor)
         image = np.transpose(tensor.cpu().numpy(), (1, 2, 0))
         image = np.array(image, dtype='uint8')
         return image
@@ -256,10 +256,14 @@ class TrainedModel(Model):
 
 
 
-    def pepare_model_training(self, dataset=None, batch_size=3, shuffle=True, learning_rate= 1*10**(-5), momentum=0.9, weight_decay=0.0005):
-        if dataset is not None:
-            self.training_loader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
-            print(f'Training Loader prepared')
+    def pepare_model_training(self, dataset_train=None, dataset_val= None, batch_size=3, shuffle=True, learning_rate= 1*10**(-5), momentum=0.9, weight_decay=0.0005):
+        if dataset_train is not None:
+            self.training_loader = DataLoader(dataset_train, batch_size=batch_size, shuffle=shuffle)
+            print(f'Training Dataset prepared')
+        
+        if dataset_val is not None: 
+            self.val_dataset = DataLoader(dataset_val, batch_size=1, shuffle=False)
+            print(f'Validation Dataset prepared')
 
         self.criterion = nn.CrossEntropyLoss()
         self.optimizer = optim.SGD(self.model.parameters(), lr=learning_rate, momentum=momentum, weight_decay=weight_decay)
@@ -315,8 +319,8 @@ class TrainedModel(Model):
                 
                 # For Tensorboard
                 
-                step = epoch * len(self.training_loader) + 1
-                self.writer.add_scalars('Loss', {'Train': loss.item()}, step)
+                #step = epoch * len(self.training_loader) + 1
+                #self.writer.add_scalars('Loss', {'Train': loss.item()}, step)
                 
             epoch_loss = run_loss / len(self.training_loader)
             print(f'Epoch {epoch + 1} von {epochs}    |   Loss: {epoch_loss}')
@@ -341,6 +345,47 @@ class TrainedModel(Model):
             print(f'Validation Loss: {avg_loss}')
             self.writer.add_scalars('Loss', {'Validation': avg_loss}, self.epoch)
             return avg_loss
+        
+    def auto_train(self, epochs, l2_lambda=0.01, deviation_threshold=0.1, max_deviations=5):
+        deviations = 0
+        for epoch in range(epochs):
+            self.model.train()
+            run_loss = 0.0
+            self.epoch += 1
+            for images, labels in self.training_loader:
+                self.optimizer.zero_grad()
+                images = images.to(self.device)
+                labels = labels.to(self.device)
+                
+                outputs = self.model(images)['out']                    
+                _, labels = labels.max(dim=1)
+                
+                loss = self.criterion(outputs, labels)            
+                loss.backward()
+                
+                self.optimizer.step()
+                run_loss += loss.item()
+                
+                # For Tensorboard
+                
+                #step = epoch * len(self.training_loader) + 1
+                #self.writer.add_scalars('Loss', {'Train': loss.item()}, step)
+                
+            epoch_loss = run_loss / len(self.training_loader)
+            print(f'Epoch {epoch + 1} von {epochs}    |   Loss: {epoch_loss}')
+            self.writer.add_scalar('Epoch Train Loss', epoch_loss, self.epoch)
+
+            # Validate the model after each epoch
+            val_loss = self.validate(self.val_dataset)
+            if val_loss > epoch_loss + deviation_threshold:
+                deviations += 1
+                if deviations > max_deviations:
+                    print(f'Stopped training due to validation loss deviating too much from training loss in epoch {self.epoch + 1}')
+                    break
+            torch.cuda.empty_cache()
+        self.writer.flush()
+        self.writer.close()
+        self.save_model()
 
 class CustomDataSet(Dataset):
     def __init__(self, image_dir, annotation_dir):
@@ -405,15 +450,15 @@ class K_Fold_Dataset:
         # Initialize TrainDataset and ValDataset
         self.train_dataset = self.TrainDataset(self.train_files, image_dir, annotation_dir)
         self.val_dataset = self.ValDataset(self.val_files, image_dir, annotation_dir)
-
+        
     class TrainDataset(CustomDataSet):
         def __init__(self, train_files, image_dir, annotation_dir):
             super().__init__(image_dir, annotation_dir)
-            self.image_files = [file[0] for file in train_files]
-            self.annotation_files = [file[1] for file in train_files]
+            self.image_files = [os.path.join(image_dir, file[0]) for file in train_files]
+            self.annotation_files = [os.path.join(annotation_dir, file[0]) for file in train_files]
 
     class ValDataset(CustomDataSet):
         def __init__(self, val_files, image_dir, annotation_dir):
             super().__init__(image_dir, annotation_dir)
-            self.image_files = [file[0] for file in val_files]
-            self.annotation_files = [file[1] for file in val_files]
+            self.image_files = [os.path.join(image_dir, file[0]) for file in val_files]
+            self.annotation_files = [os.path.join(annotation_dir, file[0]) for file in val_files]
