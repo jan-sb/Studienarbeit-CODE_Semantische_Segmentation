@@ -196,7 +196,7 @@ class TrainedModel(Model):
             SemanticSegmentation(resize_size=520),
         ])
 
-        self.pepare_model_training()
+        self.prepare_model_training()
 
         # Make Folder for the Trained Weights
         self.folder_path = 'Own_Weights'
@@ -234,7 +234,7 @@ class TrainedModel(Model):
         else:
             print(f'Latest Epoch Save doesnt exist or Epoch Number Save doesnt exist, initialising new Save')
             try:
-                self.pepare_model_training()
+                self.prepare_model_training()
                 self.loss = 0
                 self.save_model()
                 latest_file_path = self.model_folder_path + '_latest_{self.model_name}.pth'
@@ -256,13 +256,13 @@ class TrainedModel(Model):
 
 
 
-    def pepare_model_training(self, dataset_train=None, dataset_val= None, batch_size=3, shuffle=True, learning_rate= 1*10**(-5), momentum=0.9, weight_decay=0.0005):
+    def prepare_model_training(self, dataset_train=None, dataset_val= None, batch_size=3, shuffle=True, learning_rate= 1*10**(-5), momentum=0.9, weight_decay=0.0005):
         if dataset_train is not None:
             self.training_loader = DataLoader(dataset_train, batch_size=batch_size, shuffle=shuffle)
             print(f'Training Dataset prepared')
         
         if dataset_val is not None: 
-            self.val_dataset = DataLoader(dataset_val, batch_size=1, shuffle=False)
+            self.val_loader = DataLoader(dataset_val, batch_size=1, shuffle=False)
             print(f'Validation Dataset prepared')
 
         self.criterion = nn.CrossEntropyLoss()
@@ -329,11 +329,10 @@ class TrainedModel(Model):
         self.writer.close()
         self.save_model()
         
-    def validate(self, dataset):
+    def validate(self, val_loader):
+        total_loss = 0.0
         self.model.eval()
         with torch.no_grad():
-            val_loader = DataLoader(dataset, batch_size=1, shuffle=False)
-            total_loss = 0
             for images, labels in val_loader:
                 images = images.to(self.device)
                 labels = labels.to(self.device)
@@ -352,7 +351,11 @@ class TrainedModel(Model):
             self.model.train()
             run_loss = 0.0
             self.epoch += 1
+            print(f'Epoch {epoch + 1} von {epochs}')
+            counter = 0
             for images, labels in self.training_loader:
+                counter +=1
+                print(f'Image {counter} von {len(self.training_loader)}')
                 self.optimizer.zero_grad()
                 images = images.to(self.device)
                 labels = labels.to(self.device)
@@ -376,7 +379,7 @@ class TrainedModel(Model):
             self.writer.add_scalar('Epoch Train Loss', epoch_loss, self.epoch)
 
             # Validate the model after each epoch
-            val_loss = self.validate(self.val_dataset)
+            val_loss = self.validate(self.val_loader)
             if val_loss > epoch_loss + deviation_threshold:
                 deviations += 1
                 if deviations > max_deviations:
@@ -454,11 +457,11 @@ class K_Fold_Dataset:
     class TrainDataset(CustomDataSet):
         def __init__(self, train_files, image_dir, annotation_dir):
             super().__init__(image_dir, annotation_dir)
-            self.image_files = [os.path.join(image_dir, file[0]) for file in train_files]
-            self.annotation_files = [os.path.join(annotation_dir, file[0]) for file in train_files]
+            self.image_files = [file[0] for file in train_files]
+            self.annotation_files = [file[0] for file in train_files]
 
     class ValDataset(CustomDataSet):
         def __init__(self, val_files, image_dir, annotation_dir):
             super().__init__(image_dir, annotation_dir)
-            self.image_files = [os.path.join(image_dir, file[0]) for file in val_files]
-            self.annotation_files = [os.path.join(annotation_dir, file[0]) for file in val_files]
+            self.image_files = [file[0] for file in val_files]
+            self.annotation_files = [file[0] for file in val_files]
