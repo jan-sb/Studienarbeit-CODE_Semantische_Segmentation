@@ -94,6 +94,7 @@ class Model:
             (0, 0, 230),  # motorcycle,
             (119, 11, 32),  # bicycle,
         ]
+        
 
     def image_preprocess(self, image):
         return self.preprocess(image).unsqueeze(0).to(self.device)
@@ -175,7 +176,8 @@ class TrainedModel(Model):
             (0, 80, 100),  # train, 17
             (0, 0, 230),  # motorcycle, 18
             (119, 11, 32),  # bicycle, 19
-            (0, 0, 0)  # unlabeled, 20
+            (0, 0, 0),  # unlabeled, 20
+            (255,255,255) # background, 0 
         ]
         self.num_classes = len(self.city_label_color_map)
         self.learning_rate = 1*10**(-5)
@@ -253,6 +255,23 @@ class TrainedModel(Model):
         self.writer = SummaryWriter(log_dir=log_dir)
 
         self.model.eval()
+
+    def model_inference_live_no_grad(self, image):
+        with torch.no_grad():
+            tensor = self.image_preprocess(image)
+            output = self.model(tensor)['out'].to(self.device)
+            num_classes = output.shape[1]
+            print(output.shape)
+            all_masks = output.argmax(1) == torch.arange(num_classes, device=self.device)[:, None, None]
+            tensor = tensor.to(torch.uint8).squeeze(0)
+            res_image = draw_segmentation_masks(
+                tensor,
+                all_masks,
+                colors=self.city_label_color_map,
+                alpha=0.9
+            )
+            res_image = self.tensor_to_image(res_image)
+            return res_image
 
 
 

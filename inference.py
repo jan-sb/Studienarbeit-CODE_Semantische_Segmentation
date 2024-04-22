@@ -4,8 +4,8 @@ from PIL import Image
 import cv2 as cv
 
 
-model = TrainedModel('deeplabv3_resnet101', 2048, 1024, 'deeplabv3_resnet50_k_fold_2_0', start_epoch='latest')
-model2 = TorchModel('deeplabv3_resnet101', 'DeepLabV3_ResNet101_Weights', 2048, 1024, pretrained=True)
+model = TrainedModel('deeplabv3_resnet50', 2048, 1024, 'deeplabv3_resnet50_k_fold_2_0', start_epoch='latest')
+model2 = TorchModel('deeplabv3_resnet50', 'DeepLabV3_ResNet50_Weights', 2048, 1024, pretrained=True)
 path = 'CityscapesDaten/images'
 output_path = 'Daten2'
 
