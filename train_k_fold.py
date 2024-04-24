@@ -26,5 +26,11 @@ for model in deeplv3:
                                              weight_decay=0.0005)
        
         
-        trained_model.auto_train(epochs=10, max_deviations=3)
+        trained_model.auto_train(epochs=1, max_deviations=3)
         
+        path = 'CityscapesDaten/images'
+        image = Image.open(path + '/000000_01.png')
+        output_path = 'Daten2'
+        
+        inf_result1 = model.own_model_inference_live_no_grad(image)
+        cv.imwrite(output_path + '/test1.png', inf_result1)

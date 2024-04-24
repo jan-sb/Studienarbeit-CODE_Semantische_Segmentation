@@ -177,7 +177,6 @@ class TrainedModel(Model):
             (0, 0, 230),  # motorcycle, 18
             (119, 11, 32),  # bicycle, 19
             (0, 0, 0),  # unlabeled, 20
-            (255,255,255) # background, 0 
         ]
         self.num_classes = len(self.city_label_color_map)
         self.learning_rate = 1*10**(-5)
@@ -256,7 +255,7 @@ class TrainedModel(Model):
 
         self.model.eval()
 
-    def model_inference_live_no_grad(self, image):
+    def own_model_inference_live_no_grad(self, image):
         with torch.no_grad():
             tensor = self.image_preprocess(image)
             output = self.model(tensor)['out'].to(self.device)
