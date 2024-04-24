@@ -239,7 +239,7 @@ class TrainedModel(Model):
                 self.prepare_model_training()
                 self.loss = 0
                 self.save_model()
-                latest_file_path = self.model_folder_path + '_latest_{self.model_name}.pth'
+                latest_file_path = self.model_folder_path + f'_latest_{self.model_name}.pth'
                 checkpoint = torch.load(latest_file_path)
                 self.model.load_state_dict(checkpoint['model_state_dict'])
                 self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
@@ -313,6 +313,8 @@ class TrainedModel(Model):
                 old_filepath = os.path.join(self.folder_path, f'{self.weights_name}_epoch-{i}_{self.model_name}.pth')
                 if os.path.exists(old_filepath):
                     os.remove(old_filepath)
+            else:
+                break
 
         print(f'Saved Model')
 

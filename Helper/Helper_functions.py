@@ -407,3 +407,8 @@ def calculate_multi_normalization_values(paths, batch_size=50):
     return (r_mean, g_mean, b_mean), (r_std, g_std, b_std)
 
 
+import os
+
+def create_model_directory(model, i):
+    dir_name = f'Own_Weights/{model}_k_fold_{i}'
+    os.makedirs(dir_name, exist_ok=True)

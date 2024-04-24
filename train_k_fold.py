@@ -10,7 +10,8 @@ lrsapp = ['lraspp_mobilenet_v3_large']
 
 for model in deeplv3:
     for i in range(5): 
-        trained_model = TrainedModel(model, 2048, 1024, f'{model}_k_fold_2_{i}', start_epoch='latest')
+        create_model_directory(model, i)
+        trained_model = TrainedModel(model, 2048, 1024, f'{model}_k_fold_{i}', start_epoch='latest')
         k_fold_dataset = K_Fold_Dataset(image_dir='CityscapesDaten/images',
                                         annotation_dir='CityscapesDaten/semantic',
                                         k_fold_csv_dir='Daten/CityscapesDaten',
