@@ -177,6 +177,7 @@ class TrainedModel(Model):
             (0, 0, 230),  # motorcycle, 18
             (119, 11, 32),  # bicycle, 19
             (0, 0, 0),  # unlabeled, 20
+            (255,255,255) # test, 21
         ]
         self.num_classes = len(self.city_label_color_map)
         self.learning_rate = 1*10**(-5)
@@ -238,8 +239,8 @@ class TrainedModel(Model):
                 self.prepare_model_training()
                 self.loss = 0
                 self.save_model()
-                latest_file_path = self.model_folder_path + f'_latest_{self.model_name}.pth'
-                checkpoint = torch.load(latest_file_path)
+                #latest_file_path = self.model_folder_path + f'_latest_{self.model_name}.pth'
+                checkpoint = torch.load(path_to_latest)
                 self.model.load_state_dict(checkpoint['model_state_dict'])
                 self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
                 self.epoch = checkpoint['epoch']
