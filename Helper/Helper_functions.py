@@ -1,3 +1,4 @@
+from __future__ import print_function, absolute_import, division
 import cv2 as cv
 import numpy as np
 import sys
@@ -10,11 +11,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 from sklearn.model_selection import StratifiedKFold
-from torchvision.transforms import ToPILImage, ToTensor
+from torchvision import datasets, transforms
 from tqdm import tqdm
 from joblib import Parallel, delayed
 from torch.utils.data import DataLoader
 import json
+from collections import namedtuple
+from cityscapesscripts.helpers.labels import *
 
 
 
@@ -291,7 +294,7 @@ def compare_distributions(df1, df2, output):
     
 def save_tensor_as_png(tensor, filename):
     # Convert the tensor to a PIL Image
-    image = ToPILImage()(tensor)
+    image = transforms.ToPILImage()(tensor)
 
     # Save the PIL Image as a PNG
     image.save(filename)
@@ -310,7 +313,7 @@ def calculate_normalization_values(path):
         # Open the image file
         with Image.open(os.path.join(path, filename)) as img:
             # Convert the image to a tensor
-            tensor = ToTensor()(img)
+            tensor = transforms.ToTensor()(img)
             # Split the tensor into color channels
             r, g, b = tensor
             # Add the pixel values to the lists
@@ -350,7 +353,7 @@ def calculate_multi_normalization_values(paths, batch_size=50):
                 # Open the image file
                 with Image.open(os.path.join(path, filename)) as img:
                     # Convert the image to a tensor
-                    tensor = ToTensor()(img)
+                    tensor = transforms.ToTensor()(img)
                     # Split the tensor into color channels
                     r, g, b = tensor
                     # Update running totals and count
@@ -382,7 +385,7 @@ def calculate_multi_normalization_values(paths, batch_size=50):
                 # Open the image file
                 with Image.open(os.path.join(path, filename)) as img:
                     # Convert the image to a tensor
-                    tensor = ToTensor()(img)
+                    tensor = transforms.ToTensor()(img)
                     # Split the tensor into color channels
                     r, g, b = tensor
                     # Update running totals for the standard deviations
@@ -412,3 +415,48 @@ import os
 def create_model_directory(model, i):
     dir_name = f'Own_Weights/{model}_k_fold_{i}'
     os.makedirs(dir_name, exist_ok=True)
+    
+ 
+def create_ground_truth_json():
+    label_dict = {}
+    for label in labels:
+        if label.trainId != -1:
+            if label.trainId not in label_dict:
+                label_dict[label.trainId] = []
+                label_dict[label.trainId].append([label.id, label.name, str(label.color)])
+            else:
+                label_dict[label.trainId].append([label.id, label.name, str(label.color)]) 
+    
+    with open('Daten/label_dict.json', 'w') as f:
+        json.dump(label_dict, f, indent=4, sort_keys=True)
+    
+
+
+def create_ground_truth(in_path, out_path):
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+    # Create a mapping from label ID to trainId
+    id_to_trainId = {label.id: label.trainId for label in labels if label.trainId >= 0}
+    id_to_trainId = torch.tensor([id_to_trainId.get(i, -1) for i in range(256)], dtype=torch.long, device=device)
+
+    # Get the list of image files
+    image_files = os.listdir(in_path)
+    total = len(image_files)
+
+    # Process the images
+    for i, image_file in enumerate(image_files):
+        # Load the image
+        image = Image.open(os.path.join(in_path, image_file))
+        # Convert the image to a PyTorch tensor and move it to the device
+        image = torch.from_numpy(np.array(image)).to(device)
+        # Convert the label IDs to trainId
+        image = id_to_trainId[image.long()]
+        # Convert the tensor back to a PIL image
+        image = transforms.ToPILImage()(image.cpu().byte())
+        # Save the image with the original name
+        image.save(os.path.join(out_path, image_file))
+        print(f'Processed image {i}/{total}')
+        # if i > 10:
+        #     break
+    
+    

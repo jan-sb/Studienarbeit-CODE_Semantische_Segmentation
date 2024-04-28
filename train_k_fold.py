@@ -1,12 +1,26 @@
 from Helper.ml_models import *
 from Helper.Helper_functions import * 
 from torchvision.models.segmentation import *
+import gc, sys
 
 deeplv3 = ['deeplabv3_resnet50', 'deeplabv3_resnet101', 'deeplabv3_mobilenet_v3_large']
 fcn = ['fcn_resnet50', 'fcn_resnet101']
 lrsapp = ['lraspp_mobilenet_v3_large']
 
+all_models = ['deeplabv3_resnet50', 'deeplabv3_resnet101', 'deeplabv3_mobilenet_v3_large', 'fcn_resnet50', 'fcn_resnet101', 'lraspp_mobilenet_v3_large']
 
+
+
+for model in all_models:
+    for i in range(5):
+        create_model_directory(model, i)
+        trained_model = TrainedModel(model, 2048, 1024, f'{model}_k_fold_{i}', start_epoch='latest')
+        
+        del trained_model
+        gc.collect()
+        
+
+sys.exit()
 
 for model in deeplv3:
     for i in range(5): 
