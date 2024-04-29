@@ -10,17 +10,14 @@ lrsapp = ['lraspp_mobilenet_v3_large']
 all_models = ['deeplabv3_resnet50', 'deeplabv3_resnet101', 'deeplabv3_mobilenet_v3_large', 'fcn_resnet50', 'fcn_resnet101', 'lraspp_mobilenet_v3_large']
 
 
-
-for model in all_models:
-    for i in range(5):
-        create_model_directory(model, i)
-        trained_model = TrainedModel(model, 2048, 1024, f'{model}_k_fold_{i}', start_epoch='latest')
-        
-        del trained_model
-        gc.collect()
-        
-
-sys.exit()
+##### UNCOMMENT before Big RUN
+# for model in all_models:
+#     for i in range(5):
+#         create_model_directory(model, i)
+#         trained_model = TrainedModel(model, 2048, 1024, f'{model}_k_fold_{i}', start_epoch='latest')
+#         del trained_model
+#         gc.collect()
+# # sys.exit()
 
 for model in deeplv3:
     for i in range(5): 
@@ -33,18 +30,19 @@ for model in deeplv3:
         
         trained_model.prepare_model_training(dataset_train=k_fold_dataset.train_dataset,
                                              dataset_val=k_fold_dataset.val_dataset,
-                                             batch_size=8, 
+                                             batch_size=2, 
                                              shuffle=True, 
                                              learning_rate=1*10**(-5), 
                                              momentum=0.9,
-                                             weight_decay=0.0005)
+                                             weight_decay=0.005)
        
         
-        trained_model.auto_train(epochs=2, max_deviations=3)
+        #trained_model.auto_train(epochs=10, max_deviations=100)
         
         path = 'CityscapesDaten/images'
         image = Image.open(path + '/000000_01.png')
         output_path = 'Daten2'
         
         inf_result1 = trained_model.own_model_inference_live_no_grad(image)
-        cv.imwrite(output_path + '/test1.png', inf_result1)
+        cv.imwrite(output_path + f'/test_{model}.png', inf_result1)
+        break
