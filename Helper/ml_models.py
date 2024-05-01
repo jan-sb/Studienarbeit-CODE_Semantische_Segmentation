@@ -325,7 +325,7 @@ class TrainedModel(Model):
             self.writer.add_scalar('Epoch Train Loss', epoch_loss, self.epoch)
         self.writer.flush()
         self.writer.close()
-        self.save_model()
+        self.save_model(file_management=True)
         
     def validate(self, val_loader):
         total_loss = 0.0
@@ -389,6 +389,32 @@ class TrainedModel(Model):
             
         self.writer.flush()
         self.writer.close()
+        
+        
+        def inference_tensorboard(self, image):
+            tensor = self.image_preprocess(image)
+            output = self.model(tensor)['out'].to(self.device)
+            num_classes = output.shape[1]
+            all_masks = output.argmax(1) == torch.arange(num_classes, device=self.device)[:, None, None]
+            tensor = tensor.to(torch.uint8).squeeze(0)
+            res_image = draw_segmentation_masks(
+                tensor,
+                all_masks,
+                colors=self.city_label_color_map,
+                alpha=0.9
+            )
+            res_image = self.tensor_to_image(res_image)
+
+            # Convert the image to a 3-channel image for TensorBoard
+            res_image_3ch = res_image.convert("RGB")
+
+            # Convert the 3-channel image to a Tensor
+            res_image_tensor = transforms.ToTensor()(res_image_3ch)
+
+            # Add the image to TensorBoard
+            self.writer.add_image('Inference Images', res_image_tensor, self.epoch)
+
+            return None
         
 
 class CustomDataSet(Dataset):
@@ -464,7 +490,8 @@ class K_Fold_Dataset:
             self.transform = transforms.Compose([
                 transforms.RandomResizedCrop(224),  # Random Cropping
                 transforms.RandomAffine(0, translate=(0.1, 0.1)),  # Random Shifting
-                transforms.ToTensor() # converte to Tensor
+                transforms.ToTensor(), # converte to Tensor
+                transforms.Normalize(mean=self.mean, std=self.std),
             ])
 
         def __getitem__(self, index):
@@ -479,7 +506,30 @@ class K_Fold_Dataset:
             annotation = self.transform(annotation)
 
             return image, annotation
+        
+        def check_for_data_leaks(self):
+            train_files_set = set(self.train_files)
+            val_files_set = set(self.val_files)
+            test_files_set = set(self.test_files)
 
+            # Check for overlaps between sets
+            train_val_overlap = train_files_set & val_files_set
+            train_test_overlap = train_files_set & test_files_set
+            val_test_overlap = val_files_set & test_files_set
+
+            if train_val_overlap:
+                print(f"Data leak between training and validation sets: {train_val_overlap}")
+                sys.exit()
+            if train_test_overlap:
+                print(f"Data leak between training and test sets: {train_test_overlap}")
+                sys.exit()
+            if val_test_overlap:
+                print(f"Data leak between validation and test sets: {val_test_overlap}")
+                sys.exit()
+
+            if not train_val_overlap and not train_test_overlap and not val_test_overlap:
+                print("No data leaks found.")
+            
     class ValDataset(CustomDataSet):
         def __init__(self, val_files, image_dir, annotation_dir):
             super().__init__(image_dir, annotation_dir)
