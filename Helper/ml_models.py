@@ -8,7 +8,7 @@ import torch.nn as nn
 import torch.optim as optim
 from torchvision import transforms
 from torchvision.models.segmentation import *
-from torchvision.utils import draw_segmentation_masks
+from torchvision.utils import draw_segmentation_masks, save_image
 from torch.utils.data import DataLoader, Dataset
 from torchvision.transforms._presets import SemanticSegmentation
 from functools import partial
@@ -232,8 +232,14 @@ class TrainedModel(Model):
         self.writer = SummaryWriter(log_dir=log_dir)
 
         self.model.eval()
+        
+    def inference(self, image):
+        tensor = self.image_preprocess(image)
+        output = self.model(tensor)['out'].to(self.device)
+        return output
 
     def own_model_inference_live_no_grad(self, image):
+        self.model.eval()
         with torch.no_grad():
             tensor = self.image_preprocess(image)
             output = self.model(tensor)['out'].to(self.device)
@@ -252,7 +258,7 @@ class TrainedModel(Model):
 
 
 
-    def prepare_model_training(self, dataset_train=None, dataset_val= None, batch_size=3, shuffle=True, learning_rate= 1*10**(-5), momentum=0.9, weight_decay=0.0005):
+    def prepare_model_training(self, dataset_train=None, dataset_val= None, batch_size=3, shuffle=True, learning_rate= 1*10**(-5), momentum=0.9, weight_decay=0.001):
         if dataset_train is not None:
             self.training_loader = DataLoader(dataset_train, batch_size=batch_size, shuffle=shuffle)
             print(f'Training Dataset prepared')
@@ -317,14 +323,12 @@ class TrainedModel(Model):
                 
                 # For Tensorboard
                 
-                #step = epoch * len(self.training_loader) + 1
-                #self.writer.add_scalars('Loss', {'Train': loss.item()}, step)
+                step = epoch * len(self.training_loader) + 1
+                self.writer.add_scalars('Loss', {'Train': loss.item()}, step)
                 
             epoch_loss = run_loss / len(self.training_loader)
             print(f'Epoch {epoch + 1} von {epochs}    |   Loss: {epoch_loss}')
             self.writer.add_scalar('Epoch Train Loss', epoch_loss, self.epoch)
-        self.writer.flush()
-        self.writer.close()
         self.save_model(file_management=True)
         
     def validate(self, val_loader):
@@ -343,7 +347,8 @@ class TrainedModel(Model):
             self.writer.add_scalars('Loss', {'Validation': avg_loss}, self.epoch)
             return avg_loss
         
-    def auto_train(self, epochs, l2_lambda=0.01, deviation_threshold=0.1, max_deviations=5):
+        
+    def auto_train(self, epochs, l2_lambda=0.001, deviation_threshold=0.1, max_deviations=5):
         deviations = 0
         for epoch in range(epochs):
             self.model.train()
@@ -354,7 +359,6 @@ class TrainedModel(Model):
             for images, labels in self.training_loader:
                 counter +=1
                 print(f'Image {counter} von {len(self.training_loader)}')
-                self.optimizer.zero_grad()
                 images = images.to(self.device)
                 labels = labels.to(self.device)
                 
@@ -365,6 +369,7 @@ class TrainedModel(Model):
                 loss.backward()
                 
                 self.optimizer.step()
+                self.optimizer.zero_grad()
                 run_loss += loss.item()
                 
                 # For Tensorboard
@@ -387,11 +392,13 @@ class TrainedModel(Model):
             torch.cuda.empty_cache()
             self.save_model()
             
-        self.writer.flush()
-        self.writer.close()
+        #self.writer.flush()
+        #self.writer.close()
         
         
-        def inference_tensorboard(self, image):
+    def inference_tensorboard(self, image):
+        self.model.eval()
+        with torch.no_grad():
             tensor = self.image_preprocess(image)
             output = self.model(tensor)['out'].to(self.device)
             num_classes = output.shape[1]
@@ -403,7 +410,9 @@ class TrainedModel(Model):
                 colors=self.city_label_color_map,
                 alpha=0.9
             )
-            res_image = self.tensor_to_image(res_image)
+
+            # Convert the tensor to a PIL Image
+            res_image = transforms.ToPILImage()(res_image)
 
             # Convert the image to a 3-channel image for TensorBoard
             res_image_3ch = res_image.convert("RGB")
@@ -415,7 +424,7 @@ class TrainedModel(Model):
             self.writer.add_image('Inference Images', res_image_tensor, self.epoch)
 
             return None
-        
+
 
 class CustomDataSet(Dataset):
     def __init__(self, image_dir, annotation_dir):
@@ -429,9 +438,7 @@ class CustomDataSet(Dataset):
             transforms.Normalize(mean=self.mean, std=self.std),
         ])
         self.preprocess_annotation = transforms.Compose([
-            transforms.Resize((520,520)),
-            transforms.Grayscale(),
-            transforms.ToTensor(),
+            transforms.Resize((520,520), Image.NEAREST),
         ])
         self.counter = 0
 
@@ -442,20 +449,30 @@ class CustomDataSet(Dataset):
         return len(self.image_files)
     
     def __getitem__(self, idx):
-            img_name = os.path.join(self.image_dir, self.image_files[idx])
-            annotation_name = os.path.join(self.annotation_dir, self.annotation_files[idx])
+        img_name = os.path.join(self.image_dir, self.image_files[idx])
+        annotation_name = os.path.join(self.annotation_dir, self.annotation_files[idx])
 
-            image = Image.open(img_name).convert("RGB")            
-            annotation = Image.open(annotation_name).convert("L") 
-                    
-            if self.preprocess:
-                image = self.preprocess(image)
-                annotation = self.preprocess_annotation(annotation)
+        image = Image.open(img_name).convert("RGB")            
+        annotation = Image.open(annotation_name).convert("L") 
 
-            return image, annotation
+        if self.preprocess:
+            image = self.preprocess(image)
+            annotation = self.preprocess_annotation(annotation)
+            annotation = np.array(annotation)
+            annotation = torch.from_numpy(annotation).long()
+
+        # Map 255 to a valid index, if necessary
+        
+        ## ANPASSEN VON GROUND TRUTH BILDERN
+        annotation[annotation == 255] = 19  # replace with the actual index for the background class
+
+        one_hot_annotation = torch.zeros(20, *annotation.shape)
+        one_hot_annotation.scatter_(0, annotation.unsqueeze(0), 1)
+
+        return image, one_hot_annotation
 
 class K_Fold_Dataset:
-    def __init__(self, image_dir, annotation_dir, k_fold_csv_dir, leave_out_fold):
+    def __init__(self, image_dir, annotation_dir, k_fold_csv_dir, leave_out_fold, num_classes=20):
         self.csv_files = [os.path.join(k_fold_csv_dir, file) for file in os.listdir(k_fold_csv_dir) if file.endswith('.csv')]
         self.k_folds = len(self.csv_files)
         
@@ -481,54 +498,55 @@ class K_Fold_Dataset:
         self.train_dataset = self.TrainDataset(self.train_files, image_dir, annotation_dir)
         self.val_dataset = self.ValDataset(self.val_files, image_dir, annotation_dir)
         
+    def check_for_data_leaks(self):
+        train_files_set = set(file for sublist in self.train_files for file in sublist)
+        val_files_set = set(file for sublist in self.val_files for file in sublist)
+        test_files_set = set(file for sublist in self.test_files for file in sublist)
+
+        # Check for overlaps between sets
+        train_val_overlap = train_files_set & val_files_set
+        train_test_overlap = train_files_set & test_files_set
+        val_test_overlap = val_files_set & test_files_set
+
+        if train_val_overlap:
+            print(f"Data leak between training and validation sets: {train_val_overlap}")
+            sys.exit()
+        if train_test_overlap:
+            print(f"Data leak between training and test sets: {train_test_overlap}")
+            sys.exit()
+        if val_test_overlap:
+            print(f"Data leak between validation and test sets: {val_test_overlap}")
+            sys.exit()
+
+        if not train_val_overlap and not train_test_overlap and not val_test_overlap:
+            print("No data leaks found.")
+        
     class TrainDataset(CustomDataSet):
         def __init__(self, train_files, image_dir, annotation_dir):
             super().__init__(image_dir, annotation_dir)
             self.image_files = [file[0] for file in train_files]
             self.annotation_files = [file[0] for file in train_files]
 
-            self.transform = transforms.Compose([
-                transforms.RandomResizedCrop(224),  # Random Cropping
-                transforms.RandomAffine(0, translate=(0.1, 0.1)),  # Random Shifting
-                transforms.ToTensor(), # converte to Tensor
-                transforms.Normalize(mean=self.mean, std=self.std),
-            ])
+            # self.transform = transforms.Compose([
+            #     transforms.RandomResizedCrop(224),  # Random Cropping
+            #     transforms.RandomAffine(0, translate=(0.1, 0.1)),  # Random Shifting
+            #     transforms.ToTensor(), # converte to Tensor
+            #     #transforms.Normalize(mean=self.mean, std=self.std),
+            # ])
 
-        def __getitem__(self, index):
-            img_name = os.path.join(self.image_dir, self.image_files[index])
-            annotation_name = os.path.join(self.annotation_dir, self.annotation_files[index])
+        # def __getitem__(self, index):
+        #     img_name = os.path.join(self.image_dir, self.image_files[index])
+        #     annotation_name = os.path.join(self.annotation_dir, self.annotation_files[index])
 
-            image = Image.open(img_name).convert("RGB")
-            annotation = Image.open(annotation_name).convert("L")
+        #     image = Image.open(img_name).convert("RGB")
+        #     annotation = Image.open(annotation_name).convert("L")
 
-            # Apply transformations
-            image = self.transform(image)
-            annotation = self.transform(annotation)
+        #     # Apply transformations
+        #     image = self.transform(image)
+        #     annotation = self.transform(annotation)
 
-            return image, annotation
+        #     return image, annotation
         
-        def check_for_data_leaks(self):
-            train_files_set = set(self.train_files)
-            val_files_set = set(self.val_files)
-            test_files_set = set(self.test_files)
-
-            # Check for overlaps between sets
-            train_val_overlap = train_files_set & val_files_set
-            train_test_overlap = train_files_set & test_files_set
-            val_test_overlap = val_files_set & test_files_set
-
-            if train_val_overlap:
-                print(f"Data leak between training and validation sets: {train_val_overlap}")
-                sys.exit()
-            if train_test_overlap:
-                print(f"Data leak between training and test sets: {train_test_overlap}")
-                sys.exit()
-            if val_test_overlap:
-                print(f"Data leak between validation and test sets: {val_test_overlap}")
-                sys.exit()
-
-            if not train_val_overlap and not train_test_overlap and not val_test_overlap:
-                print("No data leaks found.")
             
     class ValDataset(CustomDataSet):
         def __init__(self, val_files, image_dir, annotation_dir):

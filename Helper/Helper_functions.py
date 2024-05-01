@@ -8,6 +8,7 @@ from cityscapesscripts.helpers.labels import labels
 from PIL import Image
 import torch
 import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
 import seaborn as sns
 import pandas as pd
 from sklearn.model_selection import StratifiedKFold
@@ -459,4 +460,42 @@ def create_ground_truth(in_path, out_path):
         # if i > 10:
         #     break
     
+def visualize_image_and_annotation(image, annotation):
+    # Convert tensors to numpy arrays and transpose dimensions
+    image = image.numpy().transpose((1, 2, 0))
+    annotation = annotation.squeeze()  # remove the channel dimension
+
+    # Create a figure with two subplots
+    fig, axes = plt.subplots(1, 2)
+
+    # Display the image and annotation
+    axes[0].imshow(image)
+    axes[0].set_title('Image')
+    axes[1].imshow(annotation, cmap='tab20')
+    axes[1].set_title('Annotation')
+
+    # Remove the x and y ticks
+    for ax in axes:
+        ax.set_xticks([])
+        ax.set_yticks([])
+
+    plt.savefig('Daten2/visualize_image_and_annotation.png')
     
+    
+def check_duplicates_in_csv(csv_folder_path):
+    csv_files = [f for f in os.listdir(csv_folder_path) if f.endswith('.csv')]
+    
+    dataframe = [pd.read_csv(os.path.join(csv_folder_path, csv_file)) for csv_file in csv_files]
+    
+    duplicates = set()
+    
+    for i in range(len(dataframe)):
+        for j in range(i + 1, len(dataframe)):
+            # Find the duplicate entries between the two dataframes
+            duplicate_entries = dataframe[i].merge(dataframe[j], how='inner')
+
+            # Add the duplicate entries to the set
+            duplicates.update(duplicate_entries.values.tolist())
+
+    # Return the duplicate entries
+    return duplicates
