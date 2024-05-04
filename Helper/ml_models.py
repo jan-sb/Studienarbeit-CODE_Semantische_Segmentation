@@ -18,6 +18,7 @@ import torch.nn.functional as F
 from torch.utils.tensorboard.writer import SummaryWriter
 import datetime 
 import random
+from tqdm import tqdm
 
 
 class Model:
@@ -159,7 +160,7 @@ class TrainedModel(Model):
             (0, 0, 0), #ID__19, unlabeled   #gets relabeled in annotation call, call and groundtruth need adjustments
         ]
         self.num_classes = len(self.city_label_color_map)
-        self.learning_rate = 1*10**(-5)
+        self.step = 0
         
         
         
@@ -178,13 +179,14 @@ class TrainedModel(Model):
         ])
 
         self.prepare_model_training()
+        self.val_loss = 0
+        self.old_val_loss = self.val_loss
 
         # Make Folder for the Trained Weights
         self.folder_path = folder_path
         self.weights_name = weights_name
         self.model_folder_path = os.path.join(self.folder_path, self.weights_name)
 
-        #self.model[4] = nn.Conv2d(256, self.num_classes, kernel_size=(1, 1), stride=(1, 1))
 
         # Loading the Model
         path_to_latest = self.model_folder_path+ f'/{self.weights_name}_latest_{self.model_name}.pth'
@@ -195,7 +197,8 @@ class TrainedModel(Model):
                 self.model.load_state_dict(checkpoint['model_state_dict'])
                 self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
                 self.epoch = checkpoint['epoch']
-                self.loss = checkpoint['loss']
+                self.val_loss = checkpoint['val_loss']
+                self.step = checkpoint['step']
             except:
                 print(f'Error loading Model with Epoch latest in Class TrainedModel')
                 sys.exit()
@@ -205,7 +208,8 @@ class TrainedModel(Model):
                 self.model.load_state_dict(checkpoint['model_state_dict'])
                 self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
                 self.epoch = checkpoint['epoch']
-                self.loss = checkpoint['loss']
+                self.val_loss = checkpoint['val_loss']
+                self.step = checkpoint['step']
             except:
                 print(f'Error loading Model with Epoch {start_epoch} in Class TrainedModel')
                 sys.exit()
@@ -216,28 +220,34 @@ class TrainedModel(Model):
             print(f'Latest Epoch Save doesnt exist or Epoch Number Save doesnt exist, initialising new Save')
             try:
                 self.prepare_model_training()
-                self.loss = 0
-                self.save_model()
+                self.val_loss = 0
+                self.save_model(file_management=False)
                 #latest_file_path = self.model_folder_path + f'_latest_{self.model_name}.pth'
                 checkpoint = torch.load(path_to_latest)
                 self.model.load_state_dict(checkpoint['model_state_dict'])
                 self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
                 self.epoch = checkpoint['epoch']
-                self.loss = checkpoint['loss']
+                self.val_loss = checkpoint['val_loss']
+                self.step = checkpoint['step']
                 print(f'Successfully loaded Model')
             except:
                 print(f'Failed to initialise new model')
                 sys.exit()
                 
         current_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-        log_dir = f'Own_Weights/{weights_name}/runs/{current_time}'
+        log_dir = f'{folder_path}/{weights_name}/runs/{current_time}'
         self.writer = SummaryWriter(log_dir=log_dir)
 
+        self.old_val_loss = self.val_loss
         self.model.eval()
         
     def inference(self, image):
-        tensor = self.image_preprocess(image)
-        output = self.model(tensor)['out'].to(self.device)
+        self.model.eval()
+        with torch.no_grad():
+            #tensor = self.image_preprocess(image)
+            image = image.to(self.device)
+            image = image.unsqueeze(0) 
+            output = self.model(image)['out'].to(self.device)
         return output
 
     def own_model_inference_live_no_grad(self, image):
@@ -283,27 +293,28 @@ class TrainedModel(Model):
             'epoch': self.epoch,
             'model_state_dict': self.model.state_dict(),
             'optimizer_state_dict': self.optimizer.state_dict(),
-            'loss': self.loss,
-        }, weights_name_current)
-        torch.save({
-            'epoch': self.epoch,
-            'model_state_dict': self.model.state_dict(),
-            'optimizer_state_dict': self.optimizer.state_dict(),
-            'loss': self.loss,
+            'val_loss': self.val_loss,
+            'step': self.step,
         }, weights_name_latest)
 
         # Delete saved models from last five epochs, except milestone epochs
-        for i in range(self.epoch - 5, 0):
-            if i % 5 != 0 and self.epoch >= 10 and file_management == True:  # Check if the epoch is not a milestone epoch
-                old_filepath = os.path.join(self.folder_path, f'{self.weights_name}_epoch-{i}_{self.model_name}.pth')
-                if os.path.exists(old_filepath):
-                    os.remove(old_filepath)
-            else:
-                break
-
+        if (self.val_loss < self.old_val_loss) and (file_management == True):
+            for file in os.listdir(self.model_folder_path):
+                if file.endswith('.pth') and file != f'{self.weights_name}_latest_{self.model_name}.pth':
+                    os.remove(os.path.join(self.model_folder_path, file))
+                    print(f'Removed {file}')
+            torch.save({
+                'epoch': self.epoch,
+                'model_state_dict': self.model.state_dict(),
+                'optimizer_state_dict': self.optimizer.state_dict(),
+                'val_loss': self.val_loss,
+                'step': self.step,
+            }, weights_name_current)
+            
+        self.old_val_loss = self.val_loss
         print(f'Saved Model')
 
-    def train(self, epochs, l2_lambda=0.01):
+    def train(self, epochs):
         self.model.train()
         torch.cuda.empty_cache()
         for epoch in range(epochs):
@@ -325,8 +336,8 @@ class TrainedModel(Model):
                 
                 # For Tensorboard
                 
-                step = epoch * len(self.training_loader) + 1
-                self.writer.add_scalars('Loss', {'Train': loss.item()}, step)
+                self.step = epoch * len(self.training_loader) + 1
+                self.writer.add_scalars('Loss', {'Train': loss.item()}, self.step)
                 
             epoch_loss = run_loss / len(self.training_loader)
             print(f'Epoch {epoch + 1} von {epochs}    |   Loss: {epoch_loss}')
@@ -345,9 +356,28 @@ class TrainedModel(Model):
                 loss = self.criterion(outputs, labels)
                 total_loss += loss.item()
             avg_loss = total_loss / len(val_loader)
+            self.val_loss = avg_loss
             print(f'Validation Loss: {avg_loss}')
             self.writer.add_scalars('Loss', {'Validation': avg_loss}, self.epoch)
             return avg_loss
+    
+    def calculate_miou(self, val_loader):
+        self.model.eval()
+        with torch.no_grad():
+            intersection = 0
+            union = 0
+            for images, labels in val_loader:
+                images = images.to(self.device)
+                labels = labels.to(self.device)
+                outputs = self.model(images)['out']
+                _, predicted = torch.max(outputs, 1)
+                intersection += (predicted & labels).float().sum((1, 2))  # Intersection
+                union += (predicted | labels).float().sum((1, 2))  # Union
+            iou = (intersection + 1e-6) / (union + 1e-6)  # Add small epsilon to avoid division by zero
+            miou = iou.mean().item()
+            print(f'Mean IoU: {miou}')
+            self.writer.add_scalars('mIoU', {'Validation': miou}, self.epoch)
+            return miou
         
         
     def auto_train(self, epochs, l2_lambda=0.001, deviation_threshold=0.1, max_deviations=5):
@@ -382,10 +412,10 @@ class TrainedModel(Model):
             epoch_loss = run_loss / len(self.training_loader)
             print(f'Epoch {epoch + 1} von {epochs}    |   Loss: {epoch_loss}')
             # Validate the model after each epoch
-            val_loss = self.validate(self.val_loader)
-            self.writer.add_scalars('Epoch and Validation Loss', {'Epoch Loss': epoch_loss, 'Validation Loss': val_loss}, self.epoch)
+            self.val_loss = self.validate(self.val_loader)
+            self.writer.add_scalars('Epoch and Validation Loss', {'Epoch Loss': epoch_loss, 'Validation Loss': self.val_loss}, self.epoch)
             
-            if val_loss > epoch_loss + deviation_threshold:
+            if self.val_loss > epoch_loss + deviation_threshold:
                 print(f'Validation loss deviated too much from training loss in epoch {self.epoch + 1}')
                 deviations += 1
                 if deviations > max_deviations:
@@ -398,7 +428,7 @@ class TrainedModel(Model):
         #self.writer.close()
         
         
-    def inference_tensorboard(self, image):
+    def inference_tensorboard(self, image): # does not work as intended yet
         self.model.eval()
         with torch.no_grad():
             tensor = self.image_preprocess(image)
