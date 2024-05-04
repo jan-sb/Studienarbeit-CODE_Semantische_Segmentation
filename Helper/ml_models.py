@@ -11,11 +11,13 @@ from torchvision.models.segmentation import *
 from torchvision.utils import draw_segmentation_masks, save_image
 from torch.utils.data import DataLoader, Dataset
 from torchvision.transforms._presets import SemanticSegmentation
+from torchvision.transforms import functional as TF
 from functools import partial
 from PIL import Image
 import torch.nn.functional as F
 from torch.utils.tensorboard.writer import SummaryWriter
 import datetime 
+import random
 
 
 class Model:
@@ -133,9 +135,8 @@ class TorchModel(Model):
 
 class TrainedModel(Model):
 
-    def __init__(self, model_name, width, height, weights_name, start_epoch='latest', pretrained=True):
+    def __init__(self, model_name, width, height, weights_name, folder_path = 'Own_Weights', start_epoch='latest', pretrained=True):
         self.city_label_color_map = [
-            (0, 0, 0), #ID__255, unlabeled
             (128, 64, 128), #ID__0, road
             (244, 35, 232), #ID__1, sidewalk
             (70, 70, 70), #ID__2, building
@@ -155,6 +156,7 @@ class TrainedModel(Model):
             (0, 80, 100), #ID__16, train
             (0, 0, 230), #ID__17, motorcycle
             (119, 11, 32), #ID__18, bicycle
+            (0, 0, 0), #ID__19, unlabeled   #gets relabeled in annotation call, call and groundtruth need adjustments
         ]
         self.num_classes = len(self.city_label_color_map)
         self.learning_rate = 1*10**(-5)
@@ -178,7 +180,7 @@ class TrainedModel(Model):
         self.prepare_model_training()
 
         # Make Folder for the Trained Weights
-        self.folder_path = 'Own_Weights'
+        self.folder_path = folder_path
         self.weights_name = weights_name
         self.model_folder_path = os.path.join(self.folder_path, self.weights_name)
 
@@ -432,6 +434,15 @@ class CustomDataSet(Dataset):
         self.std = (0.1904, 0.1932, 0.1905)
         self.image_dir = image_dir
         self.annotation_dir = annotation_dir
+        
+        torch.manual_seed(17)
+        self.augmentation = transforms.Compose([
+            transforms.RandomResizedCrop(224),  # Random Cropping
+            transforms.RandomAffine(0, translate=(0.1, 0.1)),  # Random Shifting
+            transforms.RandomHorizontalFlip(),  # Random Flipping
+            transforms.RandomRotation(10),  # Random Rotation
+        ])
+        
         self.preprocess = transforms.Compose([
             transforms.Resize((520,520)),
             transforms.ToTensor(),
@@ -449,20 +460,24 @@ class CustomDataSet(Dataset):
         return len(self.image_files)
     
     def __getitem__(self, idx):
+        
         img_name = os.path.join(self.image_dir, self.image_files[idx])
         annotation_name = os.path.join(self.annotation_dir, self.annotation_files[idx])
 
         image = Image.open(img_name).convert("RGB")            
         annotation = Image.open(annotation_name).convert("L") 
-
+        
+        #image = self.augmentation(image)
+        #annotation = self.augmentation(annotation)  
+        
+        
         if self.preprocess:
             image = self.preprocess(image)
             annotation = self.preprocess_annotation(annotation)
             annotation = np.array(annotation)
             annotation = torch.from_numpy(annotation).long()
 
-        # Map 255 to a valid index, if necessary
-        
+        # Map 255 to a valid index, if necessary        
         ## ANPASSEN VON GROUND TRUTH BILDERN
         annotation[annotation == 255] = 19  # replace with the actual index for the background class
 
@@ -470,6 +485,8 @@ class CustomDataSet(Dataset):
         one_hot_annotation.scatter_(0, annotation.unsqueeze(0), 1)
 
         return image, one_hot_annotation
+
+
 
 class K_Fold_Dataset:
     def __init__(self, image_dir, annotation_dir, k_fold_csv_dir, leave_out_fold, num_classes=20):
