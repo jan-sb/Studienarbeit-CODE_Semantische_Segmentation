@@ -116,7 +116,7 @@ reporter = CLIReporter(metric_columns=["loss", "miou", "training_iteration"])
 analysis = tune.run(
                     train_hyper,
                     config=config,
-                    resources_per_trial={"cpu": 1, "gpu": 1},
+                    resources_per_trial={"cpu": 6, "gpu": 1},
                     scheduler=scheduler,
                     progress_reporter=reporter)
 
@@ -127,5 +127,5 @@ best_trial = analysis.get_best_trial("loss")
 best_params = best_trial.config
 
 # Save the parameters to a JSON file
-with open('/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Daten/best_params.json', 'w') as f:
+with open(f'/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Daten/best_params_{model}.json', 'w') as f:
     json.dump(best_params, f)

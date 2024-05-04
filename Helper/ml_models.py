@@ -350,6 +350,7 @@ class TrainedModel(Model):
         with torch.no_grad():
             for images, labels in val_loader:
                 images = images.to(self.device)
+                images = images.unsqueeze(0).to(self.device)
                 labels = labels.to(self.device)
                 outputs = self.model(images)['out']
                 _, labels = labels.max(dim=1)
