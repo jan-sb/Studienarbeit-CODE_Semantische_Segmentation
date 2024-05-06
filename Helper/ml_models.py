@@ -161,6 +161,7 @@ class TrainedModel(Model):
         ]
         self.num_classes = len(self.city_label_color_map)
         self.step = 0
+        self.learning_rate = 1*10**(-5)
         
         
         

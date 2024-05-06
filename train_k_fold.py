@@ -38,7 +38,7 @@ for model in deeplv3:
                                             dataset_val=k_fold_dataset.val_dataset,
                                             batch_size=4, 
                                             shuffle=True, 
-                                            learning_rate=1*10**(-8), 
+                                            learning_rate=1*10**(-14), 
                                             momentum=0.9,
                                             weight_decay=0.001)
     
@@ -49,7 +49,7 @@ for model in deeplv3:
         # image, annotation = k_fold_dataset.train_dataset[0]
         
         # visualize_image_and_annotation(image, annotation)
-        sys.exit()
+        #sys.exit()
             
             
         #trained_model.writer.flush()
