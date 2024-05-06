@@ -281,7 +281,9 @@ class TrainedModel(Model):
             print(f'Validation Dataset prepared')
 
         self.criterion = nn.CrossEntropyLoss()
-        self.optimizer = optim.SGD(self.model.parameters(), lr=learning_rate, momentum=momentum, weight_decay=weight_decay)
+        #self.optimizer = optim.SGD(self.model.parameters(), lr=learning_rate, momentum=momentum, weight_decay=weight_decay)
+        self.optimizer = optim.Adam(self.model.parameters(), lr=learning_rate, weight_decay=weight_decay)
+        #self.optimizer = torch.optim.Adadelta(self.model.parameters())
 
     def save_model(self, file_management=False):
         if not os.path.exists(self.model_folder_path):
@@ -389,12 +391,14 @@ class TrainedModel(Model):
             self.epoch += 1
             print(f'Epoch {epoch + 1} von {epochs}')
             counter = 0
-            for images, labels in self.training_loader:
+            for images, labels in tqdm(self.training_loader):
                 counter +=1
                 self.optimizer.zero_grad()
-                print(f'Image {counter} von {len(self.training_loader)}')
+                #print(f'Image {counter} von {len(self.training_loader)}')
                 images = images.to(self.device)
                 labels = labels.to(self.device)
+                
+                #print(f'Labels Shape: {labels.shape} and IMage Shape: {images.shape}')
                 
                 outputs = self.model(images)['out']                    
                 _, labels = labels.max(dim=1)
@@ -403,6 +407,8 @@ class TrainedModel(Model):
                 loss.backward()
                 self.optimizer.step()
                 run_loss += loss.item()
+                
+                #print(f'Loss: {loss.item()}')
                 
                 # For Tensorboard
                 

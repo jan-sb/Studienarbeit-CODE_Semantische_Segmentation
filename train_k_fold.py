@@ -25,6 +25,7 @@ runs = total_eppochs // epoch_steps
 
 for model in deeplv3:
     for i in range(5):
+        i = 0
         create_model_directory(model, i)
         trained_model = TrainedModel(model, 2048, 1024, f'{model}_k_fold_{i}', start_epoch='latest')
         k_fold_dataset = K_Fold_Dataset(image_dir='CityscapesDaten/images',
@@ -36,11 +37,11 @@ for model in deeplv3:
         
         trained_model.prepare_model_training(dataset_train=k_fold_dataset.train_dataset,
                                             dataset_val=k_fold_dataset.val_dataset,
-                                            batch_size=4, 
+                                            batch_size=2, 
                                             shuffle=True, 
-                                            learning_rate=1*10**(-14), 
+                                            learning_rate=1*10**(-7), 
                                             momentum=0.9,
-                                            weight_decay=0.001)
+                                            weight_decay=0.00001)
     
         
         trained_model.auto_train(epochs=total_eppochs, max_deviations=5)
@@ -49,8 +50,8 @@ for model in deeplv3:
         # image, annotation = k_fold_dataset.train_dataset[0]
         
         # visualize_image_and_annotation(image, annotation)
-        #sys.exit()
-            
+        sys.exit()
+             
             
         #trained_model.writer.flush()
         #trained_model.writer.close()
