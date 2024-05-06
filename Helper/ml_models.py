@@ -350,7 +350,6 @@ class TrainedModel(Model):
         with torch.no_grad():
             for images, labels in val_loader:
                 images = images.to(self.device)
-                images = images.unsqueeze(0).to(self.device)
                 labels = labels.to(self.device)
                 outputs = self.model(images)['out']
                 _, labels = labels.max(dim=1)
@@ -391,6 +390,7 @@ class TrainedModel(Model):
             counter = 0
             for images, labels in self.training_loader:
                 counter +=1
+                self.optimizer.zero_grad()
                 print(f'Image {counter} von {len(self.training_loader)}')
                 images = images.to(self.device)
                 labels = labels.to(self.device)
@@ -400,9 +400,7 @@ class TrainedModel(Model):
                 
                 loss = self.criterion(outputs, labels)            
                 loss.backward()
-                
                 self.optimizer.step()
-                self.optimizer.zero_grad()
                 run_loss += loss.item()
                 
                 # For Tensorboard

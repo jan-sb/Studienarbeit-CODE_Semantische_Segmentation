@@ -38,9 +38,9 @@ for model in deeplv3:
                                             dataset_val=k_fold_dataset.val_dataset,
                                             batch_size=4, 
                                             shuffle=True, 
-                                            learning_rate=1*10**(-12), 
+                                            learning_rate=1*10**(-8), 
                                             momentum=0.9,
-                                            weight_decay=0.00001)
+                                            weight_decay=0.001)
     
         
         trained_model.auto_train(epochs=total_eppochs, max_deviations=5)
