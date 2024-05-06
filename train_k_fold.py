@@ -19,7 +19,7 @@ all_models = ['deeplabv3_resnet50', 'deeplabv3_resnet101', 'deeplabv3_mobilenet_
 #         gc.collect()
 # # sys.exit()
 
-total_eppochs = 10
+total_eppochs = 15
 epoch_steps = 1
 runs = total_eppochs // epoch_steps
 
@@ -38,13 +38,13 @@ for model in deeplv3:
                                             dataset_val=k_fold_dataset.val_dataset,
                                             batch_size=4, 
                                             shuffle=True, 
-                                            learning_rate=1*10**(-10), 
-                                            momentum=0.7,
+                                            learning_rate=1*10**(-12), 
+                                            momentum=0.9,
                                             weight_decay=0.00001)
     
         
-        # trained_model.auto_train(epochs=total_eppochs, max_deviations=5)
-        trained_model.train(1)
+        trained_model.auto_train(epochs=total_eppochs, max_deviations=5)
+        #trained_model.train(1)
         
         # image, annotation = k_fold_dataset.train_dataset[0]
         
