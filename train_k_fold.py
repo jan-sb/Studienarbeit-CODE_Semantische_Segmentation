@@ -43,8 +43,8 @@ for model in deeplv3:
                                             weight_decay=0.00001)
     
         
-        # trained_model.auto_train(epochs=total_eppochs, max_deviations=5)
-        trained_model.train(1)
+        trained_model.auto_train(epochs=total_eppochs, max_deviations=5)
+        #trained_model.train(1)
         
         # image, annotation = k_fold_dataset.train_dataset[0]
         
