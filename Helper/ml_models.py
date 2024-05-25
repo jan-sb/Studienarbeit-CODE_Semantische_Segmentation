@@ -136,7 +136,7 @@ class TorchModel(Model):
 
 class TrainedModel(Model):
 
-    def __init__(self, model_name, width, height, weights_name, folder_path = 'Own_Weights', start_epoch='latest', pretrained=True):
+    def __init__(self, model_name, width, height, weights_name, folder_path = 'Own_Weights', start_epoch='latest', pretrained=True, writer = None):
         self.city_label_color_map = [
             (128, 64, 128), #ID__0, road
             (244, 35, 232), #ID__1, sidewalk
@@ -162,7 +162,8 @@ class TrainedModel(Model):
         self.num_classes = len(self.city_label_color_map)
         self.step = 0
         self.learning_rate = 1*10**(-5)
-        
+        if writer is not None: 
+            self.writer = writer
         
         
         
@@ -237,7 +238,6 @@ class TrainedModel(Model):
                 
         current_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
         log_dir = f'{folder_path}/{weights_name}/runs/{current_time}'
-        self.writer = SummaryWriter(log_dir=log_dir)
 
         self.old_val_loss = self.val_loss
         self.model.eval()
@@ -271,13 +271,23 @@ class TrainedModel(Model):
 
 
 
-    def prepare_model_training(self, dataset_train=None, dataset_val= None, batch_size=3, shuffle=True, learning_rate= 1*10**(-5), momentum=0.9, weight_decay=0.001):
+    def prepare_model_training(self, dataset_train=None, dataset_val= None, batch_size=3, shuffle=True, learning_rate= 1*10**(-5), momentum=0.9, weight_decay=0.001, num_workers = 0, pin_memory = False):
         if dataset_train is not None:
-            self.training_loader = DataLoader(dataset_train, batch_size=batch_size, shuffle=shuffle)
+            self.training_loader = DataLoader(dataset_train,
+                                              batch_size=batch_size,
+                                              shuffle=shuffle, 
+                                              num_workers=num_workers,
+                                              pin_memory=pin_memory,
+                                            )
             print(f'Training Dataset prepared')
         
         if dataset_val is not None: 
-            self.val_loader = DataLoader(dataset_val, batch_size=1, shuffle=False)
+            self.val_loader = DataLoader(dataset_val,
+                                         batch_size=1,
+                                         shuffle=False,
+                                         num_workers=num_workers,
+                                         pin_memory=pin_memory,
+                                        )
             print(f'Validation Dataset prepared')
 
         self.criterion = nn.CrossEntropyLoss()
@@ -324,7 +334,7 @@ class TrainedModel(Model):
             run_loss = 0.0
             self.epoch += 1
             for images, labels in self.training_loader:
-                self.optimizer.zero_grad()
+                self.optimizer.zero_grad(set_to_none=True)
                 images = images.to(self.device)
                 labels = labels.to(self.device)
                 
@@ -393,7 +403,7 @@ class TrainedModel(Model):
             counter = 0
             for images, labels in tqdm(self.training_loader):
                 counter +=1
-                self.optimizer.zero_grad()
+                self.optimizer.zero_grad(set_to_none=True)
                 #print(f'Image {counter} von {len(self.training_loader)}')
                 images = images.to(self.device)
                 labels = labels.to(self.device)
@@ -406,16 +416,14 @@ class TrainedModel(Model):
                 loss = self.criterion(outputs, labels)            
                 loss.backward()
                 self.optimizer.step()
-                run_loss += loss.item()
+                run_loss += loss
                 
-                #print(f'Loss: {loss.item()}')
+                #print(f'Loss: {loss.item()}')                
+                # For Tensorboard                
+                #step = epoch * len(self.training_loader) + counter
+                #self.writer.add_scalar('Training Loss', loss.item(), step)
                 
-                # For Tensorboard
-                
-                step = epoch * len(self.training_loader) + counter
-                self.writer.add_scalar('Training Loss', loss.item(), step)
-                
-            epoch_loss = run_loss / len(self.training_loader)
+            epoch_loss = run_loss.item() / len(self.training_loader)
             print(f'Epoch {epoch + 1} von {epochs}    |   Loss: {epoch_loss}')
             # Validate the model after each epoch
             self.val_loss = self.validate(self.val_loader)

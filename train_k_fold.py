@@ -2,6 +2,7 @@ from Helper.ml_models import *
 from Helper.Helper_functions import * 
 from torchvision.models.segmentation import *
 import gc, sys
+from torch.utils.tensorboard import SummaryWriter
 
 deeplv3 = ['deeplabv3_resnet101', 'deeplabv3_mobilenet_v3_large', 'deeplabv3_resnet50']
 fcn = ['fcn_resnet50', 'fcn_resnet101']
@@ -19,22 +20,26 @@ all_models = ['deeplabv3_resnet50', 'deeplabv3_resnet101', 'deeplabv3_mobilenet_
 #         gc.collect()
 # # sys.exit()
 
-total_eppochs = 15
+total_eppochs = 60
 epoch_steps = 1
 runs = total_eppochs // epoch_steps
+foldes = 5 # DO NOT CHANGE THIS VALUE!!!
 
 
 
 for model in all_models:
-    try: 
-        for i in range(5):
-            i = 0
-            create_model_directory(model, i)
-            trained_model = TrainedModel(model, 2048, 1024, f'{model}_k_fold_{i}', start_epoch='latest')
+    for j in range(foldes):
+        create_model_directory(model, i)
+        writer = SummaryWriter(f'{model}_k_fold_{j}/logs')
+        
+        try: 
+            trained_model = TrainedModel(model, 2048, 1024, f'{model}_k_fold_{j}', start_epoch='latest')
             k_fold_dataset = K_Fold_Dataset(image_dir='CityscapesDaten/images',
                                             annotation_dir='CityscapesDaten/semantic',
                                             k_fold_csv_dir='Daten/CityscapesDaten',
-                                            leave_out_fold=i)        
+                                            leave_out_fold=j, 
+                                            writer=writer,
+                                            )        
             
             k_fold_dataset.check_for_data_leaks()               
             
@@ -44,21 +49,20 @@ for model in all_models:
                                                 shuffle=True, 
                                                 learning_rate=1*10**(-7), 
                                                 momentum=0.9,
-                                                weight_decay=0.00001)
-        
-            
-            trained_model.auto_train(epochs=total_eppochs, max_deviations=5)
-            #trained_model.train(1)
-            
-            # image, annotation = k_fold_dataset.train_dataset[0]
-            
-            # visualize_image_and_annotation(image, annotation)
-            
+                                                weight_decay=0.00001, 
+                                                num_workers=4, 
+                                                pin_memory=True,
+                                                )
+            for i in range(total_eppochs // epoch_steps):
+                           
+                trained_model.auto_train(epochs=epoch_steps, max_deviations=5)
                 
-            trained_model.writer.flush()
-            trained_model.writer.close()
-    except Exception as e:
-        error_message = str(e)
-        with open('error.json', 'w') as f:
-            json.dump({'error': error_message}, f)
-        os.system('sudo shutdown now -h')
+        except Exception as e:
+            error_message = str(e)
+            with open('error.json', 'w') as f:
+                json.dump({'error': error_message}, f)
+            #os.system('sudo shutdown now -h')
+             
+        trained_model.writer.flush()
+        trained_model.writer.close()
+        
