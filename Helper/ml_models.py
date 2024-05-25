@@ -19,6 +19,9 @@ from torch.utils.tensorboard.writer import SummaryWriter
 import datetime 
 import random
 from tqdm import tqdm
+from albumentations import Compose, HorizontalFlip, VerticalFlip, Rotate, ShiftScaleRotate, RandomCrop, Resize, Normalize
+from albumentations.pytorch import ToTensorV2
+
 
 
 class Model:
@@ -479,58 +482,45 @@ class CustomDataSet(Dataset):
         self.image_dir = image_dir
         self.annotation_dir = annotation_dir
         
-        torch.manual_seed(17)
-        self.augmentation = transforms.Compose([
-            transforms.RandomResizedCrop(224),  # Random Cropping
-            transforms.RandomAffine(0, translate=(0.1, 0.1)),  # Random Shifting
-            transforms.RandomHorizontalFlip(),  # Random Flipping
-            transforms.RandomRotation(10),  # Random Rotation
+        self.transform = Compose([
+            HorizontalFlip(p=0.5),
+            VerticalFlip(p=0.5),
+            Rotate(limit=90, p=0.5),
+            ShiftScaleRotate(shift_limit=0.0625, scale_limit=0.0, rotate_limit=0, p=0.5),
+            RandomCrop(height=600, width=600, p=0.5),
+            Resize(520, 520),  # Resize the image and mask
+            Normalize(mean=self.mean, std=self.std),  # Normalize the image
+            ToTensorV2()  # Convert the image and mask to PyTorch tensors
         ])
         
-        self.preprocess = transforms.Compose([
-            transforms.Resize((520,520)),
-            transforms.ToTensor(),
-            transforms.Normalize(mean=self.mean, std=self.std),
-        ])
-        self.preprocess_annotation = transforms.Compose([
-            transforms.Resize((520,520), Image.NEAREST),
-        ])
-        self.counter = 0
-
         self.image_files = os.listdir(image_dir)
         self.annotation_files = os.listdir(annotation_dir)
 
     def __len__(self):
         return len(self.image_files)
     
-    def __getitem__(self, idx):
-        
+    def __getitem__(self, idx):        
         img_name = os.path.join(self.image_dir, self.image_files[idx])
         annotation_name = os.path.join(self.annotation_dir, self.annotation_files[idx])
 
         image = Image.open(img_name).convert("RGB")            
-        annotation = Image.open(annotation_name).convert("L") 
-        
-        #image = self.augmentation(image)
-        #annotation = self.augmentation(annotation)  
-        
-        
-        if self.preprocess:
-            image = self.preprocess(image)
-            annotation = self.preprocess_annotation(annotation)
-            annotation = np.array(annotation)
-            annotation = torch.from_numpy(annotation).long()
+        annotation = Image.open(annotation_name).convert("L")     
 
-        # Map 255 to a valid index, if necessary        
-        ## ANPASSEN VON GROUND TRUTH BILDERN
-        annotation[annotation == 255] = 19  # replace with the actual index for the background class
+        if self.transform:
+            augmented = self.transform(image=np.array(image), mask=np.array(annotation))
+            image = augmented['image']
+            annotation = augmented['mask']
+                
+       # Convert annotation to tensor and add an extra dimension
+        annotation = torch.from_numpy(np.array(annotation)).long().unsqueeze(0)
 
-        one_hot_annotation = torch.zeros(20, *annotation.shape)
-        one_hot_annotation.scatter_(0, annotation.unsqueeze(0), 1)
+        # Create a tensor for one-hot encoding
+        one_hot_annotation = torch.zeros(20, *annotation.shape[1:])
+
+        # Perform one-hot encoding
+        one_hot_annotation.scatter_(0, annotation.long(), 1)
 
         return image, one_hot_annotation
-
-
 
 class K_Fold_Dataset:
     def __init__(self, image_dir, annotation_dir, k_fold_csv_dir, leave_out_fold, num_classes=20):

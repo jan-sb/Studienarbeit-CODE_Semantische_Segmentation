@@ -29,16 +29,23 @@ foldes = 5 # DO NOT CHANGE THIS VALUE!!!
 
 for model in all_models:
     for j in range(foldes):
-        create_model_directory(model, i)
+        create_model_directory('K_Fold_Run', model, j)
         writer = SummaryWriter(f'{model}_k_fold_{j}/logs')
         
         try: 
-            trained_model = TrainedModel(model, 2048, 1024, f'{model}_k_fold_{j}', start_epoch='latest')
+            trained_model = TrainedModel(model,
+                                         2048,
+                                         1024,
+                                         folder_path='K_Fold_Run',
+                                         weights_name=f'{model}_k_fold_{j}',
+                                         start_epoch='latest', 
+                                         writer=writer, 
+                                         )
+            
             k_fold_dataset = K_Fold_Dataset(image_dir='CityscapesDaten/images',
                                             annotation_dir='CityscapesDaten/semantic',
                                             k_fold_csv_dir='Daten/CityscapesDaten',
                                             leave_out_fold=j, 
-                                            writer=writer,
                                             )        
             
             k_fold_dataset.check_for_data_leaks()               

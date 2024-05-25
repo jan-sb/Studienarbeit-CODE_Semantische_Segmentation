@@ -1,1 +1,1 @@
-{"error": "name 'pin_memmory' is not defined"}
+{"error": "__init__() missing 1 required positional argument: 'weights_name'"}

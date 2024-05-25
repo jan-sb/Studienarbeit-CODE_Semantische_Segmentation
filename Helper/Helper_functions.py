@@ -413,8 +413,8 @@ def calculate_multi_normalization_values(paths, batch_size=50):
 
 import os
 
-def create_model_directory(model, i):
-    dir_name = f'Own_Weights/{model}_k_fold_{i}'
+def create_model_directory(path, model, i):
+    dir_name = f'{path}/{model}_k_fold_{i}'
     os.makedirs(dir_name, exist_ok=True)
     
  
@@ -457,9 +457,33 @@ def create_ground_truth(in_path, out_path):
         # Save the image with the original name
         image.save(os.path.join(out_path, image_file))
         print(f'Processed image {i}/{total}')
-        # if i > 10:
-        #     break
-    
+        
+
+
+def create_ground_truth_V2(in_path, out_path):
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+    # Create a mapping from label ID to trainId
+    id_to_trainId = {label.id: label.trainId for label in labels if label.trainId >= 0}
+    id_to_trainId[255] = 19  # Map the value of 255 to 19
+    id_to_trainId = torch.tensor([id_to_trainId.get(i, -1) for i in range(256)], dtype=torch.long, device=device)
+
+    # Get the list of image files
+    image_files = os.listdir(in_path)
+
+    # Process the images
+    for i, image_file in enumerate(tqdm(image_files, desc="Processing images")):
+        # Load the image
+        image = Image.open(os.path.join(in_path, image_file))
+        # Convert the image to a PyTorch tensor and move it to the device
+        image = torch.from_numpy(np.array(image)).to(device)
+        # Convert the label IDs to trainId
+        image = id_to_trainId[image.long()]
+        # Convert the tensor back to a PIL image
+        image = transforms.ToPILImage()(image.cpu().byte())
+        # Save the image with the original name
+        image.save(os.path.join(out_path, image_file))
+
 def visualize_image_and_annotation(image, annotation):
     # Convert tensors to numpy arrays and transpose dimensions
     image = image.numpy().transpose((1, 2, 0))
