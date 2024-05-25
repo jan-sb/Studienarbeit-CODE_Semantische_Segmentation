@@ -21,6 +21,7 @@ import random
 from tqdm import tqdm
 from albumentations import Compose, HorizontalFlip, VerticalFlip, Rotate, ShiftScaleRotate, RandomCrop, Resize, Normalize
 from albumentations.pytorch import ToTensorV2
+from torchvision.utils import make_grid
 
 
 
@@ -274,7 +275,7 @@ class TrainedModel(Model):
 
 
 
-    def prepare_model_training(self, dataset_train=None, dataset_val= None, batch_size=3, shuffle=True, learning_rate= 1*10**(-5), momentum=0.9, weight_decay=0.001, num_workers = 0, pin_memory = False):
+    def prepare_model_training(self, dataset_train=None, dataset_val= None, dataset_test=None, batch_size=3, shuffle=True, learning_rate= 1*10**(-5), momentum=0.9, weight_decay=0.001, num_workers = 0, pin_memory = False):
         if dataset_train is not None:
             self.training_loader = DataLoader(dataset_train,
                                               batch_size=batch_size,
@@ -292,6 +293,14 @@ class TrainedModel(Model):
                                          pin_memory=pin_memory,
                                         )
             print(f'Validation Dataset prepared')
+        if dataset_test is not None: 
+            self.test_loader = DataLoader(dataset_test,
+                                        batch_size=1,
+                                        shuffle=False,
+                                        num_workers=num_workers,
+                                        pin_memory=pin_memory,
+                                        )
+            print(f'Test Dataset prepared')
 
         self.criterion = nn.CrossEntropyLoss()
         #self.optimizer = optim.SGD(self.model.parameters(), lr=learning_rate, momentum=momentum, weight_decay=weight_decay)
@@ -362,20 +371,24 @@ class TrainedModel(Model):
         
     def validate(self, val_loader):
         total_loss = 0.0
+        correct = 0
+        total = 0
         self.model.eval()
         with torch.no_grad():
             for images, labels in val_loader:
                 images = images.to(self.device)
                 labels = labels.to(self.device)
                 outputs = self.model(images)['out']
-                _, labels = labels.max(dim=1)
+                _, predicted = torch.max(outputs, 1)
+                total += labels.numel()
+                correct += (predicted == labels).sum().item()
                 loss = self.criterion(outputs, labels)
                 total_loss += loss.item()
             avg_loss = total_loss / len(val_loader)
             self.val_loss = avg_loss
+            val_acc = 100*correct / total 
             print(f'Validation Loss: {avg_loss}')
-            self.writer.add_scalars('Loss', {'Validation': avg_loss}, self.epoch)
-            return avg_loss
+            return avg_loss, val_acc 
     
     def calculate_miou(self, val_loader):
         self.model.eval()
@@ -404,6 +417,8 @@ class TrainedModel(Model):
             self.epoch += 1
             print(f'Epoch {epoch + 1} von {epochs}')
             counter = 0
+            correct = 0 
+            total = 0 
             for images, labels in tqdm(self.training_loader):
                 counter +=1
                 self.optimizer.zero_grad(set_to_none=True)
@@ -413,24 +428,25 @@ class TrainedModel(Model):
                 
                 #print(f'Labels Shape: {labels.shape} and IMage Shape: {images.shape}')
                 
-                outputs = self.model(images)['out']                    
-                _, labels = labels.max(dim=1)
-                
+                outputs = self.model(images)['out']   
+                _, predicted = torch.max(outputs.data, 1) 
+                total += labels.numel()
+                #_, labels = labels.max(dim=1) WRONG ?!?!?
+                #print(f'shape of predicted: {predicted.shape} and shape of labels: {labels.shape}, type of labels: {labels.dtype}')
+                correct += (predicted == labels).sum().item()
+            
                 loss = self.criterion(outputs, labels)            
                 loss.backward()
                 self.optimizer.step()
                 run_loss += loss
                 
-                #print(f'Loss: {loss.item()}')                
-                # For Tensorboard                
-                #step = epoch * len(self.training_loader) + counter
-                #self.writer.add_scalar('Training Loss', loss.item(), step)
-                
             epoch_loss = run_loss.item() / len(self.training_loader)
-            print(f'Epoch {epoch + 1} von {epochs}    |   Loss: {epoch_loss}')
+            epoch_acc = 100 * correct / total
+            print(f'Epoch {epoch + 1} von {epochs}    |   Loss: {epoch_loss}    |   Accuracy: {epoch_acc}%')
             # Validate the model after each epoch
-            self.val_loss = self.validate(self.val_loader)
-            self.writer.add_scalars('Epoch and Validation Loss', {'Epoch Loss': epoch_loss, 'Validation Loss': self.val_loss}, self.epoch)
+            val_loss, val_acc = self.validate(self.val_loader)
+            self.writer.add_scalars('Loss', {'Training Loss': epoch_loss, 'Validation Loss': val_loss}, self.epoch)
+            self.writer.add_scalars('Accuracy', {'Training Accuracy': epoch_acc, 'Validation Accuracy': val_acc}, self.epoch)
             
             if self.val_loss > epoch_loss + deviation_threshold:
                 print(f'Validation loss deviated too much from training loss in epoch {self.epoch + 1}')
@@ -441,36 +457,70 @@ class TrainedModel(Model):
             torch.cuda.empty_cache()
             self.save_model()
             
-        #self.writer.flush()
-        #self.writer.close()
-        
-        
-    def inference_tensorboard(self, image): # does not work as intended yet
+    def test(self):
         self.model.eval()
+        total = 0
+        correct = 0
         with torch.no_grad():
-            tensor = self.image_preprocess(image)
-            output = self.model(tensor)['out'].to(self.device)
-            num_classes = output.shape[1]
-            all_masks = output.argmax(1) == torch.arange(num_classes, device=self.device)[:, None, None]
+            for images, labels in self.test_loader:
+                images = images.to(self.device)
+                labels = labels.to(self.device)
+                outputs = self.model(images)['out']
+                _, predicted = torch.max(outputs.data, 1)
+                total += labels.size(0)
+                correct += (predicted == labels).sum().item()
+        print('Test Accuracy: %d %%' % (100 * correct / total))
+        
+        
+    def inference_tensorboard(self, index):
+        self.model.eval()
+        mean = torch.tensor([0.2892, 0.3272, 0.2867]).view(1, 3, 1, 1)
+        std = torch.tensor([0.1904, 0.1932, 0.1905]).view(1, 3, 1, 1)
+        mean = mean.to(self.device)
+        std = std.to(self.device)       
+        with torch.no_grad():
+            images, labels = self.test_loader.dataset[index]  # Get the image and labels at the given index
+            images = images.unsqueeze(0).to(self.device)  # Add a batch dimension and move to device
+            labels = labels.unsqueeze(0).to(self.device)  # Add a batch dimension and move to device
+            outputs = self.model(images)['out']
+            _, predicted = torch.max(outputs.data, 1)
+            num_classes = outputs.shape[1]
+            all_masks = predicted == torch.arange(num_classes, device=self.device)[:, None, None]
+            tensor = (images * std) + mean  # Reverse normalization
             tensor = tensor.to(torch.uint8).squeeze(0)
             res_image = draw_segmentation_masks(
                 tensor,
                 all_masks,
                 colors=self.city_label_color_map,
-                alpha=0.9
+                alpha=0.5
             )
 
-            # Convert the tensor to a PIL Image
+            # Now do the same for the correct labels
+            all_masks = labels == torch.arange(num_classes, device=self.device)[:, None, None]
+            gt_image = draw_segmentation_masks(
+                tensor,
+                all_masks,
+                colors=self.city_label_color_map,
+                alpha=0.5
+            )
+
+            # Convert the tensors to PIL Images
             res_image = transforms.ToPILImage()(res_image)
+            gt_image = transforms.ToPILImage()(gt_image)
 
-            # Convert the image to a 3-channel image for TensorBoard
+            # Convert the images to 3-channel images for TensorBoard
             res_image_3ch = res_image.convert("RGB")
+            gt_image_3ch = gt_image.convert("RGB")
 
-            # Convert the 3-channel image to a Tensor
+            # Convert the 3-channel images to Tensors
             res_image_tensor = transforms.ToTensor()(res_image_3ch)
+            gt_image_tensor = transforms.ToTensor()(gt_image_3ch)
 
-            # Add the image to TensorBoard
-            self.writer.add_image('Inference Images', res_image_tensor, self.epoch)
+            # Combine the images into a grid
+            grid = make_grid([res_image_tensor, gt_image_tensor])
+
+            # Add the image grid to TensorBoard
+            self.writer.add_image('Inference Images', grid, self.epoch)
 
             return None
 
@@ -510,17 +560,21 @@ class CustomDataSet(Dataset):
             augmented = self.transform(image=np.array(image), mask=np.array(annotation))
             image = augmented['image']
             annotation = augmented['mask']
+            
+        annotation = annotation.long()
+        
+        return image, annotation
                 
-       # Convert annotation to tensor and add an extra dimension
-        annotation = torch.from_numpy(np.array(annotation)).long().unsqueeze(0)
+    #    # Convert annotation to tensor and add an extra dimension
+    #     annotation = torch.from_numpy(np.array(annotation)).long().unsqueeze(0)
 
-        # Create a tensor for one-hot encoding
-        one_hot_annotation = torch.zeros(20, *annotation.shape[1:])
+    #     # Create a tensor for one-hot encoding
+    #     one_hot_annotation = torch.zeros(20, *annotation.shape[1:])
 
-        # Perform one-hot encoding
-        one_hot_annotation.scatter_(0, annotation.long(), 1)
+    #     # Perform one-hot encoding
+    #     one_hot_annotation.scatter_(0, annotation.long(), 1)
 
-        return image, one_hot_annotation
+    #     return image, one_hot_annotation
 
 class K_Fold_Dataset:
     def __init__(self, image_dir, annotation_dir, k_fold_csv_dir, leave_out_fold, num_classes=20):
@@ -548,6 +602,7 @@ class K_Fold_Dataset:
         # Initialize TrainDataset and ValDataset
         self.train_dataset = self.TrainDataset(self.train_files, image_dir, annotation_dir)
         self.val_dataset = self.ValDataset(self.val_files, image_dir, annotation_dir)
+        self.test_dataset = self.TestDataset(self.test_files, image_dir, annotation_dir)
         
     def check_for_data_leaks(self):
         train_files_set = set(file for sublist in self.train_files for file in sublist)
@@ -577,26 +632,6 @@ class K_Fold_Dataset:
             super().__init__(image_dir, annotation_dir)
             self.image_files = [file[0] for file in train_files]
             self.annotation_files = [file[0] for file in train_files]
-
-            # self.transform = transforms.Compose([
-            #     transforms.RandomResizedCrop(224),  # Random Cropping
-            #     transforms.RandomAffine(0, translate=(0.1, 0.1)),  # Random Shifting
-            #     transforms.ToTensor(), # converte to Tensor
-            #     #transforms.Normalize(mean=self.mean, std=self.std),
-            # ])
-
-        # def __getitem__(self, index):
-        #     img_name = os.path.join(self.image_dir, self.image_files[index])
-        #     annotation_name = os.path.join(self.annotation_dir, self.annotation_files[index])
-
-        #     image = Image.open(img_name).convert("RGB")
-        #     annotation = Image.open(annotation_name).convert("L")
-
-        #     # Apply transformations
-        #     image = self.transform(image)
-        #     annotation = self.transform(annotation)
-
-        #     return image, annotation
         
             
     class ValDataset(CustomDataSet):
@@ -604,3 +639,31 @@ class K_Fold_Dataset:
             super().__init__(image_dir, annotation_dir)
             self.image_files = [file[0] for file in val_files]
             self.annotation_files = [file[0] for file in val_files]
+    
+    class TestDataset(CustomDataSet):
+        def __init__(self, test_files, image_dir, annotation_dir):
+            super().__init__(image_dir, annotation_dir)
+            self.image_files = [file[0] for file in test_files]
+            self.annotation_files = [file[0] for file in test_files]
+                        
+            self.transform = Compose([
+            Resize(520, 520),  # Resize the image and mask
+            Normalize(mean=self.mean, std=self.std),  # Normalize the image
+            ToTensorV2()  # Convert the image and mask to PyTorch tensors
+        ])
+            
+        def __getitem__(self, idx):        
+            img_name = os.path.join(self.image_dir, self.image_files[idx])
+            annotation_name = os.path.join(self.annotation_dir, self.annotation_files[idx])
+
+            image = Image.open(img_name).convert("RGB")            
+            annotation = Image.open(annotation_name).convert("L")     
+
+            if self.transform:
+                augmented = self.transform(image=np.array(image), mask=np.array(annotation))
+                image = augmented['image']
+                annotation = augmented['mask']
+                
+            annotation = annotation.long()
+            
+            return image, annotation

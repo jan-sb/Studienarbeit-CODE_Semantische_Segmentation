@@ -30,45 +30,47 @@ foldes = 5 # DO NOT CHANGE THIS VALUE!!!
 for model in all_models:
     for j in range(foldes):
         create_model_directory('K_Fold_Run', model, j)
-        writer = SummaryWriter(f'{model}_k_fold_{j}/logs')
+        writer = SummaryWriter(f'K_Fold_Run/{model}_k_fold_{j}/logs')
         
-        try: 
-            trained_model = TrainedModel(model,
-                                         2048,
-                                         1024,
-                                         folder_path='K_Fold_Run',
-                                         weights_name=f'{model}_k_fold_{j}',
-                                         start_epoch='latest', 
-                                         writer=writer, 
-                                         )
-            
-            k_fold_dataset = K_Fold_Dataset(image_dir='CityscapesDaten/images',
-                                            annotation_dir='CityscapesDaten/semantic',
-                                            k_fold_csv_dir='Daten/CityscapesDaten',
-                                            leave_out_fold=j, 
-                                            )        
-            
-            k_fold_dataset.check_for_data_leaks()               
-            
-            trained_model.prepare_model_training(dataset_train=k_fold_dataset.train_dataset,
-                                                dataset_val=k_fold_dataset.val_dataset,
-                                                batch_size=2, 
-                                                shuffle=True, 
-                                                learning_rate=1*10**(-7), 
-                                                momentum=0.9,
-                                                weight_decay=0.00001, 
-                                                num_workers=4, 
-                                                pin_memory=True,
-                                                )
-            for i in range(total_eppochs // epoch_steps):
-                           
-                trained_model.auto_train(epochs=epoch_steps, max_deviations=5)
-                
-        except Exception as e:
-            error_message = str(e)
-            with open('error.json', 'w') as f:
-                json.dump({'error': error_message}, f)
-            #os.system('sudo shutdown now -h')
+        #try: 
+        trained_model = TrainedModel(model,
+                                        2048,
+                                        1024,
+                                        folder_path='K_Fold_Run',
+                                        weights_name=f'{model}_k_fold_{j}',
+                                        start_epoch='latest', 
+                                        writer=writer, 
+                                        )
+        
+        k_fold_dataset = K_Fold_Dataset(image_dir='CityscapesDaten/images',
+                                        annotation_dir='CityscapesDaten/semantic',
+                                        k_fold_csv_dir='Daten/CityscapesDaten',
+                                        leave_out_fold=j, 
+                                        )        
+        
+        k_fold_dataset.check_for_data_leaks()               
+        
+        trained_model.prepare_model_training(dataset_train=k_fold_dataset.train_dataset,
+                                            dataset_val=k_fold_dataset.val_dataset,
+                                            batch_size=2, 
+                                            shuffle=True, 
+                                            learning_rate=1*10**(-7), 
+                                            momentum=0.9,
+                                            weight_decay=0.00001, 
+                                            num_workers=4, 
+                                            pin_memory=True,
+                                            )
+        for i in range(total_eppochs // epoch_steps):
+            trained_model.auto_train(epochs=epoch_steps, max_deviations=5)
+
+        trained_model.test()
+        
+        # except Exception as e:
+        #     error_message = str(e)
+        #     with open('error.json', 'w') as f:
+        #         json.dump({'error': error_message}, f)
+        #         sys.exit()
+        #     #os.system('sudo shutdown now -h')
              
         trained_model.writer.flush()
         trained_model.writer.close()
