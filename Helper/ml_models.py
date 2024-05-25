@@ -301,6 +301,17 @@ class TrainedModel(Model):
                                         pin_memory=pin_memory,
                                         )
             print(f'Test Dataset prepared')
+            
+        if self.epoch >=15: 
+            self.learning_rate = 1*10**(-5)
+        elif self.epoch >= 30:
+            self.learning_rate = 1*10**(-6)
+        elif self.epoch >= 45:
+            self.learning_rate = 1*10**(-7)
+        elif self.epoch >= 60:
+            self.learning_rate = 1*10**(-8)
+        
+        print(f'crappy lrs: {self.learning_rate}')
 
         self.criterion = nn.CrossEntropyLoss()
         #self.optimizer = optim.SGD(self.model.parameters(), lr=learning_rate, momentum=momentum, weight_decay=weight_decay)
@@ -455,7 +466,7 @@ class TrainedModel(Model):
                     print(f'Stopped training due to validation loss deviating too much from training loss in epoch {self.epoch + 1}')
                     break
             torch.cuda.empty_cache()
-            self.save_model()
+            self.save_model(file_management=True)
             
     def test(self):
         self.model.eval()

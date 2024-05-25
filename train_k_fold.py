@@ -29,6 +29,7 @@ foldes = 5 # DO NOT CHANGE THIS VALUE!!!
 
 for model in all_models:
     for j in range(foldes):
+        print(f'Fold: {j}')
         create_model_directory('K_Fold_Run', model, j)
         writer = SummaryWriter(f'K_Fold_Run/{model}_k_fold_{j}/logs')
         
@@ -42,6 +43,7 @@ for model in all_models:
                                         writer=writer, 
                                         )
         
+        
         k_fold_dataset = K_Fold_Dataset(image_dir='CityscapesDaten/images',
                                         annotation_dir='CityscapesDaten/semantic',
                                         k_fold_csv_dir='Daten/CityscapesDaten',
@@ -52,15 +54,19 @@ for model in all_models:
         
         trained_model.prepare_model_training(dataset_train=k_fold_dataset.train_dataset,
                                             dataset_val=k_fold_dataset.val_dataset,
+                                            dataset_test=k_fold_dataset.test_dataset,
                                             batch_size=2, 
                                             shuffle=True, 
-                                            learning_rate=1*10**(-7), 
+                                            learning_rate=1*10**(-4), 
                                             momentum=0.9,
                                             weight_decay=0.00001, 
                                             num_workers=4, 
                                             pin_memory=True,
                                             )
         for i in range(total_eppochs // epoch_steps):
+            print(f'Current Model Epoch: {trained_model.epoch}')
+            if trained_model.epoch >=60: 
+                break
             trained_model.auto_train(epochs=epoch_steps, max_deviations=5)
             trained_model.inference_tensorboard(0)
 
