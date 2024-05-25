@@ -21,7 +21,7 @@ all_models = ['deeplabv3_resnet50', 'deeplabv3_resnet101', 'deeplabv3_mobilenet_
 # # sys.exit()
 
 total_eppochs = 60
-epoch_steps = 1
+epoch_steps = 3
 runs = total_eppochs // epoch_steps
 foldes = 5 # DO NOT CHANGE THIS VALUE!!!
 
@@ -62,6 +62,7 @@ for model in all_models:
                                             )
         for i in range(total_eppochs // epoch_steps):
             trained_model.auto_train(epochs=epoch_steps, max_deviations=5)
+            trained_model.inference_tensorboard(0)
 
         trained_model.test()
         

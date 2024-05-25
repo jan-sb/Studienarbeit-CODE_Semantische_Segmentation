@@ -461,15 +461,29 @@ class TrainedModel(Model):
         self.model.eval()
         total = 0
         correct = 0
+        test_loss = 0.0 
+
         with torch.no_grad():
             for images, labels in self.test_loader:
                 images = images.to(self.device)
                 labels = labels.to(self.device)
-                outputs = self.model(images)['out']
+                outputs = self.model(images)['out'] 
                 _, predicted = torch.max(outputs.data, 1)
-                total += labels.size(0)
+                total += labels.numel()
                 correct += (predicted == labels).sum().item()
-        print('Test Accuracy: %d %%' % (100 * correct / total))
+
+                # Calculate and print loss
+                loss = self.criterion(outputs, labels)
+                test_loss += loss.item()
+
+        test_loss /= len(self.test_loader)
+        print('Test Loss: %.3f' % test_loss)
+
+        test_accuracy = 100 * correct / total
+        print('Test Accuracy: %.2f %%' % test_accuracy)
+        
+        self.writer.add_scalar('Test Loss', test_loss, self.epoch)
+        self.writer.add_scalar('Test Accuracy', test_accuracy, self.epoch)
         
         
     def inference_tensorboard(self, index):
