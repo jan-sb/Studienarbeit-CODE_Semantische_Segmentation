@@ -302,13 +302,13 @@ class TrainedModel(Model):
                                         )
             print(f'Test Dataset prepared')
             
-        if self.epoch >=15: 
+        if self.epoch >=15 and self.epoch < 30: 
             self.learning_rate = 1*10**(-5)
-        elif self.epoch >= 30:
+        elif self.epoch >= 30 and self.epoch < 45:
             self.learning_rate = 1*10**(-6)
-        elif self.epoch >= 45:
+        elif self.epoch >= 45 and self.epoch < 55:
             self.learning_rate = 1*10**(-7)
-        elif self.epoch >= 60:
+        elif self.epoch >= 55:
             self.learning_rate = 1*10**(-8)
         
         print(f'crappy lrs: {self.learning_rate}')

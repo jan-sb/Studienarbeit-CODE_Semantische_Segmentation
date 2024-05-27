@@ -65,6 +65,17 @@ for model in all_models:
                                             )
         for i in range(total_eppochs // epoch_steps):
             print(f'Current Model Epoch: {trained_model.epoch}')
+            trained_model.prepare_model_training(dataset_train=k_fold_dataset.train_dataset,
+                                            dataset_val=k_fold_dataset.val_dataset,
+                                            dataset_test=k_fold_dataset.test_dataset,
+                                            batch_size=2, 
+                                            shuffle=True, 
+                                            learning_rate=1*10**(-4), 
+                                            momentum=0.9,
+                                            weight_decay=0.00001, 
+                                            num_workers=4, 
+                                            pin_memory=True,
+                                            )
             if trained_model.epoch >=60: 
                 break
             trained_model.auto_train(epochs=epoch_steps, max_deviations=5)
