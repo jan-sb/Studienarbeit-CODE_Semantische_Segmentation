@@ -38,7 +38,7 @@ def make_directory(model):
     
 
 all_models = ['deeplabv3_resnet50', 'deeplabv3_resnet101', 'deeplabv3_mobilenet_v3_large', 'fcn_resnet50', 'fcn_resnet101', 'lraspp_mobilenet_v3_large']
-test_epochs = 20
+test_epochs = 60
 
 k_fold_dataset = K_Fold_Dataset(
                         image_dir='CityscapesDaten/images',
