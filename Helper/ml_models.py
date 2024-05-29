@@ -347,38 +347,43 @@ class TrainedModel(Model):
                 'step': self.step,
             }, weights_name_current)
             
-        self.old_val_loss = self.val_loss
+            self.old_val_loss = self.val_loss
         print(f'Saved Model')
 
-    def train(self, epochs):
+    def train(self):    
         self.model.train()
+        run_loss = 0.0
+        self.epoch += 1
+        correct = 0 
+        total = 0 
+        for images, labels in tqdm(self.training_loader):
+            counter +=1
+            self.optimizer.zero_grad(set_to_none=True)
+            images = images.to(self.device)
+            labels = labels.to(self.device)
+            
+            outputs = self.model(images)['out']   
+            
+            _, predicted = torch.max(outputs.data, 1) 
+            total += labels.numel()
+            correct += (predicted == labels).sum().item()
+        
+            loss = self.criterion(outputs, labels)            
+            loss.backward()
+            self.optimizer.step()
+            run_loss += loss
+                
+        epoch_loss = run_loss.item() / len(self.training_loader)
+        epoch_acc = 100 * correct / total
+        print(f'Epoch {self.epoch + 1} von {self.epochs}    |   Loss: {epoch_loss}    |   Accuracy: {epoch_acc}%')
+        # Validate the model after each epoch
+        val_loss, val_acc = self.validate(self.val_loader)
+        self.writer.add_scalars('Loss', {'Training Loss': epoch_loss, 'Validation Loss': val_loss}, self.epoch)
+        self.writer.add_scalars('Accuracy', {'Training Accuracy': epoch_acc, 'Validation Accuracy': val_acc}, self.epoch)
+        
         torch.cuda.empty_cache()
-        for epoch in range(epochs):
-            run_loss = 0.0
-            self.epoch += 1
-            for images, labels in self.training_loader:
-                self.optimizer.zero_grad(set_to_none=True)
-                images = images.to(self.device)
-                labels = labels.to(self.device)
-                
-                outputs = self.model(images)['out']                    
-                _, labels = labels.max(dim=1)
-                
-                loss = self.criterion(outputs, labels)            
-                loss.backward()
-                
-                self.optimizer.step()
-                run_loss += loss.item()
-                
-                # For Tensorboard
-                
-                self.step = epoch * len(self.training_loader) + 1
-                self.writer.add_scalars('Loss', {'Train': loss.item()}, self.step)
-                
-            epoch_loss = run_loss / len(self.training_loader)
-            print(f'Epoch {epoch + 1} von {epochs}    |   Loss: {epoch_loss}')
-            self.writer.add_scalar('Epoch Train Loss', epoch_loss, self.epoch)
         self.save_model(file_management=True)
+        return epoch_loss, epoch_acc
         
     def validate(self, val_loader):
         total_loss = 0.0
@@ -420,7 +425,7 @@ class TrainedModel(Model):
             return miou
         
         
-    def auto_train(self, epochs, l2_lambda=0.001, deviation_threshold=0.1, max_deviations=5):
+    def auto_train(self, epochs,  deviation_threshold=0.1, max_deviations=5):
         deviations = 0
         for epoch in range(epochs):
             self.model.train()
