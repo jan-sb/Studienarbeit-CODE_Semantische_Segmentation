@@ -1,22 +1,16 @@
 from functools import partial
 import os
-import tempfile
-from pathlib import Path
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
-import torch.optim as optim
-from torch.utils.data import random_split
-import torchvision
-import torchvision.transforms as transforms
 from ray import tune
 from ray import train
 from ray.train import Checkpoint, get_checkpoint
 from ray.tune.schedulers import ASHAScheduler
-import ray.cloudpickle as pickle
 from ray.tune import CLIReporter
 from Helper.ml_models import * 
+from Helper.Helper_functions import *
+from ray.tune.search.optuna import OptunaSearch
 import json
+from datetime import datetime
 
 
 def load_data(image_dir='CityscapesDaten/images', annotation_dir='CityscapesDaten/semantic'):
@@ -36,96 +30,91 @@ def make_directory(model):
     dir_name = f'Hyperparameter/{model}'
     os.makedirs(dir_name, exist_ok=True)
     
-
-all_models = ['deeplabv3_resnet50', 'deeplabv3_resnet101', 'deeplabv3_mobilenet_v3_large', 'fcn_resnet50', 'fcn_resnet101', 'lraspp_mobilenet_v3_large']
+    
+all_models = ['deeplabv3_resnet50', 'deeplabv3_resnet101', 'deeplabv3_mobilenet_v3_large', 'lraspp_mobilenet_v3_large']
+not_yet_studied = ['fcn_resnet50', 'fcn_resnet101']
 test_epochs = 60
 
-k_fold_dataset = K_Fold_Dataset(
-                        image_dir='CityscapesDaten/images',
-                        annotation_dir='CityscapesDaten/semantic',
-                        k_fold_csv_dir='Daten/CityscapesDaten',
-                        leave_out_fold=0,
-                        )
-k_fold_dataset.check_for_data_leaks()        
+k_fold_dataset = K_Fold_Dataset('/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/CityscapesDaten/images',
+                         '/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/CityscapesDaten/semantic',
+                         k_fold_csv_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Daten/CityscapesDaten',
+                         leave_out_fold=0,
+                         )
 
+k_fold_dataset.check_for_data_leaks()               
+        
+        
 model = all_models[0]
 
 
 def train_hyper(config):
-    
-    make_directory(model)
-    img_path = '/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/CityscapesDaten/images' 
-    anno_path = '/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/CityscapesDaten/semantic'
-    csv_path = '/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Daten/CityscapesDaten'
-    print(f'IMGPATH:{os.access(img_path, os.R_OK)}, ANNOPATH:{os.access(anno_path, os.R_OK)}, CSVPATH:{os.access(csv_path, os.R_OK)}')
-    print(f'(\n \n {os.getcwd()} \n \n)')
-    
-    
-    k_fold_dataset = K_Fold_Dataset(
-                        image_dir=img_path,
-                        annotation_dir=anno_path,
-                        k_fold_csv_dir=csv_path,
-                        leave_out_fold=0,
-                        )
-    hyper_model = TrainedModel(model, 2048, 1024, weights_name='', folder_path=f'Hyperparameter/{model}', start_epoch='latest')
-    hyper_model.prepare_model_training(dataset_train=k_fold_dataset.train_dataset,
+    try:
+        folder_path = '/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Hyperparameter'
+        current_time = datetime.now().strftime('%H_%M_%S')
+        create_raytune_model_directory(path = f'{folder_path}', model=f'{model}_{current_time}')
+        hyper_model = TrainedModel(model, 2048, 1024, weights_name=f'', folder_path=f'{folder_path}/{model}_{current_time}', start_epoch='latest')
+        hyper_model.prepare_model_training(dataset_train=k_fold_dataset.train_dataset,
                                                 dataset_val=k_fold_dataset.val_dataset,
-                                                batch_size=int(config['batch_size']), 
+                                                dataset_test=k_fold_dataset.test_dataset,
+                                                batch_size=config['batch_size'], 
                                                 shuffle=True, 
-                                                learning_rate=config['lr'], 
-                                                momentum=config['momentum'],
-                                                weight_decay=config['weight_decay'],)
+                                                learning_rate=config['learning_rate'],
+                                                weight_decay=config['weight_decay'], 
+                                                num_workers=4, 
+                                                pin_memory=True,
+                                                ray_tune=True,
+                                                )
 
-    
-    hyper_model.train(1)  # Train for one epoch
-    val_loss = hyper_model.validate(k_fold_dataset.val_dataset)  # Validate on the validation dataset
-    miou = hyper_model.calculate_miou_miou(k_fold_dataset.val_dataset)
-    tune.report(loss=val_loss, miou=miou)
+        epoch_loss, epoch_acc = hyper_model.train() 
+        miou = hyper_model.calculate_miou_miou(k_fold_dataset.val_dataset)
+        train.report({"acc":epoch_acc, "miou":miou})
+    except RuntimeError as e:
+        if "out of memory" in str(e):
+            train.report({"acc":0, "miou":0})
+        else:
+            raise e  
+        
         
 
 config = {
-    "lr": tune.loguniform(1e-12, 1e-2),
-    "batch_size": tune.choice([2, 4, 6]),
-    "momentum": tune.uniform(0.1, 0.9),
+    "learning_rate": tune.loguniform(1e-8, 1e-2),
+    'batch_size': tune.choice([2,4,6,8,10]),
     "weight_decay": tune.loguniform(1e-6, 1e-1)
 }
 
+# Define the scheduler and reporter
 scheduler = ASHAScheduler(
-    metric="miou",
+    metric="acc",
     mode="max",
-    max_t=30,
-    grace_period=3,
+    max_t=80,
+    grace_period=5,
     reduction_factor=2
 )
 
-reporter = CLIReporter(metric_columns=["loss", "miou", "training_iteration"])
 
-# config = {  
-#         'batch_size': 2,
-#         'lr' : 0.001,
-#         'momentum' : 0.9,
-#         'weight_decay' : 0.0005,    
-# }
+optuna_search = OptunaSearch(
+    metric="acc",
+    mode="max"
+)
 
-# train_hyper(config)
 
-# sys.exit()
-# file_path = 'CityscapesDaten/images/0000088_01.png' 
-# print(f'FILEPATH VALID {os.access(file_path, os.R_OK)}')
-
-analysis = tune.run(
-                    train_hyper,
+reporter = CLIReporter(metric_columns=["loss", "acc", "training_iteration"])
+analysis = tune.run(train_hyper,
                     config=config,
                     resources_per_trial={"cpu": 6, "gpu": 1},
-                    scheduler=scheduler,
-                    progress_reporter=reporter)
+                    scheduler=scheduler,    
+                    progress_reporter=reporter, 
+                    resume=True,
+                    local_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/HyperparameterLOG', 
+                    search_alg=optuna_search,
+                    num_samples=50,
+                    )
 
-# Get the best trial
-best_trial = analysis.get_best_trial("loss")
+best_config = analysis.get_best_config(metric="acc", mode="max")
 
-# Get the best trial's parameters
-best_params = best_trial.config
+print("Best hyperparameters found were: ", best_config)
+# Save the best configuration to a JSON file
+with open('best_config.json', 'w') as json_file:
+    json.dump(best_config, json_file)
 
-# Save the parameters to a JSON file
-with open(f'/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Daten/best_params_{model}.json', 'w') as f:
-    json.dump(best_params, f)
+print("Best configuration saved to best_config.json.")

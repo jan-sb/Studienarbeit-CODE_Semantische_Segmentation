@@ -417,6 +417,10 @@ def create_model_directory(path, model, i):
     dir_name = f'{path}/{model}_k_fold_{i}'
     os.makedirs(dir_name, exist_ok=True)
     
+def create_raytune_model_directory(path, model):
+    dir_name = f'{path}/{model}'
+    os.makedirs(dir_name, exist_ok=True)
+    
  
 def create_ground_truth_json():
     label_dict = {}

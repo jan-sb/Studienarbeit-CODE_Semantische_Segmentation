@@ -22,6 +22,7 @@ from tqdm import tqdm
 from albumentations import Compose, HorizontalFlip, VerticalFlip, Rotate, ShiftScaleRotate, RandomCrop, Resize, Normalize
 from albumentations.pytorch import ToTensorV2
 from torchvision.utils import make_grid
+from torch.cuda.amp import autocast
 
 
 
@@ -275,7 +276,7 @@ class TrainedModel(Model):
 
 
 
-    def prepare_model_training(self, dataset_train=None, dataset_val= None, dataset_test=None, batch_size=3, shuffle=True, learning_rate= 1*10**(-5), momentum=0.9, weight_decay=0.001, num_workers = 0, pin_memory = False):
+    def prepare_model_training(self, dataset_train=None, dataset_val= None, dataset_test=None, batch_size=3, shuffle=True, learning_rate= 1*10**(-5), ray_tune = False, weight_decay=0.001, num_workers = 0, pin_memory = False):
         if dataset_train is not None:
             self.training_loader = DataLoader(dataset_train,
                                               batch_size=batch_size,
@@ -302,16 +303,17 @@ class TrainedModel(Model):
                                         )
             print(f'Test Dataset prepared')
             
-        if self.epoch >=15 and self.epoch < 30: 
-            self.learning_rate = 1*10**(-5)
-        elif self.epoch >= 30 and self.epoch < 45:
-            self.learning_rate = 1*10**(-6)
-        elif self.epoch >= 45 and self.epoch < 55:
-            self.learning_rate = 1*10**(-7)
-        elif self.epoch >= 55:
-            self.learning_rate = 1*10**(-8)
+        if ray_tune == False: 
+            if self.epoch >=15 and self.epoch < 30: 
+                self.learning_rate = 1*10**(-5)
+            elif self.epoch >= 30 and self.epoch < 45:
+                self.learning_rate = 1*10**(-6)
+            elif self.epoch >= 45 and self.epoch < 55:
+                self.learning_rate = 1*10**(-7)
+            elif self.epoch >= 55:
+                self.learning_rate = 1*10**(-8)
+            print(f'own lrs: {self.learning_rate}')
         
-        print(f'crappy lrs: {self.learning_rate}')
 
         self.criterion = nn.CrossEntropyLoss()
         #self.optimizer = optim.SGD(self.model.parameters(), lr=learning_rate, momentum=momentum, weight_decay=weight_decay)
@@ -350,19 +352,27 @@ class TrainedModel(Model):
             self.old_val_loss = self.val_loss
         print(f'Saved Model')
 
-    def train(self):    
+    def train(self, use_autocast):    
         self.model.train()
         run_loss = 0.0
         self.epoch += 1
         correct = 0 
         total = 0 
-        for images, labels in tqdm(self.training_loader):
-            counter +=1
+        if use_autocast: 
+            scaler = torch.cuda.amp.GradScaler()
+        for images, labels in self.training_loader:
             self.optimizer.zero_grad(set_to_none=True)
             images = images.to(self.device)
             labels = labels.to(self.device)
             
-            outputs = self.model(images)['out']   
+            if use_autocast:
+                # Use autocast for the forward pass
+                with autocast():
+                    outputs = self.model(images)['out']   
+                    loss = self.criterion(outputs, labels)
+            else:
+                outputs = self.model(images)['out']   
+                loss = self.criterion(outputs, labels)
             
             _, predicted = torch.max(outputs.data, 1) 
             total += labels.numel()
@@ -375,17 +385,18 @@ class TrainedModel(Model):
                 
         epoch_loss = run_loss.item() / len(self.training_loader)
         epoch_acc = 100 * correct / total
-        print(f'Epoch {self.epoch + 1} von {self.epochs}    |   Loss: {epoch_loss}    |   Accuracy: {epoch_acc}%')
+        print(f'Epoch {self.epoch + 1} |   Loss: {epoch_loss}    |   Accuracy: {epoch_acc}%')
         # Validate the model after each epoch
-        val_loss, val_acc = self.validate(self.val_loader)
-        self.writer.add_scalars('Loss', {'Training Loss': epoch_loss, 'Validation Loss': val_loss}, self.epoch)
-        self.writer.add_scalars('Accuracy', {'Training Accuracy': epoch_acc, 'Validation Accuracy': val_acc}, self.epoch)
-        
+        val_loss, val_acc = self.validate(self.val_loader, use_autocast=use_autocast)
+        if self.writer is not None: 
+            self.writer.add_scalars('Loss', {'Training Loss': epoch_loss, 'Validation Loss': val_loss}, self.epoch)
+            self.writer.add_scalars('Accuracy', {'Training Accuracy': epoch_acc, 'Validation Accuracy': val_acc}, self.epoch)
+            
         torch.cuda.empty_cache()
-        self.save_model(file_management=True)
+        self.save_model(file_management=False)
         return epoch_loss, epoch_acc
         
-    def validate(self, val_loader):
+    def validate(self, val_loader, use_autocast):
         total_loss = 0.0
         correct = 0
         total = 0
@@ -394,7 +405,16 @@ class TrainedModel(Model):
             for images, labels in val_loader:
                 images = images.to(self.device)
                 labels = labels.to(self.device)
-                outputs = self.model(images)['out']
+                
+                if use_autocast:
+                    # Use autocast for the forward pass
+                    with autocast():
+                        outputs = self.model(images)['out']
+                        loss = self.criterion(outputs, labels)
+                else:
+                    outputs = self.model(images)['out']
+                    loss = self.criterion(outputs, labels)
+                                
                 _, predicted = torch.max(outputs, 1)
                 total += labels.numel()
                 correct += (predicted == labels).sum().item()
@@ -460,7 +480,7 @@ class TrainedModel(Model):
             epoch_acc = 100 * correct / total
             print(f'Epoch {epoch + 1} von {epochs}    |   Loss: {epoch_loss}    |   Accuracy: {epoch_acc}%')
             # Validate the model after each epoch
-            val_loss, val_acc = self.validate(self.val_loader)
+            val_loss, val_acc = self.validate(self.val_loader, use_autocast=False)
             self.writer.add_scalars('Loss', {'Training Loss': epoch_loss, 'Validation Loss': val_loss}, self.epoch)
             self.writer.add_scalars('Accuracy', {'Training Accuracy': epoch_acc, 'Validation Accuracy': val_acc}, self.epoch)
             
