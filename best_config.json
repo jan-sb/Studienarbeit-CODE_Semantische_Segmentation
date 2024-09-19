@@ -1,1 +1,1 @@
-{"learning_rate": 9.088060873423374e-06, "batch_size": 10, "weight_decay": 0.04398942169802802}
+{"steps": 80, "learning_rate": 4.072940490317263e-06, "batch_size": 6, "weight_decay": 1.305255856052896e-06, "use_autocast": true}

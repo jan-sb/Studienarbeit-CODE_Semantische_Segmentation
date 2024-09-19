@@ -388,14 +388,14 @@ class TrainedModel(Model):
         print(f'Epoch {self.epoch + 1} |   Loss: {epoch_loss}    |   Accuracy: {epoch_acc}%')
         # Validate the model after each epoch
         val_loss, val_acc = self.validate(self.val_loader, use_autocast=use_autocast)
-        if self.writer is not None: 
-            self.writer.add_scalars('Loss', {'Training Loss': epoch_loss, 'Validation Loss': val_loss}, self.epoch)
-            self.writer.add_scalars('Accuracy', {'Training Accuracy': epoch_acc, 'Validation Accuracy': val_acc}, self.epoch)
+        # if self.writer is not None: 
+        #     self.writer.add_scalars('Loss', {'Training Loss': epoch_loss, 'Validation Loss': val_loss}, self.epoch)
+        #     self.writer.add_scalars('Accuracy', {'Training Accuracy': epoch_acc, 'Validation Accuracy': val_acc}, self.epoch)
             
         torch.cuda.empty_cache()
         self.save_model(file_management=False)
-        return epoch_loss, epoch_acc
-        
+        return epoch_loss, epoch_acc, val_loss, val_acc
+
     def validate(self, val_loader, use_autocast):
         total_loss = 0.0
         correct = 0

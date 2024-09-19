@@ -11,6 +11,7 @@ from Helper.Helper_functions import *
 from ray.tune.search.optuna import OptunaSearch
 import json
 from datetime import datetime
+import tempfile
 
 
 def load_data(image_dir='CityscapesDaten/images', annotation_dir='CityscapesDaten/semantic'):
@@ -35,6 +36,8 @@ all_models = ['deeplabv3_resnet50', 'deeplabv3_resnet101', 'deeplabv3_mobilenet_
 not_yet_studied = ['fcn_resnet50', 'fcn_resnet101']
 test_epochs = 60
 
+#writer = SummaryWriter(f'/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/HyperparameterLOG/OWN_LOG')
+
 k_fold_dataset = K_Fold_Dataset('/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/CityscapesDaten/images',
                          '/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/CityscapesDaten/semantic',
                          k_fold_csv_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Daten/CityscapesDaten',
@@ -52,7 +55,16 @@ def train_hyper(config):
         folder_path = '/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Hyperparameter'
         current_time = datetime.now().strftime('%H_%M_%S')
         create_raytune_model_directory(path = f'{folder_path}', model=f'{model}_{current_time}')
-        hyper_model = TrainedModel(model, 2048, 1024, weights_name=f'', folder_path=f'{folder_path}/{model}_{current_time}', start_epoch='latest')
+        hyper_model = TrainedModel(model,
+                                   2048,
+                                   1024,
+                                   weights_name=f'',
+                                   folder_path=f'{folder_path}/{model}_{current_time}',
+                                   start_epoch='latest', 
+                                   writer=None,
+                                   )
+        
+        
         hyper_model.prepare_model_training(dataset_train=k_fold_dataset.train_dataset,
                                                 dataset_val=k_fold_dataset.val_dataset,
                                                 dataset_test=k_fold_dataset.test_dataset,
@@ -65,11 +77,18 @@ def train_hyper(config):
                                                 ray_tune=True,
                                                 )
 
-        epoch_loss, epoch_acc = hyper_model.train() 
-        miou = hyper_model.calculate_miou_miou(k_fold_dataset.val_dataset)
-        train.report({"acc":epoch_acc, "miou":miou})
+        for epoch in range(config["steps"]):
+            _, _, _, val_acc = hyper_model.train(use_autocast=config['use_autocast']) 
+            #miou = hyper_model.calculate_miou(k_fold_dataset.val_dataset)
+            with tempfile.TemporaryDirectory() as tmpdir:
+                checkpoint = current_time
+                train.save_checkpoint(checkpoint)
+                train.report({"acc":val_acc}, checkpoint=Checkpoint.from_directory(tmpdir))
+            
+            
     except RuntimeError as e:
         if "out of memory" in str(e):
+            torch.cuda.empty_cache()
             train.report({"acc":0, "miou":0})
         else:
             raise e  
@@ -77,13 +96,15 @@ def train_hyper(config):
         
 
 config = {
+    "steps" : 10,
     "learning_rate": tune.loguniform(1e-8, 1e-2),
-    'batch_size': tune.choice([2,4,6,8,10]),
-    "weight_decay": tune.loguniform(1e-6, 1e-1)
+    'batch_size': tune.choice([2,4,6,8,10, 12, 14]),
+    "weight_decay": tune.loguniform(1e-6, 1e-1),
+    "use_autocast": tune.choice([True, False])
 }
 
 # Define the scheduler and reporter
-scheduler = ASHAScheduler(
+scheduler = ASHAScheduler( 
     metric="acc",
     mode="max",
     max_t=80,
@@ -108,6 +129,10 @@ analysis = tune.run(train_hyper,
                     local_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/HyperparameterLOG', 
                     search_alg=optuna_search,
                     num_samples=50,
+                    checkpoint_config=train.CheckpointConfig(
+                        checkpoint_frequency=2, 
+                        checkpoint_at_end=True,
+                        )
                     )
 
 best_config = analysis.get_best_config(metric="acc", mode="max")
