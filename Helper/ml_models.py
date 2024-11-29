@@ -441,8 +441,34 @@ class TrainedModel(Model):
             iou = (intersection + 1e-6) / (union + 1e-6)  # Add small epsilon to avoid division by zero
             miou = iou.mean().item()
             print(f'Mean IoU: {miou}')
-            self.writer.add_scalars('mIoU', {'Validation': miou}, self.epoch)
+            if hasattr(self, 'writer') and self.writer is not None:
+                    self.writer.add_scalars('mIoU', {'Validation': miou}, self.epoch)
             return miou
+        
+    def calculate_miou2(self, val_loader, num_classes):
+        self.model.eval()
+        with torch.no_grad():
+            intersection = torch.zeros(num_classes).to(self.device)
+            union = torch.zeros(num_classes).to(self.device)
+            for images, labels in val_loader:
+                images = images.to(self.device)
+                labels = labels.to(self.device)
+                outputs = self.model(images)['out']  # Annahme: Ausgabekanal enthält Klassenlogits
+                _, predicted = torch.max(outputs, 1)  # [Batch, H, W]
+
+                for cls in range(num_classes):
+                    cls_pred = (predicted == cls)  # Vorhersage für Klasse `cls`
+                    cls_label = (labels == cls)    # Ground Truth für Klasse `cls`
+                    intersection[cls] += (cls_pred & cls_label).float().sum()
+                    union[cls] += (cls_pred | cls_label).float().sum()
+
+            iou = (intersection + 1e-6) / (union + 1e-6)
+            miou = iou.mean().item()
+            print(f'Mean IoU: {miou}')
+            if hasattr(self, 'writer') and self.writer is not None:
+                self.writer.add_scalars('mIoU', {'Validation': miou}, self.epoch)
+            return miou
+
         
         
     def auto_train(self, epochs,  deviation_threshold=0.1, max_deviations=5):

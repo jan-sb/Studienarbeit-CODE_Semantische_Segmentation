@@ -1,0 +1,1 @@
+{"deeplabv3_resnet50": {"miou": 0.5330306887626648}, "deeplabv3_resnet101": {"miou": 0.5400996208190918}, "deeplabv3_mobilenet_v3_large": {"miou": 0.4866926670074463}, "lraspp_mobilenet_v3_large": {"miou": 0.4940972924232483}, "fcn_resnet50": {"miou": 0.517431378364563}, "fcn_resnet101": {"miou": 0.5484303832054138}}
