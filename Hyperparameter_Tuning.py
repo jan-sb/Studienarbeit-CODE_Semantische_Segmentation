@@ -7,36 +7,23 @@ from ray.train import Checkpoint, get_checkpoint
 from ray.tune.schedulers import ASHAScheduler
 from ray.tune import CLIReporter
 from Helper.ml_models import * 
-from Helper.Helper_functions import *
-from ray.tune.search.optuna import OptunaSearch
 import json
 from datetime import datetime
-import tempfile
+
+from ray.tune.search.optuna import OptunaSearch
+from optuna.samplers import TPESampler
 
 
-def load_data(image_dir='CityscapesDaten/images', annotation_dir='CityscapesDaten/semantic'):
-    trainset = CustomDataSet(image_dir=image_dir, annotation_dir=annotation_dir)
 
-    # If you have a separate set of images and annotations for testing, you can create a testset in a similar way:
-    # testset = CustomDataSet(image_dir=test_image_dir, annotation_dir=test_annotation_dir)
-
-    # If you don't have a separate test set, you can split the trainset into a training set and a test set:
-    train_size = int(0.8 * len(trainset))
-    test_size = len(trainset) - train_size
-    trainset, testset = torch.utils.data.random_split(trainset, [train_size, test_size])
-
-    return trainset, testset
 
 def make_directory(model):
     dir_name = f'Hyperparameter/{model}'
     os.makedirs(dir_name, exist_ok=True)
     
-    
+
+# Variables
 all_models = ['deeplabv3_resnet50', 'deeplabv3_resnet101', 'deeplabv3_mobilenet_v3_large', 'lraspp_mobilenet_v3_large']
 not_yet_studied = ['fcn_resnet50', 'fcn_resnet101']
-test_epochs = 60
-
-#writer = SummaryWriter(f'/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/HyperparameterLOG/OWN_LOG')
 
 k_fold_dataset = K_Fold_Dataset('/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/CityscapesDaten/images',
                          '/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/CityscapesDaten/semantic',
@@ -45,101 +32,98 @@ k_fold_dataset = K_Fold_Dataset('/home/jan/studienarbeit/Studienarbeit-CODE_Sema
                          )
 
 k_fold_dataset.check_for_data_leaks()               
-        
-        
+
 model = all_models[0]
 
-
-def train_hyper(config):
+def train_hyper(config, checkpoint_dir=None):  
     try:
-        folder_path = '/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Hyperparameter'
-        current_time = datetime.now().strftime('%H_%M_%S')
-        create_raytune_model_directory(path = f'{folder_path}', model=f'{model}_{current_time}')
-        hyper_model = TrainedModel(model,
-                                   2048,
-                                   1024,
-                                   weights_name=f'',
-                                   folder_path=f'{folder_path}/{model}_{current_time}',
-                                   start_epoch='latest', 
-                                   writer=None,
-                                   )
+        make_directory(model)
+        hyper_model = TrainedModel(model, 2048, 1024, weights_name='', folder_path=f'Hyperparameter/{model}', start_epoch='latest')
+        
+        # Checkpoint laden, falls vorhanden
+        if checkpoint_dir and os.path.exists(os.path.join(checkpoint_dir, "checkpoint.pth")):
+            checkpoint = torch.load(os.path.join(checkpoint_dir, "checkpoint.pth"))
+            hyper_model.model.load_state_dict(checkpoint["model_state"])
+            hyper_model.optimizer.load_state_dict(checkpoint["optimizer_state"])
+            start_epoch = checkpoint["epoch"]
+        else:
+            start_epoch = 0
         
         
-        hyper_model.prepare_model_training(dataset_train=k_fold_dataset.train_dataset,
-                                                dataset_val=k_fold_dataset.val_dataset,
-                                                dataset_test=k_fold_dataset.test_dataset,
-                                                batch_size=config['batch_size'], 
-                                                shuffle=True, 
-                                                learning_rate=config['learning_rate'],
-                                                weight_decay=config['weight_decay'], 
-                                                num_workers=4, 
-                                                pin_memory=True,
-                                                ray_tune=True,
-                                                )
+        hyper_model.prepare_model_training(
+            dataset_train=k_fold_dataset.train_dataset,
+            dataset_val=k_fold_dataset.val_dataset,
+            dataset_test=k_fold_dataset.test_dataset,
+            batch_size=int(config['batch_size']), 
+            shuffle=True, 
+            learning_rate=config['learning_rate'],
+            weight_decay=config['weight_decay'], 
+            num_workers=4, 
+            pin_memory=True,
+            ray_tune=True,
+            )
 
-        for epoch in range(config["steps"]):
-            _, _, _, val_acc = hyper_model.train(use_autocast=config['use_autocast']) 
-            #miou = hyper_model.calculate_miou(k_fold_dataset.val_dataset)
-            with tempfile.TemporaryDirectory() as tmpdir:
-                checkpoint = current_time
-                train.save_checkpoint(checkpoint)
-                train.report({"acc":val_acc}, checkpoint=Checkpoint.from_directory(tmpdir))
-            
-            
+        
+        EPOCHS = 20 
+
+        for epoch in range(start_epoch, EPOCHS):
+            epoch_loss, epoch_acc = hyper_model.train()
+            miou = hyper_model.calculate_miou(k_fold_dataset.val_dataset)
+            with tune.checkpoint_dir(epoch) as cp_dir:
+                hyper_model.save_model(file_management=False, save_path=cp_dir)
+            tune.report(loss=epoch_loss, miou=miou, acc=epoch_acc)
+        
     except RuntimeError as e:
         if "out of memory" in str(e):
-            torch.cuda.empty_cache()
-            train.report({"acc":0, "miou":0})
+            tune.report(loss=float('inf'), miou=0)  
         else:
             raise e  
         
-        
-
 config = {
-    "steps" : 10,
-    "learning_rate": tune.loguniform(1e-8, 1e-2),
-    'batch_size': tune.choice([2,4,6,8,10, 12, 14]),
-    "weight_decay": tune.loguniform(1e-6, 1e-1),
-    "use_autocast": tune.choice([True, False])
+    "learning_rate": tune.loguniform(1e-12, 1e-2),
+    'batch_size': tune.choice([2,4,6,8,12,14,16]),
+    "weight_decay": tune.loguniform(1e-6, 1e-1)
 }
 
-# Define the scheduler and reporter
-scheduler = ASHAScheduler( 
-    metric="acc",
-    mode="max",
-    max_t=80,
-    grace_period=5,
-    reduction_factor=2
+analysis = tune.run(
+    train_hyper,
+    config=config,
+    resources_per_trial={"cpu": 6, "gpu": 1},
+    scheduler=ASHAScheduler(
+        metric="loss",
+        mode="min",
+        max_t=20,
+        grace_period=5,
+        reduction_factor=3,
+    ),
+    progress_reporter=CLIReporter(metric_columns=["loss", "miou", "acc", "training_iteration"]),
+    local_dir=f"/home/jan/studienarbeit/HyperparameterLOG/{model}_{datetime.now().strftime('%Y%m%d-%H%M%S')}",
+    search_alg=OptunaSearch(
+        metric="loss",
+        mode="min",
+        sampler=TPESampler(seed=42),
+    ),
+    num_samples=100,
+    checkpoint_config=train.CheckpointConfig(
+        checkpoint_frequency=5,
+        checkpoint_at_end=True,
+    ),
+    resume=True,
 )
 
+print("Best hyperparameters found were: ", analysis.best_config)
 
-optuna_search = OptunaSearch(
-    metric="acc",
-    mode="max"
-)
+best_config = analysis.best_config
 
-
-reporter = CLIReporter(metric_columns=["loss", "acc", "training_iteration"])
-analysis = tune.run(train_hyper,
-                    config=config,
-                    resources_per_trial={"cpu": 6, "gpu": 1},
-                    scheduler=scheduler,    
-                    progress_reporter=reporter, 
-                    resume=True,
-                    local_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/HyperparameterLOG', 
-                    search_alg=optuna_search,
-                    num_samples=50,
-                    checkpoint_config=train.CheckpointConfig(
-                        checkpoint_frequency=2, 
-                        checkpoint_at_end=True,
-                        )
-                    )
-
-best_config = analysis.get_best_config(metric="acc", mode="max")
-
-print("Best hyperparameters found were: ", best_config)
 # Save the best configuration to a JSON file
-with open('best_config.json', 'w') as json_file:
+with open('hyper_best_config.json', 'w') as json_file:
     json.dump(best_config, json_file)
 
 print("Best configuration saved to best_config.json.")
+
+# Speichere alle getesteten Konfigurationen und Ergebnisse
+all_trials = analysis.trials
+with open('hyper_all_trials.json', 'w') as json_file:
+    json.dump([trial.config for trial in all_trials], json_file)
+
+print("All configurations saved to all_trials.json.")

@@ -303,26 +303,39 @@ class TrainedModel(Model):
                                         )
             print(f'Test Dataset prepared')
             
-        if ray_tune == False: 
-            if self.epoch >=15 and self.epoch < 30: 
-                self.learning_rate = 1*10**(-5)
-            elif self.epoch >= 30 and self.epoch < 45:
-                self.learning_rate = 1*10**(-6)
-            elif self.epoch >= 45 and self.epoch < 55:
-                self.learning_rate = 1*10**(-7)
-            elif self.epoch >= 55:
-                self.learning_rate = 1*10**(-8)
-            print(f'own lrs: {self.learning_rate}')
+        # if ray_tune == False:             # Redundant with implmentation of own learning rate scheduler
+        #     if self.epoch >=15 and self.epoch < 30: 
+        #         self.learning_rate = 1*10**(-5)
+        #     elif self.epoch >= 30 and self.epoch < 45:
+        #         self.learning_rate = 1*10**(-6)
+        #     elif self.epoch >= 45 and self.epoch < 55:
+        #         self.learning_rate = 1*10**(-7)
+        #     elif self.epoch >= 55:
+        #         self.learning_rate = 1*10**(-8)
+        #     print(f'own lrs: {self.learning_rate}')
         
 
         self.criterion = nn.CrossEntropyLoss()
-        #self.optimizer = optim.SGD(self.model.parameters(), lr=learning_rate, momentum=momentum, weight_decay=weight_decay)
         self.optimizer = optim.Adam(self.model.parameters(), lr=learning_rate, weight_decay=weight_decay)
-        #self.optimizer = torch.optim.Adadelta(self.model.parameters())
+        self.scheduler = optim.lr_scheduler.ExponentialLR(self.optimizer, gamma=0.95)
+        
+        
+        
 
-    def save_model(self, file_management=False):
+    def save_model(self, file_management=False, save_path = None):
         if not os.path.exists(self.model_folder_path):
             os.makedirs(self.model_folder_path)
+            
+            
+        if save_path is None:
+            if not os.path.exists(self.model_folder_path):
+                os.makedirs(self.model_folder_path)
+            weights_name_latest = f'{self.model_folder_path}/{self.weights_name}_latest_{self.model_name}.pth'
+        else:
+            # Hier nutzt du den Pfad von Ray Tune
+            weights_name_latest = os.path.join(save_path, "checkpoint.pth")    
+            
+        
 
         weights_name_current = f'{self.model_folder_path}/{self.weights_name}_epoch-{self.epoch}_{self.model_name}.pth'
         weights_name_latest = f'{self.model_folder_path}/{self.weights_name}_latest_{self.model_name}.pth'
@@ -393,6 +406,8 @@ class TrainedModel(Model):
         #     self.writer.add_scalars('Accuracy', {'Training Accuracy': epoch_acc, 'Validation Accuracy': val_acc}, self.epoch)
             
         torch.cuda.empty_cache()
+        self.scheduler.step()
+        print(f"Current learning rate: {self.optimizer.param_groups[0]['lr']}")
         self.save_model(file_management=False)
         return epoch_loss, epoch_acc, val_loss, val_acc
 
