@@ -12,9 +12,20 @@ from datetime import datetime
 
 from ray.tune.search.optuna import OptunaSearch
 from optuna.samplers import TPESampler
+## IRRELEVANT
+# def load_data(image_dir='CityscapesDaten/images', annotation_dir='CityscapesDaten/semantic'):
+#     trainset = CustomDataSet(image_dir=image_dir, annotation_dir=annotation_dir)
 
+#     # If you have a separate set of images and annotations for testing, you can create a testset in a similar way:
+#     # testset = CustomDataSet(image_dir=test_image_dir, annotation_dir=test_annotation_dir)
 
+#     # If you don't have a separate test set, you can split the trainset into a training set and a test set:
+#     train_size = int(0.8 * len(trainset))
+#     test_size = len(trainset) - train_size
+#     trainset, testset = torch.utils.data.random_split(trainset, [train_size, test_size])
 
+#     return trainset, testset
+####################
 
 def make_directory(model):
     dir_name = f'Hyperparameter/{model}'
@@ -32,7 +43,33 @@ k_fold_dataset = K_Fold_Dataset('/home/jan/studienarbeit/Studienarbeit-CODE_Sema
                          )
 
 k_fold_dataset.check_for_data_leaks()               
+# model = all_models[0]
+# make_directory(model)
+# config = {  
+#         'batch_size': 10,
+#         'lr' : 0.001,
+#         'momentum' : 0.9,
+#         'weight_decay' : 0.0005,    
+# }
 
+# hyper_model = TrainedModel(model, 2048, 1024, weights_name='', folder_path=f'Hyperparameter/{model}', start_epoch='latest')
+
+# hyper_model.prepare_model_training(dataset_train=k_fold_dataset.train_dataset,
+#                                             dataset_val=k_fold_dataset.val_dataset,
+#                                             dataset_test=k_fold_dataset.test_dataset,
+#                                             batch_size=int(config['batch_size']), 
+#                                             shuffle=True, 
+#                                             learning_rate=config['lr'], 
+#                                             momentum=config['momentum'],
+#                                             weight_decay=config['weight_decay'], 
+#                                             num_workers=4, 
+#                                             pin_memory=True,
+#                                             )
+
+
+# epoch_loss, epoch_acc = hyper_model.train()  # Train for one epoch
+# #miou = hyper_model.calculate_miou_miou(k_fold_dataset.val_dataset)
+# tune.report(loss=epoch_loss, miou=epoch_acc)
 model = all_models[0]
 
 def train_hyper(config, checkpoint_dir=None):  
@@ -67,7 +104,7 @@ def train_hyper(config, checkpoint_dir=None):
         EPOCHS = 20 
 
         for epoch in range(start_epoch, EPOCHS):
-            epoch_loss, epoch_acc = hyper_model.train()
+            epoch_loss, epoch_acc = hyper_model.train(use_autocast=config['auto_cast']) 
             miou = hyper_model.calculate_miou(k_fold_dataset.val_dataset)
             with tune.checkpoint_dir(epoch) as cp_dir:
                 hyper_model.save_model(file_management=False, save_path=cp_dir)
@@ -82,7 +119,8 @@ def train_hyper(config, checkpoint_dir=None):
 config = {
     "learning_rate": tune.loguniform(1e-12, 1e-2),
     'batch_size': tune.choice([2,4,6,8,12,14,16]),
-    "weight_decay": tune.loguniform(1e-6, 1e-1)
+    "weight_decay": tune.loguniform(1e-6, 1e-1), 
+    "auto_cast": tune.choice([True, False]),
 }
 
 analysis = tune.run(
@@ -104,10 +142,10 @@ analysis = tune.run(
         sampler=TPESampler(seed=42),
     ),
     num_samples=100,
-    checkpoint_config=train.CheckpointConfig(
-        checkpoint_frequency=5,
-        checkpoint_at_end=True,
-    ),
+    #checkpoint_config=train.CheckpointConfig(
+        #checkpoint_frequency=5,
+        #checkpoint_at_end=True,
+    #),
     resume=True,
 )
 
