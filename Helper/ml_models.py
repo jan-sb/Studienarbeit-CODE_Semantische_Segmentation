@@ -276,7 +276,7 @@ class TrainedModel(Model):
 
 
 
-    def prepare_model_training(self, dataset_train=None, dataset_val= None, dataset_test=None, batch_size=3, shuffle=True, learning_rate= 1*10**(-5), ray_tune = False, weight_decay=0.001, num_workers = 0, pin_memory = False):
+    def prepare_model_training(self, dataset_train=None, dataset_val= None, dataset_test=None, batch_size=3, val_batch_size = 1,shuffle=True, learning_rate= 1*10**(-5), ray_tune = False, weight_decay=0.001, num_workers = 0, pin_memory = False):
         if dataset_train is not None:
             self.training_loader = DataLoader(dataset_train,
                                               batch_size=batch_size,
@@ -288,7 +288,7 @@ class TrainedModel(Model):
         
         if dataset_val is not None: 
             self.val_loader = DataLoader(dataset_val,
-                                         batch_size=1,
+                                         batch_size=val_batch_size,
                                          shuffle=False,
                                          num_workers=num_workers,
                                          pin_memory=pin_memory,
@@ -379,28 +379,32 @@ class TrainedModel(Model):
             labels = labels.to(self.device)
             
             if use_autocast:
-                # Use autocast for the forward pass
                 with autocast():
                     outputs = self.model(images)['out']   
                     loss = self.criterion(outputs, labels)
+                    
+                scaler.scale(loss).backward()
+                scaler.step(self.optimizer)
+                scaler.update()
+                                
             else:
                 outputs = self.model(images)['out']   
                 loss = self.criterion(outputs, labels)
+                loss.backward()
+                self.optimizer.step()
+                
             
+            run_loss += loss.item()        
             _, predicted = torch.max(outputs.data, 1) 
             total += labels.numel()
             correct += (predicted == labels).sum().item()
-        
-            loss = self.criterion(outputs, labels)            
-            loss.backward()
-            self.optimizer.step()
-            run_loss += loss
+            
                 
-        epoch_loss = run_loss.item() / len(self.training_loader)
+        epoch_loss = run_loss / len(self.training_loader)
         epoch_acc = 100 * correct / total
         print(f'Epoch {self.epoch + 1} |   Loss: {epoch_loss}    |   Accuracy: {epoch_acc}%')
-        # Validate the model after each epoch
         val_loss, val_acc = self.validate(self.val_loader, use_autocast=use_autocast)
+        
         # if self.writer is not None: 
         #     self.writer.add_scalars('Loss', {'Training Loss': epoch_loss, 'Validation Loss': val_loss}, self.epoch)
         #     self.writer.add_scalars('Accuracy', {'Training Accuracy': epoch_acc, 'Validation Accuracy': val_acc}, self.epoch)
@@ -416,13 +420,13 @@ class TrainedModel(Model):
         correct = 0
         total = 0
         self.model.eval()
+        
         with torch.no_grad():
             for images, labels in val_loader:
                 images = images.to(self.device)
                 labels = labels.to(self.device)
                 
                 if use_autocast:
-                    # Use autocast for the forward pass
                     with autocast():
                         outputs = self.model(images)['out']
                         loss = self.criterion(outputs, labels)
@@ -432,9 +436,9 @@ class TrainedModel(Model):
                                 
                 _, predicted = torch.max(outputs, 1)
                 total += labels.numel()
-                correct += (predicted == labels).sum().item()
-                loss = self.criterion(outputs, labels)
+                correct += (predicted == labels).sum().item()                
                 total_loss += loss.item()
+                
             avg_loss = total_loss / len(val_loader)
             self.val_loss = avg_loss
             val_acc = 100*correct / total 
