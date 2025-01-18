@@ -187,7 +187,7 @@ tuner = tune.Tuner(
     run_config=train.RunConfig(
         name="Hyperparameter_Tuning_Deeplabv3",
         # Wichtig: Speichert alles im storage_path
-        storage_path="/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/HyperparameterLOG/deeplabv3_resnet50",
+        storage_path="/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/HyperparameterLOG/deeplabv3_resnet101",
         checkpoint_config=CheckpointConfig(
             num_to_keep=3,
             checkpoint_score_attribute="val_loss",
