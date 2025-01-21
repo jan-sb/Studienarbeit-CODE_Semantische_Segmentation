@@ -19,3 +19,4 @@ Daten2/overlayed/*.png
 
 *.zip
 *.pkl
+*.DS_Store
