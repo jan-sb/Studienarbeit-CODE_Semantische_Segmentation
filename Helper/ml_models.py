@@ -140,112 +140,142 @@ class TorchModel(Model):
 
 
 class TrainedModel(Model):
-
-    def __init__(self, model_name, width, height, weights_name, folder_path = 'Own_Weights', start_epoch='latest', pretrained=True, writer = None):
+    def __init__(
+        self,
+        model_name,
+        width,
+        height,
+        weights_name,
+        folder_path="Own_Weights",
+        start_epoch="latest",
+        pretrained=True,
+        writer=None,
+        skip_local_load=False  # <--- NEW PARAMETER
+    ):
         self.city_label_color_map = [
-            (128, 64, 128), #ID__0, road
-            (244, 35, 232), #ID__1, sidewalk
-            (70, 70, 70), #ID__2, building
-            (102, 102, 156), #ID__3, wall
-            (190, 153, 153), #ID__4, fence
-            (153, 153, 153), #ID__5, pole
-            (250, 170, 30), #ID__6, traffic light
-            (220, 220, 0), #ID__7, traffic sign
-            (107, 142, 35), #ID__8, vegetation
-            (152, 251, 152), #ID__9, terrain
-            (70, 130, 180), #ID__10, sky
-            (220, 20, 60), #ID__11, person
-            (255, 0, 0), #ID__12, rider
-            (0, 0, 142), #ID__13, car
-            (0, 0, 70), #ID__14, truck
-            (0, 60, 100), #ID__15, bus
-            (0, 80, 100), #ID__16, train
-            (0, 0, 230), #ID__17, motorcycle
-            (119, 11, 32), #ID__18, bicycle
-            (0, 0, 0), #ID__19, unlabeled   #gets relabeled in annotation call, call and groundtruth need adjustments
+            (128, 64, 128),  # ID__0, road
+            (244, 35, 232),  # ID__1, sidewalk
+            (70, 70, 70),    # ID__2, building
+            (102, 102, 156), # ID__3, wall
+            (190, 153, 153), # ID__4, fence
+            (153, 153, 153), # ID__5, pole
+            (250, 170, 30),  # ID__6, traffic light
+            (220, 220, 0),   # ID__7, traffic sign
+            (107, 142, 35),  # ID__8, vegetation
+            (152, 251, 152), # ID__9, terrain
+            (70, 130, 180),  # ID__10, sky
+            (220, 20, 60),   # ID__11, person
+            (255, 0, 0),     # ID__12, rider
+            (0, 0, 142),     # ID__13, car
+            (0, 0, 70),      # ID__14, truck
+            (0, 60, 100),    # ID__15, bus
+            (0, 80, 100),    # ID__16, train
+            (0, 0, 230),     # ID__17, motorcycle
+            (119, 11, 32),   # ID__18, bicycle
+            (0, 0, 0),       # ID__19, unlabeled
         ]
         self.num_classes = len(self.city_label_color_map)
         self.step = 0
-        self.learning_rate = 1*10**(-5)
-        if writer is not None: 
+        self.learning_rate = 1e-5
+        if writer is not None:
             self.writer = writer
-        
-        
-        
-        super().__init__(model_name, weights=None, width=width, height=height, pretrained=True, num_classes = self.num_classes)
-        # self.preprocess = transforms.Compose([
-        #     transforms.ToTensor(),
-        #     SemanticSegmentation,
-        #     transforms.Resize(520),
-        # ])
-        
+
+        # Call the parent class Model's init
+        super().__init__(
+            model_name,
+            weights=None,
+            width=width,
+            height=height,
+            pretrained=pretrained,
+            num_classes=self.num_classes
+        )
+
+        # Example transform pipeline
         self.preprocess = transforms.Compose([
-            transforms.Resize((520,520)),
+            transforms.Resize((520, 520)),
             transforms.PILToTensor(),
             SemanticSegmentation(resize_size=520),
         ])
 
+        # Prepare for training (will build the optimizer, scheduler, etc.)
         self.prepare_model_training()
+
         self.val_loss = 0
         self.old_val_loss = self.val_loss
 
-        # Make Folder for the Trained Weights
+        # Manage folder paths
         self.folder_path = folder_path
         self.weights_name = weights_name
         self.model_folder_path = os.path.join(self.folder_path, self.weights_name)
+        
+        # Create the folder if it doesn't exist (avoid error):
+        if not os.path.exists(self.model_folder_path):
+            os.makedirs(self.model_folder_path, exist_ok=True)
+        
+        # If we do want to load from a local .pth (and not from a Ray checkpoint),
+        # we'll do the usual logic. Otherwise, we skip:
+        if not skip_local_load:
+            path_to_latest = os.path.join(
+                self.model_folder_path, f"{self.weights_name}_latest_{self.model_name}.pth"
+            )
+            path_to_epoch = os.path.join(
+                self.model_folder_path, f"{self.weights_name}_epoch-{start_epoch}_{self.model_name}.pth"
+            )
 
-
-        # Loading the Model
-        path_to_latest = self.model_folder_path+ f'/{self.weights_name}_latest_{self.model_name}.pth'
-        path_to_epoch = self.model_folder_path+ f'/{self.weights_name}_epoch-{self.epoch}_{self.model_name}.pth'
-        if os.path.exists(path_to_latest) and start_epoch == 'latest':
-            try:
-                checkpoint = torch.load(path_to_latest)
-                self.model.load_state_dict(checkpoint['model_state_dict'])
-                self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-                self.epoch = checkpoint['epoch']
-                self.val_loss = checkpoint['val_loss']
-                self.step = checkpoint['step']
-            except:
-                print(f'Error loading Model with Epoch latest in Class TrainedModel')
-                sys.exit()
-        elif os.path.exists(path_to_epoch) and start_epoch != 'latest':
-            try:
-                checkpoint = torch.load(path_to_epoch)
-                self.model.load_state_dict(checkpoint['model_state_dict'])
-                self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-                self.epoch = checkpoint['epoch']
-                self.val_loss = checkpoint['val_loss']
-                self.step = checkpoint['step']
-            except:
-                print(f'Error loading Model with Epoch {start_epoch} in Class TrainedModel')
-                sys.exit()
-        elif os.path.exists(self.model_folder_path) != True:
-            print(f'Model directory {self.model_folder_path} doesnt exist')
-            sys.exit()
+            if os.path.exists(path_to_latest) and start_epoch == "latest":
+                try:
+                    checkpoint = torch.load(path_to_latest)
+                    self.model.load_state_dict(checkpoint["model_state_dict"])
+                    self.optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+                    self.epoch = checkpoint["epoch"]
+                    self.val_loss = checkpoint["val_loss"]
+                    self.step = checkpoint["step"]
+                except Exception as e:
+                    print(f"Error loading Model with Epoch latest: {e}")
+                    # Instead of sys.exit(), let's just warn
+                    print("Skipping local .pth load due to error above.")
+            elif os.path.exists(path_to_epoch) and start_epoch != "latest":
+                try:
+                    checkpoint = torch.load(path_to_epoch)
+                    self.model.load_state_dict(checkpoint["model_state_dict"])
+                    self.optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+                    self.epoch = checkpoint["epoch"]
+                    self.val_loss = checkpoint["val_loss"]
+                    self.step = checkpoint["step"]
+                except Exception as e:
+                    print(f"Error loading Model with Epoch {start_epoch}: {e}")
+                    print("Skipping local .pth load due to error above.")
+            else:
+                # If no .pth found, we can initialize a new one or skip
+                print("No local .pth found; initializing a new model save.")
+                try:
+                    self.val_loss = 0
+                    self.save_model(file_management=False)
+                    # Reload from the newly saved model
+                    if os.path.exists(path_to_latest):
+                        new_checkpoint = torch.load(path_to_latest)
+                        self.model.load_state_dict(new_checkpoint["model_state_dict"])
+                        self.optimizer.load_state_dict(new_checkpoint["optimizer_state_dict"])
+                        self.epoch = new_checkpoint["epoch"]
+                        self.val_loss = new_checkpoint["val_loss"]
+                        self.step = new_checkpoint["step"]
+                        print("Successfully loaded a fresh model checkpoint.")
+                    else:
+                        print("Failed to find newly saved .pth, continuing anyway.")
+                except Exception as e:
+                    print(f"Failed to initialise new model: {e}")
         else:
-            print(f'Latest Epoch Save doesnt exist or Epoch Number Save doesnt exist, initialising new Save')
-            try:
-                self.prepare_model_training()
-                self.val_loss = 0
-                self.save_model(file_management=False)
-                #latest_file_path = self.model_folder_path + f'_latest_{self.model_name}.pth'
-                checkpoint = torch.load(path_to_latest)
-                self.model.load_state_dict(checkpoint['model_state_dict'])
-                self.optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-                self.epoch = checkpoint['epoch']
-                self.val_loss = checkpoint['val_loss']
-                self.step = checkpoint['step']
-                print(f'Successfully loaded Model')
-            except:
-                print(f'Failed to initialise new model')
-                sys.exit()
-                
-        current_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-        log_dir = f'{folder_path}/{weights_name}/runs/{current_time}'
+            # If skip_local_load == True, do nothing special
+            print("Skipping local .pth load logic (likely using external Ray checkpoint).")
+            self.epoch = 0  # or set any default you prefer
 
+        current_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+        log_dir = os.path.join(folder_path, weights_name, "runs", current_time)
+        
         self.old_val_loss = self.val_loss
         self.model.eval()
+        
+        
         
     def inference(self, image):
         self.model.eval()
