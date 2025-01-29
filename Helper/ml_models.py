@@ -44,12 +44,16 @@ class Model:
             self.device = torch.device('mps')
             print('Using MPS GPU')
         else:
-            self.device = torch.device('cpu')
+            self.device = torch.device('cpu') 
             print("No GPU available. Running on CPU.")
 
         if model_name in globals():  # Check if model is callable
-            model_funktion = globals()[model_name]
-            self.model = model_funktion(weights=self.weights, num_classes=self.num_classes).to(self.device)
+            model_funktion = globals()[model_name]            
+            try:
+                self.model = model_funktion(weights=self.weights, num_classes=self.num_classes).to(self.device)
+            except FileNotFoundError as e:
+                print("[DEBUG] model_funktion call caused:", e)
+                raise e 
             self.model.eval()
             print(f'Model loaded: {self.model_name} | Device: {self.device} ')
 
