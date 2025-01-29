@@ -1,0 +1,2 @@
+loss,val_loss,train_acc,val_acc,timestamp,checkpoint_dir_name,done,training_iteration,trial_id,date,time_this_iter_s,time_total_s,pid,hostname,node_ip,time_since_restore,iterations_since_restore
+inf,inf,0.0,0.0,1737596313,,False,1,3a6c9495,2025-01-23_02-38-33,4.494820833206177,4.494820833206177,912494,jan-desktop,10.7.0.4,4.494820833206177,1
