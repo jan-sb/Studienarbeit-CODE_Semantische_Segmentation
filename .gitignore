@@ -22,3 +22,4 @@ Daten2/overlayed/*.png
 *.DS_Store
 
 *.onnx
+*pyc
