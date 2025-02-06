@@ -23,6 +23,7 @@ from albumentations import Compose, HorizontalFlip, VerticalFlip, Rotate, ShiftS
 from albumentations.pytorch import ToTensorV2
 from torchvision.utils import make_grid
 from torch.cuda.amp import autocast
+import json
 
 
 
@@ -284,7 +285,6 @@ class TrainedModel(Model):
     def inference(self, image):
         self.model.eval()
         with torch.no_grad():
-            #tensor = self.image_preprocess(image)
             image = image.to(self.device)
             image = image.unsqueeze(0) 
             output = self.model(image)['out'].to(self.device)
@@ -654,6 +654,79 @@ class TrainedModel(Model):
             return None
 
 
+
+class MapillaryTrainedModel(TrainedModel):
+    def __init__(
+        self,
+        model_name,
+        width,
+        height,
+        weights_name,
+        folder_path="Own_Weights",
+        start_epoch="latest",
+        pretrained=True,
+        writer=None,
+        skip_local_load=False
+    ):
+        # Lade die Mapillary Colormap aus der JSON-Datei
+        self.mapillary_label_color_map = self.load_mapillary_colormap("Colormap/mapillary_colormap.json")
+        self.num_classes = len(self.mapillary_label_color_map)  # Automatische Anpassung der Klassenanzahl
+
+        self.step = 0
+        self.learning_rate = 1e-5
+        if writer is not None:
+            self.writer = writer
+
+        # Rufe den Eltern-Konstruktor auf und übergebe die neue Klassenanzahl
+        super().__init__(
+            model_name,
+            weights=None,
+            width=width,
+            height=height,
+            pretrained=pretrained,
+            num_classes=self.num_classes
+        )
+
+        # Optional: Preprocessing-Pipeline sicherstellen
+        self.preprocess = transforms.Compose([
+            transforms.Resize((520, 520)),
+            transforms.PILToTensor(),
+            SemanticSegmentation(resize_size=520),
+        ])
+
+        # Restlicher Initialisierungscode bleibt unverändert
+
+    @staticmethod
+    def load_mapillary_colormap(colormap_path):
+        """ Lädt die Farbzuordnung aus der JSON-Datei. """
+        with open(colormap_path, "r") as file:
+            colormap = json.load(file)
+
+        # Konvertiere die Farbwerte in ein Tupel (R, G, B)
+        return [tuple(color) for color in colormap.values()]
+
+    def own_model_inference_live_no_grad(self, image):
+        """ Führt eine segmentierte Vorhersage aus und visualisiert das Ergebnis. """
+        self.model.eval()
+        with torch.no_grad():
+            tensor = self.image_preprocess(image)
+            output = self.model(tensor)['out'].to(self.device)
+            num_classes = output.shape[1]
+            print(output.shape)
+            all_masks = output.argmax(1) == torch.arange(num_classes, device=self.device)[:, None, None]
+            tensor = tensor.to(torch.uint8).squeeze(0)
+            res_image = draw_segmentation_masks(
+                tensor,
+                all_masks,
+                colors=self.mapillary_label_color_map,  # Verwende die neue Mapillary-Farbkarte
+                alpha=0.9
+            )
+            res_image = self.tensor_to_image(res_image)
+            return res_image
+
+
+
+
 class CustomDataSet(Dataset):
     def __init__(self, image_dir, annotation_dir):
         self.mean = (0.2892, 0.3272, 0.2867)
@@ -796,3 +869,66 @@ class K_Fold_Dataset:
             annotation = annotation.long()
             
             return image, annotation
+        
+class MapillaryDataLoader:
+    def __init__(self, train_images_dir, train_annotations_dir, val_images_dir, val_annotations_dir, val_split=0.2):
+        """
+        Args:
+            train_images_dir: Pfad zu den Trainingsbildern.
+            train_annotations_dir: Pfad zu den Trainingsannotations (bereits konvertiert).
+            val_images_dir: Pfad zu den Testbildern (ehemals Val-Bilder).
+            val_annotations_dir: Pfad zu den Testannotations.
+            val_split: Anteil des Trainingssets, der als Validierungssplit genutzt wird (Standard: 20%).
+        """
+        self.train_images_dir = train_images_dir
+        self.train_annotations_dir = train_annotations_dir
+        # Das separate Val-Verzeichnis wird als Testset genutzt, da für das Testset keine gelabelten Daten erhältnich waren
+        self.test_images_dir = val_images_dir         
+        self.test_annotations_dir = val_annotations_dir
+
+        # Lade Dateinamen aus dem Trainingsordner
+        train_img_files = sorted([f for f in os.listdir(train_images_dir) if f.endswith(('.png', '.jpg'))])
+        train_ann_files = sorted([f for f in os.listdir(train_annotations_dir) if f.endswith('.png')])
+        
+        # Erstelle ein DataFrame mit den Trainingsdaten und führe einen 80/20 Split durch
+        df = pd.DataFrame({'image': train_img_files, 'annotation': train_ann_files})
+        train_df, val_df = train_test_split(df, test_size=val_split, random_state=42)
+        self.train_files = train_df.values.tolist()  # Jede Zeile: [image_filename, annotation_filename]
+        self.val_files = val_df.values.tolist()
+        
+        # Für das Testset werden die Dateien aus dem separaten Testordner geladen
+        test_img_files = sorted([f for f in os.listdir(self.test_images_dir) if f.endswith(('.png', '.jpg'))])
+        test_ann_files = sorted([f for f in os.listdir(self.test_annotations_dir) if f.endswith('.png')])
+        self.test_files = list(zip(test_img_files, test_ann_files))
+        
+        # Erstelle die Dataset-Instanzen
+        self.train_dataset = self.TrainDataset(self.train_files, train_images_dir, train_annotations_dir)
+        self.val_dataset = self.ValDataset(self.val_files, train_images_dir, train_annotations_dir)
+        self.test_dataset = self.TestDataset(self.test_files, self.test_images_dir, self.test_annotations_dir)
+        
+    class TrainDataset(CustomDataSet):
+        def __init__(self, file_list, image_dir, annotation_dir):
+            super().__init__(image_dir, annotation_dir)
+            # Überschreibe die Dateilisten basierend auf dem 80/20-Split
+            self.image_files = [row[0] for row in file_list]
+            self.annotation_files = [row[1] for row in file_list]
+            
+    class ValDataset(CustomDataSet):
+        def __init__(self, file_list, image_dir, annotation_dir):
+            super().__init__(image_dir, annotation_dir)
+            self.image_files = [row[0] for row in file_list]
+            self.annotation_files = [row[1] for row in file_list]
+            
+    class TestDataset(CustomDataSet):
+        def __init__(self, file_list, image_dir, annotation_dir):
+            super().__init__(image_dir, annotation_dir)
+            self.image_files = [row[0] for row in file_list]
+            self.annotation_files = [row[1] for row in file_list]
+            # Für das Testset sollen nur minimale Transformationen (Resize, Normalization, ToTensor) verwendet werden.
+            from albumentations import Compose, Resize, Normalize
+            from albumentations.pytorch import ToTensorV2
+            self.transform = Compose([
+                Resize(520, 520),
+                Normalize(mean=self.mean, std=self.std),
+                ToTensorV2()
+            ])
