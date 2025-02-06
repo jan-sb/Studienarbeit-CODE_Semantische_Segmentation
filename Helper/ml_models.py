@@ -19,7 +19,7 @@ from torch.utils.tensorboard.writer import SummaryWriter
 import datetime 
 import random
 from tqdm import tqdm
-from albumentations import Compose, HorizontalFlip, VerticalFlip, Rotate, ShiftScaleRotate, RandomCrop, Resize, Normalize
+from albumentations import Compose, HorizontalFlip, VerticalFlip, Rotate, ShiftScaleRotate, RandomCrop, Resize, Normalize, PadIfNeeded
 from albumentations.pytorch import ToTensorV2
 from torchvision.utils import make_grid
 from torch.cuda.amp import autocast
@@ -747,6 +747,7 @@ class CustomDataSet(Dataset):
             VerticalFlip(p=0.5),
             Rotate(limit=90, p=0.5),
             ShiftScaleRotate(shift_limit=0.0625, scale_limit=0.0, rotate_limit=0, p=0.5),
+            PadIfNeeded(min_height=600, min_width=600, border_mode=0, p=1.0),
             RandomCrop(height=600, width=600, p=0.5),
             Resize(520, 520),  # Resize the image and mask
             Normalize(mean=self.mean, std=self.std),  # Normalize the image
