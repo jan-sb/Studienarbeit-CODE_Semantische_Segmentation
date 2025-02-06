@@ -677,7 +677,7 @@ class MapillaryTrainedModel(TrainedModel):
         skip_local_load=False
     ):
         # Lade die Mapillary Colormap aus der JSON-Datei
-        self.mapillary_label_color_map = self.load_mapillary_colormap("Colormap/mapillary_colormap.json")
+        self.mapillary_label_color_map = self.load_mapillary_colormap("/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Colormap/mapillary_colormap.json")
         self.num_classes = len(self.mapillary_label_color_map)  # Automatische Anpassung der Klassenanzahl
 
         self.step = 0

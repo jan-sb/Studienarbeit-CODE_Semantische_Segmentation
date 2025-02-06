@@ -31,10 +31,10 @@ best_config_path = "FINAL_DATEN/best_configs_Map.json"
 
 # Mapillary-Daten laden
 mapillary_loader = MapillaryDataLoader(
-    train_images_dir='Mapilarry_Vistas/training/images',
-    train_annotations_dir='Mapilarry_Vistas/training_own',
-    val_images_dir='Mapilarry_Vistas/validation/images',
-    val_annotations_dir='Mapilarry_Vistas/validation_own'
+    train_images_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapilarry_Vistas/training/images',
+    train_annotations_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapilarry_Vistas/training_own',
+    val_images_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapilarry_Vistas/validation/images',
+    val_annotations_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapilarry_Vistas/validation_own'
 )
 
 def make_directory(model):
