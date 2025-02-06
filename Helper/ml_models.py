@@ -150,36 +150,44 @@ class TrainedModel(Model):
         model_name,
         width,
         height,
-        weights_name,
+        weights_name='',
         folder_path="Own_Weights",
         start_epoch="latest",
         pretrained=True,
         writer=None,
+        mapillary = False, 
+        num_classes = 21,
         skip_local_load=False  # <--- NEW PARAMETER
+        
     ):
-        self.city_label_color_map = [
-            (128, 64, 128),  # ID__0, road
-            (244, 35, 232),  # ID__1, sidewalk
-            (70, 70, 70),    # ID__2, building
-            (102, 102, 156), # ID__3, wall
-            (190, 153, 153), # ID__4, fence
-            (153, 153, 153), # ID__5, pole
-            (250, 170, 30),  # ID__6, traffic light
-            (220, 220, 0),   # ID__7, traffic sign
-            (107, 142, 35),  # ID__8, vegetation
-            (152, 251, 152), # ID__9, terrain
-            (70, 130, 180),  # ID__10, sky
-            (220, 20, 60),   # ID__11, person
-            (255, 0, 0),     # ID__12, rider
-            (0, 0, 142),     # ID__13, car
-            (0, 0, 70),      # ID__14, truck
-            (0, 60, 100),    # ID__15, bus
-            (0, 80, 100),    # ID__16, train
-            (0, 0, 230),     # ID__17, motorcycle
-            (119, 11, 32),   # ID__18, bicycle
-            (0, 0, 0),       # ID__19, unlabeled
-        ]
-        self.num_classes = len(self.city_label_color_map)
+        
+        if  not mapillary:
+            self.city_label_color_map = [
+                (128, 64, 128),  # ID__0, road
+                (244, 35, 232),  # ID__1, sidewalk
+                (70, 70, 70),    # ID__2, building
+                (102, 102, 156), # ID__3, wall
+                (190, 153, 153), # ID__4, fence
+                (153, 153, 153), # ID__5, pole
+                (250, 170, 30),  # ID__6, traffic light
+                (220, 220, 0),   # ID__7, traffic sign
+                (107, 142, 35),  # ID__8, vegetation
+                (152, 251, 152), # ID__9, terrain
+                (70, 130, 180),  # ID__10, sky
+                (220, 20, 60),   # ID__11, person
+                (255, 0, 0),     # ID__12, rider
+                (0, 0, 142),     # ID__13, car
+                (0, 0, 70),      # ID__14, truck
+                (0, 60, 100),    # ID__15, bus
+                (0, 80, 100),    # ID__16, train
+                (0, 0, 230),     # ID__17, motorcycle
+                (119, 11, 32),   # ID__18, bicycle
+                (0, 0, 0),       # ID__19, unlabeled
+            ]
+            self.num_classes = len(self.city_label_color_map)
+        if mapillary: 
+            self.num_classes = num_classes
+        
         self.step = 0
         self.learning_rate = 1e-5
         if writer is not None:
@@ -680,11 +688,11 @@ class MapillaryTrainedModel(TrainedModel):
         # Rufe den Eltern-Konstruktor auf und übergebe die neue Klassenanzahl
         super().__init__(
             model_name,
-            weights=None,
             width=width,
             height=height,
             pretrained=pretrained,
-            num_classes=self.num_classes
+            num_classes=self.num_classes, 
+            mapillary=True,
         )
 
         # Optional: Preprocessing-Pipeline sicherstellen
