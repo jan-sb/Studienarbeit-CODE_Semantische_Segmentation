@@ -31,10 +31,10 @@ best_config_path = "FINAL_DATEN/best_configs_Map.json"
 
 # Mapillary-Daten laden
 mapillary_loader = MapillaryDataLoader(
-    train_images_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapilarry_Vistas/training/images',
-    train_annotations_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapilarry_Vistas/training_own',
-    val_images_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapilarry_Vistas/validation/images',
-    val_annotations_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapilarry_Vistas/validation_own'
+    train_images_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapillary_Vistas/training/images',
+    train_annotations_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapillary_Vistas/training_own',
+    val_images_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapillary_Vistas/validation/images',
+    val_annotations_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapillary_Vistas/validation_own'
 )
 
 def make_directory(model):
@@ -63,6 +63,10 @@ def train_hyper(config, checkpoint_dir=None):
             folder_path=f'Hyperparameter/{model}',
             start_epoch='latest'
         )
+        
+        # Number of classes check
+        print(f"[INIT] Modell '{model}' initialisiert mit {hyper_model.num_classes} Klassen.")
+
 
         # Falls ein Checkpoint existiert, lade ihn
         if checkpoint_dir:
@@ -115,7 +119,9 @@ def train_hyper(config, checkpoint_dir=None):
                         "loss": epoch_loss,
                         "val_loss": val_loss,
                         "train_acc": epoch_acc,
-                        "val_acc": val_acc
+                        "val_acc": val_acc,
+                        "training_iteration": epoch,
+                        "num_classes": hyper_model.num_classes,
                     },
                     checkpoint=checkpoint_obj
                 )
@@ -139,7 +145,7 @@ for model in modells_to_study:
         "learning_rate": tune.loguniform(1e-5, 1e-2),
         "batch_size": tune.choice([4, 8, 16]),
         "weight_decay": tune.loguniform(1e-6, 1e-2),
-        "auto_cast": tune.choice([True, False]),
+        "auto_cast": True,
         "max_epochs": 100,
     }
 
@@ -160,7 +166,7 @@ for model in modells_to_study:
         train_hyper_with_resources,
         param_space=config,
         tune_config=tune.TuneConfig(
-            num_samples=50,
+            num_samples=2,
             search_alg=search_alg,
             scheduler=ASHAScheduler(
                 max_t=100,
@@ -174,12 +180,12 @@ for model in modells_to_study:
             name=f"{model}",
             storage_path="/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/HyperparameterLOG/",
             checkpoint_config=CheckpointConfig(
-                num_to_keep=2,
+                num_to_keep=5,
                 checkpoint_score_attribute="val_loss",
                 checkpoint_score_order="min",
             ),
             progress_reporter=CLIReporter(
-                metric_columns=["loss", "val_loss", "train_acc", "val_acc", "training_iteration"]
+                metric_columns=["loss", "val_loss", "train_acc", "val_acc", "training_iteration", "num_classes"],
             ),
         ),
     )
