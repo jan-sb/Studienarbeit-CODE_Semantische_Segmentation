@@ -1,0 +1,746 @@
+{
+    "0": {
+        "class_name": "Bird",
+        "image_path": "Mapillary_Vistas/validation/images/gDXft25HkbZqZAd7r8GV-Q.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/gDXft25HkbZqZAd7r8GV-Q.png",
+        "pixel_count": 77482
+    },
+    "1": {
+        "class_name": "Ground Animal",
+        "image_path": "Mapillary_Vistas/validation/images/2GRNyL_tZVU17fWLIpZ7yA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/2GRNyL_tZVU17fWLIpZ7yA.png",
+        "pixel_count": 169590
+    },
+    "2": {
+        "class_name": "Ambiguous Barrier",
+        "image_path": "Mapillary_Vistas/validation/images/gyA-hK6S8bN4wKCXB95Xbw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/gyA-hK6S8bN4wKCXB95Xbw.png",
+        "pixel_count": 4686
+    },
+    "3": {
+        "class_name": "Concrete Block",
+        "image_path": "Mapillary_Vistas/validation/images/zIa42cgedZ6Elyn6ty4Vxg.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/zIa42cgedZ6Elyn6ty4Vxg.png",
+        "pixel_count": 1507075
+    },
+    "4": {
+        "class_name": "Curb",
+        "image_path": "Mapillary_Vistas/validation/images/4bRbbpXJUG-ztxQXelb7oA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/4bRbbpXJUG-ztxQXelb7oA.png",
+        "pixel_count": 883337
+    },
+    "5": {
+        "class_name": "Fence",
+        "image_path": "Mapillary_Vistas/validation/images/kReK1GrIyeegBJSwwdoRdA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/kReK1GrIyeegBJSwwdoRdA.png",
+        "pixel_count": 7558161
+    },
+    "6": {
+        "class_name": "Guard Rail",
+        "image_path": "Mapillary_Vistas/validation/images/tonCu1lD4w-NMPbyA0rQZw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/tonCu1lD4w-NMPbyA0rQZw.png",
+        "pixel_count": 908959
+    },
+    "7": {
+        "class_name": "Barrier",
+        "image_path": "Mapillary_Vistas/validation/images/UElksDIQzKtwLAM9VOWAnQ.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/UElksDIQzKtwLAM9VOWAnQ.png",
+        "pixel_count": 2027
+    },
+    "8": {
+        "class_name": "Road Median",
+        "image_path": "Mapillary_Vistas/validation/images/QSxHBCQQ06L80M0sREwU-A.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/QSxHBCQQ06L80M0sREwU-A.png",
+        "pixel_count": 493389
+    },
+    "9": {
+        "class_name": "Road Side",
+        "image_path": "Mapillary_Vistas/validation/images/qgEb0Rvn7sgPBaeVJh5X6A.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/qgEb0Rvn7sgPBaeVJh5X6A.png",
+        "pixel_count": 1567653
+    },
+    "10": {
+        "class_name": "Lane Separator",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "11": {
+        "class_name": "Temporary Barrier",
+        "image_path": "Mapillary_Vistas/validation/images/6DgRYW8VWDeievMCfnVIuw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/6DgRYW8VWDeievMCfnVIuw.png",
+        "pixel_count": 371567
+    },
+    "12": {
+        "class_name": "Wall",
+        "image_path": "Mapillary_Vistas/validation/images/LCgN1uMGIWihC87xpmqkLQ.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/LCgN1uMGIWihC87xpmqkLQ.png",
+        "pixel_count": 4415923
+    },
+    "13": {
+        "class_name": "Bike Lane",
+        "image_path": "Mapillary_Vistas/validation/images/dWDcQMFCAXHcy8yGl2qFLQ.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/dWDcQMFCAXHcy8yGl2qFLQ.png",
+        "pixel_count": 3315695
+    },
+    "14": {
+        "class_name": "Crosswalk - Plain",
+        "image_path": "Mapillary_Vistas/validation/images/yv35p5AQiOU8eKC-nFeAZA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/yv35p5AQiOU8eKC-nFeAZA.png",
+        "pixel_count": 3881319
+    },
+    "15": {
+        "class_name": "Curb Cut",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "16": {
+        "class_name": "Driveway",
+        "image_path": "Mapillary_Vistas/validation/images/6GdPaavGAssQA-kAcQCRhA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/6GdPaavGAssQA-kAcQCRhA.png",
+        "pixel_count": 2438086
+    },
+    "17": {
+        "class_name": "Parking",
+        "image_path": "Mapillary_Vistas/validation/images/s_Zb_Ie7HrEFAvjJhDm84w.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/s_Zb_Ie7HrEFAvjJhDm84w.png",
+        "pixel_count": 2964457
+    },
+    "18": {
+        "class_name": "Parking Aisle",
+        "image_path": "Mapillary_Vistas/validation/images/TztjUbQtI4pr6aitUeT1kQ.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/TztjUbQtI4pr6aitUeT1kQ.png",
+        "pixel_count": 1957657
+    },
+    "19": {
+        "class_name": "Pedestrian Area",
+        "image_path": "Mapillary_Vistas/validation/images/G4tvawHZUd4o4b04XxazNA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/G4tvawHZUd4o4b04XxazNA.png",
+        "pixel_count": 11134904
+    },
+    "20": {
+        "class_name": "Rail Track",
+        "image_path": "Mapillary_Vistas/validation/images/DVf4WEF3wUQ8NZFzuQLaBg.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/DVf4WEF3wUQ8NZFzuQLaBg.png",
+        "pixel_count": 2441579
+    },
+    "21": {
+        "class_name": "Road",
+        "image_path": "Mapillary_Vistas/validation/images/BXwmoGtx_jBN3Yi1Qk9pMg.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/BXwmoGtx_jBN3Yi1Qk9pMg.png",
+        "pixel_count": 7582311
+    },
+    "22": {
+        "class_name": "Road Shoulder",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "23": {
+        "class_name": "Service Lane",
+        "image_path": "Mapillary_Vistas/validation/images/Q26wimQNy9NCcUCPNiQ5Kw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/Q26wimQNy9NCcUCPNiQ5Kw.png",
+        "pixel_count": 1256054
+    },
+    "24": {
+        "class_name": "Sidewalk",
+        "image_path": "Mapillary_Vistas/validation/images/CNjjfRK0bogNdYjx7wxDYw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/CNjjfRK0bogNdYjx7wxDYw.png",
+        "pixel_count": 6892765
+    },
+    "25": {
+        "class_name": "Traffic Island",
+        "image_path": "Mapillary_Vistas/validation/images/eIQCwwpMqzxA_OQCTO4Wcg.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/eIQCwwpMqzxA_OQCTO4Wcg.png",
+        "pixel_count": 1593031
+    },
+    "26": {
+        "class_name": "Bridge",
+        "image_path": "Mapillary_Vistas/validation/images/ptdd4GmjPd7MeTM1FFP1Zw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/ptdd4GmjPd7MeTM1FFP1Zw.png",
+        "pixel_count": 6931382
+    },
+    "27": {
+        "class_name": "Building",
+        "image_path": "Mapillary_Vistas/validation/images/ddUw9OnOEwwejgonja8_wg.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/ddUw9OnOEwwejgonja8_wg.png",
+        "pixel_count": 11874283
+    },
+    "28": {
+        "class_name": "Garage",
+        "image_path": "Mapillary_Vistas/validation/images/0xtR9XkHx-pfm_JEzhq2Ug.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/0xtR9XkHx-pfm_JEzhq2Ug.png",
+        "pixel_count": 165677
+    },
+    "29": {
+        "class_name": "Tunnel",
+        "image_path": "Mapillary_Vistas/validation/images/bvSGJVPKHwU9ApMiF19h_A.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/bvSGJVPKHwU9ApMiF19h_A.png",
+        "pixel_count": 6477563
+    },
+    "30": {
+        "class_name": "Person",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "31": {
+        "class_name": "Person Group",
+        "image_path": "Mapillary_Vistas/validation/images/4wy5aQrjs0fSJGo_JbMaPg.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/4wy5aQrjs0fSJGo_JbMaPg.png",
+        "pixel_count": 2270704
+    },
+    "32": {
+        "class_name": "Bicyclist",
+        "image_path": "Mapillary_Vistas/validation/images/qrDMpwOEuMJWMtNMO53d2w.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/qrDMpwOEuMJWMtNMO53d2w.png",
+        "pixel_count": 1143570
+    },
+    "33": {
+        "class_name": "Motorcyclist",
+        "image_path": "Mapillary_Vistas/validation/images/Bz5-mgMDWk6gMN_gLPwnxg.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/Bz5-mgMDWk6gMN_gLPwnxg.png",
+        "pixel_count": 1053219
+    },
+    "34": {
+        "class_name": "Other Rider",
+        "image_path": "Mapillary_Vistas/validation/images/58ob5eyo7EL4TQegRyQGfA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/58ob5eyo7EL4TQegRyQGfA.png",
+        "pixel_count": 16242
+    },
+    "35": {
+        "class_name": "Lane Marking - Dashed Line",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "36": {
+        "class_name": "Lane Marking - Straight Line",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "37": {
+        "class_name": "Lane Marking - Zigzag Line",
+        "image_path": "Mapillary_Vistas/validation/images/Ngqr24mONuMC1dZnrQMywQ.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/Ngqr24mONuMC1dZnrQMywQ.png",
+        "pixel_count": 84207
+    },
+    "38": {
+        "class_name": "Lane Marking - Ambiguous",
+        "image_path": "Mapillary_Vistas/validation/images/dzelLoP_l5lug9kSW2motA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/dzelLoP_l5lug9kSW2motA.png",
+        "pixel_count": 150600
+    },
+    "39": {
+        "class_name": "Lane Marking - Arrow (Left)",
+        "image_path": "Mapillary_Vistas/validation/images/6PRSG7BGxpfiEi5vMyp3Ow.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/6PRSG7BGxpfiEi5vMyp3Ow.png",
+        "pixel_count": 153717
+    },
+    "40": {
+        "class_name": "Lane Marking - Arrow (Other)",
+        "image_path": "Mapillary_Vistas/validation/images/J5BFlgXZdSRc_WAWjs8JHw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/J5BFlgXZdSRc_WAWjs8JHw.png",
+        "pixel_count": 105784
+    },
+    "41": {
+        "class_name": "Lane Marking - Arrow (Right)",
+        "image_path": "Mapillary_Vistas/validation/images/J5BFlgXZdSRc_WAWjs8JHw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/J5BFlgXZdSRc_WAWjs8JHw.png",
+        "pixel_count": 75307
+    },
+    "42": {
+        "class_name": "Lane Marking - Arrow (Split Left or Straight)",
+        "image_path": "Mapillary_Vistas/validation/images/QxzH_y5v6wuolpo8qLc2VA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/QxzH_y5v6wuolpo8qLc2VA.png",
+        "pixel_count": 508814
+    },
+    "43": {
+        "class_name": "Lane Marking - Arrow (Split Right or Straight)",
+        "image_path": "Mapillary_Vistas/validation/images/gyA-hK6S8bN4wKCXB95Xbw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/gyA-hK6S8bN4wKCXB95Xbw.png",
+        "pixel_count": 440887
+    },
+    "44": {
+        "class_name": "Lane Marking - Arrow (Straight)",
+        "image_path": "Mapillary_Vistas/validation/images/jqh8xIPwEZiRmWEwY9ZVaA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/jqh8xIPwEZiRmWEwY9ZVaA.png",
+        "pixel_count": 116258
+    },
+    "45": {
+        "class_name": "Lane Marking - Crosswalk",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "46": {
+        "class_name": "Lane Marking - Give Way (Row)",
+        "image_path": "Mapillary_Vistas/validation/images/Q5bWYA-HtQJhS4VfwBndrA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/Q5bWYA-HtQJhS4VfwBndrA.png",
+        "pixel_count": 982893
+    },
+    "47": {
+        "class_name": "Lane Marking - Give Way (Single)",
+        "image_path": "Mapillary_Vistas/validation/images/-YfOWQM-geslv541gdpQPQ.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/-YfOWQM-geslv541gdpQPQ.png",
+        "pixel_count": 73740
+    },
+    "48": {
+        "class_name": "Lane Marking - Hatched (Chevron)",
+        "image_path": "Mapillary_Vistas/validation/images/anxP0G9HpcflGGscD6vWkg.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/anxP0G9HpcflGGscD6vWkg.png",
+        "pixel_count": 681588
+    },
+    "49": {
+        "class_name": "Lane Marking - Hatched (Diagonal)",
+        "image_path": "Mapillary_Vistas/validation/images/tnEuCNUp9yXlUcjTq4Ok0w.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/tnEuCNUp9yXlUcjTq4Ok0w.png",
+        "pixel_count": 3055432
+    },
+    "50": {
+        "class_name": "Lane Marking - Other",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "51": {
+        "class_name": "Lane Marking - Stop Line",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "52": {
+        "class_name": "Lane Marking - Symbol (Bicycle)",
+        "image_path": "Mapillary_Vistas/validation/images/dWDcQMFCAXHcy8yGl2qFLQ.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/dWDcQMFCAXHcy8yGl2qFLQ.png",
+        "pixel_count": 295945
+    },
+    "53": {
+        "class_name": "Lane Marking - Symbol (Other)",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "54": {
+        "class_name": "Lane Marking - Text",
+        "image_path": "Mapillary_Vistas/validation/images/wrU2ib1an6AmgVGdRYLuTQ.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/wrU2ib1an6AmgVGdRYLuTQ.png",
+        "pixel_count": 3882756
+    },
+    "55": {
+        "class_name": "Lane Marking (only) - Dashed Line",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "56": {
+        "class_name": "Lane Marking (only) - Crosswalk",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "57": {
+        "class_name": "Lane Marking (only) - Other",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "58": {
+        "class_name": "Lane Marking (only) - Test",
+        "image_path": "Mapillary_Vistas/validation/images/tENEkXVT_LiQtUxtFb-HzQ.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/tENEkXVT_LiQtUxtFb-HzQ.png",
+        "pixel_count": 4620807
+    },
+    "59": {
+        "class_name": "Mountain",
+        "image_path": "Mapillary_Vistas/validation/images/Im5eLSxcGNagOl4n8lYu2g.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/Im5eLSxcGNagOl4n8lYu2g.png",
+        "pixel_count": 4632414
+    },
+    "60": {
+        "class_name": "Sand",
+        "image_path": "Mapillary_Vistas/validation/images/9eQEuKjdNCT9D6vO-Rjv8Q.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/9eQEuKjdNCT9D6vO-Rjv8Q.png",
+        "pixel_count": 1391539
+    },
+    "61": {
+        "class_name": "Sky",
+        "image_path": "Mapillary_Vistas/validation/images/HmI8OXnsBwFwxm3g3ld4NA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/HmI8OXnsBwFwxm3g3ld4NA.png",
+        "pixel_count": 13387118
+    },
+    "62": {
+        "class_name": "Snow",
+        "image_path": "Mapillary_Vistas/validation/images/-mqVqUNOImM1OzSXoL44rA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/-mqVqUNOImM1OzSXoL44rA.png",
+        "pixel_count": 10309746
+    },
+    "63": {
+        "class_name": "Terrain",
+        "image_path": "Mapillary_Vistas/validation/images/3qzU13RQZzLHg5ETTfciUA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/3qzU13RQZzLHg5ETTfciUA.png",
+        "pixel_count": 4492020
+    },
+    "64": {
+        "class_name": "Vegetation",
+        "image_path": "Mapillary_Vistas/validation/images/c33c0LCGoXl9P6mFprE1ww.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/c33c0LCGoXl9P6mFprE1ww.png",
+        "pixel_count": 8479679
+    },
+    "65": {
+        "class_name": "Water",
+        "image_path": "Mapillary_Vistas/validation/images/F-SaJwY8exrIXo37_v8S3w.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/F-SaJwY8exrIXo37_v8S3w.png",
+        "pixel_count": 5830561
+    },
+    "66": {
+        "class_name": "Banner",
+        "image_path": "Mapillary_Vistas/validation/images/kCA4mZhQTMahGWqLhh4c1g.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/kCA4mZhQTMahGWqLhh4c1g.png",
+        "pixel_count": 787932
+    },
+    "67": {
+        "class_name": "Bench",
+        "image_path": "Mapillary_Vistas/validation/images/7jsufwhCbGXTh_Yejm7YcA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/7jsufwhCbGXTh_Yejm7YcA.png",
+        "pixel_count": 584055
+    },
+    "68": {
+        "class_name": "Bike Rack",
+        "image_path": "Mapillary_Vistas/validation/images/7zKUntDt3zAZRDMsSJw9jw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/7zKUntDt3zAZRDMsSJw9jw.png",
+        "pixel_count": 142772
+    },
+    "69": {
+        "class_name": "Catch Basin",
+        "image_path": "Mapillary_Vistas/validation/images/KlZ3XODVQ4MFjMRyjWLgCw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/KlZ3XODVQ4MFjMRyjWLgCw.png",
+        "pixel_count": 629969
+    },
+    "70": {
+        "class_name": "CCTV Camera",
+        "image_path": "Mapillary_Vistas/validation/images/1y7aXjIMHDC4U_gp15_Nhg.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/1y7aXjIMHDC4U_gp15_Nhg.png",
+        "pixel_count": 23536
+    },
+    "71": {
+        "class_name": "Fire Hydrant",
+        "image_path": "Mapillary_Vistas/validation/images/qrN9dbZwjUNTvxcpf3JI0A.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/qrN9dbZwjUNTvxcpf3JI0A.png",
+        "pixel_count": 100315
+    },
+    "72": {
+        "class_name": "Junction Box",
+        "image_path": "Mapillary_Vistas/validation/images/Wet0hFoJNgvfzU8U7iIBKg.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/Wet0hFoJNgvfzU8U7iIBKg.png",
+        "pixel_count": 2357386
+    },
+    "73": {
+        "class_name": "Mailbox",
+        "image_path": "Mapillary_Vistas/validation/images/dm4y-sOUvmTy4VcAjPuIpA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/dm4y-sOUvmTy4VcAjPuIpA.png",
+        "pixel_count": 75421
+    },
+    "74": {
+        "class_name": "Manhole",
+        "image_path": "Mapillary_Vistas/validation/images/OGHqtq67sKIVqNOyP3nGkw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/OGHqtq67sKIVqNOyP3nGkw.png",
+        "pixel_count": 361743
+    },
+    "75": {
+        "class_name": "Parking Meter",
+        "image_path": "Mapillary_Vistas/validation/images/7zKUntDt3zAZRDMsSJw9jw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/7zKUntDt3zAZRDMsSJw9jw.png",
+        "pixel_count": 321287
+    },
+    "76": {
+        "class_name": "Phone Booth",
+        "image_path": "Mapillary_Vistas/validation/images/dWDcQMFCAXHcy8yGl2qFLQ.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/dWDcQMFCAXHcy8yGl2qFLQ.png",
+        "pixel_count": 681802
+    },
+    "77": {
+        "class_name": "Pothole",
+        "image_path": "Mapillary_Vistas/validation/images/9Gad_3CzbPOlUtgdAa0okQ.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/9Gad_3CzbPOlUtgdAa0okQ.png",
+        "pixel_count": 1571422
+    },
+    "78": {
+        "class_name": "Signage - Advertisement",
+        "image_path": "Mapillary_Vistas/validation/images/epenTGhc74BxGWVkp_90Bg.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/epenTGhc74BxGWVkp_90Bg.png",
+        "pixel_count": 2624368
+    },
+    "79": {
+        "class_name": "Signage - Ambiguous",
+        "image_path": "Mapillary_Vistas/validation/images/qhp7oS0Ijrlmi3fUWTvzEA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/qhp7oS0Ijrlmi3fUWTvzEA.png",
+        "pixel_count": 625007
+    },
+    "80": {
+        "class_name": "Signage - Back",
+        "image_path": "Mapillary_Vistas/validation/images/cYfse-fKPYPG4AmCjUvqvw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/cYfse-fKPYPG4AmCjUvqvw.png",
+        "pixel_count": 358408
+    },
+    "81": {
+        "class_name": "Signage - Information",
+        "image_path": "Mapillary_Vistas/validation/images/2GSXJnMNPdqamBUsPJreeQ.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/2GSXJnMNPdqamBUsPJreeQ.png",
+        "pixel_count": 420370
+    },
+    "82": {
+        "class_name": "Signage - Other",
+        "image_path": "Mapillary_Vistas/validation/images/Y8xxUzJ7odJxkd4odiEz4Q.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/Y8xxUzJ7odJxkd4odiEz4Q.png",
+        "pixel_count": 385396
+    },
+    "83": {
+        "class_name": "Signage - Store",
+        "image_path": "Mapillary_Vistas/validation/images/FlnZVUZLOb-rlw-QUzJ7lA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/FlnZVUZLOb-rlw-QUzJ7lA.png",
+        "pixel_count": 731692
+    },
+    "84": {
+        "class_name": "Street Light",
+        "image_path": "Mapillary_Vistas/validation/images/-mqVqUNOImM1OzSXoL44rA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/-mqVqUNOImM1OzSXoL44rA.png",
+        "pixel_count": 136802
+    },
+    "85": {
+        "class_name": "Pole",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "86": {
+        "class_name": "Pole Group",
+        "image_path": "Mapillary_Vistas/validation/images/lp3D8rcCLAXiq24uCeMTBw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/lp3D8rcCLAXiq24uCeMTBw.png",
+        "pixel_count": 1338146
+    },
+    "87": {
+        "class_name": "Traffic Sign Frame",
+        "image_path": "Mapillary_Vistas/validation/images/sTIAgN5Uigv3RNLDJ2g28g.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/sTIAgN5Uigv3RNLDJ2g28g.png",
+        "pixel_count": 2031796
+    },
+    "88": {
+        "class_name": "Utility Pole",
+        "image_path": "Mapillary_Vistas/validation/images/jupx68Mpq0AI7-Kz304LdQ.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/jupx68Mpq0AI7-Kz304LdQ.png",
+        "pixel_count": 718320
+    },
+    "89": {
+        "class_name": "Traffic Cone",
+        "image_path": "Mapillary_Vistas/validation/images/jEUk_wzXO_ft8gCIPp9ddA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/jEUk_wzXO_ft8gCIPp9ddA.png",
+        "pixel_count": 268229
+    },
+    "90": {
+        "class_name": "Traffic Light - General (Single)",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "91": {
+        "class_name": "Traffic Light - Pedestrians",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "92": {
+        "class_name": "Traffic Light - General (Upright)",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "93": {
+        "class_name": "Traffic Light - General (Horizontal)",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "94": {
+        "class_name": "Traffic Light - Cyclists",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "95": {
+        "class_name": "Traffic Light - Other",
+        "image_path": "Mapillary_Vistas/validation/images/fx4UAddR3SFxlO07L2WJlg.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/fx4UAddR3SFxlO07L2WJlg.png",
+        "pixel_count": 471897
+    },
+    "96": {
+        "class_name": "Traffic Sign - Ambiguous",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "97": {
+        "class_name": "Traffic Sign (Back)",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "98": {
+        "class_name": "Traffic Sign - Direction (Back)",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "99": {
+        "class_name": "Traffic Sign - Direction (Front)",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "100": {
+        "class_name": "Traffic Sign (Front)",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "101": {
+        "class_name": "Traffic Sign - Parking",
+        "image_path": "Mapillary_Vistas/validation/images/fXYwltFZejCF1SMv96_q7w.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/fXYwltFZejCF1SMv96_q7w.png",
+        "pixel_count": 157787
+    },
+    "102": {
+        "class_name": "Traffic Sign - Temporary (Back)",
+        "image_path": "Mapillary_Vistas/validation/images/lp3D8rcCLAXiq24uCeMTBw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/lp3D8rcCLAXiq24uCeMTBw.png",
+        "pixel_count": 324670
+    },
+    "103": {
+        "class_name": "Traffic Sign - Temporary (Front)",
+        "image_path": "Mapillary_Vistas/validation/images/_ofjP6PF8Z4MJXlo1Fo62g.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/_ofjP6PF8Z4MJXlo1Fo62g.png",
+        "pixel_count": 2868039
+    },
+    "104": {
+        "class_name": "Trash Can",
+        "image_path": "Mapillary_Vistas/validation/images/YRNFry_OQDczzC6ZauvZkQ.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/YRNFry_OQDczzC6ZauvZkQ.png",
+        "pixel_count": 459419
+    },
+    "105": {
+        "class_name": "Bicycle",
+        "image_path": "Mapillary_Vistas/validation/images/7zKUntDt3zAZRDMsSJw9jw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/7zKUntDt3zAZRDMsSJw9jw.png",
+        "pixel_count": 571865
+    },
+    "106": {
+        "class_name": "Boat",
+        "image_path": "Mapillary_Vistas/validation/images/KlZ3XODVQ4MFjMRyjWLgCw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/KlZ3XODVQ4MFjMRyjWLgCw.png",
+        "pixel_count": 937780
+    },
+    "107": {
+        "class_name": "Bus",
+        "image_path": "Mapillary_Vistas/validation/images/id69DZIdnDFMSk8GyY-WSg.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/id69DZIdnDFMSk8GyY-WSg.png",
+        "pixel_count": 2459689
+    },
+    "108": {
+        "class_name": "Car",
+        "image_path": null,
+        "annotation_path": null,
+        "pixel_count": 0
+    },
+    "109": {
+        "class_name": "Caravan",
+        "image_path": "Mapillary_Vistas/validation/images/_EGt7GTUW6OKw0zzz7c5-A.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/_EGt7GTUW6OKw0zzz7c5-A.png",
+        "pixel_count": 955529
+    },
+    "110": {
+        "class_name": "Motorcycle",
+        "image_path": "Mapillary_Vistas/validation/images/sRw76Bg6URvqo_5BLEfWfw.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/sRw76Bg6URvqo_5BLEfWfw.png",
+        "pixel_count": 1532323
+    },
+    "111": {
+        "class_name": "On Rails",
+        "image_path": "Mapillary_Vistas/validation/images/Km_wpu0YSE0I27dwxMpf0A.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/Km_wpu0YSE0I27dwxMpf0A.png",
+        "pixel_count": 868983
+    },
+    "112": {
+        "class_name": "Other Vehicle",
+        "image_path": "Mapillary_Vistas/validation/images/KvZ1L-oKjh8hPu5ANWm42A.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/KvZ1L-oKjh8hPu5ANWm42A.png",
+        "pixel_count": 866778
+    },
+    "113": {
+        "class_name": "Trailer",
+        "image_path": "Mapillary_Vistas/validation/images/q2Fi9lgPl0cLG2Ufq9le9Q.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/q2Fi9lgPl0cLG2Ufq9le9Q.png",
+        "pixel_count": 579784
+    },
+    "114": {
+        "class_name": "Truck",
+        "image_path": "Mapillary_Vistas/validation/images/xMuzgelAWKI-JjIubePqig.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/xMuzgelAWKI-JjIubePqig.png",
+        "pixel_count": 3084657
+    },
+    "115": {
+        "class_name": "Vehicle Group",
+        "image_path": "Mapillary_Vistas/validation/images/UpthknpEKE22BoA2ANsmeg.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/UpthknpEKE22BoA2ANsmeg.png",
+        "pixel_count": 4108149
+    },
+    "116": {
+        "class_name": "Wheeled Slow",
+        "image_path": "Mapillary_Vistas/validation/images/3qzU13RQZzLHg5ETTfciUA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/3qzU13RQZzLHg5ETTfciUA.png",
+        "pixel_count": 193949
+    },
+    "117": {
+        "class_name": "Water Valve",
+        "image_path": "Mapillary_Vistas/validation/images/THWWTxIA4Rewdo049mYEHQ.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/THWWTxIA4Rewdo049mYEHQ.png",
+        "pixel_count": 493132
+    },
+    "118": {
+        "class_name": "Car Mount",
+        "image_path": "Mapillary_Vistas/validation/images/AU07yidhmL_qakR6Dv7cYg.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/AU07yidhmL_qakR6Dv7cYg.png",
+        "pixel_count": 689959
+    },
+    "119": {
+        "class_name": "Dynamic",
+        "image_path": "Mapillary_Vistas/validation/images/qrDMpwOEuMJWMtNMO53d2w.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/qrDMpwOEuMJWMtNMO53d2w.png",
+        "pixel_count": 1058324
+    },
+    "120": {
+        "class_name": "Ego Vehicle",
+        "image_path": "Mapillary_Vistas/validation/images/FTWAYyVB-APNuv9diquv7A.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/FTWAYyVB-APNuv9diquv7A.png",
+        "pixel_count": 5617737
+    },
+    "121": {
+        "class_name": "Ground",
+        "image_path": "Mapillary_Vistas/validation/images/LTyHt3UqgEo_esJkK2h1nA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/LTyHt3UqgEo_esJkK2h1nA.png",
+        "pixel_count": 2978495
+    },
+    "122": {
+        "class_name": "Static",
+        "image_path": "Mapillary_Vistas/validation/images/fVnvGeR2PG_XUZDzU7HUzA.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/fVnvGeR2PG_XUZDzU7HUzA.png",
+        "pixel_count": 1988662
+    },
+    "123": {
+        "class_name": "Unlabeled",
+        "image_path": "Mapillary_Vistas/validation/images/c33c0LCGoXl9P6mFprE1ww.jpg",
+        "annotation_path": "Mapillary_Vistas/validation_own/c33c0LCGoXl9P6mFprE1ww.png",
+        "pixel_count": 327905
+    }
+}

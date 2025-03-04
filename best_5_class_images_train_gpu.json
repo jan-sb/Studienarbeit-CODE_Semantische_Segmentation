@@ -1,0 +1,3722 @@
+{
+    "0": {
+        "class_name": "Bird",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/2BPT64PaqzXqV0BCPbJNlA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/2BPT64PaqzXqV0BCPbJNlA.png",
+                "pixel_count": 38086
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/iT45lp66V9iIb4GP3AXw6g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/iT45lp66V9iIb4GP3AXw6g.png",
+                "pixel_count": 28091
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/S85Wc6wLl5q9TW3s-sF6ag.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/S85Wc6wLl5q9TW3s-sF6ag.png",
+                "pixel_count": 27355
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/WfWTqQzJhKextPC1yHd02Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/WfWTqQzJhKextPC1yHd02Q.png",
+                "pixel_count": 22792
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/7IGYVwmxe4pnqvBj_tLThQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/7IGYVwmxe4pnqvBj_tLThQ.png",
+                "pixel_count": 17139
+            }
+        ]
+    },
+    "1": {
+        "class_name": "Ground Animal",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/etGv9K4hXN0APk5eAB1aJQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/etGv9K4hXN0APk5eAB1aJQ.png",
+                "pixel_count": 385071
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/czkO_9In4u30opBy5H1uLg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/czkO_9In4u30opBy5H1uLg.png",
+                "pixel_count": 331838
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/g2eKK5qAqkEJS0RKjT2Z2w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/g2eKK5qAqkEJS0RKjT2Z2w.png",
+                "pixel_count": 319823
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/JmhtloD0Rd3-MlgoU1YGIw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/JmhtloD0Rd3-MlgoU1YGIw.png",
+                "pixel_count": 243271
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/B42DjvamOVSQpv89GHJ3Iw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/B42DjvamOVSQpv89GHJ3Iw.png",
+                "pixel_count": 126433
+            }
+        ]
+    },
+    "2": {
+        "class_name": "Ambiguous Barrier",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/y_dcDkhfKhbsDKx6PrPc5w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/y_dcDkhfKhbsDKx6PrPc5w.png",
+                "pixel_count": 234549
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/NSqKTgV_qsfjFV5G0w2vGw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/NSqKTgV_qsfjFV5G0w2vGw.png",
+                "pixel_count": 67775
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/fHpQdBRBOgmCAo_kottCQQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/fHpQdBRBOgmCAo_kottCQQ.png",
+                "pixel_count": 27353
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/6GMFfc0nTwA9W7DFlc1u2Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/6GMFfc0nTwA9W7DFlc1u2Q.png",
+                "pixel_count": 23122
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/YgdleKyo_tl8wSjBrSGAOQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/YgdleKyo_tl8wSjBrSGAOQ.png",
+                "pixel_count": 16153
+            }
+        ]
+    },
+    "3": {
+        "class_name": "Concrete Block",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/0IumC8KoIh3EtYt1HNr6rA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/0IumC8KoIh3EtYt1HNr6rA.png",
+                "pixel_count": 2056045
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Yu5hGY99gDFbvsJwqWYx0A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Yu5hGY99gDFbvsJwqWYx0A.png",
+                "pixel_count": 2010252
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/OTjKU-zxIRDroJY90GKEKQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/OTjKU-zxIRDroJY90GKEKQ.png",
+                "pixel_count": 1974090
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/TLM-ULgPb1UDHMWSLbp0Bg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/TLM-ULgPb1UDHMWSLbp0Bg.png",
+                "pixel_count": 1861250
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/W0cJUtI_ThcCSf36hARWyQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/W0cJUtI_ThcCSf36hARWyQ.png",
+                "pixel_count": 1854000
+            }
+        ]
+    },
+    "4": {
+        "class_name": "Curb",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/EgnI3uqMZYC-KCq8_oNDSw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/EgnI3uqMZYC-KCq8_oNDSw.png",
+                "pixel_count": 1095154
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/6svi4yX7dZtHU-mTgvzDDw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/6svi4yX7dZtHU-mTgvzDDw.png",
+                "pixel_count": 1036168
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/2vlh6fMgfwf3DuGYWLf43Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/2vlh6fMgfwf3DuGYWLf43Q.png",
+                "pixel_count": 1029335
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/FrdcOdlroAXqwBAK1I8lUw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/FrdcOdlroAXqwBAK1I8lUw.png",
+                "pixel_count": 947016
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/kJ6fFTe6hnDFev72Z9Ee8A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/kJ6fFTe6hnDFev72Z9Ee8A.png",
+                "pixel_count": 943544
+            }
+        ]
+    },
+    "5": {
+        "class_name": "Fence",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/A4oV6spoXsYDXUyxvfmqww.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/A4oV6spoXsYDXUyxvfmqww.png",
+                "pixel_count": 4144998
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/jO3YXedTj-3bwvYprsQhOA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/jO3YXedTj-3bwvYprsQhOA.png",
+                "pixel_count": 4054717
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/LZrwuaHSpCy23_50j0fErg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/LZrwuaHSpCy23_50j0fErg.png",
+                "pixel_count": 3948242
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/8K2FOxwP6vQueL54kDC3rQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/8K2FOxwP6vQueL54kDC3rQ.png",
+                "pixel_count": 3823456
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/kVAUFXBHJNbH8AcR0nlhwg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/kVAUFXBHJNbH8AcR0nlhwg.png",
+                "pixel_count": 3768513
+            }
+        ]
+    },
+    "6": {
+        "class_name": "Guard Rail",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/TzQUFTFWKQE2NP8wU1c5Dw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/TzQUFTFWKQE2NP8wU1c5Dw.png",
+                "pixel_count": 2375309
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/avelVYFlotz1EBpieF8RDA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/avelVYFlotz1EBpieF8RDA.png",
+                "pixel_count": 2100370
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/f0uZL2EdkIHE1tEfxCcDYw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/f0uZL2EdkIHE1tEfxCcDYw.png",
+                "pixel_count": 1451903
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/QpwDqMjDWf8shUJWvazcBw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/QpwDqMjDWf8shUJWvazcBw.png",
+                "pixel_count": 1414468
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/b73CI87vPTIVCmGY6Fp91g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/b73CI87vPTIVCmGY6Fp91g.png",
+                "pixel_count": 1222611
+            }
+        ]
+    },
+    "7": {
+        "class_name": "Barrier",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/arD-m3H0s6RoJO4sf9bKQA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/arD-m3H0s6RoJO4sf9bKQA.png",
+                "pixel_count": 1653336
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/u1exgyYEuHpkJCIFQksAHw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/u1exgyYEuHpkJCIFQksAHw.png",
+                "pixel_count": 850620
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/92E9pt3jg4GSWycUv4t0aQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/92E9pt3jg4GSWycUv4t0aQ.png",
+                "pixel_count": 723808
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/1DsoqGLLdUfEJ0fJpf40qQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/1DsoqGLLdUfEJ0fJpf40qQ.png",
+                "pixel_count": 496054
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/qQvofEWE_CdTymKfoJBlgA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/qQvofEWE_CdTymKfoJBlgA.png",
+                "pixel_count": 383858
+            }
+        ]
+    },
+    "8": {
+        "class_name": "Road Median",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/ThLr0pC0IDH90ZaDTxDMng.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ThLr0pC0IDH90ZaDTxDMng.png",
+                "pixel_count": 1977348
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/mrUiu8bSU-80eshVi93E2Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/mrUiu8bSU-80eshVi93E2Q.png",
+                "pixel_count": 1659794
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/KnA2625lbGJdPO5ukzELHw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/KnA2625lbGJdPO5ukzELHw.png",
+                "pixel_count": 1498299
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/N7LxrXiMt6BCepN5TG0Khg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/N7LxrXiMt6BCepN5TG0Khg.png",
+                "pixel_count": 1475369
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/32MIzf7UCxwAVB62g8JTJw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/32MIzf7UCxwAVB62g8JTJw.png",
+                "pixel_count": 1466227
+            }
+        ]
+    },
+    "9": {
+        "class_name": "Road Side",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/bkbKDO00bNVG-rVvWEzn3w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/bkbKDO00bNVG-rVvWEzn3w.png",
+                "pixel_count": 2480179
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/2I62jcKbCg-mKJSuUZw7tw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/2I62jcKbCg-mKJSuUZw7tw.png",
+                "pixel_count": 1884240
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/DjlLytVhaqik44kGJ5-SnA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/DjlLytVhaqik44kGJ5-SnA.png",
+                "pixel_count": 1573059
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/1QE42YpA12FL6uWezE-d1w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/1QE42YpA12FL6uWezE-d1w.png",
+                "pixel_count": 1511467
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/aQ0Kekm6-FcBzyADt7yBaw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/aQ0Kekm6-FcBzyADt7yBaw.png",
+                "pixel_count": 1208476
+            }
+        ]
+    },
+    "10": {
+        "class_name": "Lane Separator",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/W85GFJH1G1X7ISoctRI88A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/W85GFJH1G1X7ISoctRI88A.png",
+                "pixel_count": 586743
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/XWvdOPbcgxmrstCfWxU6vA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/XWvdOPbcgxmrstCfWxU6vA.png",
+                "pixel_count": 531379
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/EBGlDAt4mZM38DY1iWFzlw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/EBGlDAt4mZM38DY1iWFzlw.png",
+                "pixel_count": 484022
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/JlI2liRkkq49ZzsKwfaysA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/JlI2liRkkq49ZzsKwfaysA.png",
+                "pixel_count": 477131
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/qytz43q3il05Mpy0L8Pxvg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/qytz43q3il05Mpy0L8Pxvg.png",
+                "pixel_count": 389899
+            }
+        ]
+    },
+    "11": {
+        "class_name": "Temporary Barrier",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/1oCsPdqOVv1Rsk-0OvcXmw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/1oCsPdqOVv1Rsk-0OvcXmw.png",
+                "pixel_count": 3853745
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/4-Z9ccQtdUCDk3EvLqZM0Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/4-Z9ccQtdUCDk3EvLqZM0Q.png",
+                "pixel_count": 1211054
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/8aH7MTLDsMeG69YptIv77w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/8aH7MTLDsMeG69YptIv77w.png",
+                "pixel_count": 1122716
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/3YwsM8izaRSXfCj2A7YhBg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3YwsM8izaRSXfCj2A7YhBg.png",
+                "pixel_count": 716704
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/YGIYDzdAliVaFAh0dXk4ng.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/YGIYDzdAliVaFAh0dXk4ng.png",
+                "pixel_count": 715979
+            }
+        ]
+    },
+    "12": {
+        "class_name": "Wall",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/99LMKPaqiCo3W3Y8vSflvA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/99LMKPaqiCo3W3Y8vSflvA.png",
+                "pixel_count": 5726615
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/hupIM548_OUz5CUmJmRtXA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/hupIM548_OUz5CUmJmRtXA.png",
+                "pixel_count": 4651756
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/s5ym4ZvOHrSU9FSJxVuv5Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/s5ym4ZvOHrSU9FSJxVuv5Q.png",
+                "pixel_count": 4347814
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/iO9pHHK5hMtr-3dRGz14Ow.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/iO9pHHK5hMtr-3dRGz14Ow.png",
+                "pixel_count": 4281094
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/aPIQEnOcBsBoQbZvOOb-vA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/aPIQEnOcBsBoQbZvOOb-vA.png",
+                "pixel_count": 3892130
+            }
+        ]
+    },
+    "13": {
+        "class_name": "Bike Lane",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/YxuvdhG264nJgydfu88iaw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/YxuvdhG264nJgydfu88iaw.png",
+                "pixel_count": 5999533
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/wQtRhV0tZu2s-qNQKkDliQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/wQtRhV0tZu2s-qNQKkDliQ.png",
+                "pixel_count": 5447274
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/HP7kTMUhm4wHTc8DtbsrXQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/HP7kTMUhm4wHTc8DtbsrXQ.png",
+                "pixel_count": 5221439
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/_qs9YzY5Ju61oF715XA5Ew.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/_qs9YzY5Ju61oF715XA5Ew.png",
+                "pixel_count": 5155458
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/6pdjvVg41IkkOUiLBw5P8Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/6pdjvVg41IkkOUiLBw5P8Q.png",
+                "pixel_count": 5141970
+            }
+        ]
+    },
+    "14": {
+        "class_name": "Crosswalk - Plain",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/zb_95dc_6TtNN8snMYhWgg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/zb_95dc_6TtNN8snMYhWgg.png",
+                "pixel_count": 3751929
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Nb4vOtzq9C34lQ5ArYVYbg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Nb4vOtzq9C34lQ5ArYVYbg.png",
+                "pixel_count": 3703434
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Y4IgV62ynnw5K2yTmEzbsQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Y4IgV62ynnw5K2yTmEzbsQ.png",
+                "pixel_count": 3105477
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Y2V2xZLzeTGMNM0JWqwGNQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Y2V2xZLzeTGMNM0JWqwGNQ.png",
+                "pixel_count": 3048857
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/g2eKK5qAqkEJS0RKjT2Z2w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/g2eKK5qAqkEJS0RKjT2Z2w.png",
+                "pixel_count": 2964143
+            }
+        ]
+    },
+    "15": {
+        "class_name": "Curb Cut",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/ReioQKlUr9-Wpel2KV_vfg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ReioQKlUr9-Wpel2KV_vfg.png",
+                "pixel_count": 1438587
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/YtG-3yr4bJb8fT7ZncJHYA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/YtG-3yr4bJb8fT7ZncJHYA.png",
+                "pixel_count": 693588
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/n1Tg1I2wR-I7HRBeZpFbDg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/n1Tg1I2wR-I7HRBeZpFbDg.png",
+                "pixel_count": 612208
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/3feShvtc8Q-seocwPXA98g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3feShvtc8Q-seocwPXA98g.png",
+                "pixel_count": 606066
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/1HtvzVsT4QsnGbAPhogbrQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/1HtvzVsT4QsnGbAPhogbrQ.png",
+                "pixel_count": 593741
+            }
+        ]
+    },
+    "16": {
+        "class_name": "Driveway",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/t7C0J_Az0YgIy1DmoFCu-w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/t7C0J_Az0YgIy1DmoFCu-w.png",
+                "pixel_count": 6170293
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/0L6Otp1TRiSWIbZI6_ZkGg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/0L6Otp1TRiSWIbZI6_ZkGg.png",
+                "pixel_count": 5130369
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/3-51D0Hlv2YtsNeJ9jKYWQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3-51D0Hlv2YtsNeJ9jKYWQ.png",
+                "pixel_count": 4798997
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/OwScQjnUvufsPwQ2STeO0g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/OwScQjnUvufsPwQ2STeO0g.png",
+                "pixel_count": 2638423
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/kfD3VpwQWHK2N4YUigdLIg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/kfD3VpwQWHK2N4YUigdLIg.png",
+                "pixel_count": 2631522
+            }
+        ]
+    },
+    "17": {
+        "class_name": "Parking",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/YtyKDasjkA0AI0ddYCeqhw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/YtyKDasjkA0AI0ddYCeqhw.png",
+                "pixel_count": 5569834
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/YvXIB6RWiG9GMiQODMnBjg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/YvXIB6RWiG9GMiQODMnBjg.png",
+                "pixel_count": 4984642
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/8vYzpCqpyyzIPAbm6188wg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/8vYzpCqpyyzIPAbm6188wg.png",
+                "pixel_count": 3432653
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/M0e5s7DtnKOoRmqod3-KLw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/M0e5s7DtnKOoRmqod3-KLw.png",
+                "pixel_count": 3266984
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/KSazlnf2TWN4KWA6noKL9g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/KSazlnf2TWN4KWA6noKL9g.png",
+                "pixel_count": 3241633
+            }
+        ]
+    },
+    "18": {
+        "class_name": "Parking Aisle",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/GhiYe3RcIaB3LHAwU4glNw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/GhiYe3RcIaB3LHAwU4glNw.png",
+                "pixel_count": 4411648
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Hc_opveYYpAvIq0k4BPTPg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Hc_opveYYpAvIq0k4BPTPg.png",
+                "pixel_count": 3369979
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/a0vGGO5MIsQW1K_-sulhAg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/a0vGGO5MIsQW1K_-sulhAg.png",
+                "pixel_count": 3167420
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/3s-Yt-qSl_P8vFcHLOAvFg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3s-Yt-qSl_P8vFcHLOAvFg.png",
+                "pixel_count": 2890977
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/PS_U3Cp-dVEhKRx6iT9VIw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/PS_U3Cp-dVEhKRx6iT9VIw.png",
+                "pixel_count": 2824011
+            }
+        ]
+    },
+    "19": {
+        "class_name": "Pedestrian Area",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/DLgfk3LRDYC8zFsoF21efw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/DLgfk3LRDYC8zFsoF21efw.png",
+                "pixel_count": 9621807
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/D3jgRVI9_t7JdNREPphTPQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/D3jgRVI9_t7JdNREPphTPQ.png",
+                "pixel_count": 9440130
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/MyETkyjEZ4iU84M-jKoA5g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/MyETkyjEZ4iU84M-jKoA5g.png",
+                "pixel_count": 8005770
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Hk3XJm9XIMu-xhsKi4bsBw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Hk3XJm9XIMu-xhsKi4bsBw.png",
+                "pixel_count": 7884764
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/_P79VYolhn2wdiYoDJzZZg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/_P79VYolhn2wdiYoDJzZZg.png",
+                "pixel_count": 7753735
+            }
+        ]
+    },
+    "20": {
+        "class_name": "Rail Track",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/Lc2X8mkBgKx7zXtFdVXTcA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Lc2X8mkBgKx7zXtFdVXTcA.png",
+                "pixel_count": 5202086
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Lu0CG0xpN6MGmyVyHdafQA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Lu0CG0xpN6MGmyVyHdafQA.png",
+                "pixel_count": 4119596
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/E_z0G4QhkOQp1ce_mvxoPQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/E_z0G4QhkOQp1ce_mvxoPQ.png",
+                "pixel_count": 3024137
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/fX7IfKCHubhYQmle3XcRtQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/fX7IfKCHubhYQmle3XcRtQ.png",
+                "pixel_count": 2762793
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/LW0HoJe0cs9_F6SJ1umNjA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/LW0HoJe0cs9_F6SJ1umNjA.png",
+                "pixel_count": 2630576
+            }
+        ]
+    },
+    "21": {
+        "class_name": "Road",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/1qNXhBOBkNJkVXn4nOuy5w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/1qNXhBOBkNJkVXn4nOuy5w.png",
+                "pixel_count": 10369673
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/LJoVN5XYnI0toBZQ26zIuQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/LJoVN5XYnI0toBZQ26zIuQ.png",
+                "pixel_count": 10135500
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/nwOXZZkR0Te4-tVHq_GE9Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/nwOXZZkR0Te4-tVHq_GE9Q.png",
+                "pixel_count": 9929682
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/rAgnZG1jcHLiSl6varfAmA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/rAgnZG1jcHLiSl6varfAmA.png",
+                "pixel_count": 9722975
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/wT9UNDFdA13ayJsYYepxdw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/wT9UNDFdA13ayJsYYepxdw.png",
+                "pixel_count": 9665690
+            }
+        ]
+    },
+    "22": {
+        "class_name": "Road Shoulder",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/tCz3Aa20cyZ7S2kp5YCPyA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/tCz3Aa20cyZ7S2kp5YCPyA.png",
+                "pixel_count": 1293481
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/TdyEP_GmCgtoVCfTzgBhNQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/TdyEP_GmCgtoVCfTzgBhNQ.png",
+                "pixel_count": 958845
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/dsuZiS1unJIr1U7_0O1SJw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/dsuZiS1unJIr1U7_0O1SJw.png",
+                "pixel_count": 956558
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/gwwM7D7jWm3Ff-oAnnaGPg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/gwwM7D7jWm3Ff-oAnnaGPg.png",
+                "pixel_count": 919231
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/XtDz1W1gHc9bcBlaYSb6aA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/XtDz1W1gHc9bcBlaYSb6aA.png",
+                "pixel_count": 896756
+            }
+        ]
+    },
+    "23": {
+        "class_name": "Service Lane",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/jfnBX3JcqE2EHzq8f5Kelw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/jfnBX3JcqE2EHzq8f5Kelw.png",
+                "pixel_count": 2881819
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/tTsVhidFPVz904fXH7idTg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/tTsVhidFPVz904fXH7idTg.png",
+                "pixel_count": 1664130
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/jWWuRvTiaoik1mYcIwMXKw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/jWWuRvTiaoik1mYcIwMXKw.png",
+                "pixel_count": 1572654
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/bsh63gvB7d-x-NRvh7lF6Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/bsh63gvB7d-x-NRvh7lF6Q.png",
+                "pixel_count": 1571743
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/WXnPpvL-TkykQEe4wNCROA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/WXnPpvL-TkykQEe4wNCROA.png",
+                "pixel_count": 1327170
+            }
+        ]
+    },
+    "24": {
+        "class_name": "Sidewalk",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/vK7NWFbvbCnbJOmtNLLvFQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/vK7NWFbvbCnbJOmtNLLvFQ.png",
+                "pixel_count": 8526960
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/ygJrxprMc607g3oDxyHt_Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ygJrxprMc607g3oDxyHt_Q.png",
+                "pixel_count": 8233616
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/gC_OOs5KJuwixb8hQp823w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/gC_OOs5KJuwixb8hQp823w.png",
+                "pixel_count": 7687447
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/c4Bj45vHVRm1ii2qb9cogw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/c4Bj45vHVRm1ii2qb9cogw.png",
+                "pixel_count": 7499476
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/aMY2kwi1BIO-phE5ON00kA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/aMY2kwi1BIO-phE5ON00kA.png",
+                "pixel_count": 7417129
+            }
+        ]
+    },
+    "25": {
+        "class_name": "Traffic Island",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/t5x26zSUOSo2fz-bVM6GgA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/t5x26zSUOSo2fz-bVM6GgA.png",
+                "pixel_count": 3731779
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/l7KhCdGcKNyjkZ_fm6Cjbg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/l7KhCdGcKNyjkZ_fm6Cjbg.png",
+                "pixel_count": 2297810
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/E2AXqDVfUYR8b5rTmXt0uA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/E2AXqDVfUYR8b5rTmXt0uA.png",
+                "pixel_count": 1977685
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/YlgujJ-a0WDtUnMyVggPYQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/YlgujJ-a0WDtUnMyVggPYQ.png",
+                "pixel_count": 1853359
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/z55lWbmVmq2MlZzz1Rx52A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/z55lWbmVmq2MlZzz1Rx52A.png",
+                "pixel_count": 1807156
+            }
+        ]
+    },
+    "26": {
+        "class_name": "Bridge",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/9rua68Wb33fupTgSTTyHlQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/9rua68Wb33fupTgSTTyHlQ.png",
+                "pixel_count": 9637703
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/t2_ge4U5pi0lGW4pW8VZ8Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/t2_ge4U5pi0lGW4pW8VZ8Q.png",
+                "pixel_count": 7407868
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/8hvUJYqHKkehjR50Zkh-fg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/8hvUJYqHKkehjR50Zkh-fg.png",
+                "pixel_count": 7281950
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/e6q7D1ROtrDm3VnC0F_oDw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/e6q7D1ROtrDm3VnC0F_oDw.png",
+                "pixel_count": 6991484
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/tDzhNyxh-VsV2gzNQSh2Lg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/tDzhNyxh-VsV2gzNQSh2Lg.png",
+                "pixel_count": 6076117
+            }
+        ]
+    },
+    "27": {
+        "class_name": "Building",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/mzw0GHyQMz-m5qUKzqyoiQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/mzw0GHyQMz-m5qUKzqyoiQ.png",
+                "pixel_count": 13810191
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/eM_w3fYJwrrmF4DNn4jhvg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/eM_w3fYJwrrmF4DNn4jhvg.png",
+                "pixel_count": 11670013
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/3UTkl8opuwdk8UJdrRjryQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3UTkl8opuwdk8UJdrRjryQ.png",
+                "pixel_count": 11487707
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/-gJn19I52yYxRqQKHO_3DQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/-gJn19I52yYxRqQKHO_3DQ.png",
+                "pixel_count": 10677413
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/2NuqJw73AwuJZvNNUA26WA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/2NuqJw73AwuJZvNNUA26WA.png",
+                "pixel_count": 10448389
+            }
+        ]
+    },
+    "28": {
+        "class_name": "Garage",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/o5JPjBSf1YcPNqXiDFpCIA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/o5JPjBSf1YcPNqXiDFpCIA.png",
+                "pixel_count": 1017299
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/J0YhHke5X_8H63t_h3gd0Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/J0YhHke5X_8H63t_h3gd0Q.png",
+                "pixel_count": 702814
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/dTCoUUkgL-piQuvrdDUz4A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/dTCoUUkgL-piQuvrdDUz4A.png",
+                "pixel_count": 599366
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/5XB8w32K9RLahAg4AMWMrw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/5XB8w32K9RLahAg4AMWMrw.png",
+                "pixel_count": 422834
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/6jqjx_arTDXI11ZzogGLTQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/6jqjx_arTDXI11ZzogGLTQ.png",
+                "pixel_count": 408351
+            }
+        ]
+    },
+    "29": {
+        "class_name": "Tunnel",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/8W8S6x3v_DLrXp4Obbxb_A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/8W8S6x3v_DLrXp4Obbxb_A.png",
+                "pixel_count": 9419395
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/xOSq0yhtbD7C-fRxnu785Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/xOSq0yhtbD7C-fRxnu785Q.png",
+                "pixel_count": 8252693
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/-ejK_lQI473xOq4kLFNPdw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/-ejK_lQI473xOq4kLFNPdw.png",
+                "pixel_count": 7532842
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/UBY65lGSoGvioD6eD-kZDQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/UBY65lGSoGvioD6eD-kZDQ.png",
+                "pixel_count": 6638956
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/G3WBP1pGkfk7VEhhx5Cyyw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/G3WBP1pGkfk7VEhhx5Cyyw.png",
+                "pixel_count": 6442611
+            }
+        ]
+    },
+    "30": {
+        "class_name": "Person",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/OS9p7kFGkqpqaj76K_82tQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/OS9p7kFGkqpqaj76K_82tQ.png",
+                "pixel_count": 4854441
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/9o4-sNcaa77ithiExPlyuw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/9o4-sNcaa77ithiExPlyuw.png",
+                "pixel_count": 3983881
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/9DVM9Goi3BXeeLEw99sYew.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/9DVM9Goi3BXeeLEw99sYew.png",
+                "pixel_count": 2143876
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Y-Bz1Kca59nlNCKyVyOx4g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Y-Bz1Kca59nlNCKyVyOx4g.png",
+                "pixel_count": 2092000
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Cmg0oL8d1V2ijuJgcSHguw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Cmg0oL8d1V2ijuJgcSHguw.png",
+                "pixel_count": 1940457
+            }
+        ]
+    },
+    "31": {
+        "class_name": "Person Group",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/FF8zEfJOCjUc6DHmHof4Sw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/FF8zEfJOCjUc6DHmHof4Sw.png",
+                "pixel_count": 654907
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/qsA3ihyf8jIwO3NJOHTSpw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/qsA3ihyf8jIwO3NJOHTSpw.png",
+                "pixel_count": 413841
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/PC3ohlzXEcVrDhMwpBMBfA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/PC3ohlzXEcVrDhMwpBMBfA.png",
+                "pixel_count": 398224
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/4l999G71y19q7Y8LWBdy3A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/4l999G71y19q7Y8LWBdy3A.png",
+                "pixel_count": 360762
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/LPIoHDj_ZXuPQnXhWafOlQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/LPIoHDj_ZXuPQnXhWafOlQ.png",
+                "pixel_count": 337839
+            }
+        ]
+    },
+    "32": {
+        "class_name": "Bicyclist",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/kRaiIvWqBsD_wT9ha7mRKQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/kRaiIvWqBsD_wT9ha7mRKQ.png",
+                "pixel_count": 2356966
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/3_fNH6k2KclGOCnX8sgTgA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3_fNH6k2KclGOCnX8sgTgA.png",
+                "pixel_count": 1752659
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/A8-CU4vnQPCAPLstFCkcoA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/A8-CU4vnQPCAPLstFCkcoA.png",
+                "pixel_count": 1416738
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/5hPoZNxYKkqz4LP4KqCf5w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/5hPoZNxYKkqz4LP4KqCf5w.png",
+                "pixel_count": 1321403
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/3HipILLiorEPR4nUmO6kqA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3HipILLiorEPR4nUmO6kqA.png",
+                "pixel_count": 1197393
+            }
+        ]
+    },
+    "33": {
+        "class_name": "Motorcyclist",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/GD0AWkvU1x1wRJ9Km4PXYw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/GD0AWkvU1x1wRJ9Km4PXYw.png",
+                "pixel_count": 1065247
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/n0OpUxmnJwGxlwgCGP-NXA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/n0OpUxmnJwGxlwgCGP-NXA.png",
+                "pixel_count": 757780
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/2dP8ZTMC_fopdAWuhleNeg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/2dP8ZTMC_fopdAWuhleNeg.png",
+                "pixel_count": 747170
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/HS6OJq4d4NjDzD8pjccRgg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/HS6OJq4d4NjDzD8pjccRgg.png",
+                "pixel_count": 745086
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/630R_r2tSsx5psiy0M6eCg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/630R_r2tSsx5psiy0M6eCg.png",
+                "pixel_count": 681200
+            }
+        ]
+    },
+    "34": {
+        "class_name": "Other Rider",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/D3jgRVI9_t7JdNREPphTPQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/D3jgRVI9_t7JdNREPphTPQ.png",
+                "pixel_count": 406404
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/IBnXFq2ZsOJMj3j4OAlbfg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/IBnXFq2ZsOJMj3j4OAlbfg.png",
+                "pixel_count": 368940
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/yvFVRa9G1omyywrdNyMRNQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/yvFVRa9G1omyywrdNyMRNQ.png",
+                "pixel_count": 182043
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/T1NGzpwopp02VAr69Hz7mA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/T1NGzpwopp02VAr69Hz7mA.png",
+                "pixel_count": 160594
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/JmhtloD0Rd3-MlgoU1YGIw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/JmhtloD0Rd3-MlgoU1YGIw.png",
+                "pixel_count": 157243
+            }
+        ]
+    },
+    "35": {
+        "class_name": "Lane Marking - Dashed Line",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/8LXrwz8o__OkphNzstG7Qw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/8LXrwz8o__OkphNzstG7Qw.png",
+                "pixel_count": 1621985
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/FWs9BOBe_VUFgesMDQtKVg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/FWs9BOBe_VUFgesMDQtKVg.png",
+                "pixel_count": 1067396
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/n_gnU6jWMV9Z0l2HuPLvmw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/n_gnU6jWMV9Z0l2HuPLvmw.png",
+                "pixel_count": 992406
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/T2LZ-X4a8NMyG4fYRE61hQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/T2LZ-X4a8NMyG4fYRE61hQ.png",
+                "pixel_count": 816197
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/LFCw4XauoXCYutoxXaxHVA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/LFCw4XauoXCYutoxXaxHVA.png",
+                "pixel_count": 760493
+            }
+        ]
+    },
+    "36": {
+        "class_name": "Lane Marking - Straight Line",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/eWBVG67VPtGxN1V9JccBzg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/eWBVG67VPtGxN1V9JccBzg.png",
+                "pixel_count": 1030566
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/3K-7Sitqb6VWKCWgjTNMKg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3K-7Sitqb6VWKCWgjTNMKg.png",
+                "pixel_count": 860382
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/J8l1C8ckZz_jjggmaTCKsw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/J8l1C8ckZz_jjggmaTCKsw.png",
+                "pixel_count": 677496
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/7BzadvL6tPeGotqEMW6-tA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/7BzadvL6tPeGotqEMW6-tA.png",
+                "pixel_count": 665332
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/GCAbNAB-zuq6hc-DIkTVuA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/GCAbNAB-zuq6hc-DIkTVuA.png",
+                "pixel_count": 647539
+            }
+        ]
+    },
+    "37": {
+        "class_name": "Lane Marking - Zigzag Line",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/SPaUCZwFKRfic5sm1JI3oA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/SPaUCZwFKRfic5sm1JI3oA.png",
+                "pixel_count": 210228
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/UP1NT4vZ4C7bV2CNY-XqTQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/UP1NT4vZ4C7bV2CNY-XqTQ.png",
+                "pixel_count": 203510
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/aOtRlKEVHyyQTJ8Dn32mGw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/aOtRlKEVHyyQTJ8Dn32mGw.png",
+                "pixel_count": 198138
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/tk1PlyZ6gzaeKzZ5PqSYHA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/tk1PlyZ6gzaeKzZ5PqSYHA.png",
+                "pixel_count": 161999
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Sa6z27tMNEoHK68vnNQGJQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Sa6z27tMNEoHK68vnNQGJQ.png",
+                "pixel_count": 142606
+            }
+        ]
+    },
+    "38": {
+        "class_name": "Lane Marking - Ambiguous",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/noMdEOoZdiKAwyl_o5Uekg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/noMdEOoZdiKAwyl_o5Uekg.png",
+                "pixel_count": 458343
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/0Lx8T3ZqRmuYJxokVCyuWA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/0Lx8T3ZqRmuYJxokVCyuWA.png",
+                "pixel_count": 378573
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/5WBCF2aQTmdrjl93p7icfg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/5WBCF2aQTmdrjl93p7icfg.png",
+                "pixel_count": 301968
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/szLaavAsDwA2iKQjMj1_og.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/szLaavAsDwA2iKQjMj1_og.png",
+                "pixel_count": 273914
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/6eGwBqduurMtIeR4GcJA-w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/6eGwBqduurMtIeR4GcJA-w.png",
+                "pixel_count": 220483
+            }
+        ]
+    },
+    "39": {
+        "class_name": "Lane Marking - Arrow (Left)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/lgUFXoMXL7nx0_xcAvpAzw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/lgUFXoMXL7nx0_xcAvpAzw.png",
+                "pixel_count": 305206
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/zfcdtDCM7Uv6h2DuEpdQdw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/zfcdtDCM7Uv6h2DuEpdQdw.png",
+                "pixel_count": 272042
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/RGABDOUUbc-cBl5aYyWYLA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/RGABDOUUbc-cBl5aYyWYLA.png",
+                "pixel_count": 225823
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/uboZOciKlkgegZopfoKTBA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/uboZOciKlkgegZopfoKTBA.png",
+                "pixel_count": 222371
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/acd6kAtmxwoF0L3K_JQIdw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/acd6kAtmxwoF0L3K_JQIdw.png",
+                "pixel_count": 220505
+            }
+        ]
+    },
+    "40": {
+        "class_name": "Lane Marking - Arrow (Other)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/2pXygrs8Amug8WEyShQb2Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/2pXygrs8Amug8WEyShQb2Q.png",
+                "pixel_count": 625561
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/LB3xID4wetN4GxX_RItycw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/LB3xID4wetN4GxX_RItycw.png",
+                "pixel_count": 534705
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/GChHWJIVukajmuDBpbXXnA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/GChHWJIVukajmuDBpbXXnA.png",
+                "pixel_count": 329459
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/obomcwZJ11CPy5AdjNq8pg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/obomcwZJ11CPy5AdjNq8pg.png",
+                "pixel_count": 267762
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/IEkYO1LWyPvgeHd8j-QwCg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/IEkYO1LWyPvgeHd8j-QwCg.png",
+                "pixel_count": 253470
+            }
+        ]
+    },
+    "41": {
+        "class_name": "Lane Marking - Arrow (Right)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/0dixz7iDaHFiDSOWx_3hPg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/0dixz7iDaHFiDSOWx_3hPg.png",
+                "pixel_count": 228498
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/qeYTVrUtd16ArFRJEQbZRQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/qeYTVrUtd16ArFRJEQbZRQ.png",
+                "pixel_count": 224232
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/_lgpVdJ3PqCAqltowChqFw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/_lgpVdJ3PqCAqltowChqFw.png",
+                "pixel_count": 178812
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/3hepwiMnt7QQoLr-JfUn2A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3hepwiMnt7QQoLr-JfUn2A.png",
+                "pixel_count": 168770
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/eWmtQQyjRBHeY1lzbcuHzA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/eWmtQQyjRBHeY1lzbcuHzA.png",
+                "pixel_count": 151548
+            }
+        ]
+    },
+    "42": {
+        "class_name": "Lane Marking - Arrow (Split Left or Straight)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/xfYQlylCnvr80l6TfwOS5g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/xfYQlylCnvr80l6TfwOS5g.png",
+                "pixel_count": 652183
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/zxhTgLWATypPiY13altgXA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/zxhTgLWATypPiY13altgXA.png",
+                "pixel_count": 299179
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/t2srY6M6LamymccACLbwcQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/t2srY6M6LamymccACLbwcQ.png",
+                "pixel_count": 197133
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/XcuGYbgZcqbQsNBfGDdJOA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/XcuGYbgZcqbQsNBfGDdJOA.png",
+                "pixel_count": 182677
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/n4lSAZsPbA-fE9RtT1E2fw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/n4lSAZsPbA-fE9RtT1E2fw.png",
+                "pixel_count": 146050
+            }
+        ]
+    },
+    "43": {
+        "class_name": "Lane Marking - Arrow (Split Right or Straight)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/uxFqIrSP70EKrnXf486dGQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/uxFqIrSP70EKrnXf486dGQ.png",
+                "pixel_count": 622278
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/hJVWze__3BXbiG-EMLwLGg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/hJVWze__3BXbiG-EMLwLGg.png",
+                "pixel_count": 321822
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/aFWuj_m4nGoq3-tDz5KAqQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/aFWuj_m4nGoq3-tDz5KAqQ.png",
+                "pixel_count": 218063
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/evc3P6INU6LiksoQo7vvPg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/evc3P6INU6LiksoQo7vvPg.png",
+                "pixel_count": 172229
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/i1rQWi0LiZEHgSlT54o6rQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/i1rQWi0LiZEHgSlT54o6rQ.png",
+                "pixel_count": 168115
+            }
+        ]
+    },
+    "44": {
+        "class_name": "Lane Marking - Arrow (Straight)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/HUfUZMwzLJcGFXWmFyCpkA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/HUfUZMwzLJcGFXWmFyCpkA.png",
+                "pixel_count": 426463
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/gs-q2Kq9aiV5RFz-EYybVQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/gs-q2Kq9aiV5RFz-EYybVQ.png",
+                "pixel_count": 403211
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/R95C8-LfkTAos056n93pVQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/R95C8-LfkTAos056n93pVQ.png",
+                "pixel_count": 370595
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/_xUhCgyy1JnifYPlSbee2w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/_xUhCgyy1JnifYPlSbee2w.png",
+                "pixel_count": 352532
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/xKWCf-kSmpUMRDxRuSgCug.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/xKWCf-kSmpUMRDxRuSgCug.png",
+                "pixel_count": 230213
+            }
+        ]
+    },
+    "45": {
+        "class_name": "Lane Marking - Crosswalk",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/YtG-3yr4bJb8fT7ZncJHYA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/YtG-3yr4bJb8fT7ZncJHYA.png",
+                "pixel_count": 5499978
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/ahP9SpSeB4_LOYBaKEEWIA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ahP9SpSeB4_LOYBaKEEWIA.png",
+                "pixel_count": 5055984
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/_uyM3WtpjhgYwbgol5E0BQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/_uyM3WtpjhgYwbgol5E0BQ.png",
+                "pixel_count": 4974425
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/LfEcV515VZejwI7vK9yeqA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/LfEcV515VZejwI7vK9yeqA.png",
+                "pixel_count": 4786868
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/gtG9StwH9-DuBNY4nWaj1A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/gtG9StwH9-DuBNY4nWaj1A.png",
+                "pixel_count": 4544062
+            }
+        ]
+    },
+    "46": {
+        "class_name": "Lane Marking - Give Way (Row)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/tRbSbVvEbjgKhjjGri64LQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/tRbSbVvEbjgKhjjGri64LQ.png",
+                "pixel_count": 2063508
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/8jZmfl5WXVYwRbnET2dGcw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/8jZmfl5WXVYwRbnET2dGcw.png",
+                "pixel_count": 928747
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/3Tz-rjTFD9hdXy9xsaZnCQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3Tz-rjTFD9hdXy9xsaZnCQ.png",
+                "pixel_count": 924118
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/AioRQJAs2G_C0W5FKoCE7A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/AioRQJAs2G_C0W5FKoCE7A.png",
+                "pixel_count": 862738
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/kR_F1QoDn1AklTvnYN0Lkw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/kR_F1QoDn1AklTvnYN0Lkw.png",
+                "pixel_count": 852023
+            }
+        ]
+    },
+    "47": {
+        "class_name": "Lane Marking - Give Way (Single)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/OZQOUNcoZi4HmbMRHfFqKQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/OZQOUNcoZi4HmbMRHfFqKQ.png",
+                "pixel_count": 249938
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/_cl864mDYo8Tpz4RGfhymg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/_cl864mDYo8Tpz4RGfhymg.png",
+                "pixel_count": 172141
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Xr5E3zFcSWW23ioKg9eW-g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Xr5E3zFcSWW23ioKg9eW-g.png",
+                "pixel_count": 159639
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/59KakKxK3LOrgQiNar_rZw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/59KakKxK3LOrgQiNar_rZw.png",
+                "pixel_count": 156985
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/_iRalKSeEB0htNmvwoq-OA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/_iRalKSeEB0htNmvwoq-OA.png",
+                "pixel_count": 116989
+            }
+        ]
+    },
+    "48": {
+        "class_name": "Lane Marking - Hatched (Chevron)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/0aAW3UmcBzdYdfWX_Akv0A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/0aAW3UmcBzdYdfWX_Akv0A.png",
+                "pixel_count": 2726056
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/TYfWKEZrrXaxlVU00vwhvw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/TYfWKEZrrXaxlVU00vwhvw.png",
+                "pixel_count": 2558064
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/wVxLxAffcd6ZbBu0P9ZytQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/wVxLxAffcd6ZbBu0P9ZytQ.png",
+                "pixel_count": 2172715
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/--jRsD9anHdGxv4ZOCQktA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/--jRsD9anHdGxv4ZOCQktA.png",
+                "pixel_count": 2021446
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/e6q7D1ROtrDm3VnC0F_oDw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/e6q7D1ROtrDm3VnC0F_oDw.png",
+                "pixel_count": 1466458
+            }
+        ]
+    },
+    "49": {
+        "class_name": "Lane Marking - Hatched (Diagonal)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/xZj1AmTxK3mDlVdpSR7xug.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/xZj1AmTxK3mDlVdpSR7xug.png",
+                "pixel_count": 3230772
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/3UTkl8opuwdk8UJdrRjryQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3UTkl8opuwdk8UJdrRjryQ.png",
+                "pixel_count": 1801929
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/2NuqJw73AwuJZvNNUA26WA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/2NuqJw73AwuJZvNNUA26WA.png",
+                "pixel_count": 1736645
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/I8iDK5gPn6ojhI-06NL2DQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/I8iDK5gPn6ojhI-06NL2DQ.png",
+                "pixel_count": 1424712
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/FL7bQzuphiyTJyQeFuEXNw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/FL7bQzuphiyTJyQeFuEXNw.png",
+                "pixel_count": 1416037
+            }
+        ]
+    },
+    "50": {
+        "class_name": "Lane Marking - Other",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/DlgennYp4i-2o0hsZFXOLg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/DlgennYp4i-2o0hsZFXOLg.png",
+                "pixel_count": 3577939
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/NrfUzDC31UR1URevYux_kw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/NrfUzDC31UR1URevYux_kw.png",
+                "pixel_count": 3519310
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/m6_ANapzAZg08quo35RfGA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/m6_ANapzAZg08quo35RfGA.png",
+                "pixel_count": 2978395
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/9vEOJ5pIOkSICGgIFDTALg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/9vEOJ5pIOkSICGgIFDTALg.png",
+                "pixel_count": 2897267
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/IVJZ9lwsF3gGwoPlrNRXzg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/IVJZ9lwsF3gGwoPlrNRXzg.png",
+                "pixel_count": 2877389
+            }
+        ]
+    },
+    "51": {
+        "class_name": "Lane Marking - Stop Line",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/vndIzTcUGwk7m0kDgVOTAA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/vndIzTcUGwk7m0kDgVOTAA.png",
+                "pixel_count": 2052740
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/ILwflJWXdkvxcmv0tb77_g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ILwflJWXdkvxcmv0tb77_g.png",
+                "pixel_count": 1154563
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/CzRkOBWewt61pzedNJcgnw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/CzRkOBWewt61pzedNJcgnw.png",
+                "pixel_count": 1092165
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/-sEEaHeGOQcClkpluqufjQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/-sEEaHeGOQcClkpluqufjQ.png",
+                "pixel_count": 995530
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Xe1bLCBAK8n-moNvOTMqog.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Xe1bLCBAK8n-moNvOTMqog.png",
+                "pixel_count": 836080
+            }
+        ]
+    },
+    "52": {
+        "class_name": "Lane Marking - Symbol (Bicycle)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/wVitWBa2xkmCrst897LH5w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/wVitWBa2xkmCrst897LH5w.png",
+                "pixel_count": 835512
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/xUqpSZrY8KJTkY7T_m9zEQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/xUqpSZrY8KJTkY7T_m9zEQ.png",
+                "pixel_count": 803811
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/821e3Gy7GEkSga4rDKcXCg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/821e3Gy7GEkSga4rDKcXCg.png",
+                "pixel_count": 546299
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/CAcuIDqwH7G9sFSUo-m4eA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/CAcuIDqwH7G9sFSUo-m4eA.png",
+                "pixel_count": 504849
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/r1E5VT858DSaZfhx57uHUA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/r1E5VT858DSaZfhx57uHUA.png",
+                "pixel_count": 472633
+            }
+        ]
+    },
+    "53": {
+        "class_name": "Lane Marking - Symbol (Other)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/lGdmMrgGohRnUgEu0kbpnA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/lGdmMrgGohRnUgEu0kbpnA.png",
+                "pixel_count": 470270
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/CgxPNt0Qu0_7Ym8pZQGzfQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/CgxPNt0Qu0_7Ym8pZQGzfQ.png",
+                "pixel_count": 389290
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/zmK6G40W9iSs7MUrGXFBPw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/zmK6G40W9iSs7MUrGXFBPw.png",
+                "pixel_count": 273239
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/m50WiNHHC_aNJRQh5gNdlw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/m50WiNHHC_aNJRQh5gNdlw.png",
+                "pixel_count": 231437
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/uynbn-7wK2ibkh4qf2hvlQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/uynbn-7wK2ibkh4qf2hvlQ.png",
+                "pixel_count": 198943
+            }
+        ]
+    },
+    "54": {
+        "class_name": "Lane Marking - Text",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/_dho7ImE4UN2u5g4PmqIHQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/_dho7ImE4UN2u5g4PmqIHQ.png",
+                "pixel_count": 2496216
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/VEQ1gu8Kt8Z0-qlCHi0iwg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/VEQ1gu8Kt8Z0-qlCHi0iwg.png",
+                "pixel_count": 1783183
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/LFkEFzCcoFaNjC5wSxH5iw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/LFkEFzCcoFaNjC5wSxH5iw.png",
+                "pixel_count": 1073654
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/e_UER4mrcSVrB2hGEWtKyA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/e_UER4mrcSVrB2hGEWtKyA.png",
+                "pixel_count": 941795
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/DgpaRarbZYOc8FM_ioOoww.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/DgpaRarbZYOc8FM_ioOoww.png",
+                "pixel_count": 913096
+            }
+        ]
+    },
+    "55": {
+        "class_name": "Lane Marking (only) - Dashed Line",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/Dsg7EZO7LsxISrMrwaBmig.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Dsg7EZO7LsxISrMrwaBmig.png",
+                "pixel_count": 206153
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/uZcEUS9E6PVI9sGvuKRW0A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/uZcEUS9E6PVI9sGvuKRW0A.png",
+                "pixel_count": 118824
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Fg4xUrykn7uMZ6lp7WONmQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Fg4xUrykn7uMZ6lp7WONmQ.png",
+                "pixel_count": 106952
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/FDP2_lEL8949GI5MRNYPYg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/FDP2_lEL8949GI5MRNYPYg.png",
+                "pixel_count": 103059
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/ean7gKcwAeAO24dLJIsIag.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ean7gKcwAeAO24dLJIsIag.png",
+                "pixel_count": 98958
+            }
+        ]
+    },
+    "56": {
+        "class_name": "Lane Marking (only) - Crosswalk",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/0O7l8-MiAh8LsnokLo0m_g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/0O7l8-MiAh8LsnokLo0m_g.png",
+                "pixel_count": 1661442
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/anFdI9sb2Wy7hrUCqoKm2Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/anFdI9sb2Wy7hrUCqoKm2Q.png",
+                "pixel_count": 914763
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/IUXqn5V-KX4IqK0v3cR7Jw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/IUXqn5V-KX4IqK0v3cR7Jw.png",
+                "pixel_count": 671829
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/DfhDDvgGM9QrCeY4rEceww.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/DfhDDvgGM9QrCeY4rEceww.png",
+                "pixel_count": 632311
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/V-n5v7MDM3nX9Mhcxjb95Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/V-n5v7MDM3nX9Mhcxjb95Q.png",
+                "pixel_count": 596647
+            }
+        ]
+    },
+    "57": {
+        "class_name": "Lane Marking (only) - Other",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/N2I8ekDrHYKgaVd5pUneQA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/N2I8ekDrHYKgaVd5pUneQA.png",
+                "pixel_count": 285163
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/GIBhXE2xdtDFVvT220oXJQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/GIBhXE2xdtDFVvT220oXJQ.png",
+                "pixel_count": 240970
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/TZNMbYqSJuxIpcU2SYzMow.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/TZNMbYqSJuxIpcU2SYzMow.png",
+                "pixel_count": 207790
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Bb2It4iGbhyPGh8d1724JA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Bb2It4iGbhyPGh8d1724JA.png",
+                "pixel_count": 162824
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/rdbXlMHr1grKfl_fjGEBGA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/rdbXlMHr1grKfl_fjGEBGA.png",
+                "pixel_count": 150786
+            }
+        ]
+    },
+    "58": {
+        "class_name": "Lane Marking (only) - Test",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/N2I8ekDrHYKgaVd5pUneQA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/N2I8ekDrHYKgaVd5pUneQA.png",
+                "pixel_count": 126609
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/qXmhaUEZVDH0vhVB102FCw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/qXmhaUEZVDH0vhVB102FCw.png",
+                "pixel_count": 119814
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/7CgTC5v7XzdyZnAI4dju5Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/7CgTC5v7XzdyZnAI4dju5Q.png",
+                "pixel_count": 112996
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/4J-Jv4o1qgBvXirqZ12wdA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/4J-Jv4o1qgBvXirqZ12wdA.png",
+                "pixel_count": 74859
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/6JvEDfekC1fOXTR4woFs6Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/6JvEDfekC1fOXTR4woFs6Q.png",
+                "pixel_count": 64115
+            }
+        ]
+    },
+    "59": {
+        "class_name": "Mountain",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/RgXijjXF2VNDWGkVJFMTZQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/RgXijjXF2VNDWGkVJFMTZQ.png",
+                "pixel_count": 4746526
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/xStiaQ1OskThKPLjsE3N4Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/xStiaQ1OskThKPLjsE3N4Q.png",
+                "pixel_count": 4379505
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/83pK953wDzci2MjepxJUKQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/83pK953wDzci2MjepxJUKQ.png",
+                "pixel_count": 4036931
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/dle7znBkQpEGyes5XwzwkA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/dle7znBkQpEGyes5XwzwkA.png",
+                "pixel_count": 3828009
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/fVXIqQKurBgqLb_jqy0ElQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/fVXIqQKurBgqLb_jqy0ElQ.png",
+                "pixel_count": 3680584
+            }
+        ]
+    },
+    "60": {
+        "class_name": "Sand",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/lCv5sH8Z3eMdZJ7RNlus2g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/lCv5sH8Z3eMdZJ7RNlus2g.png",
+                "pixel_count": 2669368
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/GZyqf0-AQG81VAVhGob7Aw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/GZyqf0-AQG81VAVhGob7Aw.png",
+                "pixel_count": 2450981
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/b_vUikPDMyvwRfTjLWif2g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/b_vUikPDMyvwRfTjLWif2g.png",
+                "pixel_count": 2000022
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/ZyT4WYD_fj8F5e0iRRqNUA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ZyT4WYD_fj8F5e0iRRqNUA.png",
+                "pixel_count": 1940675
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/ZnkadI1tBpgrbRZ1gVuW4g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ZnkadI1tBpgrbRZ1gVuW4g.png",
+                "pixel_count": 1689770
+            }
+        ]
+    },
+    "61": {
+        "class_name": "Sky",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/acC55OsUFIyC4Kx-0Uk31g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/acC55OsUFIyC4Kx-0Uk31g.png",
+                "pixel_count": 13465179
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/OTjKU-zxIRDroJY90GKEKQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/OTjKU-zxIRDroJY90GKEKQ.png",
+                "pixel_count": 13312238
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/qTJZfJ7VyLI5DaR5UVQmuA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/qTJZfJ7VyLI5DaR5UVQmuA.png",
+                "pixel_count": 13278868
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/8h8cQSIojWh0Jb_YxeNFJw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/8h8cQSIojWh0Jb_YxeNFJw.png",
+                "pixel_count": 13084084
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/6K5RwVf4DJG6MVCqM4_OZA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/6K5RwVf4DJG6MVCqM4_OZA.png",
+                "pixel_count": 13081507
+            }
+        ]
+    },
+    "62": {
+        "class_name": "Snow",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/7dzpAz74BOm7fjRNiecMkw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/7dzpAz74BOm7fjRNiecMkw.png",
+                "pixel_count": 8557485
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/aGWqpdOWr9Uq6pjoYi_wSg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/aGWqpdOWr9Uq6pjoYi_wSg.png",
+                "pixel_count": 4881011
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/22UfuNvUV5FAbwpm2whCsg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/22UfuNvUV5FAbwpm2whCsg.png",
+                "pixel_count": 4775429
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Qb-raNVWeLmeILsiTRSJ3g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Qb-raNVWeLmeILsiTRSJ3g.png",
+                "pixel_count": 4747254
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/7auTG5H9urJnc5fjmI1GUQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/7auTG5H9urJnc5fjmI1GUQ.png",
+                "pixel_count": 4570348
+            }
+        ]
+    },
+    "63": {
+        "class_name": "Terrain",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/2KLYFjRKEH0TlZsz45o6Ww.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/2KLYFjRKEH0TlZsz45o6Ww.png",
+                "pixel_count": 4774181
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/dLDQVvjx-pum56rk5ikbmQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/dLDQVvjx-pum56rk5ikbmQ.png",
+                "pixel_count": 4759085
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/-jhqNCQcsRNs88iAUtttpw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/-jhqNCQcsRNs88iAUtttpw.png",
+                "pixel_count": 4396851
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/HdEULR30A5Mgmz6eZXBcpg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/HdEULR30A5Mgmz6eZXBcpg.png",
+                "pixel_count": 4249746
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/fnFl9CEzD1LpNp9N5Pn2CA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/fnFl9CEzD1LpNp9N5Pn2CA.png",
+                "pixel_count": 4164775
+            }
+        ]
+    },
+    "64": {
+        "class_name": "Vegetation",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/TPqZMCmEC207tYXRLhwtxA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/TPqZMCmEC207tYXRLhwtxA.png",
+                "pixel_count": 14174055
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/KBb9eCuF3JRy9WXyXRjzeQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/KBb9eCuF3JRy9WXyXRjzeQ.png",
+                "pixel_count": 11811523
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Wf3NK9kfgGKyklrE6BmCTw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Wf3NK9kfgGKyklrE6BmCTw.png",
+                "pixel_count": 11420390
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/GNu4pIUMvV14iyjhMl2PEw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/GNu4pIUMvV14iyjhMl2PEw.png",
+                "pixel_count": 11359326
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/PvuhlxupPwjH6Nr3CxnNgQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/PvuhlxupPwjH6Nr3CxnNgQ.png",
+                "pixel_count": 10928621
+            }
+        ]
+    },
+    "65": {
+        "class_name": "Water",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/cccN4AnQOeRCzYjGbRCRuA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/cccN4AnQOeRCzYjGbRCRuA.png",
+                "pixel_count": 8860837
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/7R1IoOJdwr1dxUiHBFMNFg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/7R1IoOJdwr1dxUiHBFMNFg.png",
+                "pixel_count": 6098961
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/aDailxp-VC9IbQWfIp-8Rw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/aDailxp-VC9IbQWfIp-8Rw.png",
+                "pixel_count": 5689612
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/5OTN47W8hUVdlEd6yMSxzg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/5OTN47W8hUVdlEd6yMSxzg.png",
+                "pixel_count": 5142966
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/TdeCVvczrnG1I5i-2ApmYw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/TdeCVvczrnG1I5i-2ApmYw.png",
+                "pixel_count": 3354972
+            }
+        ]
+    },
+    "66": {
+        "class_name": "Banner",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/8K2FOxwP6vQueL54kDC3rQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/8K2FOxwP6vQueL54kDC3rQ.png",
+                "pixel_count": 1756676
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/YlgujJ-a0WDtUnMyVggPYQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/YlgujJ-a0WDtUnMyVggPYQ.png",
+                "pixel_count": 1674459
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/pBzrHWx2yw-C10rRtgufsg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/pBzrHWx2yw-C10rRtgufsg.png",
+                "pixel_count": 1167174
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/P00iHpEAr_yZ0IhLYBLfyw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/P00iHpEAr_yZ0IhLYBLfyw.png",
+                "pixel_count": 1002629
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/0UFny3cOYkXq9J8RhLRMhw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/0UFny3cOYkXq9J8RhLRMhw.png",
+                "pixel_count": 847149
+            }
+        ]
+    },
+    "67": {
+        "class_name": "Bench",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/Z2u88AuOkpTCTXYVZeuM5g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Z2u88AuOkpTCTXYVZeuM5g.png",
+                "pixel_count": 851552
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/i_-zUMyRFvh-qppIb0SJFg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/i_-zUMyRFvh-qppIb0SJFg.png",
+                "pixel_count": 803434
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/SCCbvqF9sWuZr-QaapwWWQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/SCCbvqF9sWuZr-QaapwWWQ.png",
+                "pixel_count": 758879
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/OokknQVHoFfeYWR5KrgA3Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/OokknQVHoFfeYWR5KrgA3Q.png",
+                "pixel_count": 515643
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/vCHARPNNdeEyhW5JiCWXoQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/vCHARPNNdeEyhW5JiCWXoQ.png",
+                "pixel_count": 479171
+            }
+        ]
+    },
+    "68": {
+        "class_name": "Bike Rack",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/yl0hoWoC8HZZdpljafbzCA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/yl0hoWoC8HZZdpljafbzCA.png",
+                "pixel_count": 1229930
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/MvjQEXkoUo8BKsvdwaQVPw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/MvjQEXkoUo8BKsvdwaQVPw.png",
+                "pixel_count": 941165
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/AGkjJ3IXuKOaZkwXBaAj3Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/AGkjJ3IXuKOaZkwXBaAj3Q.png",
+                "pixel_count": 898033
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/mHleFy5GSIKC3fhOBTPwfw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/mHleFy5GSIKC3fhOBTPwfw.png",
+                "pixel_count": 544205
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Yg-41tZcNdfumN5N7uiVOA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Yg-41tZcNdfumN5N7uiVOA.png",
+                "pixel_count": 514211
+            }
+        ]
+    },
+    "69": {
+        "class_name": "Catch Basin",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/Y4qkyYTgq8jr1jVIZyATsQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Y4qkyYTgq8jr1jVIZyATsQ.png",
+                "pixel_count": 434305
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Y6AZsMN_Ohf7QI2uGzSPGg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Y6AZsMN_Ohf7QI2uGzSPGg.png",
+                "pixel_count": 433290
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/zJ7fGtOvNwKgYW-Md6AKBA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/zJ7fGtOvNwKgYW-Md6AKBA.png",
+                "pixel_count": 381000
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/0qjczUzUIxlvHIznL4cfRA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/0qjczUzUIxlvHIznL4cfRA.png",
+                "pixel_count": 363326
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/ola7io7bM71c8Cqu4IBYjQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ola7io7bM71c8Cqu4IBYjQ.png",
+                "pixel_count": 319528
+            }
+        ]
+    },
+    "70": {
+        "class_name": "CCTV Camera",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/H7-h5t4XgBGj7vfcWel3jg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/H7-h5t4XgBGj7vfcWel3jg.png",
+                "pixel_count": 264225
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/aJ9xci9aq18exp-YvdA0kA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/aJ9xci9aq18exp-YvdA0kA.png",
+                "pixel_count": 29923
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/bwnYpZdUBv4YTlCBmq4aQQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/bwnYpZdUBv4YTlCBmq4aQQ.png",
+                "pixel_count": 28865
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/2IjYPj2FSw2E3cdW3s65fQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/2IjYPj2FSw2E3cdW3s65fQ.png",
+                "pixel_count": 27572
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/WIzDOIldei812hkLTaLypA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/WIzDOIldei812hkLTaLypA.png",
+                "pixel_count": 20854
+            }
+        ]
+    },
+    "71": {
+        "class_name": "Fire Hydrant",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/Japqvl1lOxyrfeRfe0zT4g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Japqvl1lOxyrfeRfe0zT4g.png",
+                "pixel_count": 420381
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/4-Misron4_kc5rQ1WophrA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/4-Misron4_kc5rQ1WophrA.png",
+                "pixel_count": 399294
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/0AZiFqSRZ_2Xn1JfaZmcqw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/0AZiFqSRZ_2Xn1JfaZmcqw.png",
+                "pixel_count": 354342
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/u30KQvsghLcM7lIz2aiZDA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/u30KQvsghLcM7lIz2aiZDA.png",
+                "pixel_count": 288957
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/4eZo1X7MlmUUS-9wB0S0bg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/4eZo1X7MlmUUS-9wB0S0bg.png",
+                "pixel_count": 262288
+            }
+        ]
+    },
+    "72": {
+        "class_name": "Junction Box",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/SPFpASXMB-60h2L37DPe5A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/SPFpASXMB-60h2L37DPe5A.png",
+                "pixel_count": 1627897
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/qszc8KCcv75PblnXRhuXYw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/qszc8KCcv75PblnXRhuXYw.png",
+                "pixel_count": 753910
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/x4lHj9fiHyHXb1VZ6-IkUg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/x4lHj9fiHyHXb1VZ6-IkUg.png",
+                "pixel_count": 530663
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/vB_v3dtnr2EMgy1kxQhjKg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/vB_v3dtnr2EMgy1kxQhjKg.png",
+                "pixel_count": 523588
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/rfla1Fv__EIcxElHOgJU-w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/rfla1Fv__EIcxElHOgJU-w.png",
+                "pixel_count": 486060
+            }
+        ]
+    },
+    "73": {
+        "class_name": "Mailbox",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/-koJxu16wZChFAi7BvOxQw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/-koJxu16wZChFAi7BvOxQw.png",
+                "pixel_count": 345176
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/1vNOWEbcBsz38xR0AkJ-pA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/1vNOWEbcBsz38xR0AkJ-pA.png",
+                "pixel_count": 338757
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/rgLlJ6jeBiqKmz1wOsfOqQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/rgLlJ6jeBiqKmz1wOsfOqQ.png",
+                "pixel_count": 288480
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/cOkPH2zEzVj8dM_ukvytsA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/cOkPH2zEzVj8dM_ukvytsA.png",
+                "pixel_count": 203729
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/qDe0Mss6r8_hNot-8tXPlg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/qDe0Mss6r8_hNot-8tXPlg.png",
+                "pixel_count": 185750
+            }
+        ]
+    },
+    "74": {
+        "class_name": "Manhole",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/miAO0Cwu-8RI0u0K5nKEIg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/miAO0Cwu-8RI0u0K5nKEIg.png",
+                "pixel_count": 1421118
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/UURld6pxt737L5ndiOsTRQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/UURld6pxt737L5ndiOsTRQ.png",
+                "pixel_count": 951769
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/T35unAq9aEW3WNAY5F6obw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/T35unAq9aEW3WNAY5F6obw.png",
+                "pixel_count": 792498
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/_BxenF34kjUAhKmGyR4jLA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/_BxenF34kjUAhKmGyR4jLA.png",
+                "pixel_count": 636016
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/9cvPDS8gjL79ZSy_PRgDpg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/9cvPDS8gjL79ZSy_PRgDpg.png",
+                "pixel_count": 549348
+            }
+        ]
+    },
+    "75": {
+        "class_name": "Parking Meter",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/p2B3z8SQp_vrA7z3AZu2hQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/p2B3z8SQp_vrA7z3AZu2hQ.png",
+                "pixel_count": 1511000
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/3X-hF1CjvT38C7dfUSzgsA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3X-hF1CjvT38C7dfUSzgsA.png",
+                "pixel_count": 1144554
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/kzyJFkgKNTBr1vDROEIT3g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/kzyJFkgKNTBr1vDROEIT3g.png",
+                "pixel_count": 877764
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/uXKQqu1WVghiNCp3A5Yowg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/uXKQqu1WVghiNCp3A5Yowg.png",
+                "pixel_count": 649629
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/R70Nseu7nKR5Di-wpsrK5g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/R70Nseu7nKR5Di-wpsrK5g.png",
+                "pixel_count": 482591
+            }
+        ]
+    },
+    "76": {
+        "class_name": "Phone Booth",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/jebnubu2Hl7AZxdMyAGGZw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/jebnubu2Hl7AZxdMyAGGZw.png",
+                "pixel_count": 1985156
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/nugdrUU0xCavVaMuaxCmjQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/nugdrUU0xCavVaMuaxCmjQ.png",
+                "pixel_count": 1486292
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/mJbe4uZYmPzqgKenEJWSZQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/mJbe4uZYmPzqgKenEJWSZQ.png",
+                "pixel_count": 1202493
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/4kuThM4icGuONZH4_ZQ6ow.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/4kuThM4icGuONZH4_ZQ6ow.png",
+                "pixel_count": 1111425
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/J1hDNZgAgjoSpaXuvHnorw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/J1hDNZgAgjoSpaXuvHnorw.png",
+                "pixel_count": 559921
+            }
+        ]
+    },
+    "77": {
+        "class_name": "Pothole",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/illPOmSTvqPa13bMAcUoxQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/illPOmSTvqPa13bMAcUoxQ.png",
+                "pixel_count": 378931
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/gYdqrFNsrwCBOpStwbqsYw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/gYdqrFNsrwCBOpStwbqsYw.png",
+                "pixel_count": 352375
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/kBLk1dWR1ZuFPspBE9fN_w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/kBLk1dWR1ZuFPspBE9fN_w.png",
+                "pixel_count": 324713
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/sRH3aeGeA7DVLd6RprfOQw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/sRH3aeGeA7DVLd6RprfOQw.png",
+                "pixel_count": 281382
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/zQY9jsZ-p1HSf0bXE1LHbQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/zQY9jsZ-p1HSf0bXE1LHbQ.png",
+                "pixel_count": 209028
+            }
+        ]
+    },
+    "78": {
+        "class_name": "Signage - Advertisement",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/khOeaWeOfydV9Xm-HcneDQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/khOeaWeOfydV9Xm-HcneDQ.png",
+                "pixel_count": 3494113
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/cFI_9IkHqFUZwbkZUGxtcg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/cFI_9IkHqFUZwbkZUGxtcg.png",
+                "pixel_count": 2550667
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/DSprL-Z5QhKkTCkaGhLeGA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/DSprL-Z5QhKkTCkaGhLeGA.png",
+                "pixel_count": 2495482
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/kMAA8Ao2L9gGToc4Af-gDQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/kMAA8Ao2L9gGToc4Af-gDQ.png",
+                "pixel_count": 2191099
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/2J5ZseyWiBvItPV25vMYKg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/2J5ZseyWiBvItPV25vMYKg.png",
+                "pixel_count": 2052477
+            }
+        ]
+    },
+    "79": {
+        "class_name": "Signage - Ambiguous",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/thKWd3VCdLH54GNaeoXsXQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/thKWd3VCdLH54GNaeoXsXQ.png",
+                "pixel_count": 384383
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/K5Fx5d23GCEBLlXKs7rOVQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/K5Fx5d23GCEBLlXKs7rOVQ.png",
+                "pixel_count": 218486
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/TXUtaqLGUmXfkG4Mbq7IvQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/TXUtaqLGUmXfkG4Mbq7IvQ.png",
+                "pixel_count": 212671
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/2oSCjYCsLWDJLstGIp4usg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/2oSCjYCsLWDJLstGIp4usg.png",
+                "pixel_count": 185791
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/y1HNDVCtCKu7gcDaC6JOwQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/y1HNDVCtCKu7gcDaC6JOwQ.png",
+                "pixel_count": 170883
+            }
+        ]
+    },
+    "80": {
+        "class_name": "Signage - Back",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/rKv2TCjLaAb8q5gT1245SA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/rKv2TCjLaAb8q5gT1245SA.png",
+                "pixel_count": 982546
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/h603l-BJQfPkOOxtkeGqow.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/h603l-BJQfPkOOxtkeGqow.png",
+                "pixel_count": 431414
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/GuWI4b6nmNgwnhZnKkYNBA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/GuWI4b6nmNgwnhZnKkYNBA.png",
+                "pixel_count": 413551
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/cibrCPZ6i3Wk7jYSz7eXdA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/cibrCPZ6i3Wk7jYSz7eXdA.png",
+                "pixel_count": 369990
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/iT45lp66V9iIb4GP3AXw6g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/iT45lp66V9iIb4GP3AXw6g.png",
+                "pixel_count": 324146
+            }
+        ]
+    },
+    "81": {
+        "class_name": "Signage - Information",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/_BxenF34kjUAhKmGyR4jLA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/_BxenF34kjUAhKmGyR4jLA.png",
+                "pixel_count": 552973
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/hhJ6VWM1Z21kJS5x_nDMeQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/hhJ6VWM1Z21kJS5x_nDMeQ.png",
+                "pixel_count": 518442
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/ujuqsqdGPVUVlvgrSRXayw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ujuqsqdGPVUVlvgrSRXayw.png",
+                "pixel_count": 515236
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/9e3V3f8OIJ_ndSkpDlRvKA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/9e3V3f8OIJ_ndSkpDlRvKA.png",
+                "pixel_count": 458789
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/9koWowHG3VTWu5isKdFFCA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/9koWowHG3VTWu5isKdFFCA.png",
+                "pixel_count": 417157
+            }
+        ]
+    },
+    "82": {
+        "class_name": "Signage - Other",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/sQp1yBLrafjdFUU8-E11Tw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/sQp1yBLrafjdFUU8-E11Tw.png",
+                "pixel_count": 546480
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/rsOOAgU7qk_P19SinSGhsA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/rsOOAgU7qk_P19SinSGhsA.png",
+                "pixel_count": 416816
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/RPDRzPaCddatlE42jxxS6A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/RPDRzPaCddatlE42jxxS6A.png",
+                "pixel_count": 416037
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/FygJzW9B3JQjkEt3qWGWuQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/FygJzW9B3JQjkEt3qWGWuQ.png",
+                "pixel_count": 392332
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/_AqYLgHr86zSfBZ7uDnQAg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/_AqYLgHr86zSfBZ7uDnQAg.png",
+                "pixel_count": 335456
+            }
+        ]
+    },
+    "83": {
+        "class_name": "Signage - Store",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/mPcP-cHOiawo62hdgud7wQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/mPcP-cHOiawo62hdgud7wQ.png",
+                "pixel_count": 2174482
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/aSN9QJeVUJJjVPU9j4J62g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/aSN9QJeVUJJjVPU9j4J62g.png",
+                "pixel_count": 1597623
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/9b-u3W0DPhxt68sfXGt1Pg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/9b-u3W0DPhxt68sfXGt1Pg.png",
+                "pixel_count": 1203549
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/nGLPVmfn3sKjsBlshIhFaw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/nGLPVmfn3sKjsBlshIhFaw.png",
+                "pixel_count": 1133078
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/6zmgRcZ-1pAbcQYPs3SpgQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/6zmgRcZ-1pAbcQYPs3SpgQ.png",
+                "pixel_count": 1086117
+            }
+        ]
+    },
+    "84": {
+        "class_name": "Street Light",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/8W8S6x3v_DLrXp4Obbxb_A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/8W8S6x3v_DLrXp4Obbxb_A.png",
+                "pixel_count": 286402
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/VcTzmF1TGkWKeLg_1S749A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/VcTzmF1TGkWKeLg_1S749A.png",
+                "pixel_count": 177329
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/tTQCZG_N90oc1fG9wcTBvQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/tTQCZG_N90oc1fG9wcTBvQ.png",
+                "pixel_count": 156559
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Pme_MK8vTSzOrwVMiCKJ_Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Pme_MK8vTSzOrwVMiCKJ_Q.png",
+                "pixel_count": 156124
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Ae1EgrPNBuSyoP-MByj6GA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Ae1EgrPNBuSyoP-MByj6GA.png",
+                "pixel_count": 153147
+            }
+        ]
+    },
+    "85": {
+        "class_name": "Pole",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/pMLbhkjAzNYLOSI9s_A7hw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/pMLbhkjAzNYLOSI9s_A7hw.png",
+                "pixel_count": 2335445
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/3kcqZK7_FBZnAhq-lE4U4Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3kcqZK7_FBZnAhq-lE4U4Q.png",
+                "pixel_count": 1967379
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/H7-h5t4XgBGj7vfcWel3jg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/H7-h5t4XgBGj7vfcWel3jg.png",
+                "pixel_count": 1938558
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/n_gnU6jWMV9Z0l2HuPLvmw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/n_gnU6jWMV9Z0l2HuPLvmw.png",
+                "pixel_count": 1688917
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/K5Fx5d23GCEBLlXKs7rOVQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/K5Fx5d23GCEBLlXKs7rOVQ.png",
+                "pixel_count": 1623201
+            }
+        ]
+    },
+    "86": {
+        "class_name": "Pole Group",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/Hn95_aKWKHjUa0wQLemu8A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Hn95_aKWKHjUa0wQLemu8A.png",
+                "pixel_count": 1863127
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/GgU5jFF_SXB7HPIlsNNMbQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/GgU5jFF_SXB7HPIlsNNMbQ.png",
+                "pixel_count": 545918
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/ORksNklaLJEU6JnggPAxHA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ORksNklaLJEU6JnggPAxHA.png",
+                "pixel_count": 498574
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/fgqwD5hJkbdYgEiuuigmVA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/fgqwD5hJkbdYgEiuuigmVA.png",
+                "pixel_count": 316964
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/ta4SukPlub8FbcaVHqotYA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ta4SukPlub8FbcaVHqotYA.png",
+                "pixel_count": 254927
+            }
+        ]
+    },
+    "87": {
+        "class_name": "Traffic Sign Frame",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/kmVGPFecFaLLui--XtWTnQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/kmVGPFecFaLLui--XtWTnQ.png",
+                "pixel_count": 1737565
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/OQ15fKsVFBDmvlB2c8sZig.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/OQ15fKsVFBDmvlB2c8sZig.png",
+                "pixel_count": 1605165
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/7KbKznKgPQj0UFZoVXXKPw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/7KbKznKgPQj0UFZoVXXKPw.png",
+                "pixel_count": 1480180
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/9tXEBtEBlXokwHFHHtKwlQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/9tXEBtEBlXokwHFHHtKwlQ.png",
+                "pixel_count": 1434846
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/fyZsq-rfmwW6ST9-iXr6Jg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/fyZsq-rfmwW6ST9-iXr6Jg.png",
+                "pixel_count": 1369706
+            }
+        ]
+    },
+    "88": {
+        "class_name": "Utility Pole",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/avelVYFlotz1EBpieF8RDA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/avelVYFlotz1EBpieF8RDA.png",
+                "pixel_count": 2348559
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/EMVi9-OjkBwt6BTvg29k0g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/EMVi9-OjkBwt6BTvg29k0g.png",
+                "pixel_count": 1908278
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/1EDrn8pm-dWdpJB2Oe8NSQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/1EDrn8pm-dWdpJB2Oe8NSQ.png",
+                "pixel_count": 1436481
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Ru1uaWfcxGwFYBrtRqjHpA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Ru1uaWfcxGwFYBrtRqjHpA.png",
+                "pixel_count": 1333849
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/tetlpZjaUiHdtLa_7XekVQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/tetlpZjaUiHdtLa_7XekVQ.png",
+                "pixel_count": 1197615
+            }
+        ]
+    },
+    "89": {
+        "class_name": "Traffic Cone",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/2emRJGyu96_oBCPKjlSTjg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/2emRJGyu96_oBCPKjlSTjg.png",
+                "pixel_count": 592395
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Zf1u-lZCuTJcv2Sqww622A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Zf1u-lZCuTJcv2Sqww622A.png",
+                "pixel_count": 381818
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/bQYSaTfYpLDwKiQMsmKkaA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/bQYSaTfYpLDwKiQMsmKkaA.png",
+                "pixel_count": 307124
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/1qNXhBOBkNJkVXn4nOuy5w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/1qNXhBOBkNJkVXn4nOuy5w.png",
+                "pixel_count": 271244
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/E3CgLp_xyXMg7DuUs4yE0Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/E3CgLp_xyXMg7DuUs4yE0Q.png",
+                "pixel_count": 265143
+            }
+        ]
+    },
+    "90": {
+        "class_name": "Traffic Light - General (Single)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/rfXWndImWq0VNovQXILn-g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/rfXWndImWq0VNovQXILn-g.png",
+                "pixel_count": 145906
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/ilWo1R8VvUSMC0Oz9MCdDQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ilWo1R8VvUSMC0Oz9MCdDQ.png",
+                "pixel_count": 89381
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/0LB-tbw_zLCTL3B3RjcBiQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/0LB-tbw_zLCTL3B3RjcBiQ.png",
+                "pixel_count": 59310
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/TYxYFWSS3IwZM9vJK_6eDw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/TYxYFWSS3IwZM9vJK_6eDw.png",
+                "pixel_count": 48139
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/WaZhdhXWW4QTMpHlR5MLNA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/WaZhdhXWW4QTMpHlR5MLNA.png",
+                "pixel_count": 43189
+            }
+        ]
+    },
+    "91": {
+        "class_name": "Traffic Light - Pedestrians",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/5bIpd4WMBxjsghc4FN8I_A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/5bIpd4WMBxjsghc4FN8I_A.png",
+                "pixel_count": 461030
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/QZ2-7puZGBsIertNmE1ViQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/QZ2-7puZGBsIertNmE1ViQ.png",
+                "pixel_count": 394660
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/AziVgsGjfgLbp904AelD_Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/AziVgsGjfgLbp904AelD_Q.png",
+                "pixel_count": 323910
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/yFkH7rRa-VcI9VuEleTHeA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/yFkH7rRa-VcI9VuEleTHeA.png",
+                "pixel_count": 244218
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/p33m7nTWsqF3N0srqilR6A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/p33m7nTWsqF3N0srqilR6A.png",
+                "pixel_count": 244123
+            }
+        ]
+    },
+    "92": {
+        "class_name": "Traffic Light - General (Upright)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/cWs4mzQH_PYQovav2-CjLA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/cWs4mzQH_PYQovav2-CjLA.png",
+                "pixel_count": 487096
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/YhPqBXitBGD-my_I5tIzyw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/YhPqBXitBGD-my_I5tIzyw.png",
+                "pixel_count": 466100
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/cLzG8NZ9oXRGnue2bZJjjw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/cLzG8NZ9oXRGnue2bZJjjw.png",
+                "pixel_count": 449674
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/m6_ANapzAZg08quo35RfGA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/m6_ANapzAZg08quo35RfGA.png",
+                "pixel_count": 444778
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/oUjjb4GO0MKkF9SJ4QXtCg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/oUjjb4GO0MKkF9SJ4QXtCg.png",
+                "pixel_count": 425262
+            }
+        ]
+    },
+    "93": {
+        "class_name": "Traffic Light - General (Horizontal)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/ryNtcdBNmwpcVLXmsO_OPA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ryNtcdBNmwpcVLXmsO_OPA.png",
+                "pixel_count": 253008
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/sxLp7_71xhcUCNt03sWXKg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/sxLp7_71xhcUCNt03sWXKg.png",
+                "pixel_count": 242739
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/yM0ydJ-ZVngSPfFuxGx1yA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/yM0ydJ-ZVngSPfFuxGx1yA.png",
+                "pixel_count": 158476
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/t8FSFj_Mh58FQ1OCCSWG5Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/t8FSFj_Mh58FQ1OCCSWG5Q.png",
+                "pixel_count": 155151
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/goNbG6U6UXja9p6Us5xAnA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/goNbG6U6UXja9p6Us5xAnA.png",
+                "pixel_count": 154819
+            }
+        ]
+    },
+    "94": {
+        "class_name": "Traffic Light - Cyclists",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/oikLZ-7FELffBS2-cq6-vg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/oikLZ-7FELffBS2-cq6-vg.png",
+                "pixel_count": 115492
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/CzRkOBWewt61pzedNJcgnw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/CzRkOBWewt61pzedNJcgnw.png",
+                "pixel_count": 108410
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/3HipILLiorEPR4nUmO6kqA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3HipILLiorEPR4nUmO6kqA.png",
+                "pixel_count": 105662
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/EMjEkM3XUVQQHltBxqvuUQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/EMjEkM3XUVQQHltBxqvuUQ.png",
+                "pixel_count": 102789
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/ARa8kCD66tVp746HBa7sxA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ARa8kCD66tVp746HBa7sxA.png",
+                "pixel_count": 65748
+            }
+        ]
+    },
+    "95": {
+        "class_name": "Traffic Light - Other",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/WCHc53-UVaFyXa0QIQd5gA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/WCHc53-UVaFyXa0QIQd5gA.png",
+                "pixel_count": 287264
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/QJ7gKZjZ52pcx_zmdCWkKA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/QJ7gKZjZ52pcx_zmdCWkKA.png",
+                "pixel_count": 182354
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/a-zTY6nOk0Rr4hsWJtnTEw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/a-zTY6nOk0Rr4hsWJtnTEw.png",
+                "pixel_count": 182265
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/gG0fLxqlnJx0Cwn_2hRg7g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/gG0fLxqlnJx0Cwn_2hRg7g.png",
+                "pixel_count": 170630
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/UeQzXs0Nr65RpS2JkDgvQw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/UeQzXs0Nr65RpS2JkDgvQw.png",
+                "pixel_count": 161575
+            }
+        ]
+    },
+    "96": {
+        "class_name": "Traffic Sign - Ambiguous",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/g9w4JnbkOkAqbekt-uVFeA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/g9w4JnbkOkAqbekt-uVFeA.png",
+                "pixel_count": 528380
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/oMbjIIvgdGcDmFAxB63vMQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/oMbjIIvgdGcDmFAxB63vMQ.png",
+                "pixel_count": 294283
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/vbNkbOTmzDX6njdMY-NBgw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/vbNkbOTmzDX6njdMY-NBgw.png",
+                "pixel_count": 276416
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/MshVz0uHOeQO5nbUlCt_Xw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/MshVz0uHOeQO5nbUlCt_Xw.png",
+                "pixel_count": 271784
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/zO2iJa82ZWUnAz3j2o18fw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/zO2iJa82ZWUnAz3j2o18fw.png",
+                "pixel_count": 221960
+            }
+        ]
+    },
+    "97": {
+        "class_name": "Traffic Sign (Back)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/9c-jrcSjGHwvn3CZQVhUow.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/9c-jrcSjGHwvn3CZQVhUow.png",
+                "pixel_count": 509090
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/NG4bjL2saLyQgTdsFSEK7A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/NG4bjL2saLyQgTdsFSEK7A.png",
+                "pixel_count": 316802
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/gC_OOs5KJuwixb8hQp823w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/gC_OOs5KJuwixb8hQp823w.png",
+                "pixel_count": 299263
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/highdXnIyLd9O9kN0rx9ZA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/highdXnIyLd9O9kN0rx9ZA.png",
+                "pixel_count": 290423
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/V4kq9As-iR9ub8Dmr_viGw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/V4kq9As-iR9ub8Dmr_viGw.png",
+                "pixel_count": 262245
+            }
+        ]
+    },
+    "98": {
+        "class_name": "Traffic Sign - Direction (Back)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/M90HhoRJTJYUvVb6vmea_g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/M90HhoRJTJYUvVb6vmea_g.png",
+                "pixel_count": 387740
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/QpTA93AYLfzaImnUS7740A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/QpTA93AYLfzaImnUS7740A.png",
+                "pixel_count": 371998
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/EbLr01EJlm2lm7UpEWtY1A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/EbLr01EJlm2lm7UpEWtY1A.png",
+                "pixel_count": 357017
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/imvZHjMBtHze90dIBp1SQA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/imvZHjMBtHze90dIBp1SQA.png",
+                "pixel_count": 338185
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/-rBa2Lx5doyvnFZgPvsLEg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/-rBa2Lx5doyvnFZgPvsLEg.png",
+                "pixel_count": 337253
+            }
+        ]
+    },
+    "99": {
+        "class_name": "Traffic Sign - Direction (Front)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/An1B6go6BoJyr3Wy2F2VoQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/An1B6go6BoJyr3Wy2F2VoQ.png",
+                "pixel_count": 1852519
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/eHQX2aAMhT2woT73QTokoA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/eHQX2aAMhT2woT73QTokoA.png",
+                "pixel_count": 1684319
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/MOwHGGqckJ1gq03VhsbosQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/MOwHGGqckJ1gq03VhsbosQ.png",
+                "pixel_count": 1537858
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/ctscCzcPCKhaaI9HsSd0fg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ctscCzcPCKhaaI9HsSd0fg.png",
+                "pixel_count": 1532278
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/bKfIMVBx3DtrZ3jEENPc4w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/bKfIMVBx3DtrZ3jEENPc4w.png",
+                "pixel_count": 1511543
+            }
+        ]
+    },
+    "100": {
+        "class_name": "Traffic Sign (Front)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/p9OZgeolJxOQOfNYLScR2w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/p9OZgeolJxOQOfNYLScR2w.png",
+                "pixel_count": 1442419
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/z9ygY5eM1L43RFYNSUuGWQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/z9ygY5eM1L43RFYNSUuGWQ.png",
+                "pixel_count": 1236263
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/WQus_NdIxWpLzOzZanSM6w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/WQus_NdIxWpLzOzZanSM6w.png",
+                "pixel_count": 841451
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/uxAaETa0aulK0H0xDqtpSw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/uxAaETa0aulK0H0xDqtpSw.png",
+                "pixel_count": 838313
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/R-8V_TwhC0sEUQeNKONy3Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/R-8V_TwhC0sEUQeNKONy3Q.png",
+                "pixel_count": 785343
+            }
+        ]
+    },
+    "101": {
+        "class_name": "Traffic Sign - Parking",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/2cyOZN1qSZb3YLsUetNerQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/2cyOZN1qSZb3YLsUetNerQ.png",
+                "pixel_count": 395606
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/OwScQjnUvufsPwQ2STeO0g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/OwScQjnUvufsPwQ2STeO0g.png",
+                "pixel_count": 327984
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/UfU2gn3gHd0m4aNHMj80Iw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/UfU2gn3gHd0m4aNHMj80Iw.png",
+                "pixel_count": 266099
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/b95-3p6khyf61fWQQH37TQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/b95-3p6khyf61fWQQH37TQ.png",
+                "pixel_count": 233947
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/F6R87FvEHPd7EHqy_QRoGg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/F6R87FvEHPd7EHqy_QRoGg.png",
+                "pixel_count": 226006
+            }
+        ]
+    },
+    "102": {
+        "class_name": "Traffic Sign - Temporary (Back)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/jXC1xKYVo8E-j3Kq5EJHWA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/jXC1xKYVo8E-j3Kq5EJHWA.png",
+                "pixel_count": 294491
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/OIexQmH3m2i62umkIBrh8g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/OIexQmH3m2i62umkIBrh8g.png",
+                "pixel_count": 247772
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/XVTZMAqxw-xU4870kVSELw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/XVTZMAqxw-xU4870kVSELw.png",
+                "pixel_count": 160563
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/9Cri5f2d3l2z8pUZvRBLwg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/9Cri5f2d3l2z8pUZvRBLwg.png",
+                "pixel_count": 130576
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/vB_v3dtnr2EMgy1kxQhjKg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/vB_v3dtnr2EMgy1kxQhjKg.png",
+                "pixel_count": 93359
+            }
+        ]
+    },
+    "103": {
+        "class_name": "Traffic Sign - Temporary (Front)",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/IMQe46fT5aLAcNKZ0NoCJQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/IMQe46fT5aLAcNKZ0NoCJQ.png",
+                "pixel_count": 544007
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/3WLXx68ASTgNLcYWQBG8QQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3WLXx68ASTgNLcYWQBG8QQ.png",
+                "pixel_count": 452751
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/1lFlfX-xon3dZ-X2meuLeA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/1lFlfX-xon3dZ-X2meuLeA.png",
+                "pixel_count": 441469
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Af_IrOm6qkULujZZvZxZFQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Af_IrOm6qkULujZZvZxZFQ.png",
+                "pixel_count": 381136
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/5oFaVvMiVrece2YDzeA2Sg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/5oFaVvMiVrece2YDzeA2Sg.png",
+                "pixel_count": 372859
+            }
+        ]
+    },
+    "104": {
+        "class_name": "Trash Can",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/iSsxuYEV9uCPGPHJayPqDA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/iSsxuYEV9uCPGPHJayPqDA.png",
+                "pixel_count": 2794814
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/XgqKwyoNzxsK0OmvtFm3pQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/XgqKwyoNzxsK0OmvtFm3pQ.png",
+                "pixel_count": 1598491
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/gC_OOs5KJuwixb8hQp823w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/gC_OOs5KJuwixb8hQp823w.png",
+                "pixel_count": 1575062
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/YcGuBfh8szuu9E44kFxFOQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/YcGuBfh8szuu9E44kFxFOQ.png",
+                "pixel_count": 1401434
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/jrccHeIiP0KjhermYtPUfg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/jrccHeIiP0KjhermYtPUfg.png",
+                "pixel_count": 1300166
+            }
+        ]
+    },
+    "105": {
+        "class_name": "Bicycle",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/r43m5arWRx-UDu78h_8CyA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/r43m5arWRx-UDu78h_8CyA.png",
+                "pixel_count": 1693009
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/HPfHwtgoHKRf4ZNq-wHNqg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/HPfHwtgoHKRf4ZNq-wHNqg.png",
+                "pixel_count": 1337007
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/9axgZVdC3BaD4AjkT5fQAQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/9axgZVdC3BaD4AjkT5fQAQ.png",
+                "pixel_count": 1324439
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/LB3xID4wetN4GxX_RItycw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/LB3xID4wetN4GxX_RItycw.png",
+                "pixel_count": 1242590
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/xiqUSobFT9J_fRvwezxTVg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/xiqUSobFT9J_fRvwezxTVg.png",
+                "pixel_count": 1216541
+            }
+        ]
+    },
+    "106": {
+        "class_name": "Boat",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/3vpvkSzWWCUvVbIo0Q5P5w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3vpvkSzWWCUvVbIo0Q5P5w.png",
+                "pixel_count": 2635776
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/5d6VhLpoMZ1NFxf6pEnRqg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/5d6VhLpoMZ1NFxf6pEnRqg.png",
+                "pixel_count": 879066
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/7jnm8yJvsndKX03z6h5YpQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/7jnm8yJvsndKX03z6h5YpQ.png",
+                "pixel_count": 864177
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/e3PmjnhmgicYr1b3PnRj2g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/e3PmjnhmgicYr1b3PnRj2g.png",
+                "pixel_count": 825561
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/vcMniuGQaufNix7bm42Acg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/vcMniuGQaufNix7bm42Acg.png",
+                "pixel_count": 815590
+            }
+        ]
+    },
+    "107": {
+        "class_name": "Bus",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/nb_a2R1Y64Qdcb5-qHIecg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/nb_a2R1Y64Qdcb5-qHIecg.png",
+                "pixel_count": 6855346
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/cuFQk-VZGgt612BLMG-0wA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/cuFQk-VZGgt612BLMG-0wA.png",
+                "pixel_count": 4553134
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/PDJgse_Z9BFy5gUpMx07cg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/PDJgse_Z9BFy5gUpMx07cg.png",
+                "pixel_count": 3205374
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/fgxUAUqeRCCLL4sH-tgC2A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/fgxUAUqeRCCLL4sH-tgC2A.png",
+                "pixel_count": 2832117
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/2nHr4FoBgTtGDZbfaG6x0Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/2nHr4FoBgTtGDZbfaG6x0Q.png",
+                "pixel_count": 2720394
+            }
+        ]
+    },
+    "108": {
+        "class_name": "Car",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/mtko_uFDfyet9GiQ-0S9iA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/mtko_uFDfyet9GiQ-0S9iA.png",
+                "pixel_count": 4887213
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/BxB3RuaUCvV_IfoZgPVgJA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/BxB3RuaUCvV_IfoZgPVgJA.png",
+                "pixel_count": 4696954
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/nHt9Sq_zW_LVlEYjpQ6yJA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/nHt9Sq_zW_LVlEYjpQ6yJA.png",
+                "pixel_count": 4643126
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Ganrbhvqn34EwK7nHXuzMA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Ganrbhvqn34EwK7nHXuzMA.png",
+                "pixel_count": 4375990
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/URj0ccR8sP9cZB3Sh9czsg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/URj0ccR8sP9cZB3Sh9czsg.png",
+                "pixel_count": 4331872
+            }
+        ]
+    },
+    "109": {
+        "class_name": "Caravan",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/zfmoHeEXl4CzA5kMc_naKg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/zfmoHeEXl4CzA5kMc_naKg.png",
+                "pixel_count": 651391
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/TQnDx4xmL--VmFzvWbh93Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/TQnDx4xmL--VmFzvWbh93Q.png",
+                "pixel_count": 319586
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/hK17yBX2iNOafMlXZGYR4g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/hK17yBX2iNOafMlXZGYR4g.png",
+                "pixel_count": 301269
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/6HWHyGi1oGvHBzWrAv2wkw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/6HWHyGi1oGvHBzWrAv2wkw.png",
+                "pixel_count": 275479
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/sjfAx6O1oFuocsTDqibUHg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/sjfAx6O1oFuocsTDqibUHg.png",
+                "pixel_count": 204769
+            }
+        ]
+    },
+    "110": {
+        "class_name": "Motorcycle",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/yl0hoWoC8HZZdpljafbzCA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/yl0hoWoC8HZZdpljafbzCA.png",
+                "pixel_count": 1509262
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Y4qkyYTgq8jr1jVIZyATsQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Y4qkyYTgq8jr1jVIZyATsQ.png",
+                "pixel_count": 959121
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/0Yx-EqG0Edv2xInd-Tpz1w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/0Yx-EqG0Edv2xInd-Tpz1w.png",
+                "pixel_count": 953976
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/-UlfsstfXYaod0HJv7sR_w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/-UlfsstfXYaod0HJv7sR_w.png",
+                "pixel_count": 943326
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/YvXIB6RWiG9GMiQODMnBjg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/YvXIB6RWiG9GMiQODMnBjg.png",
+                "pixel_count": 913599
+            }
+        ]
+    },
+    "111": {
+        "class_name": "On Rails",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/z3ol3lYAPQViP7RAToBhEw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/z3ol3lYAPQViP7RAToBhEw.png",
+                "pixel_count": 3217882
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/3M2VX3JXCOMcVLXj16ot2A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3M2VX3JXCOMcVLXj16ot2A.png",
+                "pixel_count": 2671950
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/IQMeM8jtTIpPLqkwNwJ7Vw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/IQMeM8jtTIpPLqkwNwJ7Vw.png",
+                "pixel_count": 2077786
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/KtChGvKDi67obITWQ9V0AQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/KtChGvKDi67obITWQ9V0AQ.png",
+                "pixel_count": 1983381
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/_dwgSfnw24A92SyHkV33kA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/_dwgSfnw24A92SyHkV33kA.png",
+                "pixel_count": 1968783
+            }
+        ]
+    },
+    "112": {
+        "class_name": "Other Vehicle",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/E2MU5se7Dkjz5jsgnH3ZNQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/E2MU5se7Dkjz5jsgnH3ZNQ.png",
+                "pixel_count": 2291723
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/MAMRon2rOVa7M7nLRLwTYg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/MAMRon2rOVa7M7nLRLwTYg.png",
+                "pixel_count": 2174832
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/JVuZXGCwwubRXblVsKPidg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/JVuZXGCwwubRXblVsKPidg.png",
+                "pixel_count": 1985337
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/8ya8OpM3LGb_wiOfnUf9Xg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/8ya8OpM3LGb_wiOfnUf9Xg.png",
+                "pixel_count": 1865380
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/-gSMw1gvzaUryheHPx00Zw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/-gSMw1gvzaUryheHPx00Zw.png",
+                "pixel_count": 1773206
+            }
+        ]
+    },
+    "113": {
+        "class_name": "Trailer",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/ebFKbFC9eci21GBVwmMHZA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ebFKbFC9eci21GBVwmMHZA.png",
+                "pixel_count": 3794006
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/13ues9nPTkIJLf5XeFQtvg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/13ues9nPTkIJLf5XeFQtvg.png",
+                "pixel_count": 1129445
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/sjrJiZ0EA7kFk4QPKRjDHw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/sjrJiZ0EA7kFk4QPKRjDHw.png",
+                "pixel_count": 779559
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/lsdqfgclz4fiJou8UHhlUQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/lsdqfgclz4fiJou8UHhlUQ.png",
+                "pixel_count": 713951
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/Wf-BCC5QXzvcTqINMuNJJA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Wf-BCC5QXzvcTqINMuNJJA.png",
+                "pixel_count": 641667
+            }
+        ]
+    },
+    "114": {
+        "class_name": "Truck",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/SU-M_JYgmztbAcQ78TiSTQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/SU-M_JYgmztbAcQ78TiSTQ.png",
+                "pixel_count": 4862809
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/QkVB4IdCOlr2Km_hWMpXrg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/QkVB4IdCOlr2Km_hWMpXrg.png",
+                "pixel_count": 4839609
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/As9i4RvwVCMw-xEzRgZJOw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/As9i4RvwVCMw-xEzRgZJOw.png",
+                "pixel_count": 4582673
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/UOUce6pCCsjZUDQXtKvQeg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/UOUce6pCCsjZUDQXtKvQeg.png",
+                "pixel_count": 4315961
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/qytz43q3il05Mpy0L8Pxvg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/qytz43q3il05Mpy0L8Pxvg.png",
+                "pixel_count": 4163493
+            }
+        ]
+    },
+    "115": {
+        "class_name": "Vehicle Group",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/iIFrUqxZbhmOuMdvjLmXGg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/iIFrUqxZbhmOuMdvjLmXGg.png",
+                "pixel_count": 1759694
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/97nw28hMMd2ZPLzol2GQjw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/97nw28hMMd2ZPLzol2GQjw.png",
+                "pixel_count": 1363494
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/8mwrYyKAzI0BgSoH-AjYIw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/8mwrYyKAzI0BgSoH-AjYIw.png",
+                "pixel_count": 1362098
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/kSzw9LurVu-tackEsxYILA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/kSzw9LurVu-tackEsxYILA.png",
+                "pixel_count": 1321120
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/b57EyHIACUuUxKHDAiCKoQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/b57EyHIACUuUxKHDAiCKoQ.png",
+                "pixel_count": 1186913
+            }
+        ]
+    },
+    "116": {
+        "class_name": "Wheeled Slow",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/4NIPQxDN_mZEV0ycDCLFQQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/4NIPQxDN_mZEV0ycDCLFQQ.png",
+                "pixel_count": 427972
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/OREJt-zPApuuJ5PCi9Nr7Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/OREJt-zPApuuJ5PCi9Nr7Q.png",
+                "pixel_count": 345006
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/4iCVzNF1zWyk5Ojdqwxbgg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/4iCVzNF1zWyk5Ojdqwxbgg.png",
+                "pixel_count": 291903
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/IBnXFq2ZsOJMj3j4OAlbfg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/IBnXFq2ZsOJMj3j4OAlbfg.png",
+                "pixel_count": 255588
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/a9qlUTUMetnsVIfh9f614w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/a9qlUTUMetnsVIfh9f614w.png",
+                "pixel_count": 244500
+            }
+        ]
+    },
+    "117": {
+        "class_name": "Water Valve",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/3K-7Sitqb6VWKCWgjTNMKg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/3K-7Sitqb6VWKCWgjTNMKg.png",
+                "pixel_count": 346308
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/mZCeq3_Gp8YB08UsTXgpxA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/mZCeq3_Gp8YB08UsTXgpxA.png",
+                "pixel_count": 97665
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/0AZiFqSRZ_2Xn1JfaZmcqw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/0AZiFqSRZ_2Xn1JfaZmcqw.png",
+                "pixel_count": 52006
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/ZrlZhO9u4wRqFz9Ik8ZInQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ZrlZhO9u4wRqFz9Ik8ZInQ.png",
+                "pixel_count": 39204
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/kuw46mYdrOBC2pHVlDLdeA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/kuw46mYdrOBC2pHVlDLdeA.png",
+                "pixel_count": 36360
+            }
+        ]
+    },
+    "118": {
+        "class_name": "Car Mount",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/WDU1kC52zNtGP3fjE6A4bQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/WDU1kC52zNtGP3fjE6A4bQ.png",
+                "pixel_count": 2829084
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/9zReHTPZvcWK5lrvHF_oeQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/9zReHTPZvcWK5lrvHF_oeQ.png",
+                "pixel_count": 2686427
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/aZFY9j2MSVoev1DLFSLJlg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/aZFY9j2MSVoev1DLFSLJlg.png",
+                "pixel_count": 2179278
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/mNgpLnIrKJqsiQarjhGxJw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/mNgpLnIrKJqsiQarjhGxJw.png",
+                "pixel_count": 1941709
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/ibDpwxXAsG2gExiK50yl2w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ibDpwxXAsG2gExiK50yl2w.png",
+                "pixel_count": 1781402
+            }
+        ]
+    },
+    "119": {
+        "class_name": "Dynamic",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/uhT8gp_qfLXq-3yDw5upkg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/uhT8gp_qfLXq-3yDw5upkg.png",
+                "pixel_count": 5137246
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/ncz_0gk6gIRGFPwecvbRKw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ncz_0gk6gIRGFPwecvbRKw.png",
+                "pixel_count": 2688149
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/CGrqxRPKTB6d4gjCHP6reQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/CGrqxRPKTB6d4gjCHP6reQ.png",
+                "pixel_count": 1508881
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/OdAsuNBGCfMSOnffFvNXLA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/OdAsuNBGCfMSOnffFvNXLA.png",
+                "pixel_count": 1502259
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/tYfCpyfXo6-XTG0inQzejg.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/tYfCpyfXo6-XTG0inQzejg.png",
+                "pixel_count": 1240925
+            }
+        ]
+    },
+    "120": {
+        "class_name": "Ego Vehicle",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/7bvvPB8XdMfh7dwOtH49_w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/7bvvPB8XdMfh7dwOtH49_w.png",
+                "pixel_count": 6723367
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/FkQFIMMP2s9GaMBBGaI_sw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/FkQFIMMP2s9GaMBBGaI_sw.png",
+                "pixel_count": 5640792
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/F50-VSgx79RYDzs8rsMx3Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/F50-VSgx79RYDzs8rsMx3Q.png",
+                "pixel_count": 5612529
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/2b5dZXyXulzwww03AYLPAA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/2b5dZXyXulzwww03AYLPAA.png",
+                "pixel_count": 5585783
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/luZfHzp3O46UZQPR_2Ne_A.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/luZfHzp3O46UZQPR_2Ne_A.png",
+                "pixel_count": 5546284
+            }
+        ]
+    },
+    "121": {
+        "class_name": "Ground",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/Lc2X8mkBgKx7zXtFdVXTcA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/Lc2X8mkBgKx7zXtFdVXTcA.png",
+                "pixel_count": 7550245
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/V54TdxEoYkl2Y85xW9UeUA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/V54TdxEoYkl2Y85xW9UeUA.png",
+                "pixel_count": 6294223
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/PqOTDc5NRQn6wkJjNtQj3w.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/PqOTDc5NRQn6wkJjNtQj3w.png",
+                "pixel_count": 6048241
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/eLNxL1f2qpzeTI7r2Ac7Ug.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/eLNxL1f2qpzeTI7r2Ac7Ug.png",
+                "pixel_count": 5751825
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/KnWRc4spbyohCvDraEEHAA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/KnWRc4spbyohCvDraEEHAA.png",
+                "pixel_count": 5226819
+            }
+        ]
+    },
+    "122": {
+        "class_name": "Static",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/ztaR_O637iVPndNgjR7nZA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/ztaR_O637iVPndNgjR7nZA.png",
+                "pixel_count": 5179081
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/zDq50ceMzWLiroFSQrSQ4Q.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/zDq50ceMzWLiroFSQrSQ4Q.png",
+                "pixel_count": 4485829
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/VvQYQUqSNkLzNWDeK4ujbA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/VvQYQUqSNkLzNWDeK4ujbA.png",
+                "pixel_count": 3066418
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/I019llGNgeyeQdAvO1FdjQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/I019llGNgeyeQdAvO1FdjQ.png",
+                "pixel_count": 3035252
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/MyETkyjEZ4iU84M-jKoA5g.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/MyETkyjEZ4iU84M-jKoA5g.png",
+                "pixel_count": 2320011
+            }
+        ]
+    },
+    "123": {
+        "class_name": "Unlabeled",
+        "top_images": [
+            {
+                "image_path": "Mapillary_Vistas/training/images/2ZDxgp-IRnPCEcuI0WawrQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/2ZDxgp-IRnPCEcuI0WawrQ.png",
+                "pixel_count": 1677260
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/jisEGpkptbp_0qFeRT76XA.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/jisEGpkptbp_0qFeRT76XA.png",
+                "pixel_count": 1642113
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/LKnHYyf7GVmUm0lt7vlxzw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/LKnHYyf7GVmUm0lt7vlxzw.png",
+                "pixel_count": 1612252
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/l84jP0TWiwor1YSn8lxiuw.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/l84jP0TWiwor1YSn8lxiuw.png",
+                "pixel_count": 1189531
+            },
+            {
+                "image_path": "Mapillary_Vistas/training/images/vQBg82RkRvb8c95bAYIIQQ.jpg",
+                "annotation_path": "Mapillary_Vistas/training/v2.0/labels/vQBg82RkRvb8c95bAYIIQQ.png",
+                "pixel_count": 1064352
+            }
+        ]
+    }
+}
