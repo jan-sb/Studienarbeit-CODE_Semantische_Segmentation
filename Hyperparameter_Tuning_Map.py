@@ -26,15 +26,17 @@ import ray
 ray.shutdown()
 ray.init() 
 
-best_config_path = "FINAL_DATEN/best_configs_Map.json"
+best_config_path = "FINAL_DATEN/best_configs_Map_BIG.json"
 
 
-# Mapillary-Daten laden
+# Mapillary-Daten laden 
+# UNBEDINGT (!!!) volle Pfade nutzen, da Raytune aus dem Basisverzeichnis startet
+# und sonst die Pfade nicht findet
 mapillary_loader = MapillaryDataLoader(
     train_images_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapillary_Vistas/training/images',
-    train_annotations_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapillary_Vistas/training_own',
+    train_annotations_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapillary_Vistas/training/v2.0/labels_big',
     val_images_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapillary_Vistas/validation/images',
-    val_annotations_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapillary_Vistas/validation_own'
+    val_annotations_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapillary_Vistas/validation/v2.0/labels_big'
 )
 
 def make_directory(model):
@@ -142,9 +144,9 @@ for model in modells_to_study:
 
     # Define your parameter search space
     config = {
-        "learning_rate": tune.loguniform(1e-5, 1e-2),
-        "batch_size": tune.choice([4, 8, 16]),
-        "weight_decay": tune.loguniform(1e-6, 1e-2),
+        "learning_rate": 0.0001,
+        "batch_size": 8,
+        "weight_decay": 0,
         "auto_cast": True,
         "max_epochs": 100,
     }
@@ -166,7 +168,7 @@ for model in modells_to_study:
         train_hyper_with_resources,
         param_space=config,
         tune_config=tune.TuneConfig(
-            num_samples=2,
+            num_samples=1,
             search_alg=search_alg,
             scheduler=ASHAScheduler(
                 max_t=100,
