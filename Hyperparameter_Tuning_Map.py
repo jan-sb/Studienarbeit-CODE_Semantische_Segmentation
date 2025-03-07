@@ -33,10 +33,10 @@ best_config_path = "FINAL_DATEN/best_configs_Map_BIG.json"
 # UNBEDINGT (!!!) volle Pfade nutzen, da Raytune aus dem Basisverzeichnis startet
 # und sonst die Pfade nicht findet
 mapillary_loader = MapillaryDataLoader(
-    train_images_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapillary_Vistas/training/images',
-    train_annotations_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapillary_Vistas/training/v2.0/labels_big',
-    val_images_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapillary_Vistas/validation/images',
-    val_annotations_dir='/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Mapillary_Vistas/validation/v2.0/labels_big'
+    train_images_dir='/home/iff-ros-station-1-studi/Sbiegay/Mapillary_Vistas/training/images',
+    train_annotations_dir='/home/iff-ros-station-1-studi/Sbiegay/Mapillary_Vistas/training/v2.0/labels_big',
+    val_images_dir='/home/iff-ros-station-1-studi/Sbiegay/Mapillary_Vistas/validation/images',
+    val_annotations_dir='/home/iff-ros-station-1-studi/Sbiegay/Mapillary_Vistas/validation/v2.0/labels_big'
 )
 
 def make_directory(model):
@@ -144,7 +144,7 @@ for model in modells_to_study:
 
     # Define your parameter search space
     config = {
-        "learning_rate": 0.0001,
+        "learning_rate": tune.loguniform(0.0001, 0.00011),
         "batch_size": 8,
         "weight_decay": 0,
         "auto_cast": True,
@@ -180,7 +180,7 @@ for model in modells_to_study:
         ),
         run_config=train.RunConfig(
             name=f"{model}",
-            storage_path="/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/HyperparameterLOG/",
+            storage_path="/home/iff-ros-station-1-studi/Sbiegay/HyperparameterLOG",
             checkpoint_config=CheckpointConfig(
                 num_to_keep=5,
                 checkpoint_score_attribute="val_loss",

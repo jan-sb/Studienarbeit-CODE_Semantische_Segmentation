@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60b6cf50-ad24-41be-8b96-b8f94a896f3b" name="Changes" comment="Committ Mittwoch 21:15">
-      <change afterPath="$PROJECT_DIR$/Daten/video_20240313_213442.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Daten/video_20240313_213708.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Daten2/video_20240313_213442.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Daten2/video_20240313_213708.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Studienarbeit-CODE_Semantische_Segmentation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Studienarbeit-CODE_Semantische_Segmentation.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Helper/ml_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/ml_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hyperparameter_Tuning_V2.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Hyperparameter_Tuning_V2.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fixed_requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fixed_requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +40,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/jan-sb/Studienarbeit-CODE_Semantische_Segmentation.git&quot;,
-    &quot;accountId&quot;: &quot;7a8e8f85-985e-4f45-987c-07ead65cfced&quot;
+    &quot;accountId&quot;: &quot;c5cbf430-a221-4741-b4de-bf218a34f47c&quot;
   }
 }</component>
   <component name="MarkdownSettingsMigration">
@@ -60,33 +60,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Python.evaluation.executor": "Run",
-    "Python.main.executor": "Debug",
-    "Python.main_old.executor": "Run",
-    "Python.ml_models.executor": "Debug",
-    "Python.test2.executor": "Run",
-    "Python.test3.executor": "Run",
-    "Python.test4.executor": "Run",
-    "Python.train.executor": "Run",
-    "Python.video_test.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.stylelint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Python.evaluation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.main_old.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ml_models.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.test2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test3.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test4.executor&quot;: &quot;Run&quot;,
+    &quot;Python.train.executor&quot;: &quot;Run&quot;,
+    &quot;Python.video_test.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/iff-ros-station-1-studi/Sbiegay&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
     <layout>
       <window_info id="Bookmarks" show_stripe_button="false" side_tool="true" />
@@ -211,8 +213,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-db596990d856-JavaScript-PY-241.14024.28" />
-        <option value="bundled-python-sdk-7ff197e7758c-c358e0fe908b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.14024.28" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PY-243.25659.43" />
+        <option value="bundled-python-sdk-181015f7ab06-4df51de95216-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.25659.43" />
       </set>
     </attachedChunks>
   </component>
@@ -263,6 +265,10 @@
       <workItem from="1710317811917" duration="28145000" />
       <workItem from="1710352485329" duration="7929000" />
       <workItem from="1710361203249" duration="1106000" />
+      <workItem from="1741342725896" duration="1445000" />
+      <workItem from="1741344262977" duration="835000" />
+      <workItem from="1741345487240" duration="2894000" />
+      <workItem from="1741348749361" duration="210000" />
     </task>
     <task id="LOCAL-00001" summary="Neue requirements.txt">
       <option name="closed" value="true" />
@@ -395,17 +401,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Helper/ml_models.py</url>
-          <line>355</line>
+          <line>349</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Helper/ml_models.py</url>
-          <line>112</line>
+          <line>106</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Helper/ml_models.py</url>
-          <line>39</line>
+          <line>33</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>

@@ -677,7 +677,7 @@ class MapillaryTrainedModel(TrainedModel):
         skip_local_load=False
     ):
         # Lade die Mapillary Colormap aus der JSON-Datei
-        self.mapillary_label_color_map = self.load_mapillary_colormap("/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Colormap/mapillary_colormap.json")
+        self.mapillary_label_color_map = self.load_mapillary_colormap("/home/iff-ros-station-1-studi/Sbiegay/Colormap/mapillary_colormap.json")
         self.num_classes = len(self.mapillary_label_color_map)  # Automatische Anpassung der Klassenanzahl
 
         self.step = 0
@@ -765,7 +765,7 @@ class CustomDataSet(Dataset):
         annotation_name = os.path.join(self.annotation_dir, self.annotation_files[idx])
 
         image = Image.open(img_name).convert("RGB")            
-        annotation = Image.open(annotation_name).convert("L")     
+        annotation = Image.open(annotation_name).convert("P") # Cityscapes = L || Mapillary = P     
 
         if self.transform:
             augmented = self.transform(image=np.array(image), mask=np.array(annotation))
