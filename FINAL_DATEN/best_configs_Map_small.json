@@ -1,0 +1,30 @@
+{
+    "deeplabv3_resnet50": {
+        "learning_rate": 0.00010363422910878963,
+        "batch_size": 6,
+        "weight_decay": 0,
+        "auto_cast": true,
+        "max_epochs": 100
+    },
+    "deeplabv3_resnet101": {
+        "learning_rate": 0.00010363422910878963,
+        "batch_size": 6,
+        "weight_decay": 0,
+        "auto_cast": true,
+        "max_epochs": 100
+    },
+    "fcn_resnet50": {
+        "learning_rate": 0.00010363422910878963,
+        "batch_size": 6,
+        "weight_decay": 0,
+        "auto_cast": true,
+        "max_epochs": 100
+    },
+    "fcn_resnet101": {
+        "learning_rate": 0.00010363422910878963,
+        "batch_size": 6,
+        "weight_decay": 0,
+        "auto_cast": true,
+        "max_epochs": 100
+    }
+}
