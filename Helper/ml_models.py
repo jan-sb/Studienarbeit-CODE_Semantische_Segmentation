@@ -674,18 +674,25 @@ class MapillaryTrainedModel(TrainedModel):
         start_epoch="latest",
         pretrained=True,
         writer=None,
-        skip_local_load=False
+        skip_local_load=False,
+        num_classes=None,
     ):
-        # Lade die Mapillary Colormap aus der JSON-Datei
-        self.mapillary_label_color_map = self.load_mapillary_colormap("/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Colormap/mapillary_colormap.json")
-        self.num_classes = len(self.mapillary_label_color_map)  # Automatische Anpassung der Klassenanzahl
+       # Lade die Mapillary Colormap aus der JSON-Datei
+        self.mapillary_label_color_map = self.load_mapillary_colormap(
+            "/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/Colormap/mapillary_colormap.json"
+        )
+        # Falls num_classes nicht übergeben wird, automatisch anhand der Colormap setzen
+        if num_classes is None:
+            self.num_classes = len(self.mapillary_label_color_map)
+        else:
+            self.num_classes = num_classes
 
         self.step = 0
         self.learning_rate = 1e-5
         if writer is not None:
             self.writer = writer
 
-        # Rufe den Eltern-Konstruktor auf und übergebe die neue Klassenanzahl
+        # Rufe den Eltern-Konstruktor auf und übergebe die (ggf. angepasste) Klassenanzahl
         super().__init__(
             model_name,
             width=width,
@@ -702,19 +709,16 @@ class MapillaryTrainedModel(TrainedModel):
             SemanticSegmentation(resize_size=520),
         ])
 
-        # Restlicher Initialisierungscode bleibt unverändert
-
     @staticmethod
     def load_mapillary_colormap(colormap_path):
-        """ Lädt die Farbzuordnung aus der JSON-Datei. """
+        """Lädt die Farbzuordnung aus der JSON-Datei."""
         with open(colormap_path, "r") as file:
             colormap = json.load(file)
-
         # Konvertiere die Farbwerte in ein Tupel (R, G, B)
         return [tuple(color) for color in colormap.values()]
 
     def own_model_inference_live_no_grad(self, image):
-        """ Führt eine segmentierte Vorhersage aus und visualisiert das Ergebnis. """
+        """Führt eine segmentierte Vorhersage aus und visualisiert das Ergebnis."""
         self.model.eval()
         with torch.no_grad():
             tensor = self.image_preprocess(image)
@@ -726,7 +730,7 @@ class MapillaryTrainedModel(TrainedModel):
             res_image = draw_segmentation_masks(
                 tensor,
                 all_masks,
-                colors=self.mapillary_label_color_map,  # Verwende die neue Mapillary-Farbkarte
+                colors=self.mapillary_label_color_map,  # Verwende die Mapillary-Farbkarte
                 alpha=0.9
             )
             res_image = self.tensor_to_image(res_image)
