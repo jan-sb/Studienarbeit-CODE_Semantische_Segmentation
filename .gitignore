@@ -25,3 +25,7 @@ Daten2/overlayed/*.png
 *pyc
 
 Mapillary_Vistas/*
+
+
+FINAL_DATEN/calibration_cache_Mapillary_small.h5
+Kalibr_Cache/cache_file.h5
