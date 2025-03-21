@@ -156,6 +156,33 @@ class ONNXModelConverter:
         onnx.save(model_fp16, fp16_onnx_path)
         print(f"FP16 ONNX-Modell gespeichert: {fp16_onnx_path}")
         return fp16_onnx_path
+    
+    def convert_fp8(self, fp32_onnx_path: str, fp8_onnx_filename: str = None):
+        """
+        Simuliert eine Konvertierung eines FP32 ONNX-Modells in FP8.
+        Diese Methode ist experimentell und dient nur als Platzhalter,
+        da eine echte FP8-Konvertierung derzeit nicht standardisiert ist.
+        """
+        if not os.path.isfile(fp32_onnx_path):
+            raise FileNotFoundError(f"FP32 Modell nicht gefunden: {fp32_onnx_path}")
+        if fp8_onnx_filename is None:
+            base = os.path.splitext(os.path.basename(fp32_onnx_path))[0]
+            fp8_onnx_filename = base + "_fp8.onnx"
+        fp8_onnx_path = os.path.join(self.output_dir, fp8_onnx_filename)
+        
+        print(f"Starte FP8-Konvertierung (experimentell, dummy): {fp32_onnx_path}")
+        
+        # Lade das FP32 Modell
+        model = onnx.load(fp32_onnx_path)
+        
+        # Hier müsste eine echte FP8-Konvertierung implementiert werden,
+        # z.B. durch Quantisierung der Gewichte auf 8-Bit-Gleitkommazahlen.
+        # Als Platzhalter wird das Modell unverändert gespeichert.
+        
+        onnx.save(model, fp8_onnx_path)
+        print(f"FP8 ONNX-Modell (dummy) gespeichert: {fp8_onnx_path}")
+        return fp8_onnx_path
+        
 
     def quantize_int8_dynamic(self, fp32_onnx_path: str, int8_onnx_filename: str = None):
         """

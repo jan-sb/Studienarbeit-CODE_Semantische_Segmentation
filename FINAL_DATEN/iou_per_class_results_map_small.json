@@ -1,0 +1,1258 @@
+{
+    "fcn_resnet101": [
+        {
+            "class_index": 3,
+            "class_name": "Concrete Block",
+            "IoU": 0.5939,
+            "frequency_percent": 0.31
+        },
+        {
+            "class_index": 4,
+            "class_name": "Curb",
+            "IoU": 0.4815,
+            "frequency_percent": 0.85
+        },
+        {
+            "class_index": 5,
+            "class_name": "Fence",
+            "IoU": 0.4607,
+            "frequency_percent": 1.27
+        },
+        {
+            "class_index": 6,
+            "class_name": "Guard Rail",
+            "IoU": 0.5903,
+            "frequency_percent": 0.24
+        },
+        {
+            "class_index": 11,
+            "class_name": "Temporary Barrier",
+            "IoU": 0.2102,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 12,
+            "class_name": "Wall",
+            "IoU": 0.4018,
+            "frequency_percent": 0.9
+        },
+        {
+            "class_index": 13,
+            "class_name": "Bike Lane",
+            "IoU": 0.2257,
+            "frequency_percent": 0.38
+        },
+        {
+            "class_index": 14,
+            "class_name": "Crosswalk - Plain",
+            "IoU": 0.1798,
+            "frequency_percent": 0.25
+        },
+        {
+            "class_index": 15,
+            "class_name": "Curb Cut",
+            "IoU": 0.0804,
+            "frequency_percent": 0.09
+        },
+        {
+            "class_index": 16,
+            "class_name": "Driveway",
+            "IoU": 0.0879,
+            "frequency_percent": 0.16
+        },
+        {
+            "class_index": 19,
+            "class_name": "Pedestrian Area",
+            "IoU": 0.085,
+            "frequency_percent": 0.57
+        },
+        {
+            "class_index": 21,
+            "class_name": "Road",
+            "IoU": 0.8417,
+            "frequency_percent": 18.63
+        },
+        {
+            "class_index": 22,
+            "class_name": "Road Shoulder",
+            "IoU": 0.201,
+            "frequency_percent": 0.12
+        },
+        {
+            "class_index": 24,
+            "class_name": "Sidewalk",
+            "IoU": 0.5729,
+            "frequency_percent": 3.15
+        },
+        {
+            "class_index": 25,
+            "class_name": "Traffic Island",
+            "IoU": 0.256,
+            "frequency_percent": 0.31
+        },
+        {
+            "class_index": 27,
+            "class_name": "Building",
+            "IoU": 0.8178,
+            "frequency_percent": 12.08
+        },
+        {
+            "class_index": 30,
+            "class_name": "Person",
+            "IoU": 0.5465,
+            "frequency_percent": 0.31
+        },
+        {
+            "class_index": 31,
+            "class_name": "Person Group",
+            "IoU": 0.0239,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 32,
+            "class_name": "Bicyclist",
+            "IoU": 0.3118,
+            "frequency_percent": 0.03
+        },
+        {
+            "class_index": 33,
+            "class_name": "Motorcyclist",
+            "IoU": 0.2978,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 35,
+            "class_name": "Lane Marking - Dashed Line",
+            "IoU": 0.3334,
+            "frequency_percent": 0.28
+        },
+        {
+            "class_index": 36,
+            "class_name": "Lane Marking - Straight Line",
+            "IoU": 0.5093,
+            "frequency_percent": 0.52
+        },
+        {
+            "class_index": 39,
+            "class_name": "Lane Marking - Arrow (Left)",
+            "IoU": 0.1317,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 40,
+            "class_name": "Lane Marking - Arrow (Other)",
+            "IoU": 0.0995,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 41,
+            "class_name": "Lane Marking - Arrow (Right)",
+            "IoU": 0.0154,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 43,
+            "class_name": "Lane Marking - Arrow (Split Right or Straight)",
+            "IoU": 0.0641,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 44,
+            "class_name": "Lane Marking - Arrow (Straight)",
+            "IoU": 0.3063,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 45,
+            "class_name": "Lane Marking - Crosswalk",
+            "IoU": 0.6698,
+            "frequency_percent": 0.79
+        },
+        {
+            "class_index": 48,
+            "class_name": "Lane Marking - Hatched (Chevron)",
+            "IoU": 0.097,
+            "frequency_percent": 0.04
+        },
+        {
+            "class_index": 49,
+            "class_name": "Lane Marking - Hatched (Diagonal)",
+            "IoU": 0.362,
+            "frequency_percent": 0.12
+        },
+        {
+            "class_index": 50,
+            "class_name": "Lane Marking - Other",
+            "IoU": 0.2252,
+            "frequency_percent": 0.13
+        },
+        {
+            "class_index": 51,
+            "class_name": "Lane Marking - Stop Line",
+            "IoU": 0.3015,
+            "frequency_percent": 0.08
+        },
+        {
+            "class_index": 52,
+            "class_name": "Lane Marking - Symbol (Bicycle)",
+            "IoU": 0.4023,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 54,
+            "class_name": "Lane Marking - Text",
+            "IoU": 0.4061,
+            "frequency_percent": 0.08
+        },
+        {
+            "class_index": 61,
+            "class_name": "Sky",
+            "IoU": 0.9714,
+            "frequency_percent": 29.27
+        },
+        {
+            "class_index": 64,
+            "class_name": "Vegetation",
+            "IoU": 0.8602,
+            "frequency_percent": 14.81
+        },
+        {
+            "class_index": 84,
+            "class_name": "Street Light",
+            "IoU": 0.2425,
+            "frequency_percent": 0.06
+        },
+        {
+            "class_index": 85,
+            "class_name": "Pole",
+            "IoU": 0.2808,
+            "frequency_percent": 0.85
+        },
+        {
+            "class_index": 86,
+            "class_name": "Pole Group",
+            "IoU": 0.0038,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 91,
+            "class_name": "Traffic Light - Pedestrians",
+            "IoU": 0.1125,
+            "frequency_percent": 0.03
+        },
+        {
+            "class_index": 92,
+            "class_name": "Traffic Light - General (Upright)",
+            "IoU": 0.4803,
+            "frequency_percent": 0.13
+        },
+        {
+            "class_index": 93,
+            "class_name": "Traffic Light - General (Horizontal)",
+            "IoU": 0.2669,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 94,
+            "class_name": "Traffic Light - Cyclists",
+            "IoU": 0.0004,
+            "frequency_percent": 0.0
+        },
+        {
+            "class_index": 99,
+            "class_name": "Traffic Sign - Direction (Front)",
+            "IoU": 0.611,
+            "frequency_percent": 0.22
+        },
+        {
+            "class_index": 100,
+            "class_name": "Traffic Sign (Front)",
+            "IoU": 0.4796,
+            "frequency_percent": 0.25
+        },
+        {
+            "class_index": 103,
+            "class_name": "Traffic Sign - Temporary (Front)",
+            "IoU": 0.0475,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 105,
+            "class_name": "Bicycle",
+            "IoU": 0.4206,
+            "frequency_percent": 0.05
+        },
+        {
+            "class_index": 107,
+            "class_name": "Bus",
+            "IoU": 0.5627,
+            "frequency_percent": 0.23
+        },
+        {
+            "class_index": 108,
+            "class_name": "Car",
+            "IoU": 0.8445,
+            "frequency_percent": 3.38
+        },
+        {
+            "class_index": 110,
+            "class_name": "Motorcycle",
+            "IoU": 0.4524,
+            "frequency_percent": 0.06
+        },
+        {
+            "class_index": 111,
+            "class_name": "On Rails",
+            "IoU": 0.0589,
+            "frequency_percent": 0.03
+        },
+        {
+            "class_index": 112,
+            "class_name": "Other Vehicle",
+            "IoU": 0.0954,
+            "frequency_percent": 0.04
+        },
+        {
+            "class_index": 114,
+            "class_name": "Truck",
+            "IoU": 0.5701,
+            "frequency_percent": 0.36
+        },
+        {
+            "class_index": 116,
+            "class_name": "Wheeled Slow",
+            "IoU": 0.0001,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 123,
+            "class_name": "Unlabeled",
+            "IoU": 0.5556,
+            "frequency_percent": 8.34
+        }
+    ],
+    "deeplabv3_resnet101": [
+        {
+            "class_index": 3,
+            "class_name": "Concrete Block",
+            "IoU": 0.5906,
+            "frequency_percent": 0.31
+        },
+        {
+            "class_index": 4,
+            "class_name": "Curb",
+            "IoU": 0.4682,
+            "frequency_percent": 0.85
+        },
+        {
+            "class_index": 5,
+            "class_name": "Fence",
+            "IoU": 0.4608,
+            "frequency_percent": 1.27
+        },
+        {
+            "class_index": 6,
+            "class_name": "Guard Rail",
+            "IoU": 0.5899,
+            "frequency_percent": 0.24
+        },
+        {
+            "class_index": 11,
+            "class_name": "Temporary Barrier",
+            "IoU": 0.1622,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 12,
+            "class_name": "Wall",
+            "IoU": 0.416,
+            "frequency_percent": 0.9
+        },
+        {
+            "class_index": 13,
+            "class_name": "Bike Lane",
+            "IoU": 0.3553,
+            "frequency_percent": 0.38
+        },
+        {
+            "class_index": 14,
+            "class_name": "Crosswalk - Plain",
+            "IoU": 0.254,
+            "frequency_percent": 0.25
+        },
+        {
+            "class_index": 15,
+            "class_name": "Curb Cut",
+            "IoU": 0.0516,
+            "frequency_percent": 0.09
+        },
+        {
+            "class_index": 16,
+            "class_name": "Driveway",
+            "IoU": 0.0608,
+            "frequency_percent": 0.16
+        },
+        {
+            "class_index": 19,
+            "class_name": "Pedestrian Area",
+            "IoU": 0.4591,
+            "frequency_percent": 0.57
+        },
+        {
+            "class_index": 21,
+            "class_name": "Road",
+            "IoU": 0.8526,
+            "frequency_percent": 18.63
+        },
+        {
+            "class_index": 22,
+            "class_name": "Road Shoulder",
+            "IoU": 0.197,
+            "frequency_percent": 0.12
+        },
+        {
+            "class_index": 24,
+            "class_name": "Sidewalk",
+            "IoU": 0.5982,
+            "frequency_percent": 3.15
+        },
+        {
+            "class_index": 25,
+            "class_name": "Traffic Island",
+            "IoU": 0.2646,
+            "frequency_percent": 0.31
+        },
+        {
+            "class_index": 27,
+            "class_name": "Building",
+            "IoU": 0.8203,
+            "frequency_percent": 12.08
+        },
+        {
+            "class_index": 30,
+            "class_name": "Person",
+            "IoU": 0.5379,
+            "frequency_percent": 0.31
+        },
+        {
+            "class_index": 31,
+            "class_name": "Person Group",
+            "IoU": 0.0024,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 32,
+            "class_name": "Bicyclist",
+            "IoU": 0.3097,
+            "frequency_percent": 0.03
+        },
+        {
+            "class_index": 33,
+            "class_name": "Motorcyclist",
+            "IoU": 0.2846,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 35,
+            "class_name": "Lane Marking - Dashed Line",
+            "IoU": 0.3205,
+            "frequency_percent": 0.28
+        },
+        {
+            "class_index": 36,
+            "class_name": "Lane Marking - Straight Line",
+            "IoU": 0.5061,
+            "frequency_percent": 0.52
+        },
+        {
+            "class_index": 39,
+            "class_name": "Lane Marking - Arrow (Left)",
+            "IoU": 0.0905,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 43,
+            "class_name": "Lane Marking - Arrow (Split Right or Straight)",
+            "IoU": 0.0002,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 44,
+            "class_name": "Lane Marking - Arrow (Straight)",
+            "IoU": 0.2781,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 45,
+            "class_name": "Lane Marking - Crosswalk",
+            "IoU": 0.6713,
+            "frequency_percent": 0.79
+        },
+        {
+            "class_index": 48,
+            "class_name": "Lane Marking - Hatched (Chevron)",
+            "IoU": 0.1017,
+            "frequency_percent": 0.04
+        },
+        {
+            "class_index": 49,
+            "class_name": "Lane Marking - Hatched (Diagonal)",
+            "IoU": 0.3777,
+            "frequency_percent": 0.12
+        },
+        {
+            "class_index": 50,
+            "class_name": "Lane Marking - Other",
+            "IoU": 0.2392,
+            "frequency_percent": 0.13
+        },
+        {
+            "class_index": 51,
+            "class_name": "Lane Marking - Stop Line",
+            "IoU": 0.2859,
+            "frequency_percent": 0.08
+        },
+        {
+            "class_index": 52,
+            "class_name": "Lane Marking - Symbol (Bicycle)",
+            "IoU": 0.3867,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 54,
+            "class_name": "Lane Marking - Text",
+            "IoU": 0.3975,
+            "frequency_percent": 0.08
+        },
+        {
+            "class_index": 61,
+            "class_name": "Sky",
+            "IoU": 0.9715,
+            "frequency_percent": 29.27
+        },
+        {
+            "class_index": 64,
+            "class_name": "Vegetation",
+            "IoU": 0.8583,
+            "frequency_percent": 14.81
+        },
+        {
+            "class_index": 84,
+            "class_name": "Street Light",
+            "IoU": 0.2478,
+            "frequency_percent": 0.06
+        },
+        {
+            "class_index": 85,
+            "class_name": "Pole",
+            "IoU": 0.2796,
+            "frequency_percent": 0.85
+        },
+        {
+            "class_index": 91,
+            "class_name": "Traffic Light - Pedestrians",
+            "IoU": 0.0602,
+            "frequency_percent": 0.03
+        },
+        {
+            "class_index": 92,
+            "class_name": "Traffic Light - General (Upright)",
+            "IoU": 0.4591,
+            "frequency_percent": 0.13
+        },
+        {
+            "class_index": 93,
+            "class_name": "Traffic Light - General (Horizontal)",
+            "IoU": 0.0779,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 99,
+            "class_name": "Traffic Sign - Direction (Front)",
+            "IoU": 0.6096,
+            "frequency_percent": 0.22
+        },
+        {
+            "class_index": 100,
+            "class_name": "Traffic Sign (Front)",
+            "IoU": 0.4703,
+            "frequency_percent": 0.25
+        },
+        {
+            "class_index": 103,
+            "class_name": "Traffic Sign - Temporary (Front)",
+            "IoU": 0.0476,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 105,
+            "class_name": "Bicycle",
+            "IoU": 0.3937,
+            "frequency_percent": 0.05
+        },
+        {
+            "class_index": 107,
+            "class_name": "Bus",
+            "IoU": 0.6346,
+            "frequency_percent": 0.23
+        },
+        {
+            "class_index": 108,
+            "class_name": "Car",
+            "IoU": 0.8459,
+            "frequency_percent": 3.38
+        },
+        {
+            "class_index": 110,
+            "class_name": "Motorcycle",
+            "IoU": 0.4198,
+            "frequency_percent": 0.06
+        },
+        {
+            "class_index": 111,
+            "class_name": "On Rails",
+            "IoU": 0.0066,
+            "frequency_percent": 0.03
+        },
+        {
+            "class_index": 112,
+            "class_name": "Other Vehicle",
+            "IoU": 0.0104,
+            "frequency_percent": 0.04
+        },
+        {
+            "class_index": 114,
+            "class_name": "Truck",
+            "IoU": 0.5815,
+            "frequency_percent": 0.36
+        },
+        {
+            "class_index": 123,
+            "class_name": "Unlabeled",
+            "IoU": 0.566,
+            "frequency_percent": 8.34
+        }
+    ],
+    "deeplabv3_resnet50": [
+        {
+            "class_index": 3,
+            "class_name": "Concrete Block",
+            "IoU": 0.5926,
+            "frequency_percent": 0.31
+        },
+        {
+            "class_index": 4,
+            "class_name": "Curb",
+            "IoU": 0.4606,
+            "frequency_percent": 0.85
+        },
+        {
+            "class_index": 5,
+            "class_name": "Fence",
+            "IoU": 0.4547,
+            "frequency_percent": 1.27
+        },
+        {
+            "class_index": 6,
+            "class_name": "Guard Rail",
+            "IoU": 0.5745,
+            "frequency_percent": 0.24
+        },
+        {
+            "class_index": 11,
+            "class_name": "Temporary Barrier",
+            "IoU": 0.1671,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 12,
+            "class_name": "Wall",
+            "IoU": 0.3918,
+            "frequency_percent": 0.9
+        },
+        {
+            "class_index": 13,
+            "class_name": "Bike Lane",
+            "IoU": 0.3615,
+            "frequency_percent": 0.38
+        },
+        {
+            "class_index": 14,
+            "class_name": "Crosswalk - Plain",
+            "IoU": 0.2194,
+            "frequency_percent": 0.25
+        },
+        {
+            "class_index": 15,
+            "class_name": "Curb Cut",
+            "IoU": 0.0375,
+            "frequency_percent": 0.09
+        },
+        {
+            "class_index": 16,
+            "class_name": "Driveway",
+            "IoU": 0.0415,
+            "frequency_percent": 0.16
+        },
+        {
+            "class_index": 19,
+            "class_name": "Pedestrian Area",
+            "IoU": 0.3815,
+            "frequency_percent": 0.57
+        },
+        {
+            "class_index": 21,
+            "class_name": "Road",
+            "IoU": 0.8457,
+            "frequency_percent": 18.63
+        },
+        {
+            "class_index": 22,
+            "class_name": "Road Shoulder",
+            "IoU": 0.1758,
+            "frequency_percent": 0.12
+        },
+        {
+            "class_index": 24,
+            "class_name": "Sidewalk",
+            "IoU": 0.5812,
+            "frequency_percent": 3.15
+        },
+        {
+            "class_index": 25,
+            "class_name": "Traffic Island",
+            "IoU": 0.2307,
+            "frequency_percent": 0.31
+        },
+        {
+            "class_index": 27,
+            "class_name": "Building",
+            "IoU": 0.818,
+            "frequency_percent": 12.08
+        },
+        {
+            "class_index": 30,
+            "class_name": "Person",
+            "IoU": 0.5297,
+            "frequency_percent": 0.31
+        },
+        {
+            "class_index": 31,
+            "class_name": "Person Group",
+            "IoU": 0.0011,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 32,
+            "class_name": "Bicyclist",
+            "IoU": 0.3285,
+            "frequency_percent": 0.03
+        },
+        {
+            "class_index": 33,
+            "class_name": "Motorcyclist",
+            "IoU": 0.2572,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 35,
+            "class_name": "Lane Marking - Dashed Line",
+            "IoU": 0.2957,
+            "frequency_percent": 0.28
+        },
+        {
+            "class_index": 36,
+            "class_name": "Lane Marking - Straight Line",
+            "IoU": 0.4945,
+            "frequency_percent": 0.52
+        },
+        {
+            "class_index": 39,
+            "class_name": "Lane Marking - Arrow (Left)",
+            "IoU": 0.1052,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 44,
+            "class_name": "Lane Marking - Arrow (Straight)",
+            "IoU": 0.2335,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 45,
+            "class_name": "Lane Marking - Crosswalk",
+            "IoU": 0.6504,
+            "frequency_percent": 0.79
+        },
+        {
+            "class_index": 48,
+            "class_name": "Lane Marking - Hatched (Chevron)",
+            "IoU": 0.0547,
+            "frequency_percent": 0.04
+        },
+        {
+            "class_index": 49,
+            "class_name": "Lane Marking - Hatched (Diagonal)",
+            "IoU": 0.3919,
+            "frequency_percent": 0.12
+        },
+        {
+            "class_index": 50,
+            "class_name": "Lane Marking - Other",
+            "IoU": 0.2352,
+            "frequency_percent": 0.13
+        },
+        {
+            "class_index": 51,
+            "class_name": "Lane Marking - Stop Line",
+            "IoU": 0.2655,
+            "frequency_percent": 0.08
+        },
+        {
+            "class_index": 52,
+            "class_name": "Lane Marking - Symbol (Bicycle)",
+            "IoU": 0.3467,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 54,
+            "class_name": "Lane Marking - Text",
+            "IoU": 0.361,
+            "frequency_percent": 0.08
+        },
+        {
+            "class_index": 61,
+            "class_name": "Sky",
+            "IoU": 0.9709,
+            "frequency_percent": 29.27
+        },
+        {
+            "class_index": 64,
+            "class_name": "Vegetation",
+            "IoU": 0.8567,
+            "frequency_percent": 14.81
+        },
+        {
+            "class_index": 84,
+            "class_name": "Street Light",
+            "IoU": 0.2375,
+            "frequency_percent": 0.06
+        },
+        {
+            "class_index": 85,
+            "class_name": "Pole",
+            "IoU": 0.2819,
+            "frequency_percent": 0.85
+        },
+        {
+            "class_index": 91,
+            "class_name": "Traffic Light - Pedestrians",
+            "IoU": 0.045,
+            "frequency_percent": 0.03
+        },
+        {
+            "class_index": 92,
+            "class_name": "Traffic Light - General (Upright)",
+            "IoU": 0.4451,
+            "frequency_percent": 0.13
+        },
+        {
+            "class_index": 93,
+            "class_name": "Traffic Light - General (Horizontal)",
+            "IoU": 0.0322,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 99,
+            "class_name": "Traffic Sign - Direction (Front)",
+            "IoU": 0.6045,
+            "frequency_percent": 0.22
+        },
+        {
+            "class_index": 100,
+            "class_name": "Traffic Sign (Front)",
+            "IoU": 0.4663,
+            "frequency_percent": 0.25
+        },
+        {
+            "class_index": 103,
+            "class_name": "Traffic Sign - Temporary (Front)",
+            "IoU": 0.0248,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 105,
+            "class_name": "Bicycle",
+            "IoU": 0.3887,
+            "frequency_percent": 0.05
+        },
+        {
+            "class_index": 107,
+            "class_name": "Bus",
+            "IoU": 0.5852,
+            "frequency_percent": 0.23
+        },
+        {
+            "class_index": 108,
+            "class_name": "Car",
+            "IoU": 0.8348,
+            "frequency_percent": 3.38
+        },
+        {
+            "class_index": 110,
+            "class_name": "Motorcycle",
+            "IoU": 0.3974,
+            "frequency_percent": 0.06
+        },
+        {
+            "class_index": 111,
+            "class_name": "On Rails",
+            "IoU": 0.0015,
+            "frequency_percent": 0.03
+        },
+        {
+            "class_index": 112,
+            "class_name": "Other Vehicle",
+            "IoU": 0.0129,
+            "frequency_percent": 0.04
+        },
+        {
+            "class_index": 114,
+            "class_name": "Truck",
+            "IoU": 0.5393,
+            "frequency_percent": 0.36
+        },
+        {
+            "class_index": 123,
+            "class_name": "Unlabeled",
+            "IoU": 0.5558,
+            "frequency_percent": 8.34
+        }
+    ],
+    "fcn_resnet50": [
+        {
+            "class_index": 3,
+            "class_name": "Concrete Block",
+            "IoU": 0.5857,
+            "frequency_percent": 0.31
+        },
+        {
+            "class_index": 4,
+            "class_name": "Curb",
+            "IoU": 0.4717,
+            "frequency_percent": 0.85
+        },
+        {
+            "class_index": 5,
+            "class_name": "Fence",
+            "IoU": 0.4602,
+            "frequency_percent": 1.27
+        },
+        {
+            "class_index": 6,
+            "class_name": "Guard Rail",
+            "IoU": 0.5853,
+            "frequency_percent": 0.24
+        },
+        {
+            "class_index": 11,
+            "class_name": "Temporary Barrier",
+            "IoU": 0.2037,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 12,
+            "class_name": "Wall",
+            "IoU": 0.3976,
+            "frequency_percent": 0.9
+        },
+        {
+            "class_index": 13,
+            "class_name": "Bike Lane",
+            "IoU": 0.2455,
+            "frequency_percent": 0.38
+        },
+        {
+            "class_index": 14,
+            "class_name": "Crosswalk - Plain",
+            "IoU": 0.1385,
+            "frequency_percent": 0.25
+        },
+        {
+            "class_index": 15,
+            "class_name": "Curb Cut",
+            "IoU": 0.0671,
+            "frequency_percent": 0.09
+        },
+        {
+            "class_index": 16,
+            "class_name": "Driveway",
+            "IoU": 0.0976,
+            "frequency_percent": 0.16
+        },
+        {
+            "class_index": 19,
+            "class_name": "Pedestrian Area",
+            "IoU": 0.1499,
+            "frequency_percent": 0.57
+        },
+        {
+            "class_index": 21,
+            "class_name": "Road",
+            "IoU": 0.828,
+            "frequency_percent": 18.63
+        },
+        {
+            "class_index": 22,
+            "class_name": "Road Shoulder",
+            "IoU": 0.1855,
+            "frequency_percent": 0.12
+        },
+        {
+            "class_index": 24,
+            "class_name": "Sidewalk",
+            "IoU": 0.5256,
+            "frequency_percent": 3.15
+        },
+        {
+            "class_index": 25,
+            "class_name": "Traffic Island",
+            "IoU": 0.2186,
+            "frequency_percent": 0.31
+        },
+        {
+            "class_index": 27,
+            "class_name": "Building",
+            "IoU": 0.8108,
+            "frequency_percent": 12.08
+        },
+        {
+            "class_index": 30,
+            "class_name": "Person",
+            "IoU": 0.5379,
+            "frequency_percent": 0.31
+        },
+        {
+            "class_index": 31,
+            "class_name": "Person Group",
+            "IoU": 0.0265,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 32,
+            "class_name": "Bicyclist",
+            "IoU": 0.3076,
+            "frequency_percent": 0.03
+        },
+        {
+            "class_index": 33,
+            "class_name": "Motorcyclist",
+            "IoU": 0.2759,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 35,
+            "class_name": "Lane Marking - Dashed Line",
+            "IoU": 0.3103,
+            "frequency_percent": 0.28
+        },
+        {
+            "class_index": 36,
+            "class_name": "Lane Marking - Straight Line",
+            "IoU": 0.5034,
+            "frequency_percent": 0.52
+        },
+        {
+            "class_index": 39,
+            "class_name": "Lane Marking - Arrow (Left)",
+            "IoU": 0.1041,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 40,
+            "class_name": "Lane Marking - Arrow (Other)",
+            "IoU": 0.0186,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 41,
+            "class_name": "Lane Marking - Arrow (Right)",
+            "IoU": 0.0372,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 43,
+            "class_name": "Lane Marking - Arrow (Split Right or Straight)",
+            "IoU": 0.1479,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 44,
+            "class_name": "Lane Marking - Arrow (Straight)",
+            "IoU": 0.2793,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 45,
+            "class_name": "Lane Marking - Crosswalk",
+            "IoU": 0.6621,
+            "frequency_percent": 0.79
+        },
+        {
+            "class_index": 48,
+            "class_name": "Lane Marking - Hatched (Chevron)",
+            "IoU": 0.0934,
+            "frequency_percent": 0.04
+        },
+        {
+            "class_index": 49,
+            "class_name": "Lane Marking - Hatched (Diagonal)",
+            "IoU": 0.342,
+            "frequency_percent": 0.12
+        },
+        {
+            "class_index": 50,
+            "class_name": "Lane Marking - Other",
+            "IoU": 0.2252,
+            "frequency_percent": 0.13
+        },
+        {
+            "class_index": 51,
+            "class_name": "Lane Marking - Stop Line",
+            "IoU": 0.2889,
+            "frequency_percent": 0.08
+        },
+        {
+            "class_index": 52,
+            "class_name": "Lane Marking - Symbol (Bicycle)",
+            "IoU": 0.399,
+            "frequency_percent": 0.02
+        },
+        {
+            "class_index": 54,
+            "class_name": "Lane Marking - Text",
+            "IoU": 0.381,
+            "frequency_percent": 0.08
+        },
+        {
+            "class_index": 61,
+            "class_name": "Sky",
+            "IoU": 0.9712,
+            "frequency_percent": 29.27
+        },
+        {
+            "class_index": 64,
+            "class_name": "Vegetation",
+            "IoU": 0.8599,
+            "frequency_percent": 14.81
+        },
+        {
+            "class_index": 84,
+            "class_name": "Street Light",
+            "IoU": 0.2344,
+            "frequency_percent": 0.06
+        },
+        {
+            "class_index": 85,
+            "class_name": "Pole",
+            "IoU": 0.2733,
+            "frequency_percent": 0.85
+        },
+        {
+            "class_index": 86,
+            "class_name": "Pole Group",
+            "IoU": 0.0009,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 91,
+            "class_name": "Traffic Light - Pedestrians",
+            "IoU": 0.094,
+            "frequency_percent": 0.03
+        },
+        {
+            "class_index": 92,
+            "class_name": "Traffic Light - General (Upright)",
+            "IoU": 0.4713,
+            "frequency_percent": 0.13
+        },
+        {
+            "class_index": 93,
+            "class_name": "Traffic Light - General (Horizontal)",
+            "IoU": 0.2187,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 99,
+            "class_name": "Traffic Sign - Direction (Front)",
+            "IoU": 0.6258,
+            "frequency_percent": 0.22
+        },
+        {
+            "class_index": 100,
+            "class_name": "Traffic Sign (Front)",
+            "IoU": 0.476,
+            "frequency_percent": 0.25
+        },
+        {
+            "class_index": 103,
+            "class_name": "Traffic Sign - Temporary (Front)",
+            "IoU": 0.0542,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 105,
+            "class_name": "Bicycle",
+            "IoU": 0.4237,
+            "frequency_percent": 0.05
+        },
+        {
+            "class_index": 107,
+            "class_name": "Bus",
+            "IoU": 0.6098,
+            "frequency_percent": 0.23
+        },
+        {
+            "class_index": 108,
+            "class_name": "Car",
+            "IoU": 0.8456,
+            "frequency_percent": 3.38
+        },
+        {
+            "class_index": 110,
+            "class_name": "Motorcycle",
+            "IoU": 0.436,
+            "frequency_percent": 0.06
+        },
+        {
+            "class_index": 111,
+            "class_name": "On Rails",
+            "IoU": 0.0673,
+            "frequency_percent": 0.03
+        },
+        {
+            "class_index": 112,
+            "class_name": "Other Vehicle",
+            "IoU": 0.0443,
+            "frequency_percent": 0.04
+        },
+        {
+            "class_index": 114,
+            "class_name": "Truck",
+            "IoU": 0.5519,
+            "frequency_percent": 0.36
+        },
+        {
+            "class_index": 116,
+            "class_name": "Wheeled Slow",
+            "IoU": 0.0073,
+            "frequency_percent": 0.01
+        },
+        {
+            "class_index": 123,
+            "class_name": "Unlabeled",
+            "IoU": 0.545,
+            "frequency_percent": 8.34
+        }
+    ]
+}

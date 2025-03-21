@@ -1,0 +1,30 @@
+{
+    "fcn_resnet101": {
+        "path": "/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/FINAL_DATEN/confusion_matrices_hyper_small/fcn_resnet101_confusion_matrix.pt",
+        "shape": [
+            124,
+            124
+        ]
+    },
+    "deeplabv3_resnet101": {
+        "path": "/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/FINAL_DATEN/confusion_matrices_hyper_small/deeplabv3_resnet101_confusion_matrix.pt",
+        "shape": [
+            124,
+            124
+        ]
+    },
+    "deeplabv3_resnet50": {
+        "path": "/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/FINAL_DATEN/confusion_matrices_hyper_small/deeplabv3_resnet50_confusion_matrix.pt",
+        "shape": [
+            124,
+            124
+        ]
+    },
+    "fcn_resnet50": {
+        "path": "/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/FINAL_DATEN/confusion_matrices_hyper_small/fcn_resnet50_confusion_matrix.pt",
+        "shape": [
+            124,
+            124
+        ]
+    }
+}
