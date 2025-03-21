@@ -1,0 +1,7 @@
+{
+  "auto_cast": true,
+  "batch_size": 4,
+  "learning_rate": 2.240709030702918e-05,
+  "max_epochs": 100,
+  "weight_decay": 3.1821313366987746e-05
+}

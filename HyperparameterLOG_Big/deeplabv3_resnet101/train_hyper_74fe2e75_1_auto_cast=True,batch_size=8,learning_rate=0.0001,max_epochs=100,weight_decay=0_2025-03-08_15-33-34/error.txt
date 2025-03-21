@@ -1,0 +1,49 @@
+Failure # 1 (occurred at 2025-03-08_15-52-31)
+[36mray::ImplicitFunc.train()[39m (pid=110401, ip=134.169.206.100, actor_id=6f8b421756ab5b27fd5d89ca01000000, repr=train_hyper)
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/site-packages/ray/tune/trainable/trainable.py", line 330, in train
+    raise skipped from exception_cause(skipped)
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/site-packages/ray/air/_internal/util.py", line 107, in run
+    self._ret = self._target(*self._args, **self._kwargs)
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/site-packages/ray/tune/trainable/function_trainable.py", line 45, in <lambda>
+    training_func=lambda: self._trainable_func(self.config),
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/site-packages/ray/tune/trainable/function_trainable.py", line 261, in _trainable_func
+    output = fn()
+  File "/home/iff-ros-station-1-studi/Sbiegay/Hyperparameter_Tuning_Map.py", line 60, in train_hyper
+    hyper_model = MapillaryTrainedModel(
+  File "/home/iff-ros-station-1-studi/Sbiegay/Helper/ml_models.py", line 689, in __init__
+    super().__init__(
+  File "/home/iff-ros-station-1-studi/Sbiegay/Helper/ml_models.py", line 197, in __init__
+    super().__init__(
+  File "/home/iff-ros-station-1-studi/Sbiegay/Helper/ml_models.py", line 54, in __init__
+    self.model = model_funktion(weights=self.weights, num_classes=self.num_classes).to(self.device)
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/site-packages/torchvision/models/_utils.py", line 142, in wrapper
+    return fn(*args, **kwargs)
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/site-packages/torchvision/models/_utils.py", line 228, in inner_wrapper
+    return builder(*args, **kwargs)
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/site-packages/torchvision/models/segmentation/deeplabv3.py", line 330, in deeplabv3_resnet101
+    backbone = resnet101(weights=weights_backbone, replace_stride_with_dilation=[False, True, True])
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/site-packages/torchvision/models/_utils.py", line 142, in wrapper
+    return fn(*args, **kwargs)
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/site-packages/torchvision/models/_utils.py", line 228, in inner_wrapper
+    return builder(*args, **kwargs)
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/site-packages/torchvision/models/resnet.py", line 795, in resnet101
+    return _resnet(Bottleneck, [3, 4, 23, 3], weights, progress, **kwargs)
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/site-packages/torchvision/models/resnet.py", line 301, in _resnet
+    model.load_state_dict(weights.get_state_dict(progress=progress, check_hash=True))
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/site-packages/torchvision/models/_api.py", line 90, in get_state_dict
+    return load_state_dict_from_url(self.url, *args, **kwargs)
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/site-packages/torch/hub.py", line 766, in load_state_dict_from_url
+    download_url_to_file(url, cached_file, hash_prefix, progress=progress)
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/site-packages/torch/hub.py", line 651, in download_url_to_file
+    buffer = u.read(8192)
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/http/client.py", line 463, in read
+    n = self.readinto(b)
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/http/client.py", line 507, in readinto
+    n = self.fp.readinto(b)
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/ssl.py", line 1275, in recv_into
+    return self.read(nbytes, buffer)
+  File "/home/iff-ros-station-1-studi/miniconda3/envs/sbiegay/lib/python3.9/ssl.py", line 1133, in read
+    return self._sslobj.read(len, buffer)
+ConnectionResetError: [Errno 104] Connection reset by peer
