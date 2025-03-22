@@ -1,6 +1,1 @@
-{
-    "fcn_resnet101": "/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/HyperparameterLOG/fcn_resnet101/train_hyper_c75247d6_1_auto_cast=True,batch_size=4,learning_rate=0.0001,max_epochs=100,weight_decay=0.0000_2025-02-22_22-23-45/checkpoint_000099/checkpoint.pkl",
-    "deeplabv3_resnet50": "/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/HyperparameterLOG/deeplabv3_resnet50/train_hyper_56ebb659_2_auto_cast=True,batch_size=8,learning_rate=0.0000,max_epochs=100,weight_decay=0.0007_2025-02-16_19-30-53/checkpoint_000099/checkpoint.pkl",
-    "fcn_resnet50": "/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/HyperparameterLOG/fcn_resnet50/train_hyper_4b822bcf_2_auto_cast=True,batch_size=8,learning_rate=0.0000,max_epochs=100,weight_decay=0.0007_2025-02-20_17-09-00/checkpoint_000099/checkpoint.pkl",
-    "deeplabv3_resnet101": "/home/jan/studienarbeit/Studienarbeit-CODE_Semantische_Segmentation/HyperparameterLOG/deeplabv3_resnet101/train_hyper_0951e564_1_auto_cast=True,batch_size=4,learning_rate=0.0001,max_epochs=100,weight_decay=0.0000_2025-02-19_04-23-11/checkpoint_000099/checkpoint.pkl"
-}
+{}

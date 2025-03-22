@@ -562,5 +562,43 @@
             0.43268537521362305,
             11.935843467712402
         ]
+    },
+    "summary": {
+        "fcn_resnet101": {
+            "mIoU": 0.6305463314056396,
+            "FWIoU": 0.829817887701673,
+            "delta_mIoU": 0.1023,
+            "delta_FWIoU": 0.0236
+        },
+        "deeplabv3_resnet101": {
+            "mIoU": 0.6287730932235718,
+            "FWIoU": 0.8321742795113022,
+            "delta_mIoU": 0.0887,
+            "delta_FWIoU": 0.0287
+        },
+        "deeplabv3_resnet50": {
+            "mIoU": 0.6258465051651001,
+            "FWIoU": 0.8302752543527309,
+            "delta_mIoU": 0.1037,
+            "delta_FWIoU": 0.0277
+        },
+        "deeplabv3_mobilenet_v3_large": {
+            "mIoU": 0.536864161491394,
+            "FWIoU": 0.7941512919841641,
+            "delta_mIoU": 0.039,
+            "delta_FWIoU": 0.0129
+        },
+        "lraspp_mobilenet_v3_large": {
+            "mIoU": 0.541836678981781,
+            "FWIoU": 0.8048372568217615,
+            "delta_mIoU": 0.0418,
+            "delta_FWIoU": 0.0198
+        },
+        "fcn_resnet50": {
+            "mIoU": 0.6207391023635864,
+            "FWIoU": 0.8266662125920565,
+            "delta_mIoU": 0.0917,
+            "delta_FWIoU": 0.0235
+        }
     }
 }
